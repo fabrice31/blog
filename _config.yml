@@ -8,6 +8,7 @@ permalink:        pretty
 # Setup
 title:            Web Qualité
 tagline:          Journal d'un testeur
+description:      Blog d'un automatiseur de tests web. Techniques, organisatio, états d'âme: je bloggue ce que je suis
 url:              http://fabrice31.github.io/blog/
 paginate:         3
 baseurl:          /blog/
