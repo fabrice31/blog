@@ -10,7 +10,7 @@ title:            Web Qualité
 tagline:          Journal d'un testeur
 url:              http://fabrice31.github.io/blog/
 paginate:         3
-baseurl:          /blog/
+baseurl:          /blog
 author:
   name:           Fabrice Bournisien
   url:            https://twitter.com/fabrice31
