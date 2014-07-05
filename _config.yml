@@ -6,7 +6,7 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            Web Qualité
+title:            Journal d'un testeur
 tagline:          Je teste, donc je suis
 description:      Blog d'un automatiseur de tests web.
 url:              http://fabrice31.github.io/blog/
