@@ -11,7 +11,7 @@ tagline:          Journal d'un testeur
 description:      Blog d'un automatiseur de tests web. Techniques, organisatio, états d'âme. Je teste, donc je suis. Et je bloggue ce que je suis
 url:              http://fabrice31.github.io/blog/
 paginate:         3
-baseurl:          /blog
+baseurl:          /blog/
 author:
   name:           Fabrice Bournisien
   url:            https://twitter.com/fabrice31
