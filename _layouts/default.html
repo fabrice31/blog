@@ -4,27 +4,11 @@
   {% include head.html %}
 
   <body>
+
     {% include sidebar.html %}
 
-    <div class="container content">
-      <div class="masthead">
-        <h3 class="masthead-title">
-          <a href="{{ site.baseurl }}" title="Home">{{ site.title }}</a>
-          <small>{{ site.tagline }}</small>
-        </h3>
-		{% for page in site.pages_list %}
-		  &nbsp;&nbsp;&nbsp;
-		  <small><a href="{{ site.baseurl }}{{ page[1] }}">{{ page[0] }}</a></small>
-		{% endfor %}
-      </div>
-
+    <div class="content container">
       {{ content }}
-
-      <div class="footer">
-        <p>
-          &copy; {{ site.time | date: '%Y' }}. All rights reserved.
-        </p>
-      </div>
     </div>
 
   </body>
