@@ -6,8 +6,8 @@ highlighter:      rouge
 permalink:        pretty
 
 # Setup
-title:            Journal d'un testeur
-tagline:          Je teste, donc je suis
+title:            Je teste donc je suis
+tagline:          Journal d'un testeur
 description:      Blog d'un automatiseur de tests web.
 url:              http://fabrice31.github.io/blog/
 paginate:         3
