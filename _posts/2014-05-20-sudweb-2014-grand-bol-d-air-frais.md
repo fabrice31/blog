@@ -26,7 +26,7 @@ Toute la journée, Romain a réalisé des posters basés sur les contenus des co
 Le soir, j'ai fait l'impasse sur la soirée communautaire pour rentrer m'occuper de mon fils, et me reposer avant le deuxième round du lendemain.
 Sudweb 2014 - Un grand bol d'air frais
 
-![SudWeb Logo](/blog/public/pictures/2014/sudweb.png "Sudweb")
+![SudWeb Logo](/public/pictures/2014/sudweb.png "Sudweb")
 
 
 ### Samedi : ateliers et échanges

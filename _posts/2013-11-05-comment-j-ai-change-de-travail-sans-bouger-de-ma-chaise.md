@@ -17,7 +17,7 @@ En début d'année, lors de mon entretien annuel avec ma hiérarchie, j'ai sous-
 
 J'ai aussi demandé des rendez-vous à quelques reprises avec mon "n+2", pour lui exposer des problèmes d'organisation, et aussi mon ressenti sur le produit et sa qualité. (Je n'aime pas l'appeler mon "n+2", mais c'est plus simple pour en parler ici. Il mérite beaucoup plus que cela : il est à l'écoute, et chaque fois je sors de réunion "prêt à en découdre".)
 
-![Comment j'ai changé de travail sans bouger de ma chaise](/blog/public/pictures/2013/les-aventuriers-de-l-arche-perdue.jpg "")
+![Comment j'ai changé de travail sans bouger de ma chaise](/public/pictures/2013/les-aventuriers-de-l-arche-perdue.jpg "")
 
 ### A la recherche du Graal de l'emploi
 
@@ -35,7 +35,7 @@ J'ai du coup pensé à changer de carrière pour rester dans ma région, mais je
 
 Au printemps, j'allais au travail avec un peu moins d'entrain, et avec le recul, je me suis aperçu que je me faisais des montagnes de certains petits tracas sans importance. Mais hors de question pour moi de partir sans savoir où aller.
 
-![Comment j'ai changé de travail sans bouger de ma chaise](/blog/public/pictures/2013/vecurent-heureux-quality.jpg)
+![Comment j'ai changé de travail sans bouger de ma chaise](/public/pictures/2013/vecurent-heureux-quality.jpg)
 
 ### Le casse du siècle ?
 
@@ -48,7 +48,7 @@ Et puis, au début de l'été, on m'a fait une proposition intéressante :
 Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait pour moi. OverBlog fait partie du groupe Ebuzzing depuis plusieurs années. Ebuzzing diffuse un certains nombre de projets. Depuis cet été, j'assure maintenant la qualité de tous ces projets.
 
 
-![Ils vécurent heureux et eurent beaucoup de tests](/blog/public/pictures/2013/evaluation.jpg "")
+![Ils vécurent heureux et eurent beaucoup de tests](/public/pictures/2013/evaluation.jpg "")
 
 ### Ils vécurent heureux et eurent beaucoup d'enfants
 
@@ -63,4 +63,4 @@ Depuis, j'ai un nouveau travail.
 * Pouvoir chaque jour travailler sur un projet différent est génial : je n'ai plus de routine (les habitudes sont ma hantise)
 * Même si mon autonomie n'est pas aussi importante qu'avant, j'en ai quand même beaucoup. C'est plus que suffisant. (je connais beaucoup de gens qui voudraient avoir la moitié de celle que j'ai)
 
-![Keep calm and pick quality](/blog/public/pictures/2013/keep-quality.jpg "Keep quality")
+![Keep calm and pick quality](/public/pictures/2013/keep-quality.jpg "Keep quality")

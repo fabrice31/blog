@@ -33,7 +33,7 @@ Une fois le json obtenu, il restait à le traiter. L'avantage est de pouvoir le 
 Et j'ai filé les clefs à une équipe sur un projet, qui a modifié l'écran pour pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
 Et voilà ce que ça donne :
 
-![Jenkins show](/blog/public/pictures/2014/jenkins-show.png "Ecran d'affichage jenkins")
+![Jenkins show](/public/pictures/2014/jenkins-show.png "Ecran d'affichage jenkins")
 
 * On peut séparer les jobs dans les différents projets via des expressions régulières.
 * Pour l'un des projets, très conséquents, j'ai même séparé par navigateur.
