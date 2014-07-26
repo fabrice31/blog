@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+sitemap: 2014-07-01T12:00:00+02:00
 ---
 
 <p class="message">
