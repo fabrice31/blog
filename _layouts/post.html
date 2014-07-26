@@ -11,6 +11,19 @@ layout: default
   </span>
 
 	<div itemprop="ArticleBody">{{ content }}</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&amp;via=fabrice31&amp;text={{ page.title }}&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href={{ site.url }}{{ page.url }}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url={{ site.url }}{{ page.url }}&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
 </div>
 
 <script src="https://apis.google.com/js/plusone.js"></script>
@@ -27,7 +40,7 @@ layout: default
     {% for post in site.related_posts limit:3 %}
       <li>
         <h3>
-          <a href="{{ site.baseurl }}{{ post.url }}">
+          <a href="{{ site.url }}{{ post.url }}">
             {{ post.title }}
             <small>{{ post.date | date_to_string }}</small>
           </a>
