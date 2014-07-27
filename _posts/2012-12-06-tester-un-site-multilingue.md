@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Tester un site multilingue
+tags:
+  tests
+  watir
 ---
 
 Travailler sur un site international demande de multiplier les tests.

@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Comment organiser les tests sur le long terme
+tags:
+  tests
+  jenkins
 ---
 
 ### Exécuter une partie des tests

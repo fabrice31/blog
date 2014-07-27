@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Quand un commerçant en ligne a des bugs
+tags:
+  bug
 ---
 
 On peut être un grand nom de la vente en ligne, mais avoir malgré cela des problèmes sur son site web.

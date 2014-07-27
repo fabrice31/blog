@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Comment j'ai changé de travail sans bouger de ma chaise
+tags:
+  boulot
 ---
 
 Cela fait plusieurs années que j'assure la qualité d'overblog.com :

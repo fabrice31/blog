@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Tester sur plusieurs navigateurs
+tags:
+  cucumber
+  watir
 ---
 
 Tester de façon automatique, c'est bien. Le faire sur plusieurs environnements, c'est mieux.

@@ -1,6 +1,11 @@
 ---
 layout: post
 title: Ruby - OAuth v1.0a pour optimiser les tests
+tags:
+  ruby
+  tests
+  api
+  watir
 ---
 
 Lors de tests, il arrive souvent qu'on ait besoin de "faire le ménage" pour retrouver un état comme à l'origine.

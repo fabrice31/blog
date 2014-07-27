@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Il faut savoir se fier à ses tests
+tags: 
+  tests
+  bug
 ---
 
 Vroici l'histoire d'un test fonctionnel "basique" mais techniquement compliqué à mettre en place.

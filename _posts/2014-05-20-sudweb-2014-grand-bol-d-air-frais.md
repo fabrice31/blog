@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Sudweb 2014 - Un grand bol d'air frais
+tags: conference
 ---
 
 [Sudweb](http://sudweb.fr/), j'en avais parlé il y a 2 ans, en 2012. Cette année, ça se passait à Toulouse, j'y suis donc retourné. Le changement, c'est que j'y étais uniquement en tant que "spectateur".

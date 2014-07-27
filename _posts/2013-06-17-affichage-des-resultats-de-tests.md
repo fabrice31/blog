@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Affichage des résultats de tests
+tags:
+  tests
+  jenkins
 ---
 
 Lorsqu'on teste avec jenkins, cucumber et watir, on obtient des rapports détaillés, qu'il faut lire et analyser en permanence.

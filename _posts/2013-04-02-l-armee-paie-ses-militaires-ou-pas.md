@@ -1,6 +1,8 @@
 ---
 layout: post
 title: L'armée ne paie pas toujours ses militaires
+tags:
+  bug
 ---
 
 Il y a plusieurs mois, j'avais tweeté "Les bugs, ça coûte cher : Noël sans solde pour des milliers de soldats français"

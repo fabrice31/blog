@@ -15,7 +15,11 @@ title: Home
 	<span class="post-date">
 		<time class="date" datetime="{{ post.date  | date: '%Y-%m-%d' }}" itemprop="datePublished">
 			{{ post.date | date: '%d/%m/%Y' }}
-		</time> - par Fabrice Bournisien
+		</time>
+		- par Fabrice Bournisien
+		{% for tag in post.tags %}
+		- {{ tag | capitalize }}
+		{% endfor %}
 	</span>
 
 	<div itemprop="ArticleBody">{{ post.content }}</div>
