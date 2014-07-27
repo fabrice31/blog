@@ -1,0 +1,1067 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Je teste donc je suis</title>
+ <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
+ <link href="http://blog.fabricebournisien.eu//"/>
+ <updated>2014-07-27T20:07:34+02:00</updated>
+ <id>http://blog.fabricebournisien.eu/</id>
+ <author>
+   <name>Fabrice Bournisien</name>
+   <email>fabrice.bournisien@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Changement de blog</title>
+   <link href="http://blog.fabricebournisien.eu///2014/07/05/changement-de-blog/"/>
+   <updated>2014-07-05T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2014/07/05/changement-de-blog</id>
+   <content type="html">&lt;p&gt;Depuis quelques semaines, j&amp;#39;avais envie de changer d&amp;#39;air pour mon blog : voir de nouvelles technologies, d&amp;#39;avoir un blog plus profesionnel.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai pas mal fouillé, et je suis très tenté par &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; et &lt;a href=&quot;https://github.com/poole/poole&quot;&gt;Poole&lt;/a&gt;, qui permettent d&amp;#39;avoir facilement un site statique écrit en markdown. Le tout hébérgé par github.&lt;/p&gt;
+
+&lt;p&gt;Plusieurs objectifs à ce changement :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Etre encore plus maître de mon outil de publication.&lt;/li&gt;
+&lt;li&gt;Découvrir de nouvelles technologies.&lt;/li&gt;
+&lt;li&gt;En profiter pour faire le ménage sur le blog.&lt;/li&gt;
+&lt;li&gt;Remettre à plat la ligne éditoriale.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sudweb 2014 - Un grand bol d'air frais</title>
+   <link href="http://blog.fabricebournisien.eu///2014/05/20/sudweb-2014-grand-bol-d-air-frais/"/>
+   <updated>2014-05-20T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2014/05/20/sudweb-2014-grand-bol-d-air-frais</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://sudweb.fr/&quot;&gt;Sudweb&lt;/a&gt;, j&amp;#39;en avais parlé il y a 2 ans, en 2012. Cette année, ça se passait à Toulouse, j&amp;#39;y suis donc retourné. Le changement, c&amp;#39;est que j&amp;#39;y étais uniquement en tant que &amp;quot;spectateur&amp;quot;.&lt;/p&gt;
+
+&lt;h3&gt;Vendredi : des conférences et des papotages&lt;/h3&gt;
+
+&lt;p&gt;Le vendredi, c&amp;#39;est le jour des conférences. Je ne les citerais pas toutes, mais certaines m&amp;#39;ont bien marqué :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La culture d&amp;#39;entreprise, vu par Kevin Goldsmith. 
+J&amp;#39;ai eu un peu du mal à tout suivre en anglais de bon matin, mais intéressant, et finalement, cette notion de culture est revenu dans beaucoup d&amp;#39;interventions.&lt;/li&gt;
+&lt;li&gt;La sédimentation des données, par Samuel Huron&lt;/li&gt;
+&lt;li&gt;Comment afficher simplement des données dans le temps, de façon que le présent compte plus que le passé. Hate de pouvoir tester ça sur l&amp;#39;affichage des résultats de tests.&lt;/li&gt;
+&lt;li&gt;Un cours de dessin de croquis par Eva-Lotta Lamm&lt;/li&gt;
+&lt;li&gt;Deux petites histoires sur pourquoi les commentaires dans le code sont importants&lt;/li&gt;
+&lt;li&gt;Tu peux pas test, un concept pour tester. J&amp;#39;étais sceptique sur le programme, mais Vincent Van Steen a finalement réussi à me convaincre que cette méthode peut avoir un intérêt dans certains cas, pour gagner du temps et de l&amp;#39;argent.&lt;/li&gt;
+&lt;li&gt;Une histoire de print qui finit en web, avec un joli livre responsive ; la dette technique ; les réponses aux stress... et plein d&amp;#39;autres sujets ont été abordés.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Comme toujours, la journée est chargée en contenu riches, intéressants, et chacun y trouve son compte. Les pauses sont là pour échanger sur les conférences, sur soi, son métier... je suis timide, j&amp;#39;ai surtout parler à des gens que je connaissais déjà.&lt;/p&gt;
+
+&lt;p&gt;Et pour finir la journée, une conférence débat animée par David Bruant et Pablo Pernot, qui a soulevé beaucoup de questions à base de &amp;quot;mais pourquoi je travaille comme ça&amp;quot;, &amp;quot;comment changer l&amp;#39;avenir de la profession&amp;quot;, ou encore &amp;quot;quand ça va pas, il faut le dire&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Toute la journée, Romain a réalisé des posters basés sur les contenus des conférences, en live. J&amp;#39;ai trouvé ça impressionnant (que ce soit l&amp;#39;esprit de synthèse ou la mise en page) Sur le débat, il a été bluffant. J&amp;#39;ai hâte de voir le résultats des posters dans les prochaines semaines !
+Le soir, j&amp;#39;ai fait l&amp;#39;impasse sur la soirée communautaire pour rentrer m&amp;#39;occuper de mon fils, et me reposer avant le deuxième round du lendemain.
+Sudweb 2014 - Un grand bol d&amp;#39;air frais&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2014/sudweb.png&quot; alt=&quot;SudWeb Logo&quot; title=&quot;Sudweb&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Samedi : ateliers et échanges&lt;/h3&gt;
+
+&lt;p&gt;Le samedi à Sudweb, c&amp;#39;est souvent compliqué : des ateliers sont préparés dans les 7-8 salles dispos, et chacun va là où il veut. Avec la règle des deux pieds : &amp;quot;Si ça te plait pas, tu pars, et tu vas voir ailleurs&amp;quot;.
+Cette année, j&amp;#39;avais un coup de coeur pour un atelier prévu de longue date. Du coup, cela m&amp;#39;a empêché d&amp;#39;aller à un autre qui s&amp;#39;est créé et organisé dans la matinée. Et du coup, j&amp;#39;ai fini par faire une journée sans &amp;quot;technique&amp;quot; :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Atelier Légo pour faire des métaphores, étape par étape. Très intéressant, parce que cela permet vraiment de faire passer des idées par construction en 3D. (Un peu comme le cours de croquis de la veille)&lt;/li&gt;
+&lt;li&gt;Atelier DIY : Do it yourself, avec construction par équipe. Mon seul regret : nous n&amp;#39;avons pas eu le temps de finir le device lab à base de tablette que nous avions commencé. Mais clairement, je suis arrivé en regardant mon bureau d&amp;#39;une autre façon lundi matin.&lt;/li&gt;
+&lt;li&gt;Un atelier de travail en groupe avec une kinésiologue, où on a aussi bien parlé acuponcture que de nos frustrations professionnelles.&lt;/li&gt;
+&lt;li&gt;Et enfin, la rétrospective de sudweb. Avec toute l&amp;#39;équipe qui a organisé ça, pour pouvoir dire ce qui nous a plus, ce qui a moins plus, et ce qu&amp;#39;on pourrait faire d&amp;#39;encore meilleurs l&amp;#39;année prochaine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Sudweb, et après&lt;/h3&gt;
+
+&lt;p&gt;Rien à dire, j&amp;#39;ai passé 2 supers journées. Je pense que si je pouvais, je ne changerais pas grand chose : j&amp;#39;y étais allé pour avoir un grand bol d&amp;#39;air, entendre parler de quelques technos que je maîtrise pas forcément, et m&amp;#39;ouvrir l&amp;#39;esprit à d&amp;#39;autres choses. J&amp;#39;ai tout bon sur toute la ligne. Un grand coup de chapeau à l&amp;#39;équipe qui a organisé tout ça.&lt;/p&gt;
+
+&lt;p&gt;Et après ? Lundi, retour au bureau, à la réalité. Le coup de boost de voir autant de gens voulant travailler encore mieux (dans tous les sens du terme) pendant 2 jours m&amp;#39;a remonté le moral. Mardi, j&amp;#39;ai un bon coup de blues, et je me demande si on devrait pas organiser un sudweb chaque semaine.&lt;/p&gt;
+
+&lt;p&gt;Il ne reste qu&amp;#39;à attendre les vidéos des conférences pour pouvoir les partager avec les collègues et connaissances pour leur montrer :)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>L'allié du testeur &#58; l'affichage synthétique</title>
+   <link href="http://blog.fabricebournisien.eu///2014/02/10/l-allie-du-testeur-l-affichage-synthetique/"/>
+   <updated>2014-02-10T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2014/02/10/l-allie-du-testeur-l-affichage-synthetique</id>
+   <content type="html">&lt;p&gt;Comme beaucoup de gens, je travaille toujours sur plusieurs projets à la fois. Mon rôle principal est de créer et maintenir des tests fonctionnels automatiques.&lt;/p&gt;
+
+&lt;p&gt;Pour gérer tout cela, nous sommes 2 personnes. Mais nous avons aussi des tests manuels à faire avant chaque mise en production de chaque projet.&lt;/p&gt;
+
+&lt;h3&gt;Quelques chiffres&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;6 serveurs jenkins : 3 linux, 3 windows. (Uniquement pour les tests fonctionnels)&lt;/li&gt;
+&lt;li&gt;1 700 scenarios cucumber joués quotidiennement. (soit plus de 20 heures chaque jour)&lt;/li&gt;
+&lt;li&gt;près de 300 jobs jenkins pour les ranger&lt;/li&gt;
+&lt;li&gt;7 produits principaux, à tester sur 1 à 3 navigateurs + mobile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cela donne le tournis. Plus le temps passe, plus j&amp;#39;ai besoin d&amp;#39;avoir un affichage synthétique pour savoir si mes tests sont passés ou non.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;avais dans le passé créer un petit plugin pour &lt;a href=&quot;http://web-quality.over-blog.com/affichage-des-resultats-de-tests&quot;&gt;afficher mes résultats&lt;/a&gt;. Mais chaque projet est légèrement différent, demande des réglages différents, et j&amp;#39;arrivais aux limites de cet affichage. J&amp;#39;avais un écran par projet, soit 7 écrans de contrôle, que j&amp;#39;aurais voulu avoir toujours sous la main.&lt;/p&gt;
+
+&lt;h3&gt;Plugin jenkins&lt;/h3&gt;
+
+&lt;p&gt;J&amp;#39;ai donc regardé sur jenkins s&amp;#39;il existait des plugins permettant de lister les résultats au format json. Je n&amp;#39;ai rien trouvé de concluant, j&amp;#39;ai donc codé un petit plugin pour avoir un fichier jsonp qui liste tous les jobs, et pour chacun :
+* son statut courant,
+* les stats du dernier résultat,
+* l&amp;#39;avancement s&amp;#39;il est en cours...
+Vous pouvez trouver le code sur le &lt;a href=&quot;https://github.com/fabrice31/jsonResult&quot;&gt;dépôt github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Console en javascript&lt;/h3&gt;
+
+&lt;p&gt;Une fois le json obtenu, il restait à le traiter. L&amp;#39;avantage est de pouvoir le faire en javascript, ce qui permet à chacun de gérer ensuite l&amp;#39;avantage à sa sauce. J&amp;#39;ai fait un écran de contrôle pour l&amp;#39;ensemble des projets que je gère.&lt;/p&gt;
+
+&lt;p&gt;Et j&amp;#39;ai filé les clefs à une équipe sur un projet, qui a modifié l&amp;#39;écran pour pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
+Et voilà ce que ça donne :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2014/jenkins-show.png&quot; alt=&quot;Jenkins show&quot; title=&quot;Ecran d&amp;#39;affichage jenkins&quot;&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;On peut séparer les jobs dans les différents projets via des expressions régulières.&lt;/li&gt;
+&lt;li&gt;Pour l&amp;#39;un des projets, très conséquents, j&amp;#39;ai même séparé par navigateur.&lt;/li&gt;
+&lt;li&gt;On voit bien les tests KO pour chaque job. (en rouge)&lt;/li&gt;
+&lt;li&gt;Les jobs désactivés ou n&amp;#39;ayant pas de résultats sont gris.&lt;/li&gt;
+&lt;li&gt;Les jobs qui sont en cours d&amp;#39;exécution sont en bleu, avec une barre d&amp;#39;avancement sur leur durée estimée.&lt;/li&gt;
+&lt;li&gt;Les jobs qui seront lancés quand il y aura une place pour eux ont une pastille jaune.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Comment j'ai changé de travail sans bouger de ma chaise</title>
+   <link href="http://blog.fabricebournisien.eu///2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/"/>
+   <updated>2013-11-05T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise</id>
+   <content type="html">&lt;p&gt;Cela fait plusieurs années que j&amp;#39;assure la qualité d&amp;#39;overblog.com :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tests et validation &amp;quot;manuel&amp;quot; pendant des années,&lt;/li&gt;
+&lt;li&gt;Gestion du support utilisateur par forum ou par mail,&lt;/li&gt;
+&lt;li&gt;Mise en place des tests fonctionnels automatiques,&lt;/li&gt;
+&lt;li&gt;Mise en place des changelog,&lt;/li&gt;
+&lt;li&gt;Rôle de proxy Product Owner lorsque l&amp;#39;équipe est passé à Scrum,&lt;/li&gt;
+&lt;li&gt;A l&amp;#39;occasion, j&amp;#39;ai aussi développé des fonctionnalités sur le projet lui-même,&lt;/li&gt;
+&lt;li&gt;Et plein d&amp;#39;autres petites tâches pour assurer la qualité en général...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En début d&amp;#39;année, lors de mon entretien annuel avec ma hiérarchie, j&amp;#39;ai sous-entendu que je commençais à &amp;quot;m&amp;#39;ennuyer&amp;quot; : je n&amp;#39;avais plus assez de défis à me mettre sous la dent.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai aussi demandé des rendez-vous à quelques reprises avec mon &amp;quot;n+2&amp;quot;, pour lui exposer des problèmes d&amp;#39;organisation, et aussi mon ressenti sur le produit et sa qualité. (Je n&amp;#39;aime pas l&amp;#39;appeler mon &amp;quot;n+2&amp;quot;, mais c&amp;#39;est plus simple pour en parler ici. Il mérite beaucoup plus que cela : il est à l&amp;#39;écoute, et chaque fois je sors de réunion &amp;quot;prêt à en découdre&amp;quot;.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/les-aventuriers-de-l-arche-perdue.jpg&quot; alt=&quot;Comment j&amp;#39;ai changé de travail sans bouger de ma chaise&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;A la recherche du Graal de l&amp;#39;emploi&lt;/h3&gt;
+
+&lt;p&gt;A ce moment-là, j&amp;#39;ai mis à jour mon CV, mes informations sur les réseaux, et je suis passé en mode veille &amp;quot;un peu plus active&amp;quot; sur l&amp;#39;emploi dans mon domaine.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai rapidement découvert plusieurs choses :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;J&amp;#39;ai acquis au sein de ma société une autorité &amp;quot;naturelle&amp;quot; dans le domaine de la Qualité, et des tests.&lt;/li&gt;
+&lt;li&gt;J&amp;#39;ai une autonomie très importante pour faire mon travail, et j&amp;#39;aime ça !&lt;/li&gt;
+&lt;li&gt;Les postes dédiées à la qualité et/ou aux tests ne courent pas les rues&lt;/li&gt;
+&lt;li&gt;Certains postes dans le domaine ne me conviennent pas&lt;/li&gt;
+&lt;li&gt;Se limiter à une région géographique limite encore plus les offres&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;J&amp;#39;ai du coup pensé à changer de carrière pour rester dans ma région, mais je n&amp;#39;avais pas envie de redevenir développeur &amp;quot;lambda&amp;quot; (et qu&amp;#39;on ne me parle pas de chef de projet). Je me suis même demandé pourquoi je restais dans l&amp;#39;informatique (quand je dis que je ratisse, je ratisse large).&lt;/p&gt;
+
+&lt;p&gt;Au printemps, j&amp;#39;allais au travail avec un peu moins d&amp;#39;entrain, et avec le recul, je me suis aperçu que je me faisais des montagnes de certains petits tracas sans importance. Mais hors de question pour moi de partir sans savoir où aller.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/vecurent-heureux-quality.jpg&quot; alt=&quot;Comment j&amp;#39;ai changé de travail sans bouger de ma chaise&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Le casse du siècle ?&lt;/h3&gt;
+
+&lt;p&gt;Et puis, au début de l&amp;#39;été, on m&amp;#39;a fait une proposition intéressante :
+* Mettre en place des tests automatiques sur des projets web
+* Travailler en binôme avec quelqu&amp;#39;un déjà en place
+* Travailler sur 5 ou 6 projets web distincts (mais ayant des parties communes)
+* Toucher à des domaines que je ne maîtrise pas : faire des tests sur du flash ou des applications mobiles, de beaux défis !
+* Accompagner les équipes techniques pour améliorer la Qualité
+Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait pour moi. OverBlog fait partie du groupe Ebuzzing depuis plusieurs années. Ebuzzing diffuse un certains nombre de projets. Depuis cet été, j&amp;#39;assure maintenant la qualité de tous ces projets.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/evaluation.jpg&quot; alt=&quot;Ils vécurent heureux et eurent beaucoup de tests&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Ils vécurent heureux et eurent beaucoup d&amp;#39;enfants&lt;/h3&gt;
+
+&lt;p&gt;Depuis, j&amp;#39;ai un nouveau travail.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je n&amp;#39;ai pas changé de bureau. Je suis toujours assis au même endroit, avec mes habitudes.&lt;/li&gt;
+&lt;li&gt;Mon &amp;quot;n+2&amp;quot; est toujours le même. Pour moi, c&amp;#39;est vraiment une bonne chose : j&amp;#39;ai appris à l&amp;#39;apprécier, et à le respecter depuis longtemps.&lt;/li&gt;
+&lt;li&gt;Je n&amp;#39;ai pas changé de collègues, mais la liste des collègues avec qui je travaille s&amp;#39;est allongée.&lt;/li&gt;
+&lt;li&gt;Si depuis longtemps je codais &amp;quot;propre&amp;quot; et réutilisable sans même avoir besoin de le faire, depuis cet été je le met en pratique. Le temps &amp;quot;perdu&amp;quot; pour cela a &amp;quot;enfin&amp;quot; été rentabilisé.&lt;/li&gt;
+&lt;li&gt;Travailler en binôme est stimulant. Il ne se passe pas une semaine sans qu&amp;#39;une idée de l&amp;#39;un de nous fasse rebondir l&amp;#39;autre pour affronter un problème particulier.&lt;/li&gt;
+&lt;li&gt;Former mon binôme à mes méthodes de travail est intéressant. Il me permet de voir que certains choix ne sont pas forcément pertinents et logiques. Au bout de 4 mois, j&amp;#39;ai déjà repéré plusieurs fois que l&amp;#39;un finissait la phrase de l&amp;#39;autre : juste parfait à mes yeux.&lt;/li&gt;
+&lt;li&gt;Pouvoir chaque jour travailler sur un projet différent est génial : je n&amp;#39;ai plus de routine (les habitudes sont ma hantise)&lt;/li&gt;
+&lt;li&gt;Même si mon autonomie n&amp;#39;est pas aussi importante qu&amp;#39;avant, j&amp;#39;en ai quand même beaucoup. C&amp;#39;est plus que suffisant. (je connais beaucoup de gens qui voudraient avoir la moitié de celle que j&amp;#39;ai)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/keep-quality.jpg&quot; alt=&quot;Keep calm and pick quality&quot; title=&quot;Keep quality&quot;&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Bug de l'espace temps</title>
+   <link href="http://blog.fabricebournisien.eu///2013/10/17/bug-de-l-espace-temps/"/>
+   <updated>2013-10-17T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps</id>
+   <content type="html">&lt;p&gt;Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&amp;#39;avoir un moteur déjà bien robuste.&lt;/p&gt;
+
+&lt;p&gt;Prenons par exemple l&amp;#39;affichage d&amp;#39;une date avec ce code :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Default date format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&amp;#39;agit d&amp;#39;une chaîne de caractères indiquant le format.&lt;/p&gt;
+
+&lt;p&gt;On pourrait avoir HH:mm pour l&amp;#39;heure par exemple.&lt;/p&gt;
+
+&lt;p&gt;Dans l&amp;#39;analyse du bug du jour, nous avons un signalement de date fausse sur certaines pages. Après vérifications nous trouvons une page datant du 3 janvier 2010, mais qui est affichée comme étant le 3 janvier 2009.&lt;/p&gt;
+
+&lt;p&gt;L&amp;#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).&lt;/p&gt;
+
+&lt;p&gt;Le collègue qui cherchait a trouvé le problème.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dans la documentation de datel, Y = year of &amp;quot;Week of Year&amp;quot;. Il s&amp;#39;agit de l&amp;#39;année durant laquelle le week end du jour en question a eu lieu.&lt;/p&gt;
+
+&lt;p&gt;Il s&amp;#39;agit donc d&amp;#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&amp;#39;année d&amp;#39;avant. Tordu non ?&lt;/p&gt;
+
+&lt;p&gt;Pour la petite histoire, le code corrigé sans bug donne :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yyyy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Affichage des résultats de tests</title>
+   <link href="http://blog.fabricebournisien.eu///2013/06/17/affichage-des-resultats-de-tests/"/>
+   <updated>2013-06-17T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/06/17/affichage-des-resultats-de-tests</id>
+   <content type="html">&lt;p&gt;Lorsqu&amp;#39;on teste avec jenkins, cucumber et watir, on obtient des rapports détaillés, qu&amp;#39;il faut lire et analyser en permanence.&lt;/p&gt;
+
+&lt;p&gt;Depuis plusieurs mois, nous avons dans nos locaux une télé dédiée à l&amp;#39;affichage de l&amp;#39;état général de l&amp;#39;ensemble de nos tests. Pour cela, le plugin Jenkins Wall Display nous a suffit dans un premier temps. Nous affichons sur la télé une page web qui fait défiler&lt;/p&gt;
+
+&lt;p&gt;Au total, sur ces écrans, nous affichons le résumé :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Plus de 1 300 test php unit (et leur 5 000 assertions)&lt;/li&gt;
+&lt;li&gt;Près de 500 tests unitaires JS&lt;/li&gt;
+&lt;li&gt;Plus de 950 scénarios cucumber pour les tests fonctionnels.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;En outre, nous affichons aussi quelques graphiques sensibles de l&amp;#39;état de la production : nombre de compte crées, etc..
+On a beau regrouper toutes ces informations, il arrive un moment où l&amp;#39;affichage n&amp;#39;est plus lisible.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/screen-avant.jpg&quot; alt=&quot;Exemple avec les tests fonctionnels&quot; title=&quot;Affichage avant les travaux&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Le constat est moins alarmant pour les tests unitaires. Les chiffres exposent bien pourquoi :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tests fonctionnels : 40 jobs jenkins * 3 navigateurs&lt;/li&gt;
+&lt;li&gt;Tests unitaires : 18 jobs jenkins * 2 environnement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Comment afficher proprement les résultats&lt;/h3&gt;
+
+&lt;p&gt;Je suis parti en quête d&amp;#39;une solution pour afficher tous nos résultats proprement, avec quelques contraintes :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je préférais afficher tous les résultats sur un seul écran par type de tests&lt;/li&gt;
+&lt;li&gt;Je veux pouvoir afficher un résumé ( x tests KO / x tests total)&lt;/li&gt;
+&lt;li&gt;Je veux pouvoir séparer facilement les affichages d&amp;#39;un même type de tests (par navigateur / environnement)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ma quête fut longue et semée d&amp;#39;embûches :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tentative d&amp;#39;utilisation de l&amp;#39;API, mais c&amp;#39;était déjà trop lent alors que je ne calculais / affichais pas la moitié de ce que je voulais (45 secondes environ)&lt;/li&gt;
+&lt;li&gt;Plusieurs plugin jenkins, mais aucun ne permettant ce que je veux&lt;/li&gt;
+&lt;li&gt;Un Plugin jenkins faisant la moitié de ce que je voulais, mais complètement bugué&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Mon premier plugin jenkins&lt;/h3&gt;
+
+&lt;p&gt;Je suis donc parti à l&amp;#39;assaut de la documentation de jenkins pour coder un plugin fait-maison qui ferait exactement ce que je voudrais.&lt;/p&gt;
+
+&lt;p&gt;Ce que j&amp;#39;ai bien aimé dans cette création :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tout en java. Je n&amp;#39;avais pas codé en java depuis 10 ans je pense, et j&amp;#39;ai perdu, mais vite repris mes repères.&lt;/li&gt;
+&lt;li&gt;Bosser sur un plugin que je pourrais diffuser en open-source à la fin :)&lt;/li&gt;
+&lt;li&gt;La possibilité de faire exactement ce que je veux, sans être limité par un plugin déjà fait.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ce que je n&amp;#39;ai pas aimé :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La documentation : elle existe, elle semble complète. Mais je trouve l&amp;#39;organisation moyennement bonne. J&amp;#39;ai plusieurs fois été à la recherche d&amp;#39;exemple de code pour trouver la fonction dont j&amp;#39;avais besoin, que je ne trouvais pas dans la doc.&lt;/li&gt;
+&lt;li&gt;L&amp;#39;installation de maven qui marche du premier coup sur un de mes postes, mais se passe mal sur l&amp;#39;autre.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Au final, ça donne quoi ?&lt;/h3&gt;
+
+&lt;p&gt;J&amp;#39;ai donc un plugin qui permet de créer une nouvelle &amp;quot;View&amp;quot;. On peut y configurer :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Les noms des colonnes, et la façon de filtrer les jobs dans chaque colonne, par des expression régulières.&lt;/li&gt;
+&lt;li&gt;Affichage dans chaque colonne du temps pris pour ces tests, du nombre de scénarios en échec et du nombre total de scénarios. (Afficher le nombre de jobs est beaucoup plus simple, mais donne beaucoup moins d&amp;#39;informations : un job en échec pour 1 / 34 est moins grave qu&amp;#39;un test avec 4 / 4 erreurs)&lt;/li&gt;
+&lt;li&gt;Affichage de la liste des jobs en échec (avec le nombre de scénarios)&lt;/li&gt;
+&lt;li&gt;Une colonne à part, qui affiche le temps total sur jenkins (master + slave)&lt;/li&gt;
+&lt;li&gt;Une liste de jobs spéciaux (dans mon cas : ceux qui lancent les autres, la génération de la doc...)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Le plugin est sur github : &lt;a href=&quot;https://github.com/fabrice31/CucumberJenkins&quot;&gt;https://github.com/fabrice31/CucumberJenkins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Et maintenant ?&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai configuré le plugin pour fonctionner avec cucumber, puisque je suis au coeur des tests fonctionnels. Il faut maintenant que je me débrouille pour que cet affichage fonctionne aussi bien avec tests php unit (séparés par des regexp par environnement cette fois)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/screen-apres.jpg&quot; alt=&quot;Affichage de résultats cucumber&quot; title=&quot;Affichage apres les travaux&quot;&gt;
+&lt;img src=&quot;/public/pictures/2013/screen-config.jpg&quot; alt=&quot;Plugin jenkins affichage de résultats cucumber&quot; title=&quot;Configuration du plugin&quot;&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ruby - OAuth v1.0a pour optimiser les tests</title>
+   <link href="http://blog.fabricebournisien.eu///2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests/"/>
+   <updated>2013-06-10T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests</id>
+   <content type="html">&lt;p&gt;Lors de tests, il arrive souvent qu&amp;#39;on ait besoin de &amp;quot;faire le ménage&amp;quot; pour retrouver un état comme à l&amp;#39;origine.
+Plusieurs stratégies possibles, en fonction des technologies qu&amp;#39;on souhaite utiliser.&lt;/p&gt;
+
+&lt;h3&gt;Un par un, à la fin&lt;/h3&gt;
+
+&lt;p&gt;Après chaque scénario, supprimer ce qui a été ajouté, annuler les modifications une par une.&lt;/p&gt;
+
+&lt;p&gt;Avantages : &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Facile à mettre en place (on réutilise ce qui a déjà été fait)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Défauts : &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si le scénario plante, on ne remet pas en l&amp;#39;état&lt;/li&gt;
+&lt;li&gt;Chaque scénario prend un peu plus de temps (jusqu&amp;#39;au double, dans le pire des cas)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Un par un, au début&lt;/h3&gt;
+
+&lt;p&gt;Avant chaque scénario, remettre les valeurs par défauts pour le test&lt;/p&gt;
+
+&lt;p&gt;Avantages :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Facile à mettre en place (on réutilise ce qui a déjà été fait)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Défauts :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si la remise à zéro ne marche pas, on ne teste pas&lt;/li&gt;
+&lt;li&gt;Chaque scénario prend un peu plus de temps (jusqu&amp;#39;au double, dans le pire des cas)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Tous d&amp;#39;un coup, dans une routine à part&lt;/h3&gt;
+
+&lt;p&gt;Puisqu&amp;#39;on utilise un outil comme jenkins pour organiser tous les tests, on peut ajouter une routine &amp;quot;à part&amp;quot;, qui va se connecter sur chaque compte pour effectuer cette remise à zéro.&lt;/p&gt;
+
+&lt;p&gt;Avantages :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Toutes les procédures de remises à zéro sont au même endroit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Défauts :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Un peu plus long à mettre en place&lt;/li&gt;
+&lt;li&gt;Demande d&amp;#39;ajouter une sécurité pour ne pas la lancer au mauvais moment&lt;/li&gt;
+&lt;li&gt;Ca prend du temps (mais autant que de le faire un par un)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Optimisation : utilisation d&amp;#39;une API&lt;/h3&gt;
+
+&lt;p&gt;Dans mon cas, nous disposons aussi d&amp;#39;une API publique (en alpha, elle n&amp;#39;est pas encore ouverte à tout le monde)&lt;/p&gt;
+
+&lt;p&gt;Avantages :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pas d&amp;#39;interface web, cela devrait aller plus vite&lt;/li&gt;
+&lt;li&gt;Ajoutera &amp;quot;en passant&amp;quot; des tests sur la public API&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Défauts :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je ne maitrise pas du tout Oauth 1.0a (ça me permettra d&amp;#39;apprendre : tant mieux)&lt;/li&gt;
+&lt;li&gt;Nous disposons d&amp;#39;un SDK pour faciliter l&amp;#39;utilisation de l&amp;#39;API, en php. Pour des raisons pratiques, je préfère le faire en ruby, le serveur de tests étant déjà configuré pour cela. Je pars donc &amp;quot;de zéro&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Utiliser une API OAuth 1.0a en Ruby&lt;/h3&gt;
+
+&lt;p&gt;On trouve un peu de documentation pour le faire, et quelques exemples. Quelques remarques sur ces articles :
+* La quasi totalité expose le même code d&amp;#39;exemple.
+* Rares sont ceux qui signalent la version d&amp;#39;OAuth
+* Les exemples se concentrent beaucoup sur &amp;quot;comment se connecter à l&amp;#39;api&amp;quot;, et très rarement sur &amp;quot;comment l&amp;#39;utiliser&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;Voilà quelques astuces pour utiliser &amp;quot;rapidement&amp;quot; une API OAuth en ruby&lt;/p&gt;
+
+&lt;h4&gt;Utilisation de gems&lt;/h4&gt;
+
+&lt;p&gt;Elles facilitent la vie, autant en profiter.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'oauth'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'watir-webdriver'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'json'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Définition de constantes de l&amp;#39;api&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;OB_API_SERVER&lt;/span&gt;                 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'http://url_server_api'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_SERVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/public/0.1'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_REQUEST_TOKEN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/oauth/request_token'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_ACCESS_TOKEN&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/oauth/access_token'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_AUTHORIZE&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/oauth/authorize'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_KEY&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'######'&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_SECRET&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'######'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Obtenir la connexion à l&amp;#39;API&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# create the OAuth consumer&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@consumer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OAuth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Consumer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; 
+    &lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_SECRET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;:oauth_version&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'1.0a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;:site&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;:request_token_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_REQUEST_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;:access_token_path&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;:authorize_path&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_AUTHORIZE&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# show all debugs in console&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# @consumer.http.set_debug_output($stdout)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# get the authorize url&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@request_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@consumer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_request_token&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Make as if the user authorize the app&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# If you make a web app, you should show the link to your user, and let it click it&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# browse the authorize url&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@request_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;authorize_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# connect with account&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test@test.fr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'passwd'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;monmotdepasse&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'loginSubmit'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# give access&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;submit&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# get verifier token&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# browser url contain oauth_verifier_token&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;oauth_verifier_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;oauth_verifier=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# grant total access&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@request_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:oauth_verifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oauth_verifier_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# no more browser needed&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Exemples d&amp;#39;utilisation de l&amp;#39;API OAuth&lt;/h4&gt;
+
+&lt;p&gt;Une fois qu&amp;#39;on est connecté à l&amp;#39;API, on peut l&amp;#39;utiliser. Il faut lire sa documentation, en général assez touffue, pour savoir ce qu&amp;#39;on peut faire (lister / ajouter / modifier / supprimer).
+Voici deux exemples &amp;quot;simplifiés&amp;quot; pour mon exemple.&lt;/p&gt;
+
+&lt;h5&gt;Classique&lt;/h5&gt;
+
+&lt;p&gt;Afficher les informations sur le blog courant.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;get_url_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/blog/info'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;current_blog_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_url_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;Avec une option&lt;/h5&gt;
+
+&lt;p&gt;Afficher la liste des titres des articles en brouillons.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;get_lists_content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/blog/posts/draft?limit=20'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_lists_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# read json results&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'response'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Conclusions&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ma routine journalière prenait environ 55 minutes. La nouvelle routine, via l&amp;#39;api, dure environ 90 secondes.&lt;/li&gt;
+&lt;li&gt;J&amp;#39;ai depuis très envie de l&amp;#39;étendre pour ajouter de nouvelles procédures de remises à zéro.&lt;/li&gt;
+&lt;li&gt;La documentation est primordiale (que ce soit celle de l&amp;#39;API ou celle de OAuth)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Comment organiser les tests sur le long terme</title>
+   <link href="http://blog.fabricebournisien.eu///2013/04/22/comment-organiser-les-tests-sur-le-long-terme/"/>
+   <updated>2013-04-22T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme</id>
+   <content type="html">&lt;h3&gt;Exécuter une partie des tests&lt;/h3&gt;
+
+&lt;p&gt;Les scénarios sont taggués pour être lancé par jenkins par la commande : &lt;code&gt;cucumber --tag @montag&lt;/code&gt;
+Cela permet de ne lancer qu&amp;#39;une partie des tests. (voir &amp;quot;&lt;a href=&quot;http://web-quality.over-blog.com/tester-sur-plusieurs-navigateurs&quot;&gt;Tester sur plusieurs navigateurs&lt;/a&gt;&amp;quot; pour les détails)&lt;/p&gt;
+
+&lt;h3&gt;Serveurs&lt;/h3&gt;
+
+&lt;p&gt;Côté serveur, nous avons 2 serveurs jenkins.
+Le principal, une grosse machine debian quadri core, qui exécute jusqu&amp;#39;à 3 jobs en même temps.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, un serveur Windows, avec un jenkins &amp;quot;slave&amp;quot;.
+L&amp;#39;esclave reçoit ses ordres du maître, qui lui demande d’exécuter des jobs particuliers.
+Il est sous Windows pour pouvoir les exécuter sur Internet Explorer.&lt;/p&gt;
+
+&lt;p&gt;Pour éviter les effets de bords entre les tests sur IE, pas de solution. On vide donc les cookies, le cache, etc à la fermeture d&amp;#39;Internet Explorer.
+On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serveur : les sessions se mélangeraient.&lt;/p&gt;
+
+&lt;h3&gt;Quelques chiffres&lt;/h3&gt;
+
+&lt;p&gt;Les scenarios sont regroupés en feature, dont le temps d&amp;#39;execution est de maximum 10 minutes. Dans Jenkins on a 38 &amp;quot;jobs&amp;quot; sur FF (+ 34 sur IE)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Firefox&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Chaque jour : 323 scénarios / 2693 step =&amp;gt; 3h&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IE&lt;/strong&gt; (1 fois par semaine actuellement, 1 fois par jour bientôt)&lt;/p&gt;
+
+&lt;p&gt;Chaque jour : 302 scénarios / 2527 step =&amp;gt; 4h 30&lt;/p&gt;
+
+&lt;p&gt;Cela représente 227 500 scénarios par an (pour 2 737 heures de tests).&lt;/p&gt;
+
+&lt;p&gt;Sans oublier les lancements à la demande de certains jobs.&lt;/p&gt;
+
+&lt;h4&gt;Comptes utilisateurs&lt;/h4&gt;
+
+&lt;p&gt;Du côté des scénarios, ils utilisent pour le moment 70 comptes utilisateurs différents (avec des options particulières, etc...)&lt;/p&gt;
+
+&lt;p&gt;Un changement prochain de notre offre me fait penser que les tests auront besoin de 100 comptes d&amp;#39;ici 2 à 3 semaines.&lt;/p&gt;
+
+&lt;p&gt;Sans oublier de dupliquer tout ça pour nos 2 environnements (test / stable)&lt;/p&gt;
+
+&lt;p&gt;Ni d&amp;#39;ajouter l&amp;#39;exécution de ces tests sur chrome.&lt;/p&gt;
+
+&lt;p&gt;Et on ajoute des tests fonctionnels en dehors de ce schéma, pour tester des choses particulière, que ce soit en production sur des points essentiels ou la validité de données particulières.&lt;/p&gt;
+
+&lt;p&gt;Et vous, combien vous testez ?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Des tests automatiques avec contenus aléatoires</title>
+   <link href="http://blog.fabricebournisien.eu///2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/"/>
+   <updated>2013-04-13T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires</id>
+   <content type="html">&lt;p&gt;Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &amp;quot;bonne chose&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Prenons un exemple de deux tests exécutés en même temps :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@scenario1&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt;
+   &lt;span class=&quot;no&quot;&gt;Given&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;change&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo-tmp&quot;&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test pseudo-tmp&quot;&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;published&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo-tmp&quot;&lt;/span&gt;
+&lt;span class=&quot;vi&quot;&gt;@scenario2&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Pseudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cannot&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;
+   &lt;span class=&quot;no&quot;&gt;Given&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;change&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test pseudo&quot;&lt;/span&gt;
+     &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;published&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Si les 2 scénarios se terminent &amp;quot;au même moment&amp;quot;, nous aurons sur la page de contrôle 2 articles. L&amp;#39;un signé avec &amp;quot;pseudo-tmp&amp;quot;, et l&amp;#39;autre avec &amp;quot;pseudo&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.&lt;/p&gt;
+
+&lt;p&gt;A un détail près :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A 10h, le test s’exécute, il fonctionne.&lt;/li&gt;
+&lt;li&gt;A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &amp;quot;test pseudo&amp;quot; sur la page alors qu&amp;#39;un bug sera présent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ma solution : &lt;strong&gt;ajouter de l&amp;#39;aléatoire dans les tests&lt;/strong&gt;.
+Avant chaque scénario, je crée un token, composé de :
+* 2 lettres du navigateur (ff, ie, ch..)
+* un nombre aléatoire.
+Et je l&amp;#39;affiche en console (bien pratique pour débugguer)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Before&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Token for this test : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;sr&quot;&gt;/* je vous fais grace du code pour lancer le navigateur, ... */&lt;/span&gt; 
+&lt;span class=&quot;no&quot;&gt;End&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ma classe Token :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Use to got random value&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Useful to post a data with random string but keep the value to check it later&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Author:: Fabrice&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Token&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Create a new token&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Author:: Fabrice&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'BROWSER'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}#{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Get the value of the last token&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Author:: Fabrice&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@value&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&amp;#39;on sauve une donnée, on ajoute le token &amp;quot;courant&amp;quot; dans le champ.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Et côté vérification, on en tient compte également.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open_article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Parfois, on a besoin de pouvoir jouer &amp;quot;sans token&amp;quot; pour des points bien précis : on prévoit alors un paramètre pour s&amp;#39;en passer. (Exemple, pour la saisie d&amp;#39;un email)&lt;/p&gt;
+
+&lt;p&gt;Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&amp;#39;est un autre test à part entière)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>L'armée ne paie pas toujours ses militaires</title>
+   <link href="http://blog.fabricebournisien.eu///2013/04/02/l-armee-paie-ses-militaires-ou-pas/"/>
+   <updated>2013-04-02T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas</id>
+   <content type="html">&lt;p&gt;Il y a plusieurs mois, j&amp;#39;avais tweeté &amp;quot;Les bugs, ça coûte cher : Noël sans solde pour des milliers de soldats français&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;Source : &lt;a href=&quot;http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique_1809606_3210.html&quot;&gt;http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique&lt;em&gt;1809606&lt;/em&gt;3210.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour résumer : dans les anciens logiciels de paie des militaires français, il y avait parfois des petites erreurs, des petits bugs, qui étaient corrigés les mois suivants. Mais en 2012, mise à jour complète du logiciel.&lt;/p&gt;
+
+&lt;h2&gt;Louvois, le logiciel le plus buggué de l&amp;#39;histoire ?&lt;/h2&gt;
+
+&lt;p&gt;La dernière version du logiciel, surnommée &amp;quot;Louvois&amp;quot; (Logiciel unique à vocation interarmées de la solde) , est tellement remplie de bugs que certains militaires ont de légers problèmes. (Exemples en fin d&amp;#39;article)&lt;/p&gt;
+
+&lt;p&gt;Il y a un mois, on pouvait lire dans la presse que les bugs devaient être corrigés pour Noël 2012, mais ne l&amp;#39;étaient pas encore mi février 2013.&lt;/p&gt;
+
+&lt;p&gt;Source : &lt;a href=&quot;http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/&quot;&gt;http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;On envisagerait donc de revenir à l&amp;#39;ancien logiciel, moins buggué. Mais cela prendrait entre 12 et 14 mois, donc, mi 2014 au mieux.&lt;/p&gt;
+
+&lt;p&gt;Une autre source indique que l&amp;#39;armée de l&amp;#39;air paierait déjà ses hommes via un autre logiciel pour éviter les bugs : &lt;a href=&quot;http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html&quot;&gt;http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Les erreurs occasionnées par Louvois représentent 1 % de la masse salariale du ministère de la Défense, pour près de 120 000 incidents
+&lt;em&gt;Le Canard Enchaîné&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Et pendant ce temps, dans l&amp;#39;armée de terrain&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Saisie sur salaire à un miliaire, pour une somme déjà payée au trésor public par le militaire par ailleurs. (Donc, il est dans le rouge, et paie 2 fois). Temps avant remboursement : plusieurs mois.&lt;/li&gt;
+&lt;li&gt;Un homme qui doit faire vivre sa famille un mois entier avec 60 euros : &lt;a href=&quot;http://storify.com/fabrice31/l-armee-mauvais-payeur&quot;&gt;http://storify.com/fabrice31/l-armee-mauvais-payeur&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Soldes payées avec des mois de retard sur le terrain&lt;/li&gt;
+&lt;li&gt;Primes prévues mais reportées, payées avec plusieurs mois de retard...&lt;/li&gt;
+&lt;li&gt;Sur une compagnie de 120 hommes, pour le même mois, déjà plus de 20 cas recensés avec une erreur sur le solde, de 150 à 1 400 €. (La cause serait la prime versée le mois précédent, considérée comme un trop perçu par le logiciel)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Si des militaires veulent poursuivre la liste, n&amp;#39;hésitez pas, je compléterai avec plaisir cette liste de bugs. (un formulaire de contact anonyme est disponible en bas de page)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/armee-francaise1.jpg&quot; alt=&quot;L&amp;#39;armée ne paie pas toujours ses militaires.&quot; title=&quot;L&amp;#39;armée, quel beau métier&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Et si c&amp;#39;était vous ?&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Rappel&lt;/strong&gt; : les militaires n&amp;#39;ont pas le droit de manifester / faire grève...&lt;/p&gt;
+
+&lt;p&gt;Imaginez, si cela ne touchait pas l&amp;#39;armée, mais une société lambda ?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Une société privée avec un bug aussi important (même une seule fois) qui ne corrige pas dans les jours qui suivent la situation de tous les salariés : que diront les prud&amp;#39;hommes ?&lt;/li&gt;
+&lt;li&gt;Une société qui a un bug dans 1% des paies qu&amp;#39;elle verse, Sur une petite PME de 20 personnes, cela fait 1 seule erreur de paie tous les 5 mois. 2.5 erreurs par an.&lt;/li&gt;
+&lt;li&gt;Pour l&amp;#39;armée, ça représente 3220 personnes par mois. (322 000 emplois en 2007)&lt;/li&gt;
+&lt;li&gt;Imaginez, si ce mois-ci, votre conjoint(e) reçoit un salaire de 60 € à cause d&amp;#39;une erreur de logiciel, et la suite viendra &amp;quot;plus tard&amp;quot;, délai non confirmé. De quoi vous passez vous ? Payer votre loyer, vos crédits ? Les couches de bébé ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Une page facebook parlait en 2012 du problème : &lt;a href=&quot;Le%20paquet%20de%20gauloises%20en%20col%C3%A8re%5D&quot;&gt;https://www.facebook.com/pages/Un-paquet-de-Gauloises/416293095105059&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Quand un commerçant en ligne a des bugs</title>
+   <link href="http://blog.fabricebournisien.eu///2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/"/>
+   <updated>2013-03-18T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs</id>
+   <content type="html">&lt;p&gt;On peut être un grand nom de la vente en ligne, mais avoir malgré cela des problèmes sur son site web.&lt;/p&gt;
+
+&lt;p&gt;Parfois, cela se passe &amp;quot;presque bien&amp;quot; : tout le monde se souvient encore de l&amp;#39;homme nu de La Redoute (une photo présentant un produit avec en fond un homme nu). Tout le monde a rigolé, s&amp;#39;est moqué d&amp;#39;eux. Ils ont corrigé le tir, puis ont lancé un jeu pour trouver certains objets dans d&amp;#39;autres images pour les gagner.&lt;/p&gt;
+
+&lt;h3&gt;Et parfois, c&amp;#39;est le &amp;quot;drame&amp;quot;&lt;/h3&gt;
+
+&lt;p&gt;Prenons un cas pratique, qui m&amp;#39;est arrivé.&lt;/p&gt;
+
+&lt;p&gt;Je suis client chez &lt;a href=&quot;boulanger.fr&quot;&gt;http://www.boulanger.fr/&lt;/a&gt; depuis longtemps, j&amp;#39;ai une carte de fidelité, etc. En janvier, j&amp;#39;ai rencontré des difficultés pour utiliser un chèque cadeau sur une commande. J&amp;#39;ai contacté leur support par un formulaire par mail : aucune nouvelle.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai tweeté : une cm m&amp;#39;a demandé une copie du mail et m&amp;#39;a confirmé avoir transférée ma demande à l&amp;#39;équipe technique. Au menu : des problèmes d&amp;#39;ergonomie, de textes pas clairs...&lt;/p&gt;
+
+&lt;p&gt;Ce week-end, j&amp;#39;ai reçu un mail pour me dire que mon chèque cadeau n&amp;#39;était pas utilisé. Petit tour sur mon espace client, quelques soucis rencontrés en quelques minutes.&lt;/p&gt;
+
+&lt;h3&gt;Les commandes fantômes&lt;/h3&gt;
+
+&lt;p&gt;Page &amp;quot;Commandes en cours&amp;quot;, j&amp;#39;ai deux commandes notées &amp;quot;expédiées&amp;quot; :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Celle de fin novembre. Que j&amp;#39;ai reçue en décembre, sans souci.&lt;/li&gt;
+&lt;li&gt;Celle de janvier. Que j&amp;#39;ai reçue (en deux fois, l&amp;#39;un des articles était indisponible. J&amp;#39;ai été averti de l&amp;#39;indisponibilité, j&amp;#39;ai choisi d&amp;#39;attendre : 5 semaines avant la livraison)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;La saisie impossible (d&amp;#39;un chèque cadeau)&lt;/h3&gt;
+
+&lt;p&gt;Pour saisir un chèque cadeau, quelques étapes :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validez votre panier&lt;/li&gt;
+&lt;li&gt;Au milieu de la page de paiement, cochez oui à la phrase &amp;quot;Vous béneficiez de cartes cadeau, cartes satisfaction ou chèques fidélité ?&amp;quot;&lt;/li&gt;
+&lt;li&gt;Sélectionnez &amp;quot;Chèque cadeau&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Pour les férus d&amp;#39;accessibilité : c&amp;#39;est un div. (L&amp;#39;image de fond est appliqué au div parent)&lt;/li&gt;
+&lt;li&gt;Pour les férus de webperf : l&amp;#39;image est chargée 2 fois, avec 2 adresses différentes.&lt;/li&gt;
+&lt;li&gt;Saisissez le numéro du chèque (copier / coller, en faisant attention aux espaces)&lt;/li&gt;
+&lt;li&gt;Saisissez le montant du chèque (Apparement, Boulanger ne connait pas le montant en fonction du numéro de chèque...) 
+Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/li&gt;
+&lt;li&gt;Recopiez un captcha&lt;/li&gt;
+&lt;li&gt;Validez le chèque&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/boulanger-saisie-cheque.jpg&quot; alt=&quot;8 moyens de paiements. +1 caché&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Voilà, la page se recharge, referme la partie chèque, et vous passez à la suite. Oui, mais :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si tout va bien, la ligne pour le chèque figure en bas de la page d&amp;#39;après ce qu&amp;#39;ils disent.&lt;/li&gt;
+&lt;li&gt;Si une erreur s&amp;#39;est produite, vous devez :
+
+&lt;ul&gt;
+&lt;li&gt;Au milieu de la page de paiement, il faut cocher à nouveau la phrase &amp;quot;Vous béneficiez de cartes cadeau, cartes satisfaction ou chèques fidélité ?&amp;quot;&lt;/li&gt;
+&lt;li&gt;Sélectionner &amp;quot;Chèque cadeau&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Regarder si par hasard, une ligne rouge n&amp;#39;est pas affichée. Avec un message d&amp;#39;erreur du genre &amp;quot;Le paiement n&amp;#39;est pas valide&amp;quot;. Bonne chance pour comprendre quelle est l&amp;#39;erreur. Si vous tapez le montant &amp;quot;AA&amp;quot; ou un numéro de chèque erroné, vous aurez la même erreur.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/boulanger-saisie-cheque2.jpg&quot; alt=&quot;Un message d&amp;#39;erreur (enfin, façon de parler)&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Vous avez demandé le service client, ne quittez pas&lt;/h3&gt;
+
+&lt;p&gt;En bas de page, un lien contact : je me dis que je vais leur expliquer ce que je pense de leur site.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je clique sur le lien en bas de page&lt;/li&gt;
+&lt;li&gt;Une page apparaît avec une liste de 8 &amp;quot;services&amp;quot; pour les contacter. Je clique sur &amp;quot;Contactez Boulanger.fr&amp;quot; (accessibilité : nulle. c&amp;#39;est une image sans texte alternatif)&lt;/li&gt;
+&lt;li&gt;Une page différente apparaît, avec les 8 services, où celui que j&amp;#39;ai sélectionné est &amp;quot;ouvert&amp;quot;. Aucun des choix proposés ne me convient. Je change de service pour &amp;quot;Les produits ou les services (je vous ai parlé de la non accessibilité du site ?). Voilà, je peux choisir un type de contact qui me convient &amp;quot;Question concernant la carte de fidélité&amp;quot;&lt;/li&gt;
+&lt;li&gt;Et là, alors que je suis connecté, qu&amp;#39;ils ont donc mon adresse, mon numéro de client, mon email, je dois remplir quelques informations.
+
+&lt;ul&gt;
+&lt;li&gt;Informations obligatoires (présence de * à coté de l&amp;#39;intitulé) : Nom, prénom, numéro de téléphone (là encore, pas de format... je choisi donc le format international), email, choix du mode de contact de leur part (email ou téléphone), et ma question&lt;/li&gt;
+&lt;li&gt;Le numéro de la carte de fidélité n&amp;#39;est pas obligatoire : ouf.&lt;/li&gt;
+&lt;li&gt;Des cases pour accepter ou non de recevoir des mails de promos de Boulanger et de ses partenaires (avec une ligne en gris sur fond blanc, que j&amp;#39;ai trouvé peu lisible...)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;J&amp;#39;écris un long mail (cet article est issu du mail). Enfin, je ne l&amp;#39;écris pas dans le champ : le textarea de 6 lignes, 32 colonnes, non redimensionnable est trop petit pour ma prose.&lt;/li&gt;
+&lt;li&gt;Je l&amp;#39;envoie. Ah tiens, j&amp;#39;ai un message d&amp;#39;erreur (il est clair cette fois) : je n&amp;#39;ai pas saisi mon numéro de carte boulanger. Même s&amp;#39;il est &amp;quot;logique&amp;quot; de devoir saisir le numéro sur la page de contact à ce sujet, c&amp;#39;est pourtant le seul champ que je ne suis pas obligé de remplir.&lt;/li&gt;
+&lt;li&gt;Je remplis le champ par mon numéro, qui d&amp;#39;après leur aide (qui apparaît au survol.. accessibilité...) doit faire 10 caractères. Sauf que je peux en mettre 12 ou plus en fait. Le champ n&amp;#39;est pas limité en nombre de caractères.&lt;/li&gt;
+&lt;li&gt;J&amp;#39;arrive tout de même à envoyer mon mail, et j&amp;#39;ai donc un joli message de confirmation. Par expérience, j&amp;#39;aurais aimé recevoir une copie par mail. Pour ne pas perdre mon message, et l&amp;#39;avoir si on me demande de redonner des infos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/boulanger-confirmation.jpg&quot; alt=&quot;Boulanger, une fois le mail envoyé&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Pour aller plus loin&lt;/h3&gt;
+
+&lt;p&gt;Après avoir envoyé le mail, j&amp;#39;ai commencé mon article, et j&amp;#39;ai du coup été tatillon : lecture du code source de quelques pages, etc. Quelques trucs qui me chiffonnent en vrac :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La page de contact n&amp;#39;a pas de balise &amp;quot;title&amp;quot;&lt;/li&gt;
+&lt;li&gt;A la louche : 4 fichiers css (+2 pour le print), 20 fichiers js...&lt;/li&gt;
+&lt;li&gt;Le design du formulaire de contact en balise table dans une balise table dans une balise table.&lt;/li&gt;
+&lt;li&gt;La vérification des champs provoque un message d&amp;#39;erreur (un seul : c&amp;#39;est une bonne chose) mais est faite en javascript (accessibilité...)&lt;/li&gt;
+&lt;li&gt;Des balises mises en commentaires HTML.&lt;/li&gt;
+&lt;li&gt;La liste des mot-clés (meta keyword) me semble un peu longue, mais admettons. Par contre, le dernier mot-clé est terminé par un point. Étrange.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A la base, je comptais juste faire un achat rapide. Je viens de passer la soirée à faire un audit qualité (bug / ergonomie / accessibilité / webperf) à boulanger. C&amp;#39;est cadeau : je n&amp;#39;ai fait que survoler. J&amp;#39;encourage Boulanger à le faire à fond (ou mieux, à le faire faire par des experts).
+(Evidemment, si j&amp;#39;ai une réponse, je la publierais ici)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Tester sur plusieurs navigateurs</title>
+   <link href="http://blog.fabricebournisien.eu///2013/02/26/tester-sur-plusieurs-navigateurs/"/>
+   <updated>2013-02-26T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/02/26/tester-sur-plusieurs-navigateurs</id>
+   <content type="html">&lt;p&gt;Tester de façon automatique, c&amp;#39;est bien. Le faire sur plusieurs environnements, c&amp;#39;est mieux.&lt;/p&gt;
+
+&lt;p&gt;Dans mon cas, par défaut, mes tests sont lancés sur Firefox. Sur un serveur jenkins-ci (sur debian), c&amp;#39;est en effet le navigateur le plus facile à gérer. Ils sont exécutés une fois par jour, et aussi à la demande.&lt;/p&gt;
+
+&lt;p&gt;Certains scenarios testent la version mobile de nos sites. Il nous faut aussi tester nos sites pour différents navigateurs. Pour cela, les profils et les tags de cucumber sont très intéressants.&lt;/p&gt;
+
+&lt;h3&gt;Tags cucumber&lt;/h3&gt;
+
+&lt;p&gt;Au dessus de chaque scénario, il est possible de lister des tags. On peut ensuite exécuter tous les tests portant un tag particulier.&lt;/p&gt;
+
+&lt;p&gt;Cela permet de découper l&amp;#39;exécution de nombreux scénarios en plusieurs jobs sur jenkins, ce qui est plus confortable : si un test passe dans le rouge, il faut analyser un rapport pour 10 scénario au lieu de 300. Si on veut re-tester ce point précis, on mettra également moins de temps.&lt;/p&gt;
+
+&lt;p&gt;On exécute les scénarios avec la ligne &amp;quot;cucumber --tag @montag&amp;quot;. Si le tag n&amp;#39;existe pas, le résultat affichera immédiatement 0 scenarios.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@admin&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@montag&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@ie&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;un&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tested&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Cucumber.yml&lt;/h3&gt;
+
+&lt;p&gt;Les profils de cucumber se gère dans un fichier au format yaml, qui peut gérer beaucoup de choses :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter automatiquement des paramètres de tags&lt;/li&gt;
+&lt;li&gt;Passer des variables à l&amp;#39;environnement de tests, qui peut ensuite les utiliser.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Exemple avec une partie de mon fichier :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;% common &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-r support -r features --tags ~@wip --tags ~@danger 
+--color --format pretty --format html -o results.html --format junit -o junit&quot;&lt;/span&gt; &lt;span class=&quot;sx&quot;&gt;%&amp;gt;
+# default : staging and firefox
+default: &amp;lt;%= common %&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firefox&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;danger: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;support&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@wip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pretty&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firefox&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;ie: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ie&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;ff: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firefox&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;chrome: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chrome&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;mobile: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mobile&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;La première ligne définit des paramètres commun à la plupart des profils :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;On impose de récupérer le dossier features (dans lequel se trouvent les scenarios) et le dosser support (qui contient le code qui &amp;quot;gère&amp;quot; le navigateur)&lt;/li&gt;
+&lt;li&gt;On exclut les tests portant le tag @wip (work in progress) et le tag @danger&lt;/li&gt;
+&lt;li&gt;On demande l&amp;#39;affichage des résultats complets (avec les étapes et la couleur)&lt;/li&gt;
+&lt;li&gt;On demande l&amp;#39;export des résultats au format html et au format junit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on utilise un profil, on peut lancer pour un tag donné. Exemple : &lt;code&gt;cucumber . --tag @test -p chrome&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Viennent ensuite les profils :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;-p default: lance les tests sur firefox&lt;/li&gt;
+&lt;li&gt;-p danger: autorise le lancement des tests taggués @danger&lt;/li&gt;
+&lt;li&gt;-p ie, ff, chrome, mobile: lance les tests sur un navigateur particulier&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Différences entre les navigateurs&lt;/h3&gt;
+
+&lt;p&gt;Passer le nom du navigateur ne suffit pas, il faut également l&amp;#39;utiliser dans le code pour travailler avec le navigateur voulu.&lt;/p&gt;
+
+&lt;p&gt;Dans notre cas, nous lancons le navigaeur avant chaque scénario pour éviter qu&amp;#39;un test ait un impact sur le suivant.&lt;/p&gt;
+
+&lt;p&gt;Voici le code :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Before&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'BROWSER'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ie'&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ie&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'mobile'&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;mobile_useragent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like \
+        Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 \
+        Mobile/9B206 Safari/7534.48.3&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Firefox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'general.useragent.override'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mobile_useragent&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:firefox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'chrome'&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:chrome&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Default case : firefox&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;download_directory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/downloads&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;download_directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gsub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Platform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;windows?&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Firefox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'browser.download.folderList'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'browser.download.dir'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;download_directory&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'browser.link.open_newwindow'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'browser.helperApps.neverAsk.saveToDisk'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;application/octet-stream&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'network.http.use-cache'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:firefox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Resize window&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'BROWSER'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'mobile'&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;900&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;640&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;960&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;On exploite le nom du navigateur pour lancer le bon, avec des paramètres particuliers.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le mobile lance un Firefox avec le profil d&amp;#39;un navigateur Iphone (et une résolution de classique pour un mobile)&lt;/li&gt;
+&lt;li&gt;Pour internet explorer et chrome, il faut avoir téléchargé les exécutables (sur le groupe selenium) et les avoir ajoutés au path&lt;/li&gt;
+&lt;li&gt;Pour firefox, on ajoute des paramètres pour effectuer des tests d&amp;#39;upload et download de fichiers)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Les tests ont-ils changés ?&lt;/h3&gt;
+
+&lt;p&gt;Lorsque j&amp;#39;ai commencé à coder ces tests, il y a plus d&amp;#39;un an, j&amp;#39;avais anticipé l&amp;#39;architecture pour gérer ce genre de problématique. La mise en place n&amp;#39;a pourtant pas eu lieu sans douleur.&lt;/p&gt;
+
+&lt;p&gt;Certains navigateurs ne se comportent pas tout à fait comme les autres. Il faut donc mettre à jour son code pour qu&amp;#39;il soit le plus &amp;quot;ré utilisable possible&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Dans le cas d&amp;#39;Internet Explorer, les modifications apportées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajout d&amp;#39;un tag @ie sur les tests compatibles (et stables) avec IE.&lt;/li&gt;
+&lt;li&gt;Dans certains cas de remplissage de formulaire, ajout d&amp;#39;une ligne de code pour donner le focus au champ à remplir&lt;/li&gt;
+&lt;li&gt;Modification des timeout du projet.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On lance donc les tests pour Internet Explorer avec la commande &lt;code&gt;cucumber --tag @ie -p ie&lt;/code&gt;. On peut changer le tag, mais certains ne fonctionnent pas encore sous IE à cause de codes vraiment spécifiques.&lt;/p&gt;
+
+&lt;p&gt;Voici deux exemples de code modifé spécifiquement pour IE :&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'BROWSER'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ie'&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# internet explorer is slower : timeout increase&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;SHORT_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;LONG_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;SHORT_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;LONG_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ce code définit les constantes des timeout pour l&amp;#39;ensemble des test.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'BROWSER'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ie'&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# need for IE purpose&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;wait_until&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;LONG_TIMEOUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;login_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;login_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;visible?&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;focus&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# need for IE purpose&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Les commentaires dans le code parlent d&amp;#39;eux mêmes. Documenter le code spécifique à IE est d&amp;#39;ailleurs indispensable si on veut garder ses modifications qui semblent &amp;quot;inutiles&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Si les tests avec Firefox sont joués chaque jour sur un serveur, en 2h45 environ, ceux pour IE sont exécutés en local, en 3h, alors que certains tests ne sont pas exécutés sur IE.&lt;/p&gt;
+
+&lt;p&gt;Ce sont donc plus de 300 scénarios par jour, 12 000 par mois. Sans compter les tests unitaires, les tests manuels...&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Il faut savoir se fier à ses tests</title>
+   <link href="http://blog.fabricebournisien.eu///2013/01/22/il-faut-savoir-se-fier-a-ses-tests/"/>
+   <updated>2013-01-22T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests</id>
+   <content type="html">&lt;p&gt;Vroici l&amp;#39;histoire d&amp;#39;un test fonctionnel &amp;quot;basique&amp;quot; mais techniquement compliqué à mettre en place.&lt;/p&gt;
+
+&lt;h3&gt;Passé&lt;/h3&gt;
+
+&lt;p&gt;Depuis plusieurs mois, nous sommes 2 à developper les tests automatiques. Nous avons une longue liste de tests à ajouter que nous dépilons progressivement. Certains tests sont présents depuis longtemps dans cette liste, mais nous ne réussissons tout simplement pas à les créer, pour des raisons purement techniques. D&amp;#39;autres sont en attente de la correction du bug sur le produit.&lt;/p&gt;
+
+&lt;h3&gt;Lundi&lt;/h3&gt;
+
+&lt;p&gt;Pour l&amp;#39;un d&amp;#39;eux, je réussi finalement à trouver une solution tarabiscotée qui semble marcher. La solution ne me plait pas totalement, cela revient à exécuter du javascript dans un navigateur que je controle avec watir, lancé depuis un cucumber géré par un jenkins.&lt;/p&gt;
+
+&lt;p&gt;L&amp;#39;utilisation du javascript (langage que je ne maîtrise pas) pour ce détail me gêne : s&amp;#39;il me permet de tester la fonctionnalité, je ne pourrais pas simplement tester certains points de la fonctionnalité.&lt;/p&gt;
+
+&lt;p&gt;En outre, cela m&amp;#39;empêche d&amp;#39;être sur de moi pour ce test : j&amp;#39;ai peur qu&amp;#39;il ne soit pas stable et pérenne.&lt;/p&gt;
+
+&lt;h3&gt;Mercredi&lt;/h3&gt;
+
+&lt;p&gt;Mercredi dernier, j&amp;#39;ai remonté un problème qui entrainait un problème en cascade sur l&amp;#39;ensemble de mes tests fonctionnels (40 scenarios échoués sur 270).&lt;/p&gt;
+
+&lt;p&gt;Il y avait deux importants chantiers effectués par mes collègues pour des mises à jours importantes, qui demandait des corrections.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2013/mug-qualite.jpg&quot; alt=&quot;Il faut savoir se fier à ses tests&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Jeudi&lt;/h3&gt;
+
+&lt;p&gt;Jeudi, c&amp;#39;est normalement la fin du codage des nouveautés pour le sprint en cours. Le jeudi c&amp;#39;est donc débug, tests, préparation du changelog et de la mise en production...&lt;/p&gt;
+
+&lt;p&gt;Lorsque j&amp;#39;arrive un jeudi avec mes indicateurs qui clignotent en rouge, je n&amp;#39;aime pas ça. Je survole rapidement, vois que c&amp;#39;est un problème commun pour les 10 premiers rapports que j&amp;#39;analyse en profondeur. Je demande donc une nouvelle correction, puis je relance des tests qui semblent être juste des faux positifs. Certains reviennent à la normale.&lt;/p&gt;
+
+&lt;p&gt;Je désactive certains tests qui paraissent toujours instables. Parmi eux, les tests ajoutés le lundi : je ne les sentais pas en les codant, je n&amp;#39;ai pas cru en eux lorsqu&amp;#39;ils ont signalé un bug.&lt;/p&gt;
+
+&lt;h3&gt;Lundi&lt;/h3&gt;
+
+&lt;p&gt;Lundi, jour de la mise en production. Une fois finie, l&amp;#39;équipe teste en production les changements pour vérifier que tout est normal.&lt;/p&gt;
+
+&lt;p&gt;En faisant un test sur tout à fait autre chose, je me suis dit &amp;quot;y&amp;#39;a un truc qui cloche, (pas ce que je suis en train de tester), mais je vois pas quoi&amp;quot;. Mon instinct me disait que j&amp;#39;avais raté un truc. Je fais donc un tour du côté du support.&lt;/p&gt;
+
+&lt;p&gt;Les premiers retours utilisateurs signalent un bug m&amp;#39;a fait sourciller : on signale un bug sur la fonction testée depuis peu. Je vérifie le dernier rapport de tests : ils détectaient le bug, et étaient parfaitement stables.&lt;/p&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;En n&amp;#39;ayant pas cru en la stabilité d&amp;#39;un test que j&amp;#39;ai codé moi-même, j&amp;#39;ai laissé passer un bug en production.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai vu un faux positif plutôt qu&amp;#39;un bug réel, alors que j&amp;#39;expliquais ce risque il y a longtemps.&lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai l&amp;#39;impression d&amp;#39;avoir échoué à garantir la qualité de notre produit. J&amp;#39;ai eu trop confiance dans mes collègues, et pas assez en moi.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Tester un site multilingue</title>
+   <link href="http://blog.fabricebournisien.eu///2012/12/06/tester-un-site-multilingue/"/>
+   <updated>2012-12-06T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue</id>
+   <content type="html">&lt;p&gt;Travailler sur un site international demande de multiplier les tests.&lt;/p&gt;
+
+&lt;p&gt;D&amp;#39;abord, si l&amp;#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&amp;#39;est pas fait. Le principal risque des &amp;quot;langues&amp;quot; est l&amp;#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.&lt;/p&gt;
+
+&lt;p&gt;L&amp;#39;autre aspect important, c&amp;#39;est l&amp;#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&amp;#39;ai l&amp;#39;impression que cela m&amp;#39;a pris du temps, alors qu&amp;#39;au final, c&amp;#39;est tout simple. Mais j&amp;#39;ai exploré beaucoup de pistes sur le sujet.&lt;/p&gt;
+
+&lt;h3&gt;Le test&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestProductionFrench&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TestCase&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Firefox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'intl.accept_languages'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;it&quot;&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:firefox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;teardown&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_redirection_it&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;assert_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_redirection_fr&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.fr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;assert_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;L&amp;#39;explication&lt;/h3&gt;
+
+&lt;p&gt;Pour ce test, je n&amp;#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&amp;#39;attribut de langue voulu. Puis on charge Firefox.&lt;/li&gt;
+&lt;li&gt;Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.&lt;/li&gt;
+&lt;li&gt;Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&amp;#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)&lt;/li&gt;
+&lt;li&gt;Ligne 18 à 21 : second test, depuis google.fr&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Pourquoi j&amp;#39;ai perdu du temps&lt;/h3&gt;
+
+&lt;p&gt;J&amp;#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &amp;quot;mal&amp;quot;. La tête dans le guidon, je n&amp;#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&amp;#39;était pas.&lt;/p&gt;
+
+&lt;p&gt;Quelques rappels :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Changer la langue préférée pour l&amp;#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined&lt;/li&gt;
+&lt;li&gt;Il est facile d&amp;#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'HTTP_ACCEPT_LANGUAGE'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+
+</feed>
