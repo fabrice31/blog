@@ -18,6 +18,8 @@ author:
   url:            https://twitter.com/fabrice31
   email:          fabrice.bournisien@gmail.com
 
+destination:      ../gh-pages/
+  
 # Custom vars
 version:          1.0.0
 github:
