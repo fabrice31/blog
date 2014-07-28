@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium" />
+  <meta name="robots" content="index,follow" />
+
+  <title>
+    
+      L'armée ne paie pas toujours ses militaires &middot; Je teste donc je suis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
+
+  <!-- Icons --
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
+                <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> <input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2014 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h1 class="post-title" itemprop="name">L'armée ne paie pas toujours ses militaires</h1>
+  <span class="post-date">
+	  <time class="date" datetime="2013-04-02" itemprop="datePublished">
+		02/04/2013
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Il y a plusieurs mois, j&#39;avais tweeté &quot;Les bugs, ça coûte cher : Noël sans solde pour des milliers de soldats français&quot;</p>
+
+<p>Source : <a href="http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique_1809606_3210.html">http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique<em>1809606</em>3210.html</a></p>
+
+<p>Pour résumer : dans les anciens logiciels de paie des militaires français, il y avait parfois des petites erreurs, des petits bugs, qui étaient corrigés les mois suivants. Mais en 2012, mise à jour complète du logiciel.</p>
+
+<h2>Louvois, le logiciel le plus buggué de l&#39;histoire ?</h2>
+
+<p>La dernière version du logiciel, surnommée &quot;Louvois&quot; (Logiciel unique à vocation interarmées de la solde) , est tellement remplie de bugs que certains militaires ont de légers problèmes. (Exemples en fin d&#39;article)</p>
+
+<p>Il y a un mois, on pouvait lire dans la presse que les bugs devaient être corrigés pour Noël 2012, mais ne l&#39;étaient pas encore mi février 2013.</p>
+
+<p>Source : <a href="http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/">http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/</a></p>
+
+<p>On envisagerait donc de revenir à l&#39;ancien logiciel, moins buggué. Mais cela prendrait entre 12 et 14 mois, donc, mi 2014 au mieux.</p>
+
+<p>Une autre source indique que l&#39;armée de l&#39;air paierait déjà ses hommes via un autre logiciel pour éviter les bugs : <a href="http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html">http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html</a></p>
+
+<blockquote>
+<p>Les erreurs occasionnées par Louvois représentent 1 % de la masse salariale du ministère de la Défense, pour près de 120 000 incidents
+<em>Le Canard Enchaîné</em></p>
+</blockquote>
+
+<h3>Et pendant ce temps, dans l&#39;armée de terrain</h3>
+
+<ul>
+<li>Saisie sur salaire à un miliaire, pour une somme déjà payée au trésor public par le militaire par ailleurs. (Donc, il est dans le rouge, et paie 2 fois). Temps avant remboursement : plusieurs mois.</li>
+<li>Un homme qui doit faire vivre sa famille un mois entier avec 60 euros : <a href="http://storify.com/fabrice31/l-armee-mauvais-payeur">http://storify.com/fabrice31/l-armee-mauvais-payeur</a></li>
+<li>Soldes payées avec des mois de retard sur le terrain</li>
+<li>Primes prévues mais reportées, payées avec plusieurs mois de retard...</li>
+<li>Sur une compagnie de 120 hommes, pour le même mois, déjà plus de 20 cas recensés avec une erreur sur le solde, de 150 à 1 400 €. (La cause serait la prime versée le mois précédent, considérée comme un trop perçu par le logiciel)</li>
+</ul>
+
+<p>Si des militaires veulent poursuivre la liste, n&#39;hésitez pas, je compléterai avec plaisir cette liste de bugs. (un formulaire de contact anonyme est disponible en bas de page)</p>
+
+<p><img src="/public/pictures/2013/armee-francaise1.jpg" alt="L&#39;armée ne paie pas toujours ses militaires." title="L&#39;armée, quel beau métier"></p>
+
+<h3>Et si c&#39;était vous ?</h3>
+
+<p><strong>Rappel</strong> : les militaires n&#39;ont pas le droit de manifester / faire grève...</p>
+
+<p>Imaginez, si cela ne touchait pas l&#39;armée, mais une société lambda ?</p>
+
+<ul>
+<li>Une société privée avec un bug aussi important (même une seule fois) qui ne corrige pas dans les jours qui suivent la situation de tous les salariés : que diront les prud&#39;hommes ?</li>
+<li>Une société qui a un bug dans 1% des paies qu&#39;elle verse, Sur une petite PME de 20 personnes, cela fait 1 seule erreur de paie tous les 5 mois. 2.5 erreurs par an.</li>
+<li>Pour l&#39;armée, ça représente 3220 personnes par mois. (322 000 emplois en 2007)</li>
+<li>Imaginez, si ce mois-ci, votre conjoint(e) reçoit un salaire de 60 € à cause d&#39;une erreur de logiciel, et la suite viendra &quot;plus tard&quot;, délai non confirmé. De quoi vous passez vous ? Payer votre loyer, vos crédits ? Les couches de bébé ?</li>
+</ul>
+
+<p>Une page facebook parlait en 2012 du problème : <a href="Le%20paquet%20de%20gauloises%20en%20col%C3%A8re%5D">https://www.facebook.com/pages/Un-paquet-de-Gauloises/416293095105059</a></p>
+</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F04%2F02%2Fl-armee-paie-ses-militaires-ou-pas%2F&amp;via=fabrice31&amp;text=L'armée ne paie pas toujours ses militaires&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="http://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/">
+            Quand un commerçant en ligne a des bugs
+            <small>18 Mar 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/">
+            Comment j'ai changé de travail sans bouger de ma chaise
+            <small>05 Nov 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://blog.fabricebournisien.eu//2013/06/17/affichage-des-resultats-de-tests/">
+            Affichage des résultats de tests
+            <small>17 Jun 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+    </div>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53219654-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	
+	<script>
+	$('.post img').each(function() {
+		$(this).wrap("<a class='fancybox' rel='gallery' href='" + this.src + "'/>");
+	});
+	$(".fancybox").attr('rel', 'gallery').fancybox({
+		beforeShow : function() {
+			var alt = this.element.find('img').attr('alt');
+			this.inner.find('img').attr('alt', alt);
+			this.title = alt;
+		},
+		helpers : {
+			title: {
+				type: 'inside',
+				position: 'bottom'
+			}
+		},
+        openEffect  : 'fade',
+        closeEffect : 'fade',
+        nextEffect  : 'none',
+        prevEffect  : 'none',
+        padding     : 0,
+        margin      : [20, 60, 20, 60] // Increase left/right margin
+	});
+	</script>
+
+  </body>
+</html>
