@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Bug de l'espace temps
+tags:
+  bug
 ---
 
 Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d'avoir un moteur déjà bien robuste.
