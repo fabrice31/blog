@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-07-28T21:37:07+02:00</updated>
+ <updated>2014-07-28T22:13:08+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -17,7 +17,7 @@
    <link href="http://blog.fabricebournisien.eu///2014/07/05/changement-de-blog/"/>
    <updated>2014-07-05T00:00:00+02:00</updated>
    <id>http://blog.fabricebournisien.eu//2014/07/05/changement-de-blog</id>
-   <content type="html">&lt;p&gt;Depuis quelques semaines, j&amp;#39;avais envie de changer d&amp;#39;air pour mon blog : voir de nouvelles technologies, d&amp;#39;avoir un blog plus profesionnel.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Depuis quelques semaines, j&amp;#39;avais envie de changer d&amp;#39;air pour mon blog : voir de nouvelles technologies, d&amp;#39;avoir un blog plus professionnel.&lt;/p&gt;
 
 &lt;p&gt;J&amp;#39;ai pas mal fouillé, et je suis très tenté par &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; et &lt;a href=&quot;https://github.com/poole/poole&quot;&gt;Poole&lt;/a&gt;, qui permettent d&amp;#39;avoir facilement un site statique écrit en markdown. Le tout hébérgé par github.&lt;/p&gt;
 
