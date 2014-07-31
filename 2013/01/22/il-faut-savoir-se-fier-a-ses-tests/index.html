@@ -25,14 +25,12 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-                <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
 
   <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
   <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
@@ -275,30 +273,9 @@
 
 </script>
 	
-	<script>
-	$('.post img').each(function() {
-		$(this).wrap("<a class='fancybox' rel='gallery' href='" + this.src + "'/>");
-	});
-	$(".fancybox").attr('rel', 'gallery').fancybox({
-		beforeShow : function() {
-			var alt = this.element.find('img').attr('alt');
-			this.inner.find('img').attr('alt', alt);
-			this.title = alt;
-		},
-		helpers : {
-			title: {
-				type: 'inside',
-				position: 'bottom'
-			}
-		},
-        openEffect  : 'fade',
-        closeEffect : 'fade',
-        nextEffect  : 'none',
-        prevEffect  : 'none',
-        padding     : 0,
-        margin      : [20, 60, 20, 60] // Increase left/right margin
-	});
-	</script>
 
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
   </body>
 </html>
