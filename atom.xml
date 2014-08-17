@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-17T10:26:00+02:00</updated>
+ <updated>2014-08-17T10:44:54+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1155,6 +1155,65 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 &lt;p&gt;Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?&lt;/p&gt;
 
 &lt;p&gt;Plus vous donnez d&amp;#39;informations précises, plus cela peut être utile à corriger le bug.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Les logiciels tiers, une calamité</title>
+   <link href="http://blog.fabricebournisien.eu///2012/07/19/les-logiciels-tiers-une-calamite/"/>
+   <updated>2012-07-19T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/07/19/les-logiciels-tiers-une-calamite</id>
+   <content type="html">&lt;p&gt;Lorsqu&amp;#39;on rencontre des problèmes vraiment étranges sur une fonction particulière, on pense d&amp;#39;abord que cela n&amp;#39;a jamais pu marcher, on ne comprend plus.&lt;/p&gt;
+
+&lt;p&gt;Puis on enquête. Et parfois, la cause du problème est une surprise, autant pour nous que pour les personnes touchées. Quelques exemples plus ou moins vieux.&lt;/p&gt;
+
+&lt;h3&gt;La box qui coupe&lt;/h3&gt;
+
+&lt;p&gt;Petit retour sur l&amp;#39;article : Les bugs poilus sont-ils solubles dans le temps ?&lt;/p&gt;
+
+&lt;p&gt;Au début, il s&amp;#39;agissait d&amp;#39;un simple problème de validation de formulaire AJAX pour une partie des utilisateurs. Ils emblaient tous utiliser une LiveBox. Nous avons éliminé cette piste au bout de plusieurs jours, certains cas ne collant pas.&lt;/p&gt;
+
+&lt;p&gt;Mais au final, il semble que ce problème qui nous a occupé pendant plus d&amp;#39;un mois était bien une mise à jour de la LiveBox : la mise à jour suivante a corrigé le problème.&lt;/p&gt;
+
+&lt;h3&gt;L&amp;#39;antivirus anti web&lt;/h3&gt;
+
+&lt;p&gt;En général, je ne cite pas, mais cela fait trop de fois où nous rencontrons des problèmes avec Kaspersky.&lt;/p&gt;
+
+&lt;p&gt;Deux points sans rapport, tous les deux liés à des classiques du web.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Lorsque vous envoyez une photo via certains protocoles, on a un comportement aléatoire :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Images non envoyées&lt;/li&gt;
+&lt;li&gt;Images envoyées de façon incomplète.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Evidemment, il suffit de désactiver Kaspersky pour que cela fonctionne. Selon les navigateurs, nous utilisons le protocole PUT ou le protocole GET. si le get fonctionne, le put pose de nombreux problèmes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Les notifications, très utilisées sur les réseaux sociaux, sont dégradées : le nombre de notifications n&amp;#39;est pas mis à jour après leur lecture, en particulier sur Google+. Là encore, désactiver l&amp;#39;antivirus suffit à régler le problème.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2012/bug-kaspersky-notif.jpg&quot; alt=&quot;Toutes les notifications ont été lues, et pourtant&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;La navigation compatible&lt;/h3&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on utilise Internet Explorer, il lui arrive de décider d&amp;#39;utiliser le mode compatible sur certains sites. Un utilisateur qui ne fait pas attention pensera utiliser la dernière version du navigateur, mais aura entre les mains un navigateur se comportant comme IE7 ou IE8 dans le meilleur des cas.&lt;/p&gt;
+
+&lt;p&gt;Les éditeurs wysiwyg sont particulièrement concernés par ce genre de problème, mais ce ne sont pas les seuls.&lt;/p&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on sait en outre que le mode compatible IE8 est différent d&amp;#39;IE8, on sait qu&amp;#39;on va s&amp;#39;arracher les cheveux pour trouver la cause du problème.&lt;/p&gt;
+
+&lt;h3&gt;Le plugin défaillant&lt;/h3&gt;
+
+&lt;p&gt;Les navigateurs sont depuis plusieurs années extensibles : on peut ajouter des fonctionnalités plus ou moins intéressantes. La plupart des développeurs ont installé FireBug par exemple.&lt;/p&gt;
+
+&lt;p&gt;Revenons à celle qui me pose problème : &amp;quot;Facebook Disconnect&amp;quot;. Cette extension sous chrome permet d&amp;#39;empêcher Facebook de vous traquer. En contre partie, elle bloque des scripts, sans vous demander votre avis. Un exemple ? notre éditeur wysiwym. Ce n&amp;#39;est apparement pas la seule à bloquer l&amp;#39;éditeur, mais la récupération des informations auprès de nos utilisateurs prend beaucoup de temps sur des problèmes aussi pointus.&lt;/p&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Les mises à jour automatiques sont une plaie : les utilisateurs ne comprennent pas pourquoi le comportement change sans modification, et pense systématiquement à un problème du produit concerné, pas d&amp;#39;un logiciel tiers.&lt;/p&gt;
+
+&lt;p&gt;Certains logiciels s&amp;#39;adjugent des pouvoirs très importants, sans le signaler à leurs utilisateurs, dégradant par la même occasion la navigation sur des sites web qui fonctionnent pourtant parfaitement par ailleurs.&lt;/p&gt;
 </content>
  </entry>
  
