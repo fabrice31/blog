@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-01T01:30:54+02:00</updated>
+ <updated>2014-08-17T10:11:25+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1061,6 +1061,68 @@ default: &amp;lt;%= common %&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&
     &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'HTTP_ACCEPT_LANGUAGE'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Une petite boulette peut coûter cher</title>
+   <link href="http://blog.fabricebournisien.eu///2012/10/30/une-petite-boulette-peut-couter-cher/"/>
+   <updated>2012-10-30T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher</id>
+   <content type="html">&lt;p&gt;Comme je l&amp;#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&amp;#39;ai quelques centaines de scénarios, des milliers d&amp;#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &amp;quot;instable&amp;quot;, il faut lire le rapport détaillé.
+Deux anecdotes récentes à ce sujet.&lt;/p&gt;
+
+&lt;h3&gt;Le bug est détecté&lt;/h3&gt;
+
+&lt;p&gt;L&amp;#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&amp;#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &amp;quot;mais je l&amp;#39;ai corrigé vendredi&amp;quot;. Après test manuel, je confirme, le bug n&amp;#39;est plus présent. Pourtant, le test ne fonctionne pas.&lt;/p&gt;
+
+&lt;p&gt;Commence alors une rapide enquête pour comprendre.&lt;/p&gt;
+
+&lt;p&gt;Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.&lt;/p&gt;
+
+&lt;p&gt;Le test a été mis en place au moment du bug, et une partie du test n&amp;#39;avait donc jamais été vérifiée avant la mise en service du test.&lt;/p&gt;
+
+&lt;p&gt;La correction a consisté à attendre que l&amp;#39;élément testé soit bien affiché avant de le tester.&lt;/p&gt;
+
+&lt;h3&gt;J&amp;#39;ai cru voir un petit bug&lt;/h3&gt;
+
+&lt;p&gt;Plus tôt cette semaine, un collègue me signale qu&amp;#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.&lt;/p&gt;
+
+&lt;p&gt;Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.&lt;/p&gt;
+
+&lt;p&gt;Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.&lt;/p&gt;
+
+&lt;p&gt;Nous avons donc une suite de vérifications, en ruby+watir&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'align'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'media-right'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'media-left'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pour traduire : On vérifie qu&amp;#39;une image est présente, puis si l&amp;#39;option alignement est &amp;quot;droite&amp;quot;, je vérifie que l&amp;#39;image est aligné à droite. Sinon, je vérifie à gauche.&lt;/p&gt;
+
+&lt;p&gt;Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.&lt;/p&gt;
+
+&lt;p&gt;En ruby, le and est prioritaire sur le .exists. Je teste donc l&amp;#39;existence d&amp;#39;un booléen au lieu de tester deux booléens.&lt;/p&gt;
+
+&lt;p&gt;Le code corrigé ajoute juste des parenthèses pour changer la priorité.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'align'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'media-right'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'media-left'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Ce que je retiens de ces événements récents ?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La communication dans l&amp;#39;équipe est très importante.&lt;/li&gt;
+&lt;li&gt;Tester qu&amp;#39;un test détecte une panne est complexe.&lt;/li&gt;
+&lt;li&gt;Il n&amp;#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&amp;#39;assurer que le test teste.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
  </entry>
  
 
