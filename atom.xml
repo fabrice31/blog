@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-17T10:11:25+02:00</updated>
+ <updated>2014-08-17T10:18:57+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1122,6 +1122,39 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 &lt;li&gt;Tester qu&amp;#39;un test détecte une panne est complexe.&lt;/li&gt;
 &lt;li&gt;Il n&amp;#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&amp;#39;assurer que le test teste.&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>L'art de signaler un bug</title>
+   <link href="http://blog.fabricebournisien.eu///2012/09/17/l-art-de-signaler-un-bug/"/>
+   <updated>2012-09-17T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug</id>
+   <content type="html">&lt;p&gt;Lorsqu&amp;#39;un utilisateur lambda signale un bug, il a tendance à penser qu&amp;#39;il est évident, et qu&amp;#39;il n&amp;#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&amp;#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &amp;quot;tomber dessus par hasard&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Dans tous les cas, il y a beaucoup de temps &amp;quot;perdu&amp;quot; pour trouver un bug, qui parfois n&amp;#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.&lt;/p&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on emmène sa voiture chez le garagiste, on lui donne souvent plein d&amp;#39;informations inutiles. Je me souviens d&amp;#39;une fois, où je suis arrivé pour lui dire : &amp;quot;&lt;em&gt;je sais pas ce qu&amp;#39;elle a : elle vibre quand je roule, les vibrations augmentent avec la vitesse. Et j&amp;#39;ai du mal à passer les vitesses, comme si ce n&amp;#39;était plus aligné.&lt;/em&gt;&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;La garagiste a dit &amp;quot;je pense que je sais&amp;quot;, a été démarré la voiture sur le parking, puis a éteint et a répondu : &amp;quot;&lt;em&gt;Supports moteurs HS : il va falloir les changer&lt;/em&gt;&amp;quot;. A peu de chose près, je pensais à Bourvil.&lt;/p&gt;
+
+&lt;p&gt;(Pour la petite histoire, 2 supports moteurs sur 3 cassés, à la fin d&amp;#39;un voyage de 800km.)&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/Ipl67KqEkWc?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Mais alors, quelles informations donner lors du signalement d&amp;#39;un bug ? toutes celles qui peuvent être utiles :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Navigateur (et version : Firefox 3.5 et Firefox 14 se ressemblent, mais ne sont pas identique, loin de là)&lt;/li&gt;
+&lt;li&gt;Système d&amp;#39;exploitation (non, Safari pour windows et pour mac ne se comportent pas de la même façon)&lt;/li&gt;
+&lt;li&gt;Antivirus (pas utile à chaque fois, mais c&amp;#39;est quand il manque qu&amp;#39;il est utile)&lt;/li&gt;
+&lt;li&gt;Messages d&amp;#39;erreur : tous, en entier.&lt;/li&gt;
+&lt;li&gt;Procédure pour reproduire le bug : où cliquez-vous, dans quel ordre...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?&lt;/p&gt;
+
+&lt;p&gt;Plus vous donnez d&amp;#39;informations précises, plus cela peut être utile à corriger le bug.&lt;/p&gt;
 </content>
  </entry>
  

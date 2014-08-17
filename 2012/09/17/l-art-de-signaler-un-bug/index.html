@@ -13,7 +13,7 @@
 
   <title>
     
-      Comment organiser les tests sur le long terme &middot; Je teste donc je suis
+      L'art de signaler un bug &middot; Je teste donc je suis
     
   </title>
 
@@ -151,76 +151,53 @@
 
     <div class="content container">
       <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Comment organiser les tests sur le long terme</h2>
+  <h2 class="post-title" itemprop="name">L'art de signaler un bug</h2>
   <span class="post-date">
-	  <time class="date" datetime="2013-04-22" itemprop="datePublished">
-		22/04/2013
+	  <time class="date" datetime="2012-09-17" itemprop="datePublished">
+		17/09/2012
 	  </time>
 	  - par Fabrice Bournisien
 		
-		- <a href="/tag/tests">Tests</a>
-		
-		- <a href="/tag/jenkins">Jenkins</a>
+		- <a href="/tag/bug">Bug</a>
 		
   </span>
 
-	<div itemprop="ArticleBody"><h3>Exécuter une partie des tests</h3>
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;un utilisateur lambda signale un bug, il a tendance à penser qu&#39;il est évident, et qu&#39;il n&#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &quot;tomber dessus par hasard&quot;.</p>
 
-<p>Les scénarios sont taggués pour être lancé par jenkins par la commande : <code>cucumber --tag @montag</code>
-Cela permet de ne lancer qu&#39;une partie des tests. (voir &quot;<a href="http://web-quality.over-blog.com/tester-sur-plusieurs-navigateurs">Tester sur plusieurs navigateurs</a>&quot; pour les détails)</p>
+<p>Dans tous les cas, il y a beaucoup de temps &quot;perdu&quot; pour trouver un bug, qui parfois n&#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.</p>
 
-<h3>Serveurs</h3>
+<p>Lorsqu&#39;on emmène sa voiture chez le garagiste, on lui donne souvent plein d&#39;informations inutiles. Je me souviens d&#39;une fois, où je suis arrivé pour lui dire : &quot;<em>je sais pas ce qu&#39;elle a : elle vibre quand je roule, les vibrations augmentent avec la vitesse. Et j&#39;ai du mal à passer les vitesses, comme si ce n&#39;était plus aligné.</em>&quot;</p>
 
-<p>Côté serveur, nous avons 2 serveurs jenkins.
-Le principal, une grosse machine debian quadri core, qui exécute jusqu&#39;à 3 jobs en même temps.</p>
+<p>La garagiste a dit &quot;je pense que je sais&quot;, a été démarré la voiture sur le parking, puis a éteint et a répondu : &quot;<em>Supports moteurs HS : il va falloir les changer</em>&quot;. A peu de chose près, je pensais à Bourvil.</p>
 
-<p>Ensuite, un serveur Windows, avec un jenkins &quot;slave&quot;.
-L&#39;esclave reçoit ses ordres du maître, qui lui demande d’exécuter des jobs particuliers.
-Il est sous Windows pour pouvoir les exécuter sur Internet Explorer.</p>
+<p>(Pour la petite histoire, 2 supports moteurs sur 3 cassés, à la fin d&#39;un voyage de 800km.)</p>
 
-<p>Pour éviter les effets de bords entre les tests sur IE, pas de solution. On vide donc les cookies, le cache, etc à la fermeture d&#39;Internet Explorer.
-On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serveur : les sessions se mélangeraient.</p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/Ipl67KqEkWc?rel=0" frameborder="0" allowfullscreen></iframe>
 
-<h3>Quelques chiffres</h3>
+<p>Mais alors, quelles informations donner lors du signalement d&#39;un bug ? toutes celles qui peuvent être utiles :</p>
 
-<p>Les scenarios sont regroupés en feature, dont le temps d&#39;execution est de maximum 10 minutes. Dans Jenkins on a 38 &quot;jobs&quot; sur FF (+ 34 sur IE)</p>
+<ul>
+<li>Navigateur (et version : Firefox 3.5 et Firefox 14 se ressemblent, mais ne sont pas identique, loin de là)</li>
+<li>Système d&#39;exploitation (non, Safari pour windows et pour mac ne se comportent pas de la même façon)</li>
+<li>Antivirus (pas utile à chaque fois, mais c&#39;est quand il manque qu&#39;il est utile)</li>
+<li>Messages d&#39;erreur : tous, en entier.</li>
+<li>Procédure pour reproduire le bug : où cliquez-vous, dans quel ordre...</li>
+</ul>
 
-<p><strong>Firefox</strong></p>
+<p>Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?</p>
 
-<p>Chaque jour : 323 scénarios / 2693 step =&gt; 3h</p>
-
-<p><strong>IE</strong> (1 fois par semaine actuellement, 1 fois par jour bientôt)</p>
-
-<p>Chaque jour : 302 scénarios / 2527 step =&gt; 4h 30</p>
-
-<p>Cela représente 227 500 scénarios par an (pour 2 737 heures de tests).</p>
-
-<p>Sans oublier les lancements à la demande de certains jobs.</p>
-
-<h4>Comptes utilisateurs</h4>
-
-<p>Du côté des scénarios, ils utilisent pour le moment 70 comptes utilisateurs différents (avec des options particulières, etc...)</p>
-
-<p>Un changement prochain de notre offre me fait penser que les tests auront besoin de 100 comptes d&#39;ici 2 à 3 semaines.</p>
-
-<p>Sans oublier de dupliquer tout ça pour nos 2 environnements (test / stable)</p>
-
-<p>Ni d&#39;ajouter l&#39;exécution de ces tests sur chrome.</p>
-
-<p>Et on ajoute des tests fonctionnels en dehors de ce schéma, pour tester des choses particulière, que ce soit en production sur des points essentiels ou la validité de données particulières.</p>
-
-<p>Et vous, combien vous testez ?</p>
+<p>Plus vous donnez d&#39;informations précises, plus cela peut être utile à corriger le bug.</p>
 </div>
 
 	<div class="share">
 		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F04%2F22%2Fcomment-organiser-les-tests-sur-le-long-terme%2F&amp;via=fabrice31&amp;text=Comment organiser les tests sur le long terme&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F09%2F17%2Fl-art-de-signaler-un-bug%2F&amp;via=fabrice31&amp;text=L'art de signaler un bug&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
 		</div>
 		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
 		</div>
 		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
 		</div>
 	</div>
 
@@ -228,7 +205,7 @@ On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serve
 
 <script src="https://apis.google.com/js/plusone.js"></script>
 <div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme/"
+    data-href="http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug/"
     data-width="642"
     data-first_party_property="BLOGGER"
     data-view_type="FILTERED_POSTMOD">
@@ -240,27 +217,27 @@ On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serve
     
       <li>
         <h3>
-          <a href="http://blog.fabricebournisien.eu//2013/02/26/tester-sur-plusieurs-navigateurs/">
-            Tester sur plusieurs navigateurs
-            <small>26 Feb 2013</small>
+          <a href="http://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/">
+            Quand un commerçant en ligne a des bugs
+            <small>18 Mar 2013</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="http://blog.fabricebournisien.eu//2014/02/10/l-allie-du-testeur-l-affichage-synthetique/">
-            L'allié du testeur &#58; l'affichage synthétique
-            <small>10 Feb 2014</small>
+          <a href="http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/">
+            Tester un site multilingue
+            <small>06 Dec 2012</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="http://blog.fabricebournisien.eu//2013/06/17/affichage-des-resultats-de-tests/">
-            Affichage des résultats de tests
-            <small>17 Jun 2013</small>
+          <a href="http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas/">
+            L'armée ne paie pas toujours ses militaires
+            <small>02 Apr 2013</small>
           </a>
         </h3>
       </li>
