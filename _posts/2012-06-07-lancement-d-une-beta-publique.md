@@ -3,7 +3,6 @@ layout: post
 title: Lancement d'une beta publique
 tags:
   qualité
-  test
 ---
 
 Cette semaine, nous lançons officiellement la beta publique de notre produit phare, [OverBlog](http://www.overblog.com). Cela fait près d'un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d'organisation de travail (passage à [scrum](http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode))), nous avons accentué le TDD ([test driven development](http://fr.wikipedia.org/wiki/TDD)), nous avons changé de technologie ([Symfony](http://symfony.com/))
