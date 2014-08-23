@@ -2,7 +2,7 @@
 layout: post
 title: Les tests sont comme une boite de chocolats
 tags:
-  qualité
+  qualite
   test
 ---
 
