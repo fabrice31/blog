@@ -154,6 +154,60 @@
     <priority>1.0</priority>
   </url>
   
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/</loc>
+    
+	  <lastmod>2012-06-18T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/</loc>
+    
+	  <lastmod>2012-06-07T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/06/04/tests-automatiques/</loc>
+    
+	  <lastmod>2012-06-04T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/</loc>
+    
+	  <lastmod>2012-05-31T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/05/29/sudweb-2012-j-y-etais-et-vous/</loc>
+    
+	  <lastmod>2012-05-29T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/</loc>
+    
+	  <lastmod>2012-05-23T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   
   
   
@@ -164,6 +218,16 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

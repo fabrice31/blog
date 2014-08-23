@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
+  <meta name="robots" content="index,follow" />
+
+  <title>
+    
+      Les bugs sont partout, mêmes dans les jeux &middot; Je teste donc je suis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
+
+  <!-- Icons --
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
+  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> 
+		<input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2014 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Les bugs sont partout, mêmes dans les jeux</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-05-31" itemprop="datePublished">
+		31/05/2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><blockquote>
+<p>Witch Doctors should no longer receive an error if they kill a Shadow Clone with a Damage-Over-Time (DoT) skill after it&#39;s launched a Firebomb but before it&#39;s reached its target
+<br/>Blizzard</p>
+</blockquote>
+
+<p>Parfois, on trouve un bug de façon complètement aléatoire, on n&#39;arrive pas à le reproduire, etc. Mais <a href="http://eu.blizzard.com/fr-fr/">Blizzard</a> m&#39;épate dans leur premier patch de Diablo 3. Pour résumer pour les non anglophones / non joueurs :</p>
+
+<p>Si un personnage de la classe féticheur tue son ombre (en affrontant Diablo), en utilisant un sort de &quot;dommages périodiques&quot; (ex : du poison) et que la mort se produit après lui avoir jeté une bombe incendiaire mais avant qu&#39;elle le touche, on a une erreur.</p>
+
+<p>Je n&#39;ose imaginer le temps et les tests pour le reproduire.</p>
+
+<p>Pour donner une idée : j&#39;ai un personnage de cette classe, j&#39;ai affronté plusieurs fois Diablo, et mon ombre. Et je n&#39;ai jamais rencontré ce cas de figure.</p>
+
+<p><img src="/public/pictures/2012/diablo3-ombre.jpg" title="Affronter diablo et son ombre" style="width: 350px; float: left;"/>
+<img src="/public/pictures/2012/diablo_bug.jpg" title="Problème connection" style="width: 350px; float: left;"/>
+<p style="clear: both;"></p></p>
+
+<p>Les tests d&#39;un jeu vidéo n&#39;ont sans doute pas grand chose à voir avec les tests d&#39;une application web, en particulier quand il faut tester également la charge très importante d&#39;un titre de Blizzard. Qui pour ne rien simplifier, est très variable dans le temps.</p>
+
+<p>Je sais que l&#39;équipe de Blizzard se penche actuellement sur une erreur 37 lors de la connexion, et je leur souhaite bien du courage. Les propos sur les forums de battle.net, facebook, sont très amères (et je peux le concevoir en partie : il est impossible de jouer en Europe pendant qu&#39;il est possible de jouer en Asie ou en Amérique)</p>
+</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F05%2F31%2Fles-bugs-sont-partout-memes-dans-les-jeux%2F&amp;via=fabrice31&amp;text=Les bugs sont partout, mêmes dans les jeux&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/">
+			Les tests doivent-ils tester ?
+			<small>18 Jun 2012</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug/">
+			L'art de signaler un bug
+			<small>17 Sep 2012</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/">
+			Quand un commerçant en ligne a des bugs
+			<small>18 Mar 2013</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
+  </body>
+</html>

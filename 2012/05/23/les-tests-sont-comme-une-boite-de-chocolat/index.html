@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
+  <meta name="robots" content="index,follow" />
+
+  <title>
+    
+      Les tests sont comme une boite de chocolats &middot; Je teste donc je suis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
+
+  <!-- Icons --
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
+  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> 
+		<input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2014 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Les tests sont comme une boite de chocolats</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-05-23" itemprop="datePublished">
+		23/05/2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/qualité">Qualité</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><blockquote>
+<p>Testing is like a box of chocolates. You never know what you’re gonna get.
+<br/> Peter Shih</p>
+</blockquote>
+
+<p><img src="/public/pictures/2012/chocolats.jpg" title="Boite de chocolats" style="width: 350px; float: left;"/>
+<img src="/public/pictures/2012/forrest-gump.jpg" title="Forrest Gump" style="width: 350px; float: left;"/>
+<p style="clear: both;"></p></p>
+
+<p>Je suis tout à fait d&#39;accord avec lui. Quand on met en place des tests automatiques ou qu&#39;on teste manuellement une nouvelle fonctionnalité, on ne sait jamais ce qu&#39;il va se passer.</p>
+
+<p>On peut tout avoir :</p>
+
+<ul>
+<li>Tout fonctionne, et tout s&#39;affiche parfaitement</li>
+<li>Une partie ne fonctionne pas, bloquant une partie des tests.</li>
+<li>L&#39;affichage est décalé (avec parfois des problèmes en cascade)</li>
+</ul>
+
+<p>Du coup, rien ne se ressemble : chaque nouveau test permet d&#39;être surpris, et de devoir réflechir en profondeur pour assurer la stabilité du produit testé. (Qu&#39;il soit logiciel ou matériel d&#39;ailleurs)</p>
+</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F05%2F23%2Fles-tests-sont-comme-une-boite-de-chocolat%2F&amp;via=fabrice31&amp;text=Les tests sont comme une boite de chocolats&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/">
+			Les tests doivent-ils tester ?
+			<small>18 Jun 2012</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/">
+			Une petite boulette peut coûter cher
+			<small>30 Oct 2012</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/">
+			Comment j'ai changé de travail sans bouger de ma chaise
+			<small>05 Nov 2013</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
+  </body>
+</html>
