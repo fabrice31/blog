@@ -392,8 +392,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.</li>
 <p>On exécute les scénarios avec la ligne &quot;cucumber --tag @montag&quot;. Si le tag n&#39;existe pas, le résultat affichera immédiatement 0 scenarios.</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@admin</span> <span class="vi">@montag</span> <span class="vi">@ie</span>
 <span class="no">Scenario</span><span class="p">:</span> <span class="nb">test</span> <span class="n">un</span> <span class="n">tag</span>
-  <span class="no">When</span> <span class="n">I</span> <span class="nb">test</span>
-  <span class="no">Then</span> <span class="n">I</span> <span class="n">tested</span>
+  <span class="no">When</span> <span class="no">I</span> <span class="nb">test</span>
+  <span class="no">Then</span> <span class="no">I</span> <span class="n">tested</span>
 </code></pre></div>
 <h3>Cucumber.yml</h3>
 
@@ -406,9 +406,9 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.</li>
 
 <p>Exemple avec une partie de mon fichier :</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% common </span><span class="o">=</span> <span class="s2">"-r support -r features --tags ~@wip --tags ~@danger 
---color --format pretty --format html -o results.html --format junit -o junit"</span> <span class="sx">%&gt;
-# default : staging and firefox
-default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
+--color --format pretty --format html -o results.html --format junit -o junit"</span> <span class="o">%&gt;</span>
+<span class="c1"># default : staging and firefox</span>
+<span class="ss">default: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; BROWSER=</span><span class="n">firefox</span>
 <span class="ss">danger: </span><span class="o">-</span><span class="n">r</span> <span class="n">support</span> <span class="o">-</span><span class="n">r</span> <span class="n">features</span> <span class="o">--</span><span class="n">tags</span> <span class="o">~</span><span class="vi">@wip</span> <span class="o">--</span><span class="n">color</span> <span class="o">--</span><span class="nb">format</span> <span class="n">pretty</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
 <span class="ss">ie: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">ie</span>
 <span class="ss">ff: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
@@ -442,7 +442,7 @@ default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="
 
 <p>Voici le code :</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
-  <span class="k">case</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span>
+  <span class="k">case</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span>
   <span class="k">when</span> <span class="s1">'ie'</span>
     <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:ie</span>
   <span class="k">when</span> <span class="s1">'mobile'</span>
@@ -450,7 +450,7 @@ default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="
         Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 \
         Mobile/9B206 Safari/7534.48.3"</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'general.useragent.override'</span><span class="o">]</span> <span class="o">=</span> <span class="n">mobile_useragent</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'general.useragent.override'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mobile_useragent</span>
     <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
   <span class="k">when</span> <span class="s1">'chrome'</span>
     <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:chrome</span>
@@ -460,16 +460,16 @@ default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="
     <span class="n">download_directory</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">"</span><span class="p">)</span> <span class="p">\</span>
         <span class="k">if</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Platform</span><span class="p">.</span><span class="nf">windows?</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'browser.download.folderList'</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'browser.download.dir'</span><span class="o">]</span> <span class="o">=</span> <span class="n">download_directory</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'browser.link.open_newwindow'</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'browser.helperApps.neverAsk.saveToDisk'</span><span class="o">]</span> <span class="o">=</span> <span class="p">\</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.download.folderList'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.download.dir'</span><span class="p">]</span> <span class="o">=</span> <span class="n">download_directory</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.link.open_newwindow'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.helperApps.neverAsk.saveToDisk'</span><span class="p">]</span> <span class="o">=</span> <span class="p">\</span>
         <span class="s2">"application/octet-stream"</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'network.http.use-cache'</span><span class="o">]</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'network.http.use-cache'</span><span class="p">]</span> <span class="o">=</span> <span class="kp">false</span>
     <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
   <span class="k">end</span>
   <span class="c1"># Resize window</span>
-  <span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">!=</span> <span class="s1">'mobile'</span>
+  <span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'mobile'</span>
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
   <span class="k">else</span>
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">960</span><span class="p">)</span>
@@ -501,7 +501,7 @@ default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="
 <p>On lance donc les tests pour Internet Explorer avec la commande <code>cucumber --tag @ie -p ie</code>. On peut changer le tag, mais certains ne fonctionnent pas encore sous IE à cause de codes vraiment spécifiques.</p>
 
 <p>Voici deux exemples de code modifé spécifiquement pour IE :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
   <span class="c1"># internet explorer is slower : timeout increase</span>
   <span class="no">SHORT_TIMEOUT</span> <span class="o">=</span> <span class="mi">5</span>
   <span class="no">TIMEOUT</span> <span class="o">=</span> <span class="mi">15</span>
@@ -513,7 +513,7 @@ default: &lt;%= common %&gt;</span> <span class="no">BROWSER</span><span class="
 <span class="k">end</span>
 </code></pre></div>
 <p>Ce code définit les constantes des timeout pour l&#39;ensemble des test.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">'BROWSER'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
   <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># need for IE purpose</span>
 <span class="k">end</span>
 <span class="nb">self</span><span class="p">.</span><span class="nf">wait_until</span><span class="p">(</span><span class="no">LONG_TIMEOUT</span><span class="p">){</span>

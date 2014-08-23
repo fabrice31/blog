@@ -268,7 +268,7 @@
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
   <span class="k">def</span> <span class="nf">setup</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="o">[</span><span class="s1">'intl.accept_languages'</span><span class="o">]</span> <span class="o">=</span> <span class="s2">"it"</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
     <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
   <span class="k">end</span>
   <span class="k">def</span> <span class="nf">teardown</span>
@@ -355,7 +355,7 @@ Deux anecdotes récentes à ce sujet.</p>
 
 <p>Nous avons donc une suite de vérifications, en ruby+watir</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
-<span class="k">if</span> <span class="n">data</span><span class="o">[</span><span class="s1">'align'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
   <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
 <span class="k">else</span>
   <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
@@ -369,7 +369,7 @@ Deux anecdotes récentes à ce sujet.</p>
 
 <p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">data</span><span class="o">[</span><span class="s1">'align'</span><span class="o">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
   <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
 <span class="k">else</span>
   <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
