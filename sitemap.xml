@@ -208,6 +208,24 @@
     <priority>1.0</priority>
   </url>
   
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/05/07/valider-un-theme/</loc>
+    
+	  <lastmod>2012-05-07T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/</loc>
+    
+	  <lastmod>2012-05-06T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   
   
   
@@ -218,6 +236,8 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  
   
   
   

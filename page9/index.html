@@ -13,7 +13,7 @@
 
   <title>
     
-      Posts Tagged &ldquo;jenkins&rdquo; &middot; Je teste donc je suis
+      Je teste donc je suis &middot; Journal d'un testeur
     
   </title>
 
@@ -174,159 +174,83 @@
 </div>
 
     <div class="content container">
-      <h2 class="post_title">Posts Tagged &ldquo;jenkins&rdquo;</h2>
+      <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/05/06/tests-automatiques-watir/" itemprop="url" rel="bookmark">
+        Tests automatiques : watir
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-05-06" itemprop="datePublished">
+			06/05/2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
+Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
+<span class="nb">require</span> <span class="s2">"rubygems"</span>
+
+<span class="c1"># chargement de la libraire watir</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
+
+<span class="c1"># ouvrir un navigateur</span>
+<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="c1"># Ouvrir le site</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
+
+<span class="c1"># Clignotement</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
+
+<span class="c1"># Vérifier que le mot qualité est présent</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
+<span class="k">end</span>
+
+<span class="c1"># Fermeture</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div>
+<p>Pour résumer :</p>
+
 <ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <li class="archive_list">
-    <time datetime='2014-02-10'>02/10/14</time> &raquo;
-	<a class="archive_list_article_link" href='/2014/02/10/l-allie-du-testeur-l-affichage-synthetique/'>L'allié du testeur &#58; l'affichage synthétique</a>
-  </li>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <li class="archive_list">
-    <time datetime='2013-06-17'>06/17/13</time> &raquo;
-	<a class="archive_list_article_link" href='/2013/06/17/affichage-des-resultats-de-tests/'>Affichage des résultats de tests</a>
-  </li>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <li class="archive_list">
-    <time datetime='2013-04-22'>04/22/13</time> &raquo;
-	<a class="archive_list_article_link" href='/2013/04/22/comment-organiser-les-tests-sur-le-long-terme/'>Comment organiser les tests sur le long terme</a>
-  </li>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+<li>on charge les libraires adéquates</li>
+<li>on ouvre un navigateur</li>
+<li>on va sur le site web à tester</li>
+<li>on effectue des actions et/ou de tests</li>
 </ul>
+
+<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
+</div>
+  </div>
+  
+</div>
+
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
+    
+      <a class="pagination-item newer" href="/page8">Newer</a>
+    
+  
+</div>
+
     </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-24T16:45:34+02:00</updated>
+ <updated>2014-08-24T17:02:12+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1490,6 +1490,213 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Du coup, rien ne se ressemble : chaque nouveau test permet d&amp;#39;être surpris, et de devoir réflechir en profondeur pour assurer la stabilité du produit testé. (Qu&amp;#39;il soit logiciel ou matériel d&amp;#39;ailleurs)&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Valider un thème</title>
+   <link href="http://blog.fabricebournisien.eu///2012/05/07/valider-un-theme/"/>
+   <updated>2012-05-07T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/05/07/valider-un-theme</id>
+   <content type="html">&lt;h3&gt;Choisir un thème&lt;/h3&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on crée son blog, on regarde souvent les fonctionnalités de l&amp;#39;outil, mais on est surtout intéressé par le thème.&lt;/p&gt;
+
+&lt;p&gt;Chacun a une attente particulière d&amp;#39;un thème : on a tous une couleur préférée, un sujet de prédilection (cuisine, technologie, voiture...). Certains aiment également ajouter un tas de widgets facilement, ou pouvoir le personnaliser en changeant une couleur ou une image. Cela permet de se sentir chez soi.&lt;/p&gt;
+
+&lt;p&gt;Dans la nouvelle version d&amp;#39;OverBlog, l&amp;#39;utilisateur peut choisir son design, changer les options prévues dans le thème, mais également modifier le html, le css, afin d&amp;#39;avoir un thème qui correspond exactement à ce que l&amp;#39;on veut.&lt;/p&gt;
+
+&lt;h3&gt;Et la qualité ?&lt;/h3&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;un nouveau thème est créé pour être proposé aux blogueurs, en tant que responsable qualité, je dois vérifier qu&amp;#39;il s&amp;#39;affiche correctement sur tous les navigateurs, avec toute sorte de contenus. Sans parler d&amp;#39;avoir les options qui permettent de plaire au plus grand nombre.&lt;/p&gt;
+
+&lt;p&gt;Lorsque nous avons ajouté les premiers thèmes, j&amp;#39;ai testé manuellement beaucoup de choses, refait les mêmes tests plusieurs fois. Avec le recul, je pense même n&amp;#39;avoir pas fait les mêmes tests sur chaque thème.&lt;/p&gt;
+
+&lt;p&gt;L&amp;#39;équipe ayant augmenté la cadence de livraison de thèmes, il y a de plus en plus de thèmes à tester.&lt;/p&gt;
+
+&lt;p&gt;Au delà de ça, l&amp;#39;équipe ajoute régulièrement de nouvelles fonctions utilisables dans les thèmes (ex : une fonction article suivant / précédent). Il faut alors faire modifer les anciens thèmes, les tester à nouveau...&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2012/checklist.jpg&quot; alt=&quot;Checklist&quot; title=&quot;Checklist point par point&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Tests en équipe&lt;/h3&gt;
+
+&lt;p&gt;Du retard s&amp;#39;étant accumulé dans les tests, j&amp;#39;ai décidé de faire participer l&amp;#39;équipe aux tests. Pour cela, j&amp;#39;ai préparé un document comportant une centaine de points à vérifier pour chaque thème, plus ou moins précis.&lt;/p&gt;
+
+&lt;p&gt;Certains points sont issus de tests précédents, de bugs s&amp;#39;étant déjà produits. D&amp;#39;autres sont issus de connaissances accumulées dans le domaine depuis de longues années.&lt;/p&gt;
+
+&lt;p&gt;Chaque membre de l&amp;#39;équipe a choisi un thème (en veillant à ne jamais tester un thème que l&amp;#39;on a soi-même créé: le test ne saurait être fiable dans ces conditions). Ne restait alors plus qu&amp;#39;à vérifier la checklist.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2012/checklist_equipe.jpg&quot; alt=&quot;Checklist en équipe&quot; title=&quot;Checklist en parrallèle&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Checklist : SEO&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Titre du blog sur la home, de préférence en h1&lt;/li&gt;
+&lt;li&gt;Description du blog affichée sur la home&lt;/li&gt;
+&lt;li&gt;Pas de répétition abusive du titre et de la description du blog&lt;/li&gt;
+&lt;li&gt;Sur une page d&amp;#39;article, le titre et le lien vers l&amp;#39;article ne sont pas répétés&lt;/li&gt;
+&lt;li&gt;Le title de la page d&amp;#39;accueil inclut le titre du blog&lt;/li&gt;
+&lt;li&gt;Le title d&amp;#39;une page d&amp;#39;article contient le titre de l&amp;#39;article&lt;/li&gt;
+&lt;li&gt;Le title d&amp;#39;une recherche contient le keyword&lt;/li&gt;
+&lt;li&gt;Le title d&amp;#39;une catégorie contient la catégorie&lt;/li&gt;
+&lt;li&gt;La meta description contient la description du blog sur la home&lt;/li&gt;
+&lt;li&gt;La meta description contient l&amp;#39;extrait de l&amp;#39;article sur les pages &amp;quot;article seul&amp;quot;&lt;/li&gt;
+&lt;li&gt;Les widgets et les articles ont des titres de forme h* (h2, h3...)&lt;/li&gt;
+&lt;li&gt;Le flux RSS est renseigné et l&amp;#39;url est juste&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : ergonomie&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le titre est cliquable et renvoie sur l&amp;#39;accueil&lt;/li&gt;
+&lt;li&gt;L&amp;#39;attribut title du titre du blog contient la description du blog&lt;/li&gt;
+&lt;li&gt;L&amp;#39;attribut title du titre des articles contient un extrait de l&amp;#39;article&lt;/li&gt;
+&lt;li&gt;Il y a un lien vers la page contact&lt;/li&gt;
+&lt;li&gt;Le champ de recherche a un placeholder&lt;/li&gt;
+&lt;li&gt;Un message apparait quand il n&amp;#39;y a pas de résultat&lt;/li&gt;
+&lt;li&gt;Lors d&amp;#39;une recherche, les articles sans titre peuvent être ouverts&lt;/li&gt;
+&lt;li&gt;Les tags sont affichés par leurs noms, pas par leur url&lt;/li&gt;
+&lt;li&gt;Les suites de tags sont séparées par un élément visuel : # , /&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : webperf&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Vérifier que les js chargés sont en nombre limité&lt;/li&gt;
+&lt;li&gt;Si une option permet de désactiver une fonction, le JS associé est désactivé&lt;/li&gt;
+&lt;li&gt;Les js qui le peuvent sont placés en pied de page&lt;/li&gt;
+&lt;li&gt;Poids total de la page inférieur à 3 Mo&lt;/li&gt;
+&lt;li&gt;Pas d&amp;#39;erreur 404 dans les fichiers / images&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : options du thème&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prévoir une option article complet / extrait&lt;/li&gt;
+&lt;li&gt;Pas de lien &amp;quot;en dur&amp;quot; vers une url interne à créer par le blogueur&lt;/li&gt;
+&lt;li&gt;Pas de saisie inutile de valeur&lt;/li&gt;
+&lt;li&gt;Ne pas hésiter à faire changer les couleurs principales du thème&lt;/li&gt;
+&lt;li&gt;Si une image est utilisée &amp;quot;par défaut&amp;quot;, permettre de la changer&lt;/li&gt;
+&lt;li&gt;Permettre de choisir les modules à afficher / masquer&lt;/li&gt;
+&lt;li&gt;Penser à l&amp;#39;ajout des comptes de réseaux sociaux&lt;/li&gt;
+&lt;li&gt;Les options ont des valeurs par défaut&lt;/li&gt;
+&lt;li&gt;Le type des options est adapté&lt;/li&gt;
+&lt;li&gt;Prévoir l&amp;#39;ajout de Google analytics / webmaster tools / msn tools&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : widgets&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prévoir un module listant les pages&lt;/li&gt;
+&lt;li&gt;Prévoir un module affichant la biographie de l&amp;#39;auteur, sa ville, son pseudo&lt;/li&gt;
+&lt;li&gt;Dans le module &amp;quot;bprofil&amp;quot;io&amp;quot;, afficher lien + logo vers les réseaux sociaux&lt;/li&gt;
+&lt;li&gt;Prévoir un module archive, affichant les années, interactivité pour afficher les mois&lt;/li&gt;
+&lt;li&gt;Prévoir un module tags, qui affiche les tags.d&amp;#39;utilisation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : article&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Informations de base affichées : titre, date, auteur, tags&lt;/li&gt;
+&lt;li&gt;Les images des sections texte sont alignées correctement&lt;/li&gt;
+&lt;li&gt;Mise en page correcte : listes (puce + numérotées)&lt;/li&gt;
+&lt;li&gt;Mise en page correcte : gras, italique, del, liens&lt;/li&gt;
+&lt;li&gt;Mise en page correcte : titres, preformatted&lt;/li&gt;
+&lt;li&gt;La section image prend la largeur maximale disponible&lt;/li&gt;
+&lt;li&gt;Ajouter une &amp;quot;fancybox&amp;quot; ou script assimilé pour zoomer sur les images&lt;/li&gt;
+&lt;li&gt;Le slideshow fonctionne dans la section image&lt;/li&gt;
+&lt;li&gt;Les vidéos ne sont pas coupées en largeur&lt;/li&gt;
+&lt;li&gt;Le player de musique s&amp;#39;affiche et fonctionne&lt;/li&gt;
+&lt;li&gt;Pour une section lien, le lien, la vignette, l&amp;#39;extrait sont placés correctement&lt;/li&gt;
+&lt;li&gt;Les citations apparaissent de façon à ressortir&lt;/li&gt;
+&lt;li&gt;L&amp;#39;auteur d&amp;#39;une citation est affiché clairement&lt;/li&gt;
+&lt;li&gt;Les cartes s&amp;#39;affichent entièrement&lt;/li&gt;
+&lt;li&gt;Le curseur indique qu&amp;#39;on peut cliquer sur la carte&lt;/li&gt;
+&lt;li&gt;Pour les sections image, vidéos, musique, carte... la description est alignée avec le contenu&lt;/li&gt;
+&lt;li&gt;Une suite de sections s&amp;#39;affiche correctement&lt;/li&gt;
+&lt;li&gt;Les articles sans titre peuvent être visités (ajout d&amp;#39;un lien &amp;quot;Read more&amp;quot;...)&lt;/li&gt;
+&lt;li&gt;Les articles venant de Twitter s&amp;#39;affichent correctement&lt;/li&gt;
+&lt;li&gt;Les articles venant de FB s&amp;#39;affichent correctement (image, texte..)&lt;/li&gt;
+&lt;li&gt;L&amp;#39;article dispose d&amp;#39;options de partage (Twitter, FB, G+, Pinterest...)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : autres contenus&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sur une page d&amp;#39;article seul, on affiche les commentaires&lt;/li&gt;
+&lt;li&gt;Sur une page d&amp;#39;accueil, on affiche une information pour indiquer les commentaires&lt;/li&gt;
+&lt;li&gt;La zone de commentaire apparait dans toute sa largeur&lt;/li&gt;
+&lt;li&gt;Si les commentaires sont désactivés, pas de lien / d&amp;#39;affichage des commentaires&lt;/li&gt;
+&lt;li&gt;Sur les pages listant les articles (accueil, recherche, tags...), afficher la pagination&lt;/li&gt;
+&lt;li&gt;Quand on passe sur la page 2, ce sont les articles suivants qui apparaissent&lt;/li&gt;
+&lt;li&gt;Sur une page d&amp;#39;article, afficher un lien vers l&amp;#39;article suivant / précédent&lt;/li&gt;
+&lt;li&gt;La page de contact s&amp;#39;affiche correctement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Checklist : divers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Si le design est responsive, cela fonctionne&lt;/li&gt;
+&lt;li&gt;Les textes affichés passent par la fonction de langue (permet la traduction du thème)&lt;/li&gt;
+&lt;li&gt;Pas de textes localisés dans les images (pour faciliter le changement de langue)&lt;/li&gt;
+&lt;li&gt;Affichage parfait sur IE9&lt;/li&gt;
+&lt;li&gt;Affichage correct sur IE8&lt;/li&gt;
+&lt;li&gt;Affichage parfait sur Chrome&lt;/li&gt;
+&lt;li&gt;Affichage parfait sur Firefox&lt;/li&gt;
+&lt;li&gt;Affichage correct sur Safari&lt;/li&gt;
+&lt;li&gt;Les options de commentaires (Disqus, Facebook..) fonctionnent&lt;/li&gt;
+&lt;li&gt;Les options des widgets sociaux fonctionnent&lt;/li&gt;
+&lt;li&gt;Les options de thèmes fonctionnent pour changer l&amp;#39;apparence : couleurs, police...&lt;/li&gt;
+&lt;li&gt;Les autres options sont opérationnelles.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Tests automatiques : watir</title>
+   <link href="http://blog.fabricebournisien.eu///2012/05/06/tests-automatiques-watir/"/>
+   <updated>2012-05-06T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://watirwebdriver.com/&quot;&gt;Watir-webdriver&lt;/a&gt; est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&amp;#39;un utilisateur. Cela vous permet d&amp;#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
+Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot &lt;strong&gt;qualité&lt;/strong&gt; apparait sur la page.&lt;/p&gt;
+
+&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/E6s4-m2U8b4?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rubygems&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# chargement de la libraire watir&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;watir-webdriver&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# ouvrir un navigateur&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;800&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Ouvrir le site&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://web-quality.over-blog.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Clignotement&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Contact&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;flash&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Vérifier que le mot qualité est présent&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;include?&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Qualite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Test Qualite KO&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Test Qualite OK&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Fermeture&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pour résumer :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;on charge les libraires adéquates&lt;/li&gt;
+&lt;li&gt;on ouvre un navigateur&lt;/li&gt;
+&lt;li&gt;on va sur le site web à tester&lt;/li&gt;
+&lt;li&gt;on effectue des actions et/ou de tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&amp;#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&amp;#39;un rapport d&amp;#39;erreur détaillé, etc.&lt;/p&gt;
 </content>
  </entry>
  
