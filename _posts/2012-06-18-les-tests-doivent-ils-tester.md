@@ -2,7 +2,7 @@
 layout: post
 title: Les tests doivent-ils tester ?
 tags:
-  qualité
+  qualite
   test
 ---
 
