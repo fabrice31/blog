@@ -13,7 +13,7 @@
 
   <title>
     
-      Je teste donc je suis &middot; Journal d'un testeur
+      L'environnement et les tests &middot; Je teste donc je suis
     
   </title>
 
@@ -174,127 +174,17 @@
 </div>
 
     <div class="content container">
-      <div class="posts">
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/05/06/tests-automatiques-watir/" itemprop="url" rel="bookmark">
-        Tests automatiques : watir
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-05-06" itemprop="datePublished">
-			06/05/2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
-Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
-
-<iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
-<span class="nb">require</span> <span class="s2">"rubygems"</span>
-
-<span class="c1"># chargement de la libraire watir</span>
-<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
-
-<span class="c1"># ouvrir un navigateur</span>
-<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
-
-<span class="c1"># Ouvrir le site</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
-
-<span class="c1"># Clignotement</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
-
-<span class="c1"># Vérifier que le mot qualité est présent</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
-<span class="k">else</span>
-  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
-<span class="k">end</span>
-
-<span class="c1"># Fermeture</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">close</span>
-</code></pre></div>
-<p>Pour résumer :</p>
-
-<ul>
-<li>on charge les libraires adéquates</li>
-<li>on ouvre un navigateur</li>
-<li>on va sur le site web à tester</li>
-<li>on effectue des actions et/ou de tests</li>
-</ul>
-
-<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/05/04/la-qualite-web-c-est-quoi/" itemprop="url" rel="bookmark">
-        La qualité web, c'est quoi ?
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-05-04" itemprop="datePublished">
-			04/05/2012
-		</time>
-		- par Fabrice Bournisien
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">L'environnement et les tests</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-02-09" itemprop="datePublished">
+		09/02/2012
+	  </time>
+	  - par Fabrice Bournisien
 		
 		- <a href="/tag/qualite">Qualite</a>
 		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Lorsqu&#39;un visiteur se promène sur internet, à la recherche d&#39;informations, de produits etc... il ne voit pas ce qui se passe derrière le site web :</p>
-
-<ul>
-<li>Il ne connait pas le langage HTML</li>
-<li>Il ne connait pas les différences de navigateurs</li>
-<li>Il ne sait pas ce qu&#39;est un problème de charge</li>
-<li>Il ne sait pas ce qu&#39;est la norme du w3c</li>
-</ul>
-
-<p>Par contre, ce qu&#39;il sait, c&#39;est que le site s&#39;affiche mal sur son écran, que le bouton ne fonctionne pas, qu&#39;il ne peut pas créer son compte ou qu&#39;il ne peut pas passer sa commande. Pour lui, c&#39;est un défaut, un bug. C&#39;est une déception pour lui, et il pourrait ne jamais valider sa commande, ou venir à nouveau sur votre site.</p>
-
-<p><img src="/public/pictures/2012/erreur1.jpg" title="Certificat erroné" style="height: 150px; float: left;"/>
-<img src="/public/pictures/2012/erreur2.jpg" title="Serveur introuvable" style="height: 150px; float: left;"/>
-<img src="/public/pictures/2012/erreur3.jpg" title="Erreur 404" style="height: 150px; float: left;"/>
-<p style="clear: both;"></p></p>
-
-<p>Pour faire un site web de qualité, plusieurs choses à respecter : il faut être au courant de toutes les normes (HTML, CSS, JS), des dernières mises à jour des navigateurs, et de leurs limites.</p>
-
-<p>Et bien évidemment, il faut tester en permanence le site pour s&#39;assurer que les nouveautés fonctionnent, mais également pour vérifier que ce qui existait déjà n&#39;a pas été &quot;cassé&quot; par les nouveaux développements.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/02/09/l-environnement-et-les-tests/" itemprop="url" rel="bookmark">
-        L'environnement et les tests
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-02-09" itemprop="datePublished">
-			09/02/2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-	</span>
+  </span>
 
 	<div itemprop="ArticleBody"><p>Cet article n&#39;a rien à voir avec l&#39;écologie, mais beaucoup avec l&#39;<a href="http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique">environnement</a>.</p>
 
@@ -354,19 +244,55 @@ Faire lancer les tests par les développeurs en environnement de développement.
 
 <p>Si mon ancien domaine (et sa base) avait expiré avant que je m&#39;en rende compte, j&#39;aurais perdu une partie de l&#39;historique. Pour un petit forum privé, cela n&#39;aurait pas été trop grave. Mais pour un projet plus important, cela aurait pu provoquer des catastrophes.</p>
 </div>
-  </div>
-  
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F02%2F09%2Fl-environnement-et-les-tests%2F&amp;via=fabrice31&amp;text=L'environnement et les tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
 </div>
 
-<div class="pagination">
-  
-    <a class="pagination-item older" href="/page10">Older</a>
-  
-  
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
     
-      <a class="pagination-item newer" href="/page8">Newer</a>
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/">
+			Comment j'ai changé de travail sans bouger de ma chaise
+			<small>05 Nov 2013</small>
+		  </a>
+      </li>
     
-  
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2013/02/26/tester-sur-plusieurs-navigateurs/">
+			Tester sur plusieurs navigateurs
+			<small>26 Feb 2013</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2012/05/07/valider-un-theme/">
+			Valider un thème
+			<small>07 May 2012</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
 </div>
 
     </div>

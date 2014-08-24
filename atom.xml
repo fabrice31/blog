@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-24T17:02:12+02:00</updated>
+ <updated>2014-08-24T20:11:39+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1660,7 +1660,7 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://watirwebdriver.com/&quot;&gt;Watir-webdriver&lt;/a&gt; est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&amp;#39;un utilisateur. Cela vous permet d&amp;#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
 Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot &lt;strong&gt;qualité&lt;/strong&gt; apparait sur la page.&lt;/p&gt;
 
-&lt;iframe width=&quot;420&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/E6s4-m2U8b4?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;iframe width=&quot;640&quot; height=&quot;480&quot; src=&quot;//www.youtube.com/embed/E6s4-m2U8b4?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rubygems&quot;&lt;/span&gt;
 
@@ -1697,6 +1697,135 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
 &lt;/ul&gt;
 
 &lt;p&gt;Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&amp;#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&amp;#39;un rapport d&amp;#39;erreur détaillé, etc.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>La qualité web, c'est quoi ?</title>
+   <link href="http://blog.fabricebournisien.eu///2012/05/04/la-qualite-web-c-est-quoi/"/>
+   <updated>2012-05-04T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/05/04/la-qualite-web-c-est-quoi</id>
+   <content type="html">&lt;p&gt;Lorsqu&amp;#39;un visiteur se promène sur internet, à la recherche d&amp;#39;informations, de produits etc... il ne voit pas ce qui se passe derrière le site web :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Il ne connait pas le langage HTML&lt;/li&gt;
+&lt;li&gt;Il ne connait pas les différences de navigateurs&lt;/li&gt;
+&lt;li&gt;Il ne sait pas ce qu&amp;#39;est un problème de charge&lt;/li&gt;
+&lt;li&gt;Il ne sait pas ce qu&amp;#39;est la norme du w3c&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Par contre, ce qu&amp;#39;il sait, c&amp;#39;est que le site s&amp;#39;affiche mal sur son écran, que le bouton ne fonctionne pas, qu&amp;#39;il ne peut pas créer son compte ou qu&amp;#39;il ne peut pas passer sa commande. Pour lui, c&amp;#39;est un défaut, un bug. C&amp;#39;est une déception pour lui, et il pourrait ne jamais valider sa commande, ou venir à nouveau sur votre site.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2012/erreur1.jpg&quot; title=&quot;Certificat erroné&quot; style=&quot;height: 150px; float: left;&quot;/&gt;
+&lt;img src=&quot;/public/pictures/2012/erreur2.jpg&quot; title=&quot;Serveur introuvable&quot; style=&quot;height: 150px; float: left;&quot;/&gt;
+&lt;img src=&quot;/public/pictures/2012/erreur3.jpg&quot; title=&quot;Erreur 404&quot; style=&quot;height: 150px; float: left;&quot;/&gt;
+&lt;p style=&quot;clear: both;&quot;&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Pour faire un site web de qualité, plusieurs choses à respecter : il faut être au courant de toutes les normes (HTML, CSS, JS), des dernières mises à jour des navigateurs, et de leurs limites.&lt;/p&gt;
+
+&lt;p&gt;Et bien évidemment, il faut tester en permanence le site pour s&amp;#39;assurer que les nouveautés fonctionnent, mais également pour vérifier que ce qui existait déjà n&amp;#39;a pas été &amp;quot;cassé&amp;quot; par les nouveaux développements.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>L'environnement et les tests</title>
+   <link href="http://blog.fabricebournisien.eu///2012/02/09/l-environnement-et-les-tests/"/>
+   <updated>2012-02-09T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests</id>
+   <content type="html">&lt;p&gt;Cet article n&amp;#39;a rien à voir avec l&amp;#39;écologie, mais beaucoup avec l&amp;#39;&lt;a href=&quot;http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique&quot;&gt;environnement&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lorsque l&amp;#39;on teste un projet web, il faut toujours savoir &amp;quot;où&amp;quot; nous testons : est-on sur un serveur de test ? de développement ? de pré-prod ? de production ?&lt;/p&gt;
+
+&lt;p&gt;Lorsque vous êtes en pleine création d&amp;#39;un projet, il est intéressant de définir clairement, le plus tôt possible, les différents environnements et leurs stratégies de tests respectives.&lt;/p&gt;
+
+&lt;p&gt;L&amp;#39;intégration continue sera d&amp;#39;autant plus simple que vous aurez défini clairement les règles du jeu.&lt;/p&gt;
+
+&lt;h3&gt;Environnements pour un projet web&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Environnement de pré-prod : ce serveur doit être stable, mis à jour très régulièrement, comporter toutes les nouveautés.&lt;/li&gt;
+&lt;li&gt;Environnement de développement : utilisé par tous les développeurs, il peut être soit centralisé, soit individuel (avec des machines virtuelles).&lt;/li&gt;
+&lt;li&gt;Environnement de prod : c&amp;#39;est le serveur qui sera utilisé par vos utilisateurs/clients. Il doit être choyé, aux petits oignons.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Comment organiser le travail (du point de vue de la qualité)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Les développeurs codent sur le serveur de dév.&lt;/li&gt;
+&lt;li&gt;Les tests unitaires (côté php ou js) sont aussi jouer sur le serveur de développement.&lt;/li&gt;
+&lt;li&gt;L&amp;#39;environnement de préprod est posé en tant que référent : il est mis à jour régulièrement, avec des versions stables. Pour contrôler sa mise à jour, un outil d&amp;#39;intégration continu (nous utilisons hudson) qui rejoue tous les tests unitaires de tous les sous projets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Comment organiser les tests fonctionnels&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pour les tests manuels, en fonction du test, il faut le faire sur l&amp;#39;un des environnements. Il est parfois utile de le faire sur chaque environnement, afin de pouvoir dire &amp;quot;ce bug particulier n&amp;#39;existe pas encore en prod, mais il est apparut sur la pré prod&amp;quot;.&lt;/li&gt;
+&lt;li&gt;L&amp;#39;environnement de prod peut être utilisé pour vérifier la présence d&amp;#39;un bug, mais ne devrait pas être utilisé pour des tests automatiques.&lt;/li&gt;
+&lt;li&gt;Pour les tests automatiques, il y a 2 écoles: 
+Lancer sur la version de pré-prod. Défaut principal : il n&amp;#39;est pas toujours évident de créer des tests fonctionnels avant de voir la fonction tourner réellement. Chaque nouvelle fonctionnalité aura donc ses tests ajoutés dans les jours qui suivront, et pas avant.
+Faire lancer les tests par les développeurs en environnement de développement. C&amp;#39;est plus coûteux à mettre en place (il faut par exemple former tous les développeurs à l&amp;#39;analyse du rapport de tests...), mais cela peut améliorer la détection des bugs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pour moi, ces deux écoles ne s&amp;#39;excluent pas. Je les vois plutôt comme des étapes. C&amp;#39;est d&amp;#39;ailleurs le cas dans ma société : lors de la refonte du projet, il a été décidé que les tests fonctionnels automatiques devront pouvoir s&amp;#39;exécuter partout (y compris la prod). Pour l&amp;#39;instant, ils peuvent être exécuter sur la pré prod, avec une configuration prévue théoriquement pour qu&amp;#39;ils puissent être exécuter sur d&amp;#39;autres environnements. (La gestion de profils de cucumber est parfaite pour ça)&lt;/p&gt;
+
+&lt;h3&gt;Pourquoi est-il essentiel de connaître les environnements ?&lt;/h3&gt;
+
+&lt;p&gt;Il m&amp;#39;arrive régulièrement de tester un bug sur un onglet, de faire autre chose, et de revenir dans mon onglet pour avoir d&amp;#39;autres informations au sujet des bugs. Et là, miracle, le bug est résolu. Pourtant, personne n&amp;#39;a modifié le code. Un enquête de quelques minutes permet de comprendre que le bug n&amp;#39;existe que dans un environnement particulier, et que j&amp;#39;ai changé d&amp;#39;onglet par inadvertance.&lt;/p&gt;
+
+&lt;p&gt;Cela peut avoir des conséquences plus grave. Pour un projet personnel, j&amp;#39;héberge un forum &amp;quot;privé&amp;quot;. J&amp;#39;ai l&amp;#39;habitude de &amp;quot;stocker&amp;quot; ce forum sur mes sites successifs, dans un sous-domaine, et de faire suivre aux utilisateurs la nouvelle adresse, voire de mettre en place une redirection.&lt;/p&gt;
+
+&lt;h3&gt;Erreur d&amp;#39;environnement&lt;/h3&gt;
+
+&lt;p&gt;En novembre dernier, j&amp;#39;ai lancé un déménagement. (La qualité de service de mon hébergeur devenait déplorable avec un uptime passant parfois sous les 90%)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je verrouille l&amp;#39;accès en écriture sur l&amp;#39;ancien&lt;/li&gt;
+&lt;li&gt;Je déplace la totalité des fichiers d&amp;#39;un serveur à un autre, tranquillement.&lt;/li&gt;
+&lt;li&gt;Je copie la base de données.&lt;/li&gt;
+&lt;li&gt;Je teste avec quelques utilisateurs le nouveau.&lt;/li&gt;
+&lt;li&gt;Fin de l&amp;#39;opération.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Jusqu&amp;#39;à ce matin, lorsque j&amp;#39;ai vu un message d&amp;#39;erreur &amp;quot;Can&amp;#39;t connect to MySQL server on anciendomaine.com&amp;quot;. J&amp;#39;ai mal lu le message, et n&amp;#39;ai pas fait attention, et j&amp;#39;ai attendu quelques minutes, pensant à une maintenance sur mon hébergeur. Puis j&amp;#39;ai fini par réaliser que sur mon nouveau domaine, opérationnel depuis 4 mois, la base de données utilisée était toujours l&amp;#39;ancienne. Du coup, nouvelle copie des bases de données, modification du fichier config.php qui contenait les données pour la base, et voilà, tout est rentré dans l&amp;#39;ordre.&lt;/p&gt;
+
+&lt;p&gt;Si mon ancien domaine (et sa base) avait expiré avant que je m&amp;#39;en rende compte, j&amp;#39;aurais perdu une partie de l&amp;#39;historique. Pour un petit forum privé, cela n&amp;#39;aurait pas été trop grave. Mais pour un projet plus important, cela aurait pu provoquer des catastrophes.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>L’esprit d’équipe autour de la qualité</title>
+   <link href="http://blog.fabricebournisien.eu///2012/01/04/l-esprit-d-equipe-autour-de-la-qualite/"/>
+   <updated>2012-01-04T00:00:00+01:00</updated>
+   <id>http://blog.fabricebournisien.eu//2012/01/04/l-esprit-d-equipe-autour-de-la-qualite</id>
+   <content type="html">&lt;h3&gt;Contexte&lt;/h3&gt;
+
+&lt;p&gt;La société pour laquelle je travaille est en train de refaire son principal projet depuis le début. Au programme : changement de technologies. Nous lancerons ce nouveau projet d’ici l’été, et nous travaillons déjà depuis quelques mois sur le sujet.&lt;/p&gt;
+
+&lt;p&gt;Nous avons mis en avant la qualité, avec de l’intégration continue (&lt;a href=&quot;http://hudson-ci.org/&quot;&gt;Hudson&lt;/a&gt;, allié à &lt;a href=&quot;http://fr.wikipedia.org/wiki/Git&quot;&gt;Git&lt;/a&gt;), des TDD (Test driven development), des framework robustes : &lt;a href=&quot;http://www.symfony-project.org/&quot;&gt;Symfony&lt;/a&gt; pour le php, &lt;a href=&quot;http://developer.yahoo.com/yui/&quot;&gt;YUI&lt;/a&gt; pour le javascript, des tests fonctionnels avec cucumber et watir… Et pour organiser tout ça, on passe à &lt;a href=&quot;http://fr.wikipedia.org/wiki/Scrum&quot;&gt;Scrum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Beaucoup de changements, et les premiers tests sur le serveur de staging nous ont tous donné envie d’aller encore plus loin.&lt;/p&gt;
+
+&lt;h3&gt;Action&lt;/h3&gt;
+
+&lt;p&gt;Mais tout n’est pas rose dans notre monde : le serveur de staging n’était pas assez stable à mon goût. J’ai donc envoyé un mail à tous mes collègues concernés afin de mettre au clair la façon de travailler :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pas de mise à jour en milieu de journée (le staging est mis à jour chaque nuit avec les dernières versions stables des sous projets).&lt;/li&gt;
+&lt;li&gt;Tests en amont, côté serveur de développement.&lt;/li&gt;
+&lt;li&gt;Incitation à me consulter pour la mise en place des tests fonctionnels que j’aurais pu oublier.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Et bien évidemment, j’ai précisé dans le mail que j’étais ouvert à toutes les suggestions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2012/equipe.jpg&quot; alt=&quot;Travail d&amp;#39;équipe&quot; title=&quot;Travail d&amp;#39;équipe&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Réactions&lt;/h3&gt;
+
+&lt;p&gt;Nous avions longuement rabâché qu’il fallait un produit de qualité, que nous devions tous tester le produit de façon à ne rien laisser passer.&lt;/p&gt;
+
+&lt;p&gt;En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point “techniques” ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours “qualité”. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme.&lt;/p&gt;
+
+&lt;p&gt;Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.&lt;/p&gt;
 </content>
  </entry>
  
