@@ -2,7 +2,7 @@
 layout: post
 title: Il faut savoir se fier à ses tests
 tags: 
-  tests
+  test
   bug
 ---
 

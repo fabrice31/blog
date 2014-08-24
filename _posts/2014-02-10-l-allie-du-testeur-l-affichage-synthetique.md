@@ -3,7 +3,7 @@ layout: post
 title: L'allié du testeur &#58; l'affichage synthétique
 tags: 
   jenkins
-  tests
+  test
 ---
 
 Comme beaucoup de gens, je travaille toujours sur plusieurs projets à la fois. Mon rôle principal est de créer et maintenir des tests fonctionnels automatiques.

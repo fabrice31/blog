@@ -3,7 +3,7 @@ layout: post
 title: Ruby - OAuth v1.0a pour optimiser les tests
 tags:
   ruby
-  tests
+  test
   api
   watir
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Comment organiser les tests sur le long terme
 tags:
-  tests
+  test
   jenkins
 ---
 

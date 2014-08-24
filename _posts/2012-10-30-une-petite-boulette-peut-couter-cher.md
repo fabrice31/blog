@@ -2,7 +2,7 @@
 layout: post
 title: Une petite boulette peut coûter cher
 tags:
-  tests
+  test
   watir
 ---
 

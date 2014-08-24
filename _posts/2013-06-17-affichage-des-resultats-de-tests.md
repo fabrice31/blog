@@ -2,7 +2,7 @@
 layout: post
 title: Affichage des résultats de tests
 tags:
-  tests
+  test
   jenkins
 ---
 

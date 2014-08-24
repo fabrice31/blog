@@ -4,7 +4,7 @@ title: Des tests automatiques avec contenus aléatoires
 tags:
   cucumber
   watir
-  tests
+  test
 ---
 
 Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la "bonne chose".

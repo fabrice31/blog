@@ -2,7 +2,7 @@
 layout: post
 title: Tester un site multilingue
 tags:
-  tests
+  test
   watir
 ---
 
