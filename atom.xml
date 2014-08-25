@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-08-24T20:56:41+02:00</updated>
+ <updated>2014-08-25T18:00:14+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -120,7 +120,7 @@ Vous pouvez trouver le code sur le &lt;a href=&quot;https://github.com/fabrice31
 
 &lt;p&gt;Une fois le json obtenu, il restait à le traiter. L&amp;#39;avantage est de pouvoir le faire en javascript, ce qui permet à chacun de gérer ensuite l&amp;#39;avantage à sa sauce. J&amp;#39;ai fait un écran de contrôle pour l&amp;#39;ensemble des projets que je gère.&lt;/p&gt;
 
-&lt;p&gt;Et j&amp;#39;ai filé les clefs à une équipe sur un projet, qui a modifié l&amp;#39;écran pour pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
+&lt;p&gt;Et j&amp;#39;ai filé les clefs à une équipe sur un projet, qui a modifié l&amp;#39;écran pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
 Et voilà ce que ça donne :&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/pictures/2014/jenkins-show.png&quot; alt=&quot;Jenkins show&quot; title=&quot;Ecran d&amp;#39;affichage jenkins&quot;&gt;&lt;/p&gt;
