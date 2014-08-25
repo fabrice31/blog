@@ -33,7 +33,7 @@ Vous pouvez trouver le code sur le [dépôt github](https://github.com/fabrice31
 
 Une fois le json obtenu, il restait à le traiter. L'avantage est de pouvoir le faire en javascript, ce qui permet à chacun de gérer ensuite l'avantage à sa sauce. J'ai fait un écran de contrôle pour l'ensemble des projets que je gère.
 
-Et j'ai filé les clefs à une équipe sur un projet, qui a modifié l'écran pour pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
+Et j'ai filé les clefs à une équipe sur un projet, qui a modifié l'écran pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
 Et voilà ce que ça donne :
 
 ![Jenkins show](/public/pictures/2014/jenkins-show.png "Ecran d'affichage jenkins")
