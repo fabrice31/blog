@@ -174,6 +174,70 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2014/02/10/l-allie-du-testeur-l-affichage-synthetique/" itemprop="url" rel="bookmark">
+        L'allié du testeur &#58; l'affichage synthétique
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2014-02-10" itemprop="datePublished">
+			10/02/2014
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/jenkins">Jenkins</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Comme beaucoup de gens, je travaille toujours sur plusieurs projets à la fois. Mon rôle principal est de créer et maintenir des tests fonctionnels automatiques.</p>
+
+<p>Pour gérer tout cela, nous sommes 2 personnes. Mais nous avons aussi des tests manuels à faire avant chaque mise en production de chaque projet.</p>
+
+<h3>Quelques chiffres</h3>
+
+<ul>
+<li>6 serveurs jenkins : 3 linux, 3 windows. (Uniquement pour les tests fonctionnels)</li>
+<li>1 700 scenarios cucumber joués quotidiennement. (soit plus de 20 heures chaque jour)</li>
+<li>près de 300 jobs jenkins pour les ranger</li>
+<li>7 produits principaux, à tester sur 1 à 3 navigateurs + mobile</li>
+</ul>
+
+<p>Cela donne le tournis. Plus le temps passe, plus j&#39;ai besoin d&#39;avoir un affichage synthétique pour savoir si mes tests sont passés ou non.</p>
+
+<p>J&#39;avais dans le passé créer un petit plugin pour <a href="http://web-quality.over-blog.com/affichage-des-resultats-de-tests">afficher mes résultats</a>. Mais chaque projet est légèrement différent, demande des réglages différents, et j&#39;arrivais aux limites de cet affichage. J&#39;avais un écran par projet, soit 7 écrans de contrôle, que j&#39;aurais voulu avoir toujours sous la main.</p>
+
+<h3>Plugin jenkins</h3>
+
+<p>J&#39;ai donc regardé sur jenkins s&#39;il existait des plugins permettant de lister les résultats au format json. Je n&#39;ai rien trouvé de concluant, j&#39;ai donc codé un petit plugin pour avoir un fichier jsonp qui liste tous les jobs, et pour chacun :
+* son statut courant,
+* les stats du dernier résultat,
+* l&#39;avancement s&#39;il est en cours...
+Vous pouvez trouver le code sur le <a href="https://github.com/fabrice31/jsonResult">dépôt github</a>.</p>
+
+<h3>Console en javascript</h3>
+
+<p>Une fois le json obtenu, il restait à le traiter. L&#39;avantage est de pouvoir le faire en javascript, ce qui permet à chacun de gérer ensuite l&#39;avantage à sa sauce. J&#39;ai fait un écran de contrôle pour l&#39;ensemble des projets que je gère.</p>
+
+<p>Et j&#39;ai filé les clefs à une équipe sur un projet, qui a modifié l&#39;écran pour avoir seulement les tests fonctionnels de son projet, et a ajouté les tests unitaires sur le même écran.
+Et voilà ce que ça donne :</p>
+
+<p><img src="/public/pictures/2014/jenkins-show.png" alt="Jenkins show" title="Ecran d&#39;affichage jenkins"></p>
+
+<ul>
+<li>On peut séparer les jobs dans les différents projets via des expressions régulières.</li>
+<li>Pour l&#39;un des projets, très conséquents, j&#39;ai même séparé par navigateur.</li>
+<li>On voit bien les tests KO pour chaque job. (en rouge)</li>
+<li>Les jobs désactivés ou n&#39;ayant pas de résultats sont gris.</li>
+<li>Les jobs qui sont en cours d&#39;exécution sont en bleu, avec une barre d&#39;avancement sur leur durée estimée.</li>
+<li>Les jobs qui seront lancés quand il y aura une place pour eux ont une pastille jaune.</li>
+</ul>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/" itemprop="url" rel="bookmark">
         Comment j'ai changé de travail sans bouger de ma chaise
       </a>
@@ -298,109 +362,6 @@ Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait p
 <p>Pour la petite histoire, le code corrigé sans bug donne :</p>
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="n">yyyy</span>
 </code></pre></div></div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/06/17/affichage-des-resultats-de-tests/" itemprop="url" rel="bookmark">
-        Affichage des résultats de tests
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-06-17" itemprop="datePublished">
-			17/06/2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/jenkins">Jenkins</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Lorsqu&#39;on teste avec jenkins, cucumber et watir, on obtient des rapports détaillés, qu&#39;il faut lire et analyser en permanence.</p>
-
-<p>Depuis plusieurs mois, nous avons dans nos locaux une télé dédiée à l&#39;affichage de l&#39;état général de l&#39;ensemble de nos tests. Pour cela, le plugin Jenkins Wall Display nous a suffit dans un premier temps. Nous affichons sur la télé une page web qui fait défiler</p>
-
-<p>Au total, sur ces écrans, nous affichons le résumé :</p>
-
-<ul>
-<li>Plus de 1 300 test php unit (et leur 5 000 assertions)</li>
-<li>Près de 500 tests unitaires JS</li>
-<li>Plus de 950 scénarios cucumber pour les tests fonctionnels.</li>
-</ul>
-
-<p>En outre, nous affichons aussi quelques graphiques sensibles de l&#39;état de la production : nombre de compte crées, etc..
-On a beau regrouper toutes ces informations, il arrive un moment où l&#39;affichage n&#39;est plus lisible.</p>
-
-<p><img src="/public/pictures/2013/screen-avant.jpg" alt="Exemple avec les tests fonctionnels" title="Affichage avant les travaux"></p>
-
-<p>Le constat est moins alarmant pour les tests unitaires. Les chiffres exposent bien pourquoi :</p>
-
-<ul>
-<li>Tests fonctionnels : 40 jobs jenkins * 3 navigateurs</li>
-<li>Tests unitaires : 18 jobs jenkins * 2 environnement</li>
-</ul>
-
-<h3>Comment afficher proprement les résultats</h3>
-
-<p>Je suis parti en quête d&#39;une solution pour afficher tous nos résultats proprement, avec quelques contraintes :</p>
-
-<ul>
-<li>Je préférais afficher tous les résultats sur un seul écran par type de tests</li>
-<li>Je veux pouvoir afficher un résumé ( x tests KO / x tests total)</li>
-<li>Je veux pouvoir séparer facilement les affichages d&#39;un même type de tests (par navigateur / environnement)</li>
-</ul>
-
-<p>Ma quête fut longue et semée d&#39;embûches :</p>
-
-<ul>
-<li>Tentative d&#39;utilisation de l&#39;API, mais c&#39;était déjà trop lent alors que je ne calculais / affichais pas la moitié de ce que je voulais (45 secondes environ)</li>
-<li>Plusieurs plugin jenkins, mais aucun ne permettant ce que je veux</li>
-<li>Un Plugin jenkins faisant la moitié de ce que je voulais, mais complètement bugué</li>
-</ul>
-
-<h3>Mon premier plugin jenkins</h3>
-
-<p>Je suis donc parti à l&#39;assaut de la documentation de jenkins pour coder un plugin fait-maison qui ferait exactement ce que je voudrais.</p>
-
-<p>Ce que j&#39;ai bien aimé dans cette création :</p>
-
-<ul>
-<li>Tout en java. Je n&#39;avais pas codé en java depuis 10 ans je pense, et j&#39;ai perdu, mais vite repris mes repères.</li>
-<li>Bosser sur un plugin que je pourrais diffuser en open-source à la fin :)</li>
-<li>La possibilité de faire exactement ce que je veux, sans être limité par un plugin déjà fait.</li>
-</ul>
-
-<p>Ce que je n&#39;ai pas aimé :</p>
-
-<ul>
-<li>La documentation : elle existe, elle semble complète. Mais je trouve l&#39;organisation moyennement bonne. J&#39;ai plusieurs fois été à la recherche d&#39;exemple de code pour trouver la fonction dont j&#39;avais besoin, que je ne trouvais pas dans la doc.</li>
-<li>L&#39;installation de maven qui marche du premier coup sur un de mes postes, mais se passe mal sur l&#39;autre.</li>
-</ul>
-
-<h3>Au final, ça donne quoi ?</h3>
-
-<p>J&#39;ai donc un plugin qui permet de créer une nouvelle &quot;View&quot;. On peut y configurer :</p>
-
-<ul>
-<li>Les noms des colonnes, et la façon de filtrer les jobs dans chaque colonne, par des expression régulières.</li>
-<li>Affichage dans chaque colonne du temps pris pour ces tests, du nombre de scénarios en échec et du nombre total de scénarios. (Afficher le nombre de jobs est beaucoup plus simple, mais donne beaucoup moins d&#39;informations : un job en échec pour 1 / 34 est moins grave qu&#39;un test avec 4 / 4 erreurs)</li>
-<li>Affichage de la liste des jobs en échec (avec le nombre de scénarios)</li>
-<li>Une colonne à part, qui affiche le temps total sur jenkins (master + slave)</li>
-<li>Une liste de jobs spéciaux (dans mon cas : ceux qui lancent les autres, la génération de la doc...)</li>
-</ul>
-
-<p>Le plugin est sur github : <a href="https://github.com/fabrice31/CucumberJenkins">https://github.com/fabrice31/CucumberJenkins</a></p>
-
-<p>Et maintenant ?</p>
-
-<p>J&#39;ai configuré le plugin pour fonctionner avec cucumber, puisque je suis au coeur des tests fonctionnels. Il faut maintenant que je me débrouille pour que cet affichage fonctionne aussi bien avec tests php unit (séparés par des regexp par environnement cette fois)</p>
-
-<p><img src="/public/pictures/2013/screen-apres.jpg" alt="Affichage de résultats cucumber" title="Affichage apres les travaux">
-<img src="/public/pictures/2013/screen-config.jpg" alt="Plugin jenkins affichage de résultats cucumber" title="Configuration du plugin"></p>
-</div>
   </div>
   
 </div>

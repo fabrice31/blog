@@ -174,6 +174,82 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2012/10/30/une-petite-boulette-peut-couter-cher/" itemprop="url" rel="bookmark">
+        Une petite boulette peut coûter cher
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-10-30" itemprop="datePublished">
+			30/10/2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Comme je l&#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&#39;ai quelques centaines de scénarios, des milliers d&#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &quot;instable&quot;, il faut lire le rapport détaillé.
+Deux anecdotes récentes à ce sujet.</p>
+
+<h3>Le bug est détecté</h3>
+
+<p>L&#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &quot;mais je l&#39;ai corrigé vendredi&quot;. Après test manuel, je confirme, le bug n&#39;est plus présent. Pourtant, le test ne fonctionne pas.</p>
+
+<p>Commence alors une rapide enquête pour comprendre.</p>
+
+<p>Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.</p>
+
+<p>Le test a été mis en place au moment du bug, et une partie du test n&#39;avait donc jamais été vérifiée avant la mise en service du test.</p>
+
+<p>La correction a consisté à attendre que l&#39;élément testé soit bien affiché avant de le tester.</p>
+
+<h3>J&#39;ai cru voir un petit bug</h3>
+
+<p>Plus tôt cette semaine, un collègue me signale qu&#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.</p>
+
+<p>Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.</p>
+
+<p>Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.</p>
+
+<p>Nous avons donc une suite de vérifications, en ruby+watir</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Pour traduire : On vérifie qu&#39;une image est présente, puis si l&#39;option alignement est &quot;droite&quot;, je vérifie que l&#39;image est aligné à droite. Sinon, je vérifie à gauche.</p>
+
+<p>Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.</p>
+
+<p>En ruby, le and est prioritaire sur le .exists. Je teste donc l&#39;existence d&#39;un booléen au lieu de tester deux booléens.</p>
+
+<p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">end</span>    
+</code></pre></div>
+<h3>Conclusion</h3>
+
+<p>Ce que je retiens de ces événements récents ?</p>
+
+<ul>
+<li>La communication dans l&#39;équipe est très importante.</li>
+<li>Tester qu&#39;un test détecte une panne est complexe.</li>
+<li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
+</ul>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2012/09/17/l-art-de-signaler-un-bug/" itemprop="url" rel="bookmark">
         L'art de signaler un bug
       </a>
@@ -285,71 +361,6 @@
 <p>Les mises à jour automatiques sont une plaie : les utilisateurs ne comprennent pas pourquoi le comportement change sans modification, et pense systématiquement à un problème du produit concerné, pas d&#39;un logiciel tiers.</p>
 
 <p>Certains logiciels s&#39;adjugent des pouvoirs très importants, sans le signaler à leurs utilisateurs, dégradant par la même occasion la navigation sur des sites web qui fonctionnent pourtant parfaitement par ailleurs.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/06/18/les-tests-doivent-ils-tester/" itemprop="url" rel="bookmark">
-        Les tests doivent-ils tester ?
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-06-18" itemprop="datePublished">
-			18/06/2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><h3>Le juste équilibre dans les tests</h3>
-
-<p>Mettre en place des <strong>tests fonctionnels automatiques</strong> revient à jouer à l&#39;équilibriste entre l&#39;existant (déjà testé et &quot;stable&quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...</p>
-
-<p>Le responsable qualité et l&#39;équipe doivent avoir confiance dans leurs indicateurs, et doivent connaître leurs limites, afin de pouvoir planifier les actions pour éliminer les bugs.</p>
-
-<h3>Des tests toujours réussis</h3>
-
-<p>J&#39;ai lu récemment que des tests fonctionnels toujours &quot;vert&quot; sont mauvais, qu&#39;ils ne testent rien. (<a href="http://experttesters.com/2012/05/17/why-100-test-pass-rates-are-bad/">Why 100% Test Pass rates are Bad</a>)</p>
-
-<p>Je ne suis pas d&#39;accord : j&#39;ai la hantise de tests &quot;rouge&quot; : à chaque fois, cela demande d&#39;aller analyser le rapport, vérifier si c&#39;est un faux positif. (Cela arrive régulièrement : même en prévoyant au mieux, il arrive qu&#39;une action dépasse le temps prévue pour s&#39;exécuter, etc.)</p>
-
-<h4>Les tests doivent être toujours vert</h4>
-
-<p>Si votre écran de contrôle affiche toujours du rouge, vous finirez pas ne plus lui faire confiance. Le problème, c&#39;est que si vous n&#39;avez pas confiance dans des tests automatisés, c&#39;est que vous perdrez du temps à les refaire à la main. Et que lorsqu&#39;ils passeront au rouge, vous penserez à un faux positif avant même de regarder, et vous pourriez laisser passer un bug.</p>
-
-<h4>L&#39;important n&#39;est pas la couleur, mais la couverture</h4>
-
-<p>Je préfère avoir une couverture de 50% fiable qu&#39;une plus grande couverture mais instable. Il faut bien comprendre qu&#39;un test vert ne dit pas &quot;il n&#39;y a pas de bug sur ce projet&quot;, mais plutôt &quot;aucun bug prévu n&#39;a été trouvé cette fois-ci&quot;. La différence semble tenue, mais elle est primordiale.</p>
-
-<p>L&#39;équipe doit savoir si les tests ont des lacunes, afin de redoubler d&#39;effort &quot;manuels&quot; dans cette partie. Il ne faut jamais oublier que les tests automatiques ne testent pas tout le projet, mais seulement ce qu&#39;ils sont sensés tester.</p>
-
-<p><img src="/public/pictures/2012/screen_tests.jpg" title="Ecran de contrôle" style="width: 200px; float: left;"/>
-<img src="/public/pictures/2012/cucumber-report.png" title="Résultats de tests cucumber" style="width: 200px; float: left;"/>
-<img src="/public/pictures/2012/graphique-nb-issues.jpg" title="Evolution du nombre de bugs" style="width: 200px; float: left;"/>
-<p style="clear: both;"></p></p>
-
-<h3>Choix des métriques</h3>
-
-<p>Le choix des métriques est primordial : cela influe sur le ressenti de la qualité par l&#39;équipe qui développe le produit. (<a href="http://martijndevrieze.net/2012/05/30/test-automation-metrics-what-do-you-report-on/">Test automation metrics - what do you report on?</a>)</p>
-
-<h4>Mise à jour des métriques</h4>
-
-<ul>
-<li>En début de projet, la pertinence du &quot;nombre&quot; de bugs est relative. Quand le projet a déjà été livré dans une version beta au public, ce nombre est déjà plus réaliste.</li>
-<li>Les tests de charge sont importants tout le temps, mais il ne faut jamais oublier le stade d&#39;avancement du projet. Un test de charge qui semble échouer peut ne pas l&#39;être si on le fait durant une &quot;maintenance programmée&quot; du serveur.</li>
-</ul>
-
-<p>Certains pensent qu&#39;il vaut mieux avoir trop de métriques que pas assez. Mais il faut pondérer ceci par le temps pour les analyser et les comprendre.</p>
-
-<h4>Stratégie générale</h4>
-
-<p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
 </div>
   </div>
   

@@ -174,6 +174,100 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/" itemprop="url" rel="bookmark">
+        Des tests automatiques avec contenus aléatoires
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-04-13" itemprop="datePublished">
+			13/04/2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/cucumber">Cucumber</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
+
+<p>Prenons un exemple de deux tests exécutés en même temps :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">"pseudo-tmp"</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo-tmp"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo-tmp"</span>
+<span class="vi">@scenario2</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Pseudo</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">when</span> <span class="n">you</span> <span class="n">publish</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span>
+</code></pre></div>
+<p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
+
+<p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
+
+<p>A un détail près :</p>
+
+<ul>
+<li>A 10h, le test s’exécute, il fonctionne.</li>
+<li>A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &quot;test pseudo&quot; sur la page alors qu&#39;un bug sera présent.</li>
+</ul>
+
+<p>Ma solution : <strong>ajouter de l&#39;aléatoire dans les tests</strong>.
+Avant chaque scénario, je crée un token, composé de :
+* 2 lettres du navigateur (ff, ie, ch..)
+* un nombre aléatoire.
+Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
+  <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
+  <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
+  <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
+<span class="no">End</span>
+</code></pre></div>
+<p>Ma classe Token :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
+<span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
+<span class="c1"># Author:: Fabrice</span>
+<span class="k">class</span> <span class="nc">Token</span>
+  <span class="c1"># Create a new token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@value</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span><span class="si">}#{</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span><span class="o">+</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="c1"># Get the value of the last token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">value</span>
+    <span class="vi">@value</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>Et côté vérification, on en tient compte également.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">else</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
+
+<p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2013/04/02/l-armee-paie-ses-militaires-ou-pas/" itemprop="url" rel="bookmark">
         L'armée ne paie pas toujours ses militaires
       </a>
@@ -355,178 +449,6 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.</li>
 
 <p>A la base, je comptais juste faire un achat rapide. Je viens de passer la soirée à faire un audit qualité (bug / ergonomie / accessibilité / webperf) à boulanger. C&#39;est cadeau : je n&#39;ai fait que survoler. J&#39;encourage Boulanger à le faire à fond (ou mieux, à le faire faire par des experts).
 (Evidemment, si j&#39;ai une réponse, je la publierais ici)</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/02/26/tester-sur-plusieurs-navigateurs/" itemprop="url" rel="bookmark">
-        Tester sur plusieurs navigateurs
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-02-26" itemprop="datePublished">
-			26/02/2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/cucumber">Cucumber</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Tester de façon automatique, c&#39;est bien. Le faire sur plusieurs environnements, c&#39;est mieux.</p>
-
-<p>Dans mon cas, par défaut, mes tests sont lancés sur Firefox. Sur un serveur jenkins-ci (sur debian), c&#39;est en effet le navigateur le plus facile à gérer. Ils sont exécutés une fois par jour, et aussi à la demande.</p>
-
-<p>Certains scenarios testent la version mobile de nos sites. Il nous faut aussi tester nos sites pour différents navigateurs. Pour cela, les profils et les tags de cucumber sont très intéressants.</p>
-
-<h3>Tags cucumber</h3>
-
-<p>Au dessus de chaque scénario, il est possible de lister des tags. On peut ensuite exécuter tous les tests portant un tag particulier.</p>
-
-<p>Cela permet de découper l&#39;exécution de nombreux scénarios en plusieurs jobs sur jenkins, ce qui est plus confortable : si un test passe dans le rouge, il faut analyser un rapport pour 10 scénario au lieu de 300. Si on veut re-tester ce point précis, on mettra également moins de temps.</p>
-
-<p>On exécute les scénarios avec la ligne &quot;cucumber --tag @montag&quot;. Si le tag n&#39;existe pas, le résultat affichera immédiatement 0 scenarios.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@admin</span> <span class="vi">@montag</span> <span class="vi">@ie</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="nb">test</span> <span class="n">un</span> <span class="n">tag</span>
-  <span class="no">When</span> <span class="no">I</span> <span class="nb">test</span>
-  <span class="no">Then</span> <span class="no">I</span> <span class="n">tested</span>
-</code></pre></div>
-<h3>Cucumber.yml</h3>
-
-<p>Les profils de cucumber se gère dans un fichier au format yaml, qui peut gérer beaucoup de choses :</p>
-
-<ul>
-<li>Ajouter automatiquement des paramètres de tags</li>
-<li>Passer des variables à l&#39;environnement de tests, qui peut ensuite les utiliser.</li>
-</ul>
-
-<p>Exemple avec une partie de mon fichier :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% common </span><span class="o">=</span> <span class="s2">"-r support -r features --tags ~@wip --tags ~@danger 
---color --format pretty --format html -o results.html --format junit -o junit"</span> <span class="o">%&gt;</span>
-<span class="c1"># default : staging and firefox</span>
-<span class="ss">default: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; BROWSER=</span><span class="n">firefox</span>
-<span class="ss">danger: </span><span class="o">-</span><span class="n">r</span> <span class="n">support</span> <span class="o">-</span><span class="n">r</span> <span class="n">features</span> <span class="o">--</span><span class="n">tags</span> <span class="o">~</span><span class="vi">@wip</span> <span class="o">--</span><span class="n">color</span> <span class="o">--</span><span class="nb">format</span> <span class="n">pretty</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
-<span class="ss">ie: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">ie</span>
-<span class="ss">ff: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
-<span class="ss">chrome: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">chrome</span>
-<span class="ss">mobile: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">mobile</span>
-</code></pre></div>
-<p>La première ligne définit des paramètres commun à la plupart des profils :</p>
-
-<ul>
-<li>On impose de récupérer le dossier features (dans lequel se trouvent les scenarios) et le dosser support (qui contient le code qui &quot;gère&quot; le navigateur)</li>
-<li>On exclut les tests portant le tag @wip (work in progress) et le tag @danger</li>
-<li>On demande l&#39;affichage des résultats complets (avec les étapes et la couleur)</li>
-<li>On demande l&#39;export des résultats au format html et au format junit</li>
-</ul>
-
-<p>Lorsqu&#39;on utilise un profil, on peut lancer pour un tag donné. Exemple : <code>cucumber . --tag @test -p chrome</code></p>
-
-<p>Viennent ensuite les profils :</p>
-
-<ul>
-<li>-p default: lance les tests sur firefox</li>
-<li>-p danger: autorise le lancement des tests taggués @danger</li>
-<li>-p ie, ff, chrome, mobile: lance les tests sur un navigateur particulier</li>
-</ul>
-
-<h3>Différences entre les navigateurs</h3>
-
-<p>Passer le nom du navigateur ne suffit pas, il faut également l&#39;utiliser dans le code pour travailler avec le navigateur voulu.</p>
-
-<p>Dans notre cas, nous lancons le navigaeur avant chaque scénario pour éviter qu&#39;un test ait un impact sur le suivant.</p>
-
-<p>Voici le code :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
-  <span class="k">case</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span>
-  <span class="k">when</span> <span class="s1">'ie'</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:ie</span>
-  <span class="k">when</span> <span class="s1">'mobile'</span>
-    <span class="n">mobile_useragent</span> <span class="o">=</span> <span class="s2">"Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like \
-        Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 \
-        Mobile/9B206 Safari/7534.48.3"</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'general.useragent.override'</span><span class="p">]</span> <span class="o">=</span> <span class="n">mobile_useragent</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
-  <span class="k">when</span> <span class="s1">'chrome'</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:chrome</span>
-  <span class="k">else</span>
-    <span class="c1"># Default case : firefox</span>
-    <span class="n">download_directory</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">Dir</span><span class="p">.</span><span class="nf">pwd</span><span class="si">}</span><span class="s2">/downloads"</span>
-    <span class="n">download_directory</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">"</span><span class="p">)</span> <span class="p">\</span>
-        <span class="k">if</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Platform</span><span class="p">.</span><span class="nf">windows?</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.download.folderList'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.download.dir'</span><span class="p">]</span> <span class="o">=</span> <span class="n">download_directory</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.link.open_newwindow'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'browser.helperApps.neverAsk.saveToDisk'</span><span class="p">]</span> <span class="o">=</span> <span class="p">\</span>
-        <span class="s2">"application/octet-stream"</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'network.http.use-cache'</span><span class="p">]</span> <span class="o">=</span> <span class="kp">false</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
-  <span class="k">end</span>
-  <span class="c1"># Resize window</span>
-  <span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'mobile'</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">900</span><span class="p">)</span>
-  <span class="k">else</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">960</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>On exploite le nom du navigateur pour lancer le bon, avec des paramètres particuliers.</p>
-
-<ul>
-<li>Le mobile lance un Firefox avec le profil d&#39;un navigateur Iphone (et une résolution de classique pour un mobile)</li>
-<li>Pour internet explorer et chrome, il faut avoir téléchargé les exécutables (sur le groupe selenium) et les avoir ajoutés au path</li>
-<li>Pour firefox, on ajoute des paramètres pour effectuer des tests d&#39;upload et download de fichiers)</li>
-</ul>
-
-<h3>Les tests ont-ils changés ?</h3>
-
-<p>Lorsque j&#39;ai commencé à coder ces tests, il y a plus d&#39;un an, j&#39;avais anticipé l&#39;architecture pour gérer ce genre de problématique. La mise en place n&#39;a pourtant pas eu lieu sans douleur.</p>
-
-<p>Certains navigateurs ne se comportent pas tout à fait comme les autres. Il faut donc mettre à jour son code pour qu&#39;il soit le plus &quot;ré utilisable possible&quot;.</p>
-
-<p>Dans le cas d&#39;Internet Explorer, les modifications apportées :</p>
-
-<ul>
-<li>Ajout d&#39;un tag @ie sur les tests compatibles (et stables) avec IE.</li>
-<li>Dans certains cas de remplissage de formulaire, ajout d&#39;une ligne de code pour donner le focus au champ à remplir</li>
-<li>Modification des timeout du projet.</li>
-</ul>
-
-<p>On lance donc les tests pour Internet Explorer avec la commande <code>cucumber --tag @ie -p ie</code>. On peut changer le tag, mais certains ne fonctionnent pas encore sous IE à cause de codes vraiment spécifiques.</p>
-
-<p>Voici deux exemples de code modifé spécifiquement pour IE :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
-  <span class="c1"># internet explorer is slower : timeout increase</span>
-  <span class="no">SHORT_TIMEOUT</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="no">TIMEOUT</span> <span class="o">=</span> <span class="mi">15</span>
-  <span class="no">LONG_TIMEOUT</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="k">else</span>
-  <span class="no">SHORT_TIMEOUT</span> <span class="o">=</span> <span class="mi">2</span>
-  <span class="no">TIMEOUT</span> <span class="o">=</span> <span class="mi">9</span>
-  <span class="no">LONG_TIMEOUT</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Ce code définit les constantes des timeout pour l&#39;ensemble des test.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
-  <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># need for IE purpose</span>
-<span class="k">end</span>
-<span class="nb">self</span><span class="p">.</span><span class="nf">wait_until</span><span class="p">(</span><span class="no">LONG_TIMEOUT</span><span class="p">){</span>
-  <span class="nb">self</span><span class="p">.</span><span class="nf">login_element</span><span class="p">.</span><span class="nf">exists?</span> <span class="n">and</span> <span class="nb">self</span><span class="p">.</span><span class="nf">login_element</span><span class="p">.</span><span class="nf">visible?</span>
-<span class="p">}</span>
-<span class="nb">self</span><span class="p">.</span><span class="nf">username_element</span><span class="p">.</span><span class="nf">focus</span> <span class="c1"># need for IE purpose</span>
-<span class="nb">self</span><span class="p">.</span><span class="nf">username</span> <span class="o">=</span> <span class="vi">@account</span><span class="p">.</span><span class="nf">email</span>
-</code></pre></div>
-<p>Les commentaires dans le code parlent d&#39;eux mêmes. Documenter le code spécifique à IE est d&#39;ailleurs indispensable si on veut garder ses modifications qui semblent &quot;inutiles&quot;.</p>
-
-<p>Si les tests avec Firefox sont joués chaque jour sur un serveur, en 2h45 environ, ceux pour IE sont exécutés en local, en 3h, alors que certains tests ne sont pas exécutés sur IE.</p>
-
-<p>Ce sont donc plus de 300 scénarios par jour, 12 000 par mois. Sans compter les tests unitaires, les tests manuels...</p>
 </div>
   </div>
   
