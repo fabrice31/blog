@@ -174,6 +174,74 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2013/04/22/comment-organiser-les-tests-sur-le-long-terme/" itemprop="url" rel="bookmark">
+        Comment organiser les tests sur le long terme
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-04-22" itemprop="datePublished">
+			22/04/2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/jenkins">Jenkins</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><h3>Exécuter une partie des tests</h3>
+
+<p>Les scénarios sont taggués pour être lancé par jenkins par la commande : <code>cucumber --tag @montag</code>
+Cela permet de ne lancer qu&#39;une partie des tests. (voir &quot;<a href="http://web-quality.over-blog.com/tester-sur-plusieurs-navigateurs">Tester sur plusieurs navigateurs</a>&quot; pour les détails)</p>
+
+<h3>Serveurs</h3>
+
+<p>Côté serveur, nous avons 2 serveurs jenkins.
+Le principal, une grosse machine debian quadri core, qui exécute jusqu&#39;à 3 jobs en même temps.</p>
+
+<p>Ensuite, un serveur Windows, avec un jenkins &quot;slave&quot;.
+L&#39;esclave reçoit ses ordres du maître, qui lui demande d’exécuter des jobs particuliers.
+Il est sous Windows pour pouvoir les exécuter sur Internet Explorer.</p>
+
+<p>Pour éviter les effets de bords entre les tests sur IE, pas de solution. On vide donc les cookies, le cache, etc à la fermeture d&#39;Internet Explorer.
+On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serveur : les sessions se mélangeraient.</p>
+
+<h3>Quelques chiffres</h3>
+
+<p>Les scenarios sont regroupés en feature, dont le temps d&#39;execution est de maximum 10 minutes. Dans Jenkins on a 38 &quot;jobs&quot; sur FF (+ 34 sur IE)</p>
+
+<p><strong>Firefox</strong></p>
+
+<p>Chaque jour : 323 scénarios / 2693 step =&gt; 3h</p>
+
+<p><strong>IE</strong> (1 fois par semaine actuellement, 1 fois par jour bientôt)</p>
+
+<p>Chaque jour : 302 scénarios / 2527 step =&gt; 4h 30</p>
+
+<p>Cela représente 227 500 scénarios par an (pour 2 737 heures de tests).</p>
+
+<p>Sans oublier les lancements à la demande de certains jobs.</p>
+
+<h4>Comptes utilisateurs</h4>
+
+<p>Du côté des scénarios, ils utilisent pour le moment 70 comptes utilisateurs différents (avec des options particulières, etc...)</p>
+
+<p>Un changement prochain de notre offre me fait penser que les tests auront besoin de 100 comptes d&#39;ici 2 à 3 semaines.</p>
+
+<p>Sans oublier de dupliquer tout ça pour nos 2 environnements (test / stable)</p>
+
+<p>Ni d&#39;ajouter l&#39;exécution de ces tests sur chrome.</p>
+
+<p>Et on ajoute des tests fonctionnels en dehors de ce schéma, pour tester des choses particulière, que ce soit en production sur des points essentiels ou la validité de données particulières.</p>
+
+<p>Et vous, combien vous testez ?</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/" itemprop="url" rel="bookmark">
         Des tests automatiques avec contenus aléatoires
       </a>
@@ -334,121 +402,6 @@ Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
 </ul>
 
 <p>Une page facebook parlait en 2012 du problème : <a href="Le%20paquet%20de%20gauloises%20en%20col%C3%A8re%5D">https://www.facebook.com/pages/Un-paquet-de-Gauloises/416293095105059</a></p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/" itemprop="url" rel="bookmark">
-        Quand un commerçant en ligne a des bugs
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-03-18" itemprop="datePublished">
-			18/03/2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>On peut être un grand nom de la vente en ligne, mais avoir malgré cela des problèmes sur son site web.</p>
-
-<p>Parfois, cela se passe &quot;presque bien&quot; : tout le monde se souvient encore de l&#39;homme nu de La Redoute (une photo présentant un produit avec en fond un homme nu). Tout le monde a rigolé, s&#39;est moqué d&#39;eux. Ils ont corrigé le tir, puis ont lancé un jeu pour trouver certains objets dans d&#39;autres images pour les gagner.</p>
-
-<h3>Et parfois, c&#39;est le &quot;drame&quot;</h3>
-
-<p>Prenons un cas pratique, qui m&#39;est arrivé.</p>
-
-<p>Je suis client chez <a href="boulanger.fr">http://www.boulanger.fr/</a> depuis longtemps, j&#39;ai une carte de fidelité, etc. En janvier, j&#39;ai rencontré des difficultés pour utiliser un chèque cadeau sur une commande. J&#39;ai contacté leur support par un formulaire par mail : aucune nouvelle.</p>
-
-<p>J&#39;ai tweeté : une cm m&#39;a demandé une copie du mail et m&#39;a confirmé avoir transférée ma demande à l&#39;équipe technique. Au menu : des problèmes d&#39;ergonomie, de textes pas clairs...</p>
-
-<p>Ce week-end, j&#39;ai reçu un mail pour me dire que mon chèque cadeau n&#39;était pas utilisé. Petit tour sur mon espace client, quelques soucis rencontrés en quelques minutes.</p>
-
-<h3>Les commandes fantômes</h3>
-
-<p>Page &quot;Commandes en cours&quot;, j&#39;ai deux commandes notées &quot;expédiées&quot; :</p>
-
-<ul>
-<li>Celle de fin novembre. Que j&#39;ai reçue en décembre, sans souci.</li>
-<li>Celle de janvier. Que j&#39;ai reçue (en deux fois, l&#39;un des articles était indisponible. J&#39;ai été averti de l&#39;indisponibilité, j&#39;ai choisi d&#39;attendre : 5 semaines avant la livraison)</li>
-</ul>
-
-<h3>La saisie impossible (d&#39;un chèque cadeau)</h3>
-
-<p>Pour saisir un chèque cadeau, quelques étapes :</p>
-
-<ul>
-<li>Validez votre panier</li>
-<li>Au milieu de la page de paiement, cochez oui à la phrase &quot;Vous béneficiez de cartes cadeau, cartes satisfaction ou chèques fidélité ?&quot;</li>
-<li>Sélectionnez &quot;Chèque cadeau&quot;.</li>
-<li>Pour les férus d&#39;accessibilité : c&#39;est un div. (L&#39;image de fond est appliqué au div parent)</li>
-<li>Pour les férus de webperf : l&#39;image est chargée 2 fois, avec 2 adresses différentes.</li>
-<li>Saisissez le numéro du chèque (copier / coller, en faisant attention aux espaces)</li>
-<li>Saisissez le montant du chèque (Apparement, Boulanger ne connait pas le montant en fonction du numéro de chèque...) 
-Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.</li>
-<li>Recopiez un captcha</li>
-<li>Validez le chèque</li>
-</ul>
-
-<p><img src="/public/pictures/2013/boulanger-saisie-cheque.jpg" alt="8 moyens de paiements. +1 caché"></p>
-
-<p>Voilà, la page se recharge, referme la partie chèque, et vous passez à la suite. Oui, mais :</p>
-
-<ul>
-<li>Si tout va bien, la ligne pour le chèque figure en bas de la page d&#39;après ce qu&#39;ils disent.</li>
-<li>Si une erreur s&#39;est produite, vous devez :
-
-<ul>
-<li>Au milieu de la page de paiement, il faut cocher à nouveau la phrase &quot;Vous béneficiez de cartes cadeau, cartes satisfaction ou chèques fidélité ?&quot;</li>
-<li>Sélectionner &quot;Chèque cadeau&quot;.</li>
-<li>Regarder si par hasard, une ligne rouge n&#39;est pas affichée. Avec un message d&#39;erreur du genre &quot;Le paiement n&#39;est pas valide&quot;. Bonne chance pour comprendre quelle est l&#39;erreur. Si vous tapez le montant &quot;AA&quot; ou un numéro de chèque erroné, vous aurez la même erreur.</li>
-</ul></li>
-</ul>
-
-<p><img src="/public/pictures/2013/boulanger-saisie-cheque2.jpg" alt="Un message d&#39;erreur (enfin, façon de parler)"></p>
-
-<h3>Vous avez demandé le service client, ne quittez pas</h3>
-
-<p>En bas de page, un lien contact : je me dis que je vais leur expliquer ce que je pense de leur site.</p>
-
-<ul>
-<li>Je clique sur le lien en bas de page</li>
-<li>Une page apparaît avec une liste de 8 &quot;services&quot; pour les contacter. Je clique sur &quot;Contactez Boulanger.fr&quot; (accessibilité : nulle. c&#39;est une image sans texte alternatif)</li>
-<li>Une page différente apparaît, avec les 8 services, où celui que j&#39;ai sélectionné est &quot;ouvert&quot;. Aucun des choix proposés ne me convient. Je change de service pour &quot;Les produits ou les services (je vous ai parlé de la non accessibilité du site ?). Voilà, je peux choisir un type de contact qui me convient &quot;Question concernant la carte de fidélité&quot;</li>
-<li>Et là, alors que je suis connecté, qu&#39;ils ont donc mon adresse, mon numéro de client, mon email, je dois remplir quelques informations.
-
-<ul>
-<li>Informations obligatoires (présence de * à coté de l&#39;intitulé) : Nom, prénom, numéro de téléphone (là encore, pas de format... je choisi donc le format international), email, choix du mode de contact de leur part (email ou téléphone), et ma question</li>
-<li>Le numéro de la carte de fidélité n&#39;est pas obligatoire : ouf.</li>
-<li>Des cases pour accepter ou non de recevoir des mails de promos de Boulanger et de ses partenaires (avec une ligne en gris sur fond blanc, que j&#39;ai trouvé peu lisible...)</li>
-</ul></li>
-<li>J&#39;écris un long mail (cet article est issu du mail). Enfin, je ne l&#39;écris pas dans le champ : le textarea de 6 lignes, 32 colonnes, non redimensionnable est trop petit pour ma prose.</li>
-<li>Je l&#39;envoie. Ah tiens, j&#39;ai un message d&#39;erreur (il est clair cette fois) : je n&#39;ai pas saisi mon numéro de carte boulanger. Même s&#39;il est &quot;logique&quot; de devoir saisir le numéro sur la page de contact à ce sujet, c&#39;est pourtant le seul champ que je ne suis pas obligé de remplir.</li>
-<li>Je remplis le champ par mon numéro, qui d&#39;après leur aide (qui apparaît au survol.. accessibilité...) doit faire 10 caractères. Sauf que je peux en mettre 12 ou plus en fait. Le champ n&#39;est pas limité en nombre de caractères.</li>
-<li>J&#39;arrive tout de même à envoyer mon mail, et j&#39;ai donc un joli message de confirmation. Par expérience, j&#39;aurais aimé recevoir une copie par mail. Pour ne pas perdre mon message, et l&#39;avoir si on me demande de redonner des infos.</li>
-</ul>
-
-<p><img src="/public/pictures/2013/boulanger-confirmation.jpg" alt="Boulanger, une fois le mail envoyé"></p>
-
-<h3>Pour aller plus loin</h3>
-
-<p>Après avoir envoyé le mail, j&#39;ai commencé mon article, et j&#39;ai du coup été tatillon : lecture du code source de quelques pages, etc. Quelques trucs qui me chiffonnent en vrac :</p>
-
-<ul>
-<li>La page de contact n&#39;a pas de balise &quot;title&quot;</li>
-<li>A la louche : 4 fichiers css (+2 pour le print), 20 fichiers js...</li>
-<li>Le design du formulaire de contact en balise table dans une balise table dans une balise table.</li>
-<li>La vérification des champs provoque un message d&#39;erreur (un seul : c&#39;est une bonne chose) mais est faite en javascript (accessibilité...)</li>
-<li>Des balises mises en commentaires HTML.</li>
-<li>La liste des mot-clés (meta keyword) me semble un peu longue, mais admettons. Par contre, le dernier mot-clé est terminé par un point. Étrange.</li>
-</ul>
-
-<p>A la base, je comptais juste faire un achat rapide. Je viens de passer la soirée à faire un audit qualité (bug / ergonomie / accessibilité / webperf) à boulanger. C&#39;est cadeau : je n&#39;ai fait que survoler. J&#39;encourage Boulanger à le faire à fond (ou mieux, à le faire faire par des experts).
-(Evidemment, si j&#39;ai une réponse, je la publierais ici)</p>
 </div>
   </div>
   

@@ -174,6 +174,77 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2012/07/19/les-logiciels-tiers-une-calamite/" itemprop="url" rel="bookmark">
+        Les logiciels tiers, une calamité
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-07-19" itemprop="datePublished">
+			19/07/2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;on rencontre des problèmes vraiment étranges sur une fonction particulière, on pense d&#39;abord que cela n&#39;a jamais pu marcher, on ne comprend plus.</p>
+
+<p>Puis on enquête. Et parfois, la cause du problème est une surprise, autant pour nous que pour les personnes touchées. Quelques exemples plus ou moins vieux.</p>
+
+<h3>La box qui coupe</h3>
+
+<p>Petit retour sur l&#39;article : Les bugs poilus sont-ils solubles dans le temps ?</p>
+
+<p>Au début, il s&#39;agissait d&#39;un simple problème de validation de formulaire AJAX pour une partie des utilisateurs. Ils emblaient tous utiliser une LiveBox. Nous avons éliminé cette piste au bout de plusieurs jours, certains cas ne collant pas.</p>
+
+<p>Mais au final, il semble que ce problème qui nous a occupé pendant plus d&#39;un mois était bien une mise à jour de la LiveBox : la mise à jour suivante a corrigé le problème.</p>
+
+<h3>L&#39;antivirus anti web</h3>
+
+<p>En général, je ne cite pas, mais cela fait trop de fois où nous rencontrons des problèmes avec Kaspersky.</p>
+
+<p>Deux points sans rapport, tous les deux liés à des classiques du web.</p>
+
+<ul>
+<li><p>Lorsque vous envoyez une photo via certains protocoles, on a un comportement aléatoire :</p>
+
+<ul>
+<li>Images non envoyées</li>
+<li>Images envoyées de façon incomplète.</li>
+</ul>
+
+<p>Evidemment, il suffit de désactiver Kaspersky pour que cela fonctionne. Selon les navigateurs, nous utilisons le protocole PUT ou le protocole GET. si le get fonctionne, le put pose de nombreux problèmes.</p></li>
+<li><p>Les notifications, très utilisées sur les réseaux sociaux, sont dégradées : le nombre de notifications n&#39;est pas mis à jour après leur lecture, en particulier sur Google+. Là encore, désactiver l&#39;antivirus suffit à régler le problème.</p></li>
+</ul>
+
+<p><img src="/public/pictures/2012/bug-kaspersky-notif.jpg" alt="Toutes les notifications ont été lues, et pourtant"></p>
+
+<h3>La navigation compatible</h3>
+
+<p>Lorsqu&#39;on utilise Internet Explorer, il lui arrive de décider d&#39;utiliser le mode compatible sur certains sites. Un utilisateur qui ne fait pas attention pensera utiliser la dernière version du navigateur, mais aura entre les mains un navigateur se comportant comme IE7 ou IE8 dans le meilleur des cas.</p>
+
+<p>Les éditeurs wysiwyg sont particulièrement concernés par ce genre de problème, mais ce ne sont pas les seuls.</p>
+
+<p>Lorsqu&#39;on sait en outre que le mode compatible IE8 est différent d&#39;IE8, on sait qu&#39;on va s&#39;arracher les cheveux pour trouver la cause du problème.</p>
+
+<h3>Le plugin défaillant</h3>
+
+<p>Les navigateurs sont depuis plusieurs années extensibles : on peut ajouter des fonctionnalités plus ou moins intéressantes. La plupart des développeurs ont installé FireBug par exemple.</p>
+
+<p>Revenons à celle qui me pose problème : &quot;Facebook Disconnect&quot;. Cette extension sous chrome permet d&#39;empêcher Facebook de vous traquer. En contre partie, elle bloque des scripts, sans vous demander votre avis. Un exemple ? notre éditeur wysiwym. Ce n&#39;est apparement pas la seule à bloquer l&#39;éditeur, mais la récupération des informations auprès de nos utilisateurs prend beaucoup de temps sur des problèmes aussi pointus.</p>
+
+<h3>Conclusion</h3>
+
+<p>Les mises à jour automatiques sont une plaie : les utilisateurs ne comprennent pas pourquoi le comportement change sans modification, et pense systématiquement à un problème du produit concerné, pas d&#39;un logiciel tiers.</p>
+
+<p>Certains logiciels s&#39;adjugent des pouvoirs très importants, sans le signaler à leurs utilisateurs, dégradant par la même occasion la navigation sur des sites web qui fonctionnent pourtant parfaitement par ailleurs.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2012/06/18/les-tests-doivent-ils-tester/" itemprop="url" rel="bookmark">
         Les tests doivent-ils tester ?
       </a>
@@ -279,83 +350,6 @@
 <p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
 
 <p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/06/04/tests-automatiques/" itemprop="url" rel="bookmark">
-        Quand le texte rencontre les tests automatiques
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-06-04" itemprop="datePublished">
-			04/06/2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Lors de SudWeb en mai, j&#39;ai discuté avec le créateur de <a href="http://casperjs.org/">CasperJS</a> pour lui expliquer pourquoi je préférais Watir à son outil.</p>
-
-<h3>Petit tour rapide des défauts de CasperJS</h3>
-
-<ul>
-<li><strong>Limitation des sélecteurs</strong> : Avec watir, je peux sélectionner un élement à peu près comme je veux. Avec CasperJs, le choix est plus limité (mais il peut être étendu en javascript.</li>
-<li><strong>Navigateur</strong> : CasperJS utilise un navigateur headless basé sur webdriver. Watir permet de prendre le contrôle de la plupart des navigateurs (via selenium)</li>
-<li><strong>Langage</strong> : je n&#39;aurais pas dit ça il y a 2 ans, mais je préfère le ruby au javascript.</li>
-<li><strong>Capture d&#39;écran</strong> : ~~Il est difficile de faire une capture d&#39;écran anvec un navigateur headless.~~ Apparement, c&#39;est possible aussi en CasperJs.</li>
-</ul>
-
-<p>Mais je suis partial : je connais et j&#39;utilise Watir depuis 2 ans, et j&#39;au découvert CasperJs depuis une semaine.</p>
-
-<h3>Point sur CasperJS</h3>
-
-<p>Je ne nie pas son intérêt. Mettre en place des tests fonctionnels sous Watir / cucumber (et hudson pour gérer tout cela) prend du temps, et cela me fait penser à sortir l&#39;infanterie pour écraser un moustique.</p>
-
-<p>Si on a besoin de créer des tests rapides, et que &quot;webdriver&quot; nous suffit, et si on en plus on est à l&#39;aise avec le javascript : je vous le conseille.</p>
-
-<p><img src="/public/pictures/2012/texte.jpg" title="Test de textes" /></p>
-
-<p>Notre point de désaccord n&#39;était pas sur les outils, leurs limitations, etc.. mais sur les tests eux-mêmes.</p>
-
-<h3>Doit-on utiliser les textes de l&#39;interface pour tester ?</h3>
-
-<p>Lorsqu&#39;on met en place des tests, on utilise au maximum les informations de l&#39;interface : class, name, id, parfois même url (src ou href).</p>
-
-<p>Certains utilisent même les xpath, mais je le déconseille : je trouve que cela alourdit la maintenance du projet à long terme.</p>
-
-<p>Mais cela n&#39;exclut pas d&#39;utiliser aussi le texte. Mais dire &quot;Cliquer sur le bouton &#39;Ajouter au panier&#39;&quot; a un défaut : si le texte change, il faut mettre à jour les tests.</p>
-
-<p>Donc, utiliser les textes peut être intéressant, mais il ne faut pas en abuser, et les &quot;limiter&quot;.</p>
-
-<h3>Doit-on tester les textes de l&#39;interface ?</h3>
-
-<p>Tester tous les textes reviendrait à devoir modifier les tests à chaque mise à jour de textes. Ce serait coûteux en temps, et dà difficile à maintenir. (Dans la plupart des projets web, le nombre de texte augmente dans le temps)</p>
-
-<p>Par contre, certains textes doivent être tester dans l&#39;interface :</p>
-
-<ul>
-<li>Tous les messages d&#39;erreur</li>
-<li>Tous les message de validation</li>
-<li>Les liens principaux de navigation</li>
-<li>Les boutons d&#39;action</li>
-</ul>
-
-<h3>Quoi d&#39;autre ?</h3>
-
-<p>Cela nous donne une liste &quot;réduite&quot; de textes qui peuvent être utilisés durant les tests. Si un texte change pour une raison inconnue, certains tests passeront dans le rouge, et il n&#39;y aura qu&#39;à les mettre à jour le texte dans les tests pour corriger.</p>
-
-<p>Il n&#39;est pas utile de tester les textes : les utiliser durant les tests revient au même. (l&#39;optimisation est importante, j&#39;y reviendrais)</p>
-
-<p>Je travaille sur un projet disponible dans 5 langues. J&#39;ai donc rassembler tous les textes dans un lot de fichier (un par langue)</p>
-
-<p>Last but not least : en tant que responsable qualité, je suis garant que les textes soient conformes. Si nos traducteurs modifient le texte anglais du bouton &quot;Save&quot; en &quot;See&quot;, je dois agir en conséquence pour obtenir une correction au plus tôt.</p>
 </div>
   </div>
   
