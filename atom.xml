@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2014-12-13T22:05:51+01:00</updated>
+ <updated>2015-01-03T11:14:29+01:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -108,7 +108,7 @@ Pour résumer, flog analyse le code source, compte combien de fois on effectue c
 
 &lt;h3&gt;Et c&amp;#39;est conventionnel tout ça ?&lt;/h3&gt;
 
-&lt;p&gt;En parralèle, j&amp;#39;ai mis à jour la gem &lt;a href=&quot;https://rubygems.org/gems/rubocop&quot;&gt;rubocop&lt;/a&gt;. Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s&amp;#39;est beaucoup étoffée depuis la dernière fois que j&amp;#39;avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j&amp;#39;ai passé quelques à modifier notre code pour qu&amp;#39;il passe les nouvelles règles.&lt;/p&gt;
+&lt;p&gt;En parralèle, j&amp;#39;ai mis à jour la gem &lt;a href=&quot;https://rubygems.org/gems/rubocop&quot;&gt;rubocop&lt;/a&gt;. Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s&amp;#39;est beaucoup étoffée depuis la dernière fois que j&amp;#39;avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j&amp;#39;ai passé quelques heures à modifier notre code pour qu&amp;#39;il passe les nouvelles règles.&lt;/p&gt;
 
 &lt;p&gt;Sur le projet, nous avons désactivé 27 règles parmi les centaines présentes. Par exemple, nous désactivons la limite sur le calcul de &lt;a href=&quot;http://fr.wikipedia.org/wiki/Nombre_cyclomatique&quot;&gt;complexité cyclomatique&lt;/a&gt; puisque nous utilisons flog.&lt;/p&gt;
 
