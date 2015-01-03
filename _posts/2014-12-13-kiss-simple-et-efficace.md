@@ -110,7 +110,7 @@ Rien de transcendant :
 
 ### Et c'est conventionnel tout ça ?
 
-En parralèle, j'ai mis à jour la gem [rubocop](https://rubygems.org/gems/rubocop). Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s'est beaucoup étoffée depuis la dernière fois que j'avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j'ai passé quelques à modifier notre code pour qu'il passe les nouvelles règles.
+En parralèle, j'ai mis à jour la gem [rubocop](https://rubygems.org/gems/rubocop). Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s'est beaucoup étoffée depuis la dernière fois que j'avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j'ai passé quelques heures à modifier notre code pour qu'il passe les nouvelles règles.
 
 
 Sur le projet, nous avons désactivé 27 règles parmi les centaines présentes. Par exemple, nous désactivons la limite sur le calcul de [complexité cyclomatique](http://fr.wikipedia.org/wiki/Nombre_cyclomatique) puisque nous utilisons flog.
