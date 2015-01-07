@@ -152,6 +152,10 @@
           
         
       
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -171,6 +175,72 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/05/06/tests-automatiques-watir/" itemprop="url" rel="bookmark">
+        Tests automatiques : watir
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-05-06" itemprop="datePublished">
+			
+			6
+			mai
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
+Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
+
+<iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
+<span class="nb">require</span> <span class="s2">"rubygems"</span>
+
+<span class="c1"># chargement de la libraire watir</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
+
+<span class="c1"># ouvrir un navigateur</span>
+<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="c1"># Ouvrir le site</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
+
+<span class="c1"># Clignotement</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
+
+<span class="c1"># Vérifier que le mot qualité est présent</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
+<span class="k">end</span>
+
+<span class="c1"># Fermeture</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div>
+<p>Pour résumer :</p>
+
+<ul>
+<li>on charge les libraires adéquates</li>
+<li>on ouvre un navigateur</li>
+<li>on va sur le site web à tester</li>
+<li>on effectue des actions et/ou de tests</li>
+</ul>
+
+<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -298,62 +368,11 @@ Faire lancer les tests par les développeurs en environnement de développement.
 </div>
   </div>
   
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/01/04/l-esprit-d-equipe-autour-de-la-qualite/" itemprop="url" rel="bookmark">
-        L’esprit d’équipe autour de la qualité
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-01-04" itemprop="datePublished">
-			
-			4
-			janvier
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-	</span>
-
-	<div itemprop="ArticleBody"><h3>Contexte</h3>
-
-<p>La société pour laquelle je travaille est en train de refaire son principal projet depuis le début. Au programme : changement de technologies. Nous lancerons ce nouveau projet d’ici l’été, et nous travaillons déjà depuis quelques mois sur le sujet.</p>
-
-<p>Nous avons mis en avant la qualité, avec de l’intégration continue (<a href="http://hudson-ci.org/">Hudson</a>, allié à <a href="http://fr.wikipedia.org/wiki/Git">Git</a>), des TDD (Test driven development), des framework robustes : <a href="http://www.symfony-project.org/">Symfony</a> pour le php, <a href="http://developer.yahoo.com/yui/">YUI</a> pour le javascript, des tests fonctionnels avec cucumber et watir… Et pour organiser tout ça, on passe à <a href="http://fr.wikipedia.org/wiki/Scrum">Scrum</a>.</p>
-
-<p>Beaucoup de changements, et les premiers tests sur le serveur de staging nous ont tous donné envie d’aller encore plus loin.</p>
-
-<h3>Action</h3>
-
-<p>Mais tout n’est pas rose dans notre monde : le serveur de staging n’était pas assez stable à mon goût. J’ai donc envoyé un mail à tous mes collègues concernés afin de mettre au clair la façon de travailler :</p>
-
-<ul>
-<li>Pas de mise à jour en milieu de journée (le staging est mis à jour chaque nuit avec les dernières versions stables des sous projets).</li>
-<li>Tests en amont, côté serveur de développement.</li>
-<li>Incitation à me consulter pour la mise en place des tests fonctionnels que j’aurais pu oublier.</li>
-</ul>
-
-<p>Et bien évidemment, j’ai précisé dans le mail que j’étais ouvert à toutes les suggestions.</p>
-
-<p><img src="/public/pictures/2012/equipe.jpg" alt="Travail d&#39;équipe" title="Travail d&#39;équipe"></p>
-
-<h3>Réactions</h3>
-
-<p>Nous avions longuement rabâché qu’il fallait un produit de qualité, que nous devions tous tester le produit de façon à ne rien laisser passer.</p>
-
-<p>En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point “techniques” ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours “qualité”. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme.</p>
-
-<p>Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.</p>
-</div>
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page11">Older</a>
   
   
     
