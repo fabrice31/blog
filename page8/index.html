@@ -178,6 +178,75 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2012/06/18/les-tests-doivent-ils-tester/" itemprop="url" rel="bookmark">
+        Les tests doivent-ils tester ?
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-06-18" itemprop="datePublished">
+			
+			18
+			juin
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><h3>Le juste équilibre dans les tests</h3>
+
+<p>Mettre en place des <strong>tests fonctionnels automatiques</strong> revient à jouer à l&#39;équilibriste entre l&#39;existant (déjà testé et &quot;stable&quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...</p>
+
+<p>Le responsable qualité et l&#39;équipe doivent avoir confiance dans leurs indicateurs, et doivent connaître leurs limites, afin de pouvoir planifier les actions pour éliminer les bugs.</p>
+
+<h3>Des tests toujours réussis</h3>
+
+<p>J&#39;ai lu récemment que des tests fonctionnels toujours &quot;vert&quot; sont mauvais, qu&#39;ils ne testent rien. (<a href="http://experttesters.com/2012/05/17/why-100-test-pass-rates-are-bad/">Why 100% Test Pass rates are Bad</a>)</p>
+
+<p>Je ne suis pas d&#39;accord : j&#39;ai la hantise de tests &quot;rouge&quot; : à chaque fois, cela demande d&#39;aller analyser le rapport, vérifier si c&#39;est un faux positif. (Cela arrive régulièrement : même en prévoyant au mieux, il arrive qu&#39;une action dépasse le temps prévue pour s&#39;exécuter, etc.)</p>
+
+<h4>Les tests doivent être toujours vert</h4>
+
+<p>Si votre écran de contrôle affiche toujours du rouge, vous finirez pas ne plus lui faire confiance. Le problème, c&#39;est que si vous n&#39;avez pas confiance dans des tests automatisés, c&#39;est que vous perdrez du temps à les refaire à la main. Et que lorsqu&#39;ils passeront au rouge, vous penserez à un faux positif avant même de regarder, et vous pourriez laisser passer un bug.</p>
+
+<h4>L&#39;important n&#39;est pas la couleur, mais la couverture</h4>
+
+<p>Je préfère avoir une couverture de 50% fiable qu&#39;une plus grande couverture mais instable. Il faut bien comprendre qu&#39;un test vert ne dit pas &quot;il n&#39;y a pas de bug sur ce projet&quot;, mais plutôt &quot;aucun bug prévu n&#39;a été trouvé cette fois-ci&quot;. La différence semble tenue, mais elle est primordiale.</p>
+
+<p>L&#39;équipe doit savoir si les tests ont des lacunes, afin de redoubler d&#39;effort &quot;manuels&quot; dans cette partie. Il ne faut jamais oublier que les tests automatiques ne testent pas tout le projet, mais seulement ce qu&#39;ils sont sensés tester.</p>
+
+<p><img src="/public/pictures/2012/screen_tests.jpg" title="Ecran de contrôle" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/cucumber-report.png" title="Résultats de tests cucumber" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/graphique-nb-issues.jpg" title="Evolution du nombre de bugs" style="width: 200px; float: left;"/>
+<p style="clear: both;"></p></p>
+
+<h3>Choix des métriques</h3>
+
+<p>Le choix des métriques est primordial : cela influe sur le ressenti de la qualité par l&#39;équipe qui développe le produit. (<a href="http://martijndevrieze.net/2012/05/30/test-automation-metrics-what-do-you-report-on/">Test automation metrics - what do you report on?</a>)</p>
+
+<h4>Mise à jour des métriques</h4>
+
+<ul>
+<li>En début de projet, la pertinence du &quot;nombre&quot; de bugs est relative. Quand le projet a déjà été livré dans une version beta au public, ce nombre est déjà plus réaliste.</li>
+<li>Les tests de charge sont importants tout le temps, mais il ne faut jamais oublier le stade d&#39;avancement du projet. Un test de charge qui semble échouer peut ne pas l&#39;être si on le fait durant une &quot;maintenance programmée&quot; du serveur.</li>
+</ul>
+
+<p>Certains pensent qu&#39;il vaut mieux avoir trop de métriques que pas assez. Mais il faut pondérer ceci par le temps pour les analyser et les comprendre.</p>
+
+<h4>Stratégie générale</h4>
+
+<p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2012/06/07/lancement-d-une-beta-publique/" itemprop="url" rel="bookmark">
         Lancement d'une beta publique
       </a>
@@ -303,50 +372,6 @@
 <p>Je travaille sur un projet disponible dans 5 langues. J&#39;ai donc rassembler tous les textes dans un lot de fichier (un par langue)</p>
 
 <p>Last but not least : en tant que responsable qualité, je suis garant que les textes soient conformes. Si nos traducteurs modifient le texte anglais du bouton &quot;Save&quot; en &quot;See&quot;, je dois agir en conséquence pour obtenir une correction au plus tôt.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/" itemprop="url" rel="bookmark">
-        Les bugs sont partout, mêmes dans les jeux
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-05-31" itemprop="datePublished">
-			
-			31
-			mai
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><blockquote>
-<p>Witch Doctors should no longer receive an error if they kill a Shadow Clone with a Damage-Over-Time (DoT) skill after it&#39;s launched a Firebomb but before it&#39;s reached its target
-<br/>Blizzard</p>
-</blockquote>
-
-<p>Parfois, on trouve un bug de façon complètement aléatoire, on n&#39;arrive pas à le reproduire, etc. Mais <a href="http://eu.blizzard.com/fr-fr/">Blizzard</a> m&#39;épate dans leur premier patch de Diablo 3. Pour résumer pour les non anglophones / non joueurs :</p>
-
-<p>Si un personnage de la classe féticheur tue son ombre (en affrontant Diablo), en utilisant un sort de &quot;dommages périodiques&quot; (ex : du poison) et que la mort se produit après lui avoir jeté une bombe incendiaire mais avant qu&#39;elle le touche, on a une erreur.</p>
-
-<p>Je n&#39;ose imaginer le temps et les tests pour le reproduire.</p>
-
-<p>Pour donner une idée : j&#39;ai un personnage de cette classe, j&#39;ai affronté plusieurs fois Diablo, et mon ombre. Et je n&#39;ai jamais rencontré ce cas de figure.</p>
-
-<p><img src="/public/pictures/2012/diablo3-ombre.jpg" title="Affronter diablo et son ombre" style="width: 350px; float: left;"/>
-<img src="/public/pictures/2012/diablo_bug.jpg" title="Problème connection" style="width: 350px; float: left;"/>
-<p style="clear: both;"></p></p>
-
-<p>Les tests d&#39;un jeu vidéo n&#39;ont sans doute pas grand chose à voir avec les tests d&#39;une application web, en particulier quand il faut tester également la charge très importante d&#39;un titre de Blizzard. Qui pour ne rien simplifier, est très variable dans le temps.</p>
-
-<p>Je sais que l&#39;équipe de Blizzard se penche actuellement sur une erreur 37 lors de la connexion, et je leur souhaite bien du courage. Les propos sur les forums de battle.net, facebook, sont très amères (et je peux le concevoir en partie : il est impossible de jouer en Europe pendant qu&#39;il est possible de jouer en Asie ou en Amérique)</p>
 </div>
   </div>
   

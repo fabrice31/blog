@@ -178,6 +178,219 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
+      <a href="/2015/01/15/kiss-simple-n-est-pas-toujours-simple/" itemprop="url" rel="bookmark">
+        La simplicité n'est pas toujours simple
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2015-01-15" itemprop="datePublished">
+			
+			15
+			janvier
+			  
+			2015
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Comme je le disais il y a peu, sur les gros projets, il est intéressant de <a href="/2014/12/13/kiss-simple-et-efficace/">surveiller la simplicité</a> du code.
+J&#39;utilise pour cela <a href="https://rubygems.org/gems/flog">flog</a> qui calcule la complexité des méthodes.</p>
+
+<h3>Zone grise</h3>
+
+<p>Sur notre projet actuel, le score total flog est de plus de 6300 points de complexité d&#39;après flog. Avec une moyenne de 12.7 et un maximum de 206.5, le champ est large.</p>
+
+<p>Répartition des plus hauts scores: </p>
+
+<ul>
+<li>&gt; 200 : 1 fonction</li>
+<li>&gt; 100 : 3 fonctions</li>
+<li>&gt; 50 : 16 fonctions</li>
+<li>&gt; 20 : 41 fonctions</li>
+<li>&lt; 20 : un peu plus de 400.</li>
+</ul>
+
+<p>Evidemment, quand je cherche à simplifier, je commence à regarder les fonctions les plus complexes. Il est souvent plus facile de simplifier une chose compliquée qu&#39;une chose déjà simple.</p>
+
+<p>Il est pourtant très difficile de savoir quelle est la limite acceptable. Selon les gens, et les projets, cela varie entre 25 et 60.
+On définit par conséquent une zone grise, contenant les fonctions &quot;à vérifier&quot; et à simplifier si possible, au cas par cas.</p>
+
+<p>Au dessus, il faut bien évidemment faire quelque chose. En dessous, c&#39;est peu utile. J&#39;ai donc encore quelques fonctions bien tordues à simplifier sur le projet, pour respecter cette règle à la lettre.</p>
+
+<h3>Complexe ou compliqué ?</h3>
+
+<p>J&#39;ai enquêté sur une fonction particulière, assez longue, qui vérifie la présence d&#39;un élément particulier. Cet élément varie en fonction du type de page que l&#39;on teste.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+    <span class="k">case</span> <span class="p">(</span><span class="nb">format</span><span class="p">.</span><span class="nf">downcase</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'bt'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtr'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtl'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'bc'</span>
+        <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">iframe</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ei0'</span><span class="p">).</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ep0'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ib'</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ebib'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ic'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'bc'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ifw'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'bc'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ift'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wf'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ir'</span>
+        <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'en'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ise'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'bm'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'iso'</span>
+        <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ep0'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'ise'</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'ebt'</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
+            <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'ebt'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span>
+            <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'et'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">when</span> <span class="s1">'it'</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtr'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtl'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
+        <span class="k">return</span> <span class="s2">"pending"</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Score flog : 135.8. </p>
+
+<p>Vraiment pas terrible, mais le nombre de cas différents ne simplifie pas la tâche.</p>
+
+<h4>Premier essai : Yaml et algorithme</h4>
+
+<p>J&#39;ai commencé par créer un fichier yaml contenant toutes les informations des tests, pour n&#39;avoir ensuite qu&#39;un algorithme commun à tous les cas.</p>
+
+<p>Voici le code ruby de la fonction ainsi modifié:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present_with_yaml</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+    <span class="n">which</span> <span class="o">=</span> <span class="nb">format</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">).</span><span class="nf">downcase</span>
+    <span class="c1"># Get checkers from the yaml</span>
+    <span class="no">CONTROLS</span> <span class="o">=</span> <span class="no">YAML</span><span class="p">.</span><span class="nf">load_file</span><span class="p">(</span><span class="s1">'support/checkers.yml'</span><span class="p">)[</span><span class="s1">'controls'</span><span class="p">]</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="no">CONTROLS</span><span class="p">[</span><span class="n">which</span><span class="p">]</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">checks</span><span class="p">.</span><span class="nf">nil?</span>
+        <span class="n">checks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">_key</span><span class="p">,</span> <span class="n">check</span> <span class="o">|</span>
+            <span class="c1"># extra command</span>
+            <span class="k">if</span> <span class="o">!</span><span class="n">check</span><span class="p">[</span><span class="s1">'extra'</span><span class="p">].</span><span class="nf">nil?</span>
+                <span class="k">if</span> <span class="n">check</span><span class="p">[</span><span class="s1">'extra'</span><span class="p">].</span><span class="nf">to_s</span> <span class="o">==</span> <span class="s1">'sleep'</span>
+                    <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+                <span class="k">elsif</span> <span class="n">check</span><span class="p">[</span><span class="s1">'extra'</span><span class="p">].</span><span class="nf">to_s</span> <span class="o">==</span> <span class="s1">'scroll'</span>
+                    <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+                <span class="k">elsif</span> <span class="n">check</span><span class="p">[</span><span class="s1">'extra'</span><span class="p">].</span><span class="nf">to_s</span> <span class="o">==</span> <span class="s1">'both'</span>
+                    <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+                    <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+                <span class="k">end</span>
+            <span class="k">end</span>
+
+            <span class="c1"># Check in a frame is slightly different</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">[</span><span class="s1">'in_frame'</span><span class="p">].</span><span class="nf">nil?</span><span class="p">)</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="vi">@browser</span>
+            <span class="k">else</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">iframe</span><span class="p">(</span><span class="ss">id: </span><span class="n">check</span><span class="p">[</span><span class="s1">'in_frame'</span><span class="p">])</span>
+            <span class="k">end</span>
+
+            <span class="c1"># Make the control</span>
+            <span class="k">if</span> <span class="n">check</span><span class="p">[</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"class"</span>
+                <span class="n">expect</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="n">check</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="n">check</span><span class="p">[</span><span class="s1">'result'</span><span class="p">])</span>
+            <span class="k">else</span>
+                <span class="n">expect</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="n">check</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="n">check</span><span class="p">[</span><span class="s1">'result'</span><span class="p">])</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">else</span>
+        <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
+        <span class="k">return</span> <span class="s2">"pending"</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Score flog : 75.3. Score presque divisé par deux : impressionnant. </p>
+
+<p>Par contre, contrairement à la première fonction :</p>
+
+<ul>
+<li>Une partie du raisonnement est déporté dans un fichier externe. Si je ne le poste pas, il est impossible de savoir ce que fait l&#39;algo.</li>
+<li>Si de nouveaux cas apparaissent, il faudra peut être modifié ce nouvel algorithme, ce qui peut être risqué et ajouter des effets de bords.</li>
+<li>Franchement, lisez le code : c&#39;est beaucoup moins clair que la fonction précédente. La gestion des cas particuliers représente la plus grande part du code, noyant complétement la compréhension.</li>
+</ul>
+
+<h4>Un compromis</h4>
+
+<p>Autre solution, regrouper les différents cas par lots similaires. </p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present_new</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'ib'</span>    <span class="o">=&gt;</span> <span class="s1">'ebib'</span><span class="p">,</span>
+        <span class="s1">'ic'</span>    <span class="o">=&gt;</span> <span class="s1">'bc'</span><span class="p">,</span>
+        <span class="s1">'ifw'</span>   <span class="o">=&gt;</span> <span class="s1">'bc'</span><span class="p">,</span>
+        <span class="s1">'ir'</span>    <span class="o">=&gt;</span> <span class="s1">'en'</span><span class="p">,</span>
+        <span class="s1">'is'</span>    <span class="o">=&gt;</span> <span class="s1">'ep0'</span>
+    <span class="p">}</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'ift'</span>   <span class="o">=&gt;</span> <span class="s1">'wf'</span><span class="p">,</span>
+        <span class="s1">'is'</span>    <span class="o">=&gt;</span> <span class="s1">'bm'</span><span class="p">,</span>
+        <span class="s1">'ise'</span>   <span class="o">=&gt;</span> <span class="sr">/e(|b)t/</span>
+    <span class="p">}</span>
+
+    <span class="k">case</span> <span class="p">(</span><span class="nb">format</span><span class="p">.</span><span class="nf">downcase</span><span class="p">)</span>
+    <span class="c1"># generic cases with element by id</span>
+    <span class="k">when</span> <span class="s1">'ib'</span><span class="p">,</span> <span class="s1">'ic'</span><span class="p">,</span> <span class="s1">'ifw'</span><span class="p">,</span> <span class="s1">'ir'</span><span class="p">,</span> <span class="s1">'is'</span>
+        <span class="k">if</span> <span class="sx">%w(ir is)</span><span class="p">.</span><span class="nf">include?</span> <span class="nb">format</span><span class="p">.</span><span class="nf">downcase</span>
+            <span class="c1"># generic cases but with scroll</span>
+            <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+        <span class="k">end</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="n">ids</span><span class="p">[</span><span class="nb">format</span><span class="p">]).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># generic cases with element by class</span>
+    <span class="k">when</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'ift'</span><span class="p">,</span> <span class="s1">'ise'</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="n">classes</span><span class="p">[</span><span class="nb">format</span><span class="p">]).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># particular cases</span>
+    <span class="k">when</span> <span class="s1">'bt'</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtr'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtl'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'bc'</span>
+        <span class="vi">@browser</span><span class="p">.</span><span class="nf">send_keys</span> <span class="ss">:space</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">iframe</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ei0'</span><span class="p">).</span><span class="nf">divs</span><span class="p">(</span><span class="ss">id: </span><span class="s1">'ep0'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">when</span> <span class="s1">'intab'</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="no">SHORT_TIMEOUT</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtr'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">expect</span><span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">divs</span><span class="p">(</span><span class="ss">class: </span><span class="s1">'wtl'</span><span class="p">).</span><span class="nf">length</span><span class="p">).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
+        <span class="k">return</span> <span class="s2">"pending"</span>
+    <span class="k">end</span>
+<span class="k">end</span> 
+</code></pre></div>
+<p>Quelques détails :</p>
+
+<ul>
+<li>J&#39;ai regroupé en fonction du type d&#39;element à vérifier : les div filtrés par id, ceux filtrés par class, puis tous les autres cas particuliers.</li>
+<li>En écrivant cet article, j&#39;ai trouvé une petite amélioration qui baisse la note flog de quelques points supplémentaires.</li>
+<li>Ajouter des nouveux cas sera trivial. Le code reste parfaitement lisible, même pour quelqu&#39;un découvrant le projet.</li>
+<li>Le score est toujours au dessus de la zone grise, mais je suis à cours d&#39;idée. Pour le moment.</li>
+</ul>
+
+<p>Score flog final : 76.4. Il était de 85 quand j&#39;ai commencé à écrire cet article : merci à vous d&#39;avoir été mon <a href="http://fr.wikipedia.org/wiki/M%C3%A9thode_du_canard_en_plastique">canard en plastique</a></p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
       <a href="/2015/01/07/petits-plaisirs-de-la-vie/" itemprop="url" rel="bookmark">
         Petits plaisirs de la vie
       </a>
@@ -363,77 +576,6 @@ Certains points cités plus hauts ne sont pas triviaux à mettre en place, mais 
 <li>Supprimer le code mort et non utilisé.</li>
 <li>Continuer à documenter, ranger, classer.</li>
 <li>Refactoriser ce qui peut l&#39;être et dont le code n&#39;est pas amené à disparaître dans les prochains mois.</li>
-</ul>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2014/09/09/bonne-annee-2014/" itemprop="url" rel="bookmark">
-        Bonne année 2014
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2014-09-09" itemprop="datePublished">
-			
-			9
-			septembre
-			  
-			2014
-		</time>
-		- par Fabrice Bournisien
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Il y a des années qui sont très bonnes, pleines de bonnes choses.
-Pour moi, la référence, c&#39;était 2009 : je me suis marié, nous avons acheté notre appartement, changé de voiture, ma femme a trouvé un travail.</p>
-
-<p>Il y a des années, où c&#39;est moins bon, mais qui ne sont pas mauvaises.</p>
-
-<p>Et après, il y a des années où la poisse s&#39;acharne. 
-Pour moi, cette année noire, c&#39;est 2014. 
-Pour résumer, sur les 250 jours de l&#39;année déjà passés, ma famille a compté pas loin de 300 jours d&#39;hospitalisation.
-A tout ceci s&#39;ajoute le fait que j&#39;habite loin de mes familles, et que la communication n&#39;est pas toujours simple.</p>
-
-<ul>
-<li>Janvier 2014 : Décès de ma belle-mère. Même si elle n&#39;était pas en super santé, cela a surpris tout le monde. Ma femme était effondrée. (Et j&#39;étais pas beaucoup mieux)</li>
-<li>Janvier 2014 : Mon père subit des examens pour un problème cardiaque. Avec stents. Posés avec complications.</li>
-<li>Février 2014 : Ma filleule entre en urgence à l&#39;hôpital, et est placée en coma artificiel le temps de faire les examens, pour éviter qu&#39;elle souffre. Une petite fille de 5 mois passe donc 15 jours dans le coma.</li>
-<li>Mars 2014 : Fin du coma, difficile et longue adaptation. Elle est clairement traumatisée, elle a peur des gens habillés en gris, etc...</li>
-<li>Mars 2014 : Au boulot, j&#39;ai l&#39;impression que rien ne va. Je mets ça sur le compte de mes ennuis familiaux.</li>
-<li>Avril 2014 : Mon père gagne un double pontage, en &quot;urgence&quot;, avec plus d&#39;un mois d&#39;avance sur la date prévue.</li>
-<li>Avril 2014 : Je continue de cloisonner entre boulot et perso, mettant tout mon stress sur le compte du personnel.</li>
-<li>Avril 2014 : Mon père gagne un nouveau pontage.</li>
-<li>Avril 2014 : J&#39;explique la situation à mes chefs, qui commençaient à se demander pourquoi j&#39;étais aussi sur les nerfs. On réalise que l&#39;effectif du pole qualité n&#39;est pas suffisant. Contre mon avis, on privilégie des solutions pratiques plutôt qu&#39;une embauche.</li>
-<li>Avril 2014 : On ajoute une chirurgie exploratoire abdominale sur mon père.</li>
-<li>Mai 2014 : Amputation de la jambe pour mon père. </li>
-<li>Mai 2014 : Sudweb me donne une bouffée d&#39;air.</li>
-<li>Juin 2014 : Je revois mon père pour la première fois de l&#39;année. Il est dans un tel état que j&#39;ai l&#39;impression de lui dire adieu.</li>
-<li>Juillet 2014 : Lors d&#39;une sortie entre collègues organisée par ma société, blessure de mon binôme. Je suis donc seul là où on ne suffisait pas à deux.</li>
-<li>Juillet 2014 : Nouvel opération de mon père, pour &quot;fignoler&quot; l&#39;amputation.</li>
-<li>Juillet 2014 : On fait passer des entretiens pour embaucher du monde au pole qualité.</li>
-<li>Aout 2014 : Au boulot, on me propose une mutation. De Toulouse à Montpellier. (5 personnes à Toulouse, 40 à Montpellier)</li>
-<li>Aout 2014 : Vacances. Repos, pas d&#39;internet (ou si peu). Je me repose, j&#39;oublie tout.</li>
-<li>Aout 2014 : Ma femme est très fatiguée, malade.</li>
-<li>Aout 2014 : J&#39;apprends qu&#39;une de mes tantes va mieux : elle a eu un AVC avec complications, alors qu&#39;elle avait déjà une santé fragile. </li>
-<li>Aout 2014 : Premier jour de boulot, lorsque je prends ma voiture, quelqu&#39;un a laissé un mot pour s&#39;excuser pour la bosse. Ma portière s&#39;est faite enfoncer durant la nuit.</li>
-<li>Aout 2014 : Deuxième semaine de reprise : chute de mon fils de sa hauteur à plat dos, on fini aux urgences. Il ne pose plus son pied par terre, et ne peut donc plus marcher. Ils nous font surveiller les symptômes d&#39;un traumatisme crânien.</li>
-<li>Aout 2014 : Mon fils ne marche toujours pas 2 jours après, passage chez le médecin. Qui nous dit de patienter, puis de passer une échographie du genou.</li>
-<li>Aout 2014 : Ma meilleure amie passe aux urgences suite à un problème de santé pendant ses vacances.</li>
-<li>Aout 2014 : Avec l&#39;arrivée d&#39;un nouveau testeur qui code des tests auto, je ressens d&#39;autant plus le manque de code pour moi. En regardant en arrière, j&#39;ai du coder en tout et pour tout 15 jours depuis janvier. (Le reste, c&#39;est du test à la main, dont 75% au moins peut être automatisé)</li>
-<li>Aout 2014 : Ma meilleure amie retourne à l&#39;hôpital pour quelques jours après son retour de vacances.</li>
-<li>Septembre 2014 : &Eacute;chographie négative pour le genou de mon fils, retour aux urgences. Cette fois, on est fixé (10 jours après)&nbsp;: il ne pose pas le pied par terre parce qu&#39;il a une fracture du tibia (Fracture en cheveu, compliquée à voir sur une radio). C&#39;est parti pour un plâtre pendant 3 semaines.</li>
-<li>Septembre 2014 : Ma femme est toujours malade, mais on est maintenant sûrs&nbsp;: on va être parents une deuxième fois.</li>
-</ul>
-
-<p>Quand je racontais un point particulier à quelqu&#39;un, on me disait toujours &quot;Courage, ça va passer&quot;. Quand je vois la liste, je comprends mieux pourquoi, deux semaines après mon retour de vacances, j&#39;ai l&#39;impression de passer à côté de ma vie depuis quelques mois.</p>
-
-<ul>
-<li>J&#39;ai un travail, où je devrais faire mon métier. Pourtant, j&#39;ai l&#39;impression de ne pas faire mon métier.</li>
-<li>J&#39;ai une famille, que je ne vois pas aussi souvent que je voudrais.</li>
-<li>J&#39;ai un fils, et j&#39;ai l&#39;impression de ne pas le voir grandir.</li>
-<li>J&#39;ai une vie, mais je ne sais pas où elle me mène.</li>
 </ul>
 </div>
   </div>
