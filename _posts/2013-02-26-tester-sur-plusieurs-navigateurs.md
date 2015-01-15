@@ -114,7 +114,7 @@ On exploite le nom du navigateur pour lancer le bon, avec des paramètres partic
 * Pour internet explorer et chrome, il faut avoir téléchargé les exécutables (sur le groupe selenium) et les avoir ajoutés au path
 * Pour firefox, on ajoute des paramètres pour effectuer des tests d'upload et download de fichiers)
 
-### Les tests ont-ils changés ?
+### Les tests ont-ils changés?
 
 Lorsque j'ai commencé à coder ces tests, il y a plus d'un an, j'avais anticipé l'architecture pour gérer ce genre de problématique. La mise en place n'a pourtant pas eu lieu sans douleur.
 
