@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2015-01-07T23:00:22+01:00</updated>
+ <updated>2015-01-15T19:08:40+01:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -1122,7 +1122,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;li&gt;Pour firefox, on ajoute des paramètres pour effectuer des tests d&amp;#39;upload et download de fichiers)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Les tests ont-ils changés ?
+&lt;h3&gt;Les tests ont-ils changés?&lt;/h3&gt;
+
 &lt;p&gt;Lorsque j&amp;#39;ai commencé à coder ces tests, il y a plus d&amp;#39;un an, j&amp;#39;avais anticipé l&amp;#39;architecture pour gérer ce genre de problématique. La mise en place n&amp;#39;a pourtant pas eu lieu sans douleur.&lt;/p&gt;
 
 &lt;p&gt;Certains navigateurs ne se comportent pas tout à fait comme les autres. Il faut donc mettre à jour son code pour qu&amp;#39;il soit le plus &amp;quot;ré utilisable possible&amp;quot;.&lt;/p&gt;
