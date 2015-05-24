@@ -17,7 +17,7 @@ Avec tout ce qui s'est passé, j'apprécie d'autant plus les petits bonheurs de 
 * Mon père va mieux, et devrait enfin rentrer à la maison dans les prochaines semaines. Depuis le printemps, ca commençait à faire long.
 * La neige, qui est bien tombée juste après Noël, pour la faire découvrir aux petits. Mais sans gêner la circulation pour autant.
 * La première bêtise de mon fils (un premier janvier). Sur le coup, je n'étais pas content. Mais maintenant, ça fera un chouette souvenir. Nous aider au restaurant et faire tomber une assiette pleine...
-* Mon fils se met à vouloir manger comme les grands. Il passe donc de "je ne mange que les plats pour bébés", sans vouloir gouter aux plats préparer avec amour par sa mère à "je ne veux manger que comme mes parents".
+* Mon fils se met à vouloir manger comme les grands. Il passe donc de "je ne mange que les plats pour bébés", sans vouloir gouter aux plats préparés avec amour par sa mère à "je ne veux manger que comme mes parents".
 * Mon fils qui accepte enfin de varier les gouts de ses yaourts.
 * Mon fils qui a fait des progrès énormes dans l'apprentissage du langage. On devine les phrases, on comprend de plus en plus de mots, et il se met à répéter tout ce qu'on dit.
 * Mon fils qui semble bien comprendre qu'il y aura bientôt un bébé de plus dans la maison.
