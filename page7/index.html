@@ -156,6 +156,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -175,6 +183,82 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/12/06/tester-un-site-multilingue/" itemprop="url" rel="bookmark">
+        Tester un site multilingue
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-12-06" itemprop="datePublished">
+			
+			6
+			décembre
+			
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
+
+<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
+
+<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
+
+<h3>Le test</h3>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
+    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">teardown</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_it</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3>L&#39;explication</h3>
+
+<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
+
+<ul>
+<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
+<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
+<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
+<li>Ligne 18 à 21 : second test, depuis google.fr</li>
+</ul>
+
+<h3>Pourquoi j&#39;ai perdu du temps</h3>
+
+<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
+
+<p>Quelques rappels :</p>
+
+<ul>
+<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
+<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
+</ul>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span>
+</code></pre></div></div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -302,81 +386,6 @@ Deux anecdotes récentes à ce sujet.</p>
 <p>Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?</p>
 
 <p>Plus vous donnez d&#39;informations précises, plus cela peut être utile à corriger le bug.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/07/19/les-logiciels-tiers-une-calamite/" itemprop="url" rel="bookmark">
-        Les logiciels tiers, une calamité
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-07-19" itemprop="datePublished">
-			
-			19
-			juillet
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Lorsqu&#39;on rencontre des problèmes vraiment étranges sur une fonction particulière, on pense d&#39;abord que cela n&#39;a jamais pu marcher, on ne comprend plus.</p>
-
-<p>Puis on enquête. Et parfois, la cause du problème est une surprise, autant pour nous que pour les personnes touchées. Quelques exemples plus ou moins vieux.</p>
-
-<h3>La box qui coupe</h3>
-
-<p>Petit retour sur l&#39;article : Les bugs poilus sont-ils solubles dans le temps ?</p>
-
-<p>Au début, il s&#39;agissait d&#39;un simple problème de validation de formulaire AJAX pour une partie des utilisateurs. Ils emblaient tous utiliser une LiveBox. Nous avons éliminé cette piste au bout de plusieurs jours, certains cas ne collant pas.</p>
-
-<p>Mais au final, il semble que ce problème qui nous a occupé pendant plus d&#39;un mois était bien une mise à jour de la LiveBox : la mise à jour suivante a corrigé le problème.</p>
-
-<h3>L&#39;antivirus anti web</h3>
-
-<p>En général, je ne cite pas, mais cela fait trop de fois où nous rencontrons des problèmes avec Kaspersky.</p>
-
-<p>Deux points sans rapport, tous les deux liés à des classiques du web.</p>
-
-<ul>
-<li><p>Lorsque vous envoyez une photo via certains protocoles, on a un comportement aléatoire :</p>
-
-<ul>
-<li>Images non envoyées</li>
-<li>Images envoyées de façon incomplète.</li>
-</ul>
-
-<p>Evidemment, il suffit de désactiver Kaspersky pour que cela fonctionne. Selon les navigateurs, nous utilisons le protocole PUT ou le protocole GET. si le get fonctionne, le put pose de nombreux problèmes.</p></li>
-<li><p>Les notifications, très utilisées sur les réseaux sociaux, sont dégradées : le nombre de notifications n&#39;est pas mis à jour après leur lecture, en particulier sur Google+. Là encore, désactiver l&#39;antivirus suffit à régler le problème.</p></li>
-</ul>
-
-<p><img src="/public/pictures/2012/bug-kaspersky-notif.jpg" alt="Toutes les notifications ont été lues, et pourtant"></p>
-
-<h3>La navigation compatible</h3>
-
-<p>Lorsqu&#39;on utilise Internet Explorer, il lui arrive de décider d&#39;utiliser le mode compatible sur certains sites. Un utilisateur qui ne fait pas attention pensera utiliser la dernière version du navigateur, mais aura entre les mains un navigateur se comportant comme IE7 ou IE8 dans le meilleur des cas.</p>
-
-<p>Les éditeurs wysiwyg sont particulièrement concernés par ce genre de problème, mais ce ne sont pas les seuls.</p>
-
-<p>Lorsqu&#39;on sait en outre que le mode compatible IE8 est différent d&#39;IE8, on sait qu&#39;on va s&#39;arracher les cheveux pour trouver la cause du problème.</p>
-
-<h3>Le plugin défaillant</h3>
-
-<p>Les navigateurs sont depuis plusieurs années extensibles : on peut ajouter des fonctionnalités plus ou moins intéressantes. La plupart des développeurs ont installé FireBug par exemple.</p>
-
-<p>Revenons à celle qui me pose problème : &quot;Facebook Disconnect&quot;. Cette extension sous chrome permet d&#39;empêcher Facebook de vous traquer. En contre partie, elle bloque des scripts, sans vous demander votre avis. Un exemple ? notre éditeur wysiwym. Ce n&#39;est apparement pas la seule à bloquer l&#39;éditeur, mais la récupération des informations auprès de nos utilisateurs prend beaucoup de temps sur des problèmes aussi pointus.</p>
-
-<h3>Conclusion</h3>
-
-<p>Les mises à jour automatiques sont une plaie : les utilisateurs ne comprennent pas pourquoi le comportement change sans modification, et pense systématiquement à un problème du produit concerné, pas d&#39;un logiciel tiers.</p>
-
-<p>Certains logiciels s&#39;adjugent des pouvoirs très importants, sans le signaler à leurs utilisateurs, dégradant par la même occasion la navigation sur des sites web qui fonctionnent pourtant parfaitement par ailleurs.</p>
 </div>
   </div>
   

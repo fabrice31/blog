@@ -156,6 +156,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -175,6 +183,87 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/06/04/tests-automatiques/" itemprop="url" rel="bookmark">
+        Quand le texte rencontre les tests automatiques
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-06-04" itemprop="datePublished">
+			
+			4
+			juin
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lors de SudWeb en mai, j&#39;ai discuté avec le créateur de <a href="http://casperjs.org/">CasperJS</a> pour lui expliquer pourquoi je préférais Watir à son outil.</p>
+
+<h3>Petit tour rapide des défauts de CasperJS</h3>
+
+<ul>
+<li><strong>Limitation des sélecteurs</strong> : Avec watir, je peux sélectionner un élement à peu près comme je veux. Avec CasperJs, le choix est plus limité (mais il peut être étendu en javascript.</li>
+<li><strong>Navigateur</strong> : CasperJS utilise un navigateur headless basé sur webdriver. Watir permet de prendre le contrôle de la plupart des navigateurs (via selenium)</li>
+<li><strong>Langage</strong> : je n&#39;aurais pas dit ça il y a 2 ans, mais je préfère le ruby au javascript.</li>
+<li><strong>Capture d&#39;écran</strong> : ~~Il est difficile de faire une capture d&#39;écran anvec un navigateur headless.~~ Apparement, c&#39;est possible aussi en CasperJs.</li>
+</ul>
+
+<p>Mais je suis partial : je connais et j&#39;utilise Watir depuis 2 ans, et j&#39;au découvert CasperJs depuis une semaine.</p>
+
+<h3>Point sur CasperJS</h3>
+
+<p>Je ne nie pas son intérêt. Mettre en place des tests fonctionnels sous Watir / cucumber (et hudson pour gérer tout cela) prend du temps, et cela me fait penser à sortir l&#39;infanterie pour écraser un moustique.</p>
+
+<p>Si on a besoin de créer des tests rapides, et que &quot;webdriver&quot; nous suffit, et si on en plus on est à l&#39;aise avec le javascript : je vous le conseille.</p>
+
+<p><img src="/public/pictures/2012/texte.jpg" title="Test de textes" /></p>
+
+<p>Notre point de désaccord n&#39;était pas sur les outils, leurs limitations, etc.. mais sur les tests eux-mêmes.</p>
+
+<h3>Doit-on utiliser les textes de l&#39;interface pour tester ?</h3>
+
+<p>Lorsqu&#39;on met en place des tests, on utilise au maximum les informations de l&#39;interface : class, name, id, parfois même url (src ou href).</p>
+
+<p>Certains utilisent même les xpath, mais je le déconseille : je trouve que cela alourdit la maintenance du projet à long terme.</p>
+
+<p>Mais cela n&#39;exclut pas d&#39;utiliser aussi le texte. Mais dire &quot;Cliquer sur le bouton &#39;Ajouter au panier&#39;&quot; a un défaut : si le texte change, il faut mettre à jour les tests.</p>
+
+<p>Donc, utiliser les textes peut être intéressant, mais il ne faut pas en abuser, et les &quot;limiter&quot;.</p>
+
+<h3>Doit-on tester les textes de l&#39;interface ?</h3>
+
+<p>Tester tous les textes reviendrait à devoir modifier les tests à chaque mise à jour de textes. Ce serait coûteux en temps, et dà difficile à maintenir. (Dans la plupart des projets web, le nombre de texte augmente dans le temps)</p>
+
+<p>Par contre, certains textes doivent être tester dans l&#39;interface :</p>
+
+<ul>
+<li>Tous les messages d&#39;erreur</li>
+<li>Tous les message de validation</li>
+<li>Les liens principaux de navigation</li>
+<li>Les boutons d&#39;action</li>
+</ul>
+
+<h3>Quoi d&#39;autre ?</h3>
+
+<p>Cela nous donne une liste &quot;réduite&quot; de textes qui peuvent être utilisés durant les tests. Si un texte change pour une raison inconnue, certains tests passeront dans le rouge, et il n&#39;y aura qu&#39;à les mettre à jour le texte dans les tests pour corriger.</p>
+
+<p>Il n&#39;est pas utile de tester les textes : les utiliser durant les tests revient au même. (l&#39;optimisation est importante, j&#39;y reviendrais)</p>
+
+<p>Je travaille sur un projet disponible dans 5 langues. J&#39;ai donc rassembler tous les textes dans un lot de fichier (un par langue)</p>
+
+<p>Last but not least : en tant que responsable qualité, je suis garant que les textes soient conformes. Si nos traducteurs modifient le texte anglais du bouton &quot;Save&quot; en &quot;See&quot;, je dois agir en conséquence pour obtenir une correction au plus tôt.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -308,52 +397,6 @@
 <p>Notre équipe va utiliser certaines connaissances &quot;découvertes&quot; durant ces 2 jours bientôt, sur notre projet. Je regrette presque que cela soit déjà fini, et qu&#39;il faudra attendre un an avant le prochain.</p>
 
 <p>Pour garder l&#39;esprit &quot;SudWeb&quot; jusqu&#39;à l&#39;an prochain, je vais sûrement retourner à des apéro web toulousains dans les prochains mois ;)</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/" itemprop="url" rel="bookmark">
-        Les tests sont comme une boite de chocolats
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-05-23" itemprop="datePublished">
-			
-			23
-			mai
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><blockquote>
-<p>Testing is like a box of chocolates. You never know what you’re gonna get.
-<br/> Peter Shih</p>
-</blockquote>
-
-<p><img src="/public/pictures/2012/chocolats.jpg" title="Boite de chocolats" style="width: 350px; float: left;"/>
-<img src="/public/pictures/2012/forrest-gump.jpg" title="Forrest Gump" style="width: 350px; float: left;"/>
-<p style="clear: both;"></p></p>
-
-<p>Je suis tout à fait d&#39;accord avec lui. Quand on met en place des tests automatiques ou qu&#39;on teste manuellement une nouvelle fonctionnalité, on ne sait jamais ce qu&#39;il va se passer.</p>
-
-<p>On peut tout avoir :</p>
-
-<ul>
-<li>Tout fonctionne, et tout s&#39;affiche parfaitement</li>
-<li>Une partie ne fonctionne pas, bloquant une partie des tests.</li>
-<li>L&#39;affichage est décalé (avec parfois des problèmes en cascade)</li>
-</ul>
-
-<p>Du coup, rien ne se ressemble : chaque nouveau test permet d&#39;être surpris, et de devoir réflechir en profondeur pour assurer la stabilité du produit testé. (Qu&#39;il soit logiciel ou matériel d&#39;ailleurs)</p>
 </div>
   </div>
   

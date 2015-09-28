@@ -156,6 +156,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -175,6 +183,150 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2014/12/13/kiss-simple-et-efficace/" itemprop="url" rel="bookmark">
+        KISS : Keep it simple and stupid
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2014-12-13" itemprop="datePublished">
+			
+			13
+			décembre
+			
+			2014
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Quand on travaille sur des gros projets, on a tendance à rajouter beaucoup de fonctions, de code, partout, à tout bout de champ.
+Il faut savoir prendre du recul, pour simplifier le code, et faire des choses simples et efficaces.</p>
+
+<p>Dans le cadre de mon travail, l&#39;équipe test a pas mal changé cet été, avec 2 nouveaux arrivants. Ca tombe bien, on a aussi récupéré des nouveaux projets à tester.
+C&#39;est en les formant à nos méthodes, notre code, que j&#39;ai repéré des améliorations à faire, et qu&#39;ils ont fait des suggestions intéressantes.</p>
+
+<p>Avec leur arrivée, une partie de ma charge de travail a pu diminuer un peu, me permettant de réflechir, de me poser des questions, de chercher des idées &quot;innovantes&quot; pour résoudre des problèmes mis de côté par manque de temps depuis des semaines (voire plus).</p>
+
+<h3>Mise en place en 3 clics</h3>
+
+<p>Bon, j&#39;éxagère, il faut plus que 3 clics. L&#39;utilisation d&#39;un Gemfile et de la gem <a href="https://rubygems.org/gems/bundler">bundler</a> permet de simplifier l&#39;ensemble de la procédure.</p>
+
+<p>Pour préparer un nouveau poste (suite à une embauche, une réinstallation, ou un nouveau serveur, il faut alors installer ruby, la gem bundler, récupérer le dépôt du code, puis lancer juste la commande <code>bundle install</code>. 
+Et le tour est joué.</p>
+
+<p>Pour aller plus loin : mise en place sur tous les serveurs de tests d&#39;une routine vérifiant que la liste est à jour et conforme à ce qu&#39;on attend, avec un </p>
+<div class="highlight"><pre><code class="language-" data-lang="">bundle update
+gem cleanup
+</code></pre></div>
+<h3>L&#39;information, le nerf de la guerre</h3>
+
+<p>Plongés dans les tests, nous disposions de plusieurs documentations, avec des buts plus ou moins précis. Localisées à plusieurs endroits.
+Du coup, petit ménage d&#39;été, pour les regrouper, classer, mettre à jour. Au final, on a gardé plusieurs documents, pour plusieurs rôles différents :</p>
+
+<ul>
+<li><strong>Documentation du code</strong> : présente depuis le début, avec génération automatique par la gem ruby <a href="https://rubygems.org/gems/rdoc">rdoc</a> et un petit script ruby (basé sur des expressions régulières) pour lister les step_definitons. Basée évidemment sur les commentaires dans le code, qui sont eux mêmes le premier niveau d&#39;explication.</li>
+<li><strong>Documentation sur comment coder</strong> : quelques documents précis sur comment installer l&#39;environnement, les conventions de codage, ou des points précis et complexe des tests.</li>
+<li><strong>Documentation sur les produits</strong> : nous testons une demie douzaine de projets, plus ou moins liés les uns avec les autres. Pour pouvoir teter efficacement, il vaut mieux savoir comment le projet fonctionne, et dans l&#39;idéal, connaître également les bugs les plus courants sur le projet.</li>
+</ul>
+
+<h3>Codes complexes et compliqués</h3>
+
+<p>Aujourd&#39;hui, l&#39;ensemble de nos codes testant les projets de la société représenter environ 11 000 lignes de codes (essentiellement en ruby, cucumber, shell)</p>
+
+<p>Il y a 10 jours, j&#39;ai regardé pour la première fois depuis des mois les résultats de <a href="https://rubygems.org/gems/flog">flog</a> sur le projet. 
+Pour résumer, flog analyse le code source, compte combien de fois on effectue chaque &quot;action&quot;, et s&#39;ensuit une note de complexité pour chaque méthode, et pour l&#39;ensemble.</p>
+
+<p>Comme on peut classer, on voit immédiatement les fonctions les plus compliquées. Reste à savoir si la complexité est normale ou non. Après avoir lu pas mal d&#39;articles sur le sujet, et testé moi même sur notre code, j&#39;estime qu&#39;une fonction avec un score supérieur à 50 doit être analysée, et éventuellement, modifiée.</p>
+
+<h4>Quelques chiffres</h4>
+
+<p>J&#39;ai profité d&#39;un &quot;temps calme&quot; au bureau pour bosser sur le sujet. </p>
+
+<p>Avant :</p>
+<div class="highlight"><pre><code class="language-" data-lang="">  7128.5: flog total
+    15.6: flog/method average
+
+   793.5: main#none
+   236.1: main#launch_browser
+   197.0: main#get_job_results
+   138.0: Then#/^HTML (contain|don't contain) (.*)$/
+   136.7: Then#/^I don't see errors$/
+   134.8: FormatPage#format_is_present
+   131.1: main#compare_stats
+    90.7: Then#/^I click on the insocial expand$/
+    81.4: main#stats_of_day
+</code></pre></div>
+<p>Après : </p>
+<div class="highlight"><pre><code class="language-" data-lang=""> 6166.2: flog total
+    13.8: flog/method average
+
+   827.4: main#none
+   197.0: main#get_job_results
+   168.0: main#launch_browser
+   134.8: FormatPage#format_is_present
+    90.7: Then#/^I click on the insocial expand$/
+    90.3: main#compare_stats
+    77.0: main#stats_of_day
+</code></pre></div>
+<p>On note plusieurs choses :</p>
+
+<ul>
+<li>La note globale a chuté (-14%). </li>
+<li>Cela fait mathématiquement baissé la moyenne par méthode.</li>
+<li>Certaines méthodes &quot;complexes&quot; ont bien baissé.</li>
+<li>D&#39;autres ont augmenté : avec les pull request de mes collègues, rien d&#39;aberrant. La note a donc baissé alors que dans le même temps, plus de 1 500 lignes de code ont été ajoutées / modifiées.</li>
+<li>Certaines méthodes, complexes, ont une note qui correspond à leur difficulté de compréhension. </li>
+</ul>
+
+<h4>Qu&#39;est ce que j&#39;ai changé ?</h4>
+
+<p>Rien de transcendant :</p>
+
+<ul>
+<li>Du code dupliqué a été &quot;mis en commun&quot; pour faciliter la maintenance.</li>
+<li>Des optimisations faciles : par exemple, dans une méthode utilisant beaucoup de données, j&#39;ai remplacé l&#39;utilisation d&#39;un tableau par une copie du contenu d&#39;une données. Passer de <code>my_array[&#39;result&#39;][&#39;report&#39;][&#39;url&#39;]</code> à <code>my_url</code> quand c&#39;est utilisé 7-8 fois, ça améliore la complexité et aussi la lisibilité et la maintenabilité.</li>
+<li>Des méthodes ont été découpées pour clarifier ce que le code faisait.</li>
+</ul>
+
+<h3>Et c&#39;est conventionnel tout ça ?</h3>
+
+<p>En parralèle, j&#39;ai mis à jour la gem <a href="https://rubygems.org/gems/rubocop">rubocop</a>. Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s&#39;est beaucoup étoffée depuis la dernière fois que j&#39;avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j&#39;ai passé quelques heures à modifier notre code pour qu&#39;il passe les nouvelles règles.</p>
+
+<p>Sur le projet, nous avons désactivé 27 règles parmi les centaines présentes. Par exemple, nous désactivons la limite sur le calcul de <a href="http://fr.wikipedia.org/wiki/Nombre_cyclomatique">complexité cyclomatique</a> puisque nous utilisons flog.</p>
+
+<p>Rubocop nous a aussi aidé sur la complexité : une nouvelle règle a fait remonté quelques variables non utilisés. Les supprimer à fait baisser les notes de flog.</p>
+
+<p>Pour l&#39;automatisation, un git-hooks lance un script shell :</p>
+
+<ul>
+<li>vérifiant le résultat de rubocop, </li>
+<li>vérifiant qu&#39;il ne reste pas de trace d&#39;un conflit dans les fichiers,</li>
+<li>vérifiant que tous les fichiers yaml sont syntaxiement juste (<code>find . -name *.yml -exec yaml-lint {} \;</code> pour les analyser, avec la gem <a href="https://rubygems.org/gems/yaml-lint">yaml-lint</a>)</li>
+</ul>
+
+<h3>KISS, et après</h3>
+
+<p>Le <a href="http://fr.wikipedia.org/wiki/Principe_KISS">principe KISS</a> (pour Keep it simple and stupid) est une façon de travailler qui incite à rester simple pour être efficace.
+Certains points cités plus hauts ne sont pas triviaux à mettre en place, mais permettent sur le long terme à limiter les risques, à garder facilement du code propre, compréhensible, et simple.</p>
+
+<p>Ma todolist pour la suite ? </p>
+
+<ul>
+<li>Traquer le code dupliqué (j&#39;en ai déjà repéré quelques morceaux, dont le nettoyage n&#39;était pas possible dans le temps que j&#39;avais), </li>
+<li>Supprimer le code mort et non utilisé.</li>
+<li>Continuer à documenter, ranger, classer.</li>
+<li>Refactoriser ce qui peut l&#39;être et dont le code n&#39;est pas amené à disparaître dans les prochains mois.</li>
+</ul>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -278,76 +430,6 @@ A tout ceci s&#39;ajoute le fait que j&#39;habite loin de mes familles, et que l
 <li>En profiter pour faire le ménage sur le blog.</li>
 <li>Remettre à plat la ligne éditoriale.</li>
 </ul>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2014/05/20/sudweb-2014-grand-bol-d-air-frais/" itemprop="url" rel="bookmark">
-        Sudweb 2014 - Un grand bol d'air frais
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2014-05-20" itemprop="datePublished">
-			
-			20
-			mai
-			  
-			2014
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/conference">Conference</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p><a href="http://sudweb.fr/">Sudweb</a>, j&#39;en avais parlé il y a 2 ans, en 2012. Cette année, ça se passait à Toulouse, j&#39;y suis donc retourné. Le changement, c&#39;est que j&#39;y étais uniquement en tant que &quot;spectateur&quot;.</p>
-
-<h3>Vendredi : des conférences et des papotages</h3>
-
-<p>Le vendredi, c&#39;est le jour des conférences. Je ne les citerais pas toutes, mais certaines m&#39;ont bien marqué :</p>
-
-<ul>
-<li>La culture d&#39;entreprise, vu par Kevin Goldsmith. 
-J&#39;ai eu un peu du mal à tout suivre en anglais de bon matin, mais intéressant, et finalement, cette notion de culture est revenu dans beaucoup d&#39;interventions.</li>
-<li>La sédimentation des données, par Samuel Huron</li>
-<li>Comment afficher simplement des données dans le temps, de façon que le présent compte plus que le passé. Hate de pouvoir tester ça sur l&#39;affichage des résultats de tests.</li>
-<li>Un cours de dessin de croquis par Eva-Lotta Lamm</li>
-<li>Deux petites histoires sur pourquoi les commentaires dans le code sont importants</li>
-<li>Tu peux pas test, un concept pour tester. J&#39;étais sceptique sur le programme, mais Vincent Van Steen a finalement réussi à me convaincre que cette méthode peut avoir un intérêt dans certains cas, pour gagner du temps et de l&#39;argent.</li>
-<li>Une histoire de print qui finit en web, avec un joli livre responsive ; la dette technique ; les réponses aux stress... et plein d&#39;autres sujets ont été abordés.</li>
-</ul>
-
-<p>Comme toujours, la journée est chargée en contenu riches, intéressants, et chacun y trouve son compte. Les pauses sont là pour échanger sur les conférences, sur soi, son métier... je suis timide, j&#39;ai surtout parler à des gens que je connaissais déjà.</p>
-
-<p>Et pour finir la journée, une conférence débat animée par David Bruant et Pablo Pernot, qui a soulevé beaucoup de questions à base de &quot;mais pourquoi je travaille comme ça&quot;, &quot;comment changer l&#39;avenir de la profession&quot;, ou encore &quot;quand ça va pas, il faut le dire&quot;.</p>
-
-<p>Toute la journée, Romain a réalisé des posters basés sur les contenus des conférences, en live. J&#39;ai trouvé ça impressionnant (que ce soit l&#39;esprit de synthèse ou la mise en page) Sur le débat, il a été bluffant. J&#39;ai hâte de voir le résultats des posters dans les prochaines semaines !
-Le soir, j&#39;ai fait l&#39;impasse sur la soirée communautaire pour rentrer m&#39;occuper de mon fils, et me reposer avant le deuxième round du lendemain.
-Sudweb 2014 - Un grand bol d&#39;air frais</p>
-
-<p><img src="/public/pictures/2014/sudweb.png" alt="SudWeb Logo" title="Sudweb"></p>
-
-<h3>Samedi : ateliers et échanges</h3>
-
-<p>Le samedi à Sudweb, c&#39;est souvent compliqué : des ateliers sont préparés dans les 7-8 salles dispos, et chacun va là où il veut. Avec la règle des deux pieds : &quot;Si ça te plait pas, tu pars, et tu vas voir ailleurs&quot;.
-Cette année, j&#39;avais un coup de coeur pour un atelier prévu de longue date. Du coup, cela m&#39;a empêché d&#39;aller à un autre qui s&#39;est créé et organisé dans la matinée. Et du coup, j&#39;ai fini par faire une journée sans &quot;technique&quot; :</p>
-
-<ul>
-<li>Atelier Légo pour faire des métaphores, étape par étape. Très intéressant, parce que cela permet vraiment de faire passer des idées par construction en 3D. (Un peu comme le cours de croquis de la veille)</li>
-<li>Atelier DIY : Do it yourself, avec construction par équipe. Mon seul regret : nous n&#39;avons pas eu le temps de finir le device lab à base de tablette que nous avions commencé. Mais clairement, je suis arrivé en regardant mon bureau d&#39;une autre façon lundi matin.</li>
-<li>Un atelier de travail en groupe avec une kinésiologue, où on a aussi bien parlé acuponcture que de nos frustrations professionnelles.</li>
-<li>Et enfin, la rétrospective de sudweb. Avec toute l&#39;équipe qui a organisé ça, pour pouvoir dire ce qui nous a plus, ce qui a moins plus, et ce qu&#39;on pourrait faire d&#39;encore meilleurs l&#39;année prochaine.</li>
-</ul>
-
-<h3>Sudweb, et après</h3>
-
-<p>Rien à dire, j&#39;ai passé 2 supers journées. Je pense que si je pouvais, je ne changerais pas grand chose : j&#39;y étais allé pour avoir un grand bol d&#39;air, entendre parler de quelques technos que je maîtrise pas forcément, et m&#39;ouvrir l&#39;esprit à d&#39;autres choses. J&#39;ai tout bon sur toute la ligne. Un grand coup de chapeau à l&#39;équipe qui a organisé tout ça.</p>
-
-<p>Et après ? Lundi, retour au bureau, à la réalité. Le coup de boost de voir autant de gens voulant travailler encore mieux (dans tous les sens du terme) pendant 2 jours m&#39;a remonté le moral. Mardi, j&#39;ai un bon coup de blues, et je me demande si on devrait pas organiser un sudweb chaque semaine.</p>
-
-<p>Il ne reste qu&#39;à attendre les vidéos des conférences pour pouvoir les partager avec les collègues et connaissances pour leur montrer :)</p>
 </div>
   </div>
   

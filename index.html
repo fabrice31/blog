@@ -156,6 +156,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -175,6 +183,132 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2015/09/28/empirique-service-tests/" itemprop="url" rel="bookmark">
+        L'empirique au service des tests
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2015-09-28" itemprop="datePublished">
+			
+			28
+			septembre
+			  
+			2015
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/webdriver">Webdriver</a>
+		
+		- <a href="/tag/proxy">Proxy</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><h3>Contexte</h3>
+
+<p>Je travaille souvent à tester des comportements liés à la vidéo. Vérifier qu&#39;elle se déroule bien, qu&#39;elle se finit au moment voulu, que les interactions sont possibles.
+Une des problématiques est de pouvoir vérifier que les évenements de tracking (statistiques, etc.) sont bien envoyés au bon moment.</p>
+
+<p>Dans mon cas, chaque événement est un appel à un pixel précis, avec un tas de paramètres. L&#39;intérêt pour l&#39;utilisateur est de pouvoir vérifier le fonctionnement, et par exemple déterminer si les utilisateurs qui mettent en pause à un moment relancent la vidéo pour la regarder jusqu&#39;au bout.</p>
+
+<p>Lorsqu&#39;on teste ce genre de chose manuellement, il suffit d&#39;ouvrir la console réseau du navigateur, et de vérifier que les urls sont bien appelées au bon moment.</p>
+
+<h3>Industrialisation</h3>
+
+<p>Dans mon cas, j&#39;ai besoin d&#39;effectuer une centaine de contrôles de ce type, sur différents navigateurs, tous les jours. L&#39;ensemble des tests étant écrit en ruby / watir-webdriver, j&#39;ai longtemps chercher une solution permettant via webdriver de vérifier ce qui passait au niveau réseau. </p>
+
+<p>J&#39;ai envisagé un temps de démarrer mes navigateurs en leur ajoutant un plugin : webdriver permet de le faire à la volée avec le fichier xpi. Mais cela ne marche pas pour Internet Explorer, que je ne peux pas exclure des tests.</p>
+
+<p>Après des semaines de réflexions, par une nuit d&#39;insomnie, j&#39;ai trouvé une solution:</p>
+
+<ul>
+<li>Installer un proxy sur le serveur de tests</li>
+<li>Analyser les logs de ce proxy pour mes besoins</li>
+</ul>
+
+<p>Le choix du proxy était &quot;limité&quot; avec de nombreuses contraintes : </p>
+
+<ul>
+<li>Besoin d&#39;avoir un fichier de logs</li>
+<li>Besoin de pouvoir le contrôler en ruby (ou dans un navigateur)</li>
+<li>Besoin de fonctionner sur windows et mac</li>
+</ul>
+
+<p>Mon choix s&#39;est porté vers <a href="http://www.charlesproxy.com/">Charles proxy</a>.</p>
+
+<p>Le fichier de log de charles étant horodaté, nous avons pu comparer les événements les uns par rapport aux autres. Pour vérifier, par exemple, que l&#39;evenement &quot;50%&quot; se produit à la moitié de la durée de la vidéo.</p>
+
+<p>Il a suffit d&#39;ajouter des urls bien reconnaissables pour toutes nos vidéos de tests et de se retrousser les manches.</p>
+
+<h3>Problèmes</h3>
+
+<p>Durant la mise en place de cette solution (et sa maintenance), nous avons rencontrés plusieurs problèmes :</p>
+
+<ul>
+<li>Nécessité, pour chaque scénario, de redémarrer le proxy. Il est gourmand en ressources (mémoire principalement), et nos centaines de tests journaliers le mettent à rude épreuve.</li>
+<li>Lors d&#39;un test où nous en avons besoin, il faut pour l&#39;analyser ouvrir un navigateur, télécharger le fichier de log (format CSV), filter les lignes utiles, etc. Cela est couteux en temps. Le fichier de log pèse environ 1mo à chaque fois. Cela est couteux en temps.</li>
+<li>Les tests de vidéo sur mobile rencontrent parfois des lenteurs, ce qui compliquent l&#39;analyse des écarts de temps.</li>
+<li>Le format du fichier de log (en particulier les dates) est différent enttre windows et mac.</li>
+<li>Cela empêche la paralélisation sur une même serveur.</li>
+</ul>
+
+<h3>Bénéfices</h3>
+
+<p>Malgré ces défauts, ce système nous convenait parfaitement.</p>
+
+<p>Il nous a permis d&#39;industrialiser des tests sur un point clé de certains projets, sur tous les navigateurs, y comrpis sur mobile.</p>
+
+<p>Lorsqu&#39;un nouveau collègue est arrivé dans l&#39;équipe en juillet, et que je lui ai présenté cette brique bien pratique, il a trouvé ça intéressant, et trouvait l&#39;idée originale.</p>
+
+<h3>On prend les mêmes et on recommence, mais pas tout à fait</h3>
+
+<p>Quelques mois plus tard, lors d&#39;une discussion avec un collègue sans aucun rapport, j&#39;ai eu une meilleure idée.
+Objectifs: </p>
+
+<ul>
+<li>Diminuer le temps d&#39;initialisation</li>
+<li>Simplifier le code (et donc faciliter la maintenance)</li>
+</ul>
+
+<p>Plutôt que d&#39;analyser le départ de tous les pixels, on inverse la pensée. Comme dans la vraie vie, il faut que nous ayons notre propre serveur web, qui récupère les appels à des pixels, et il nous faut &quot;juste&quot; analyser les logs de ce serveur.
+C&#39;est là qu&#39;entre en scène node.js, et et plus précisement son http-server.</p>
+
+<p>Dans un dossier proxy, on créer un fichier html. On édite les urls de pixels de toutes nos vidéos de tests, pour appeler le serveur local http://127..0.0.1:8080/track.htm?action=pause&amp;id=123456</p>
+
+<p>Ensuite, la ligne de commande <code>http-server proxy/ --cors -a 127.0.0.1 &gt;&gt; proxy/log.txt</code> permet de lancer le serveur localement, et d&#39;avoir le log dans un fichier lui même accessible sur le serveur.</p>
+
+<p>Pour l&#39;analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d&#39;ouvrir un navigateur comme avec le log de charles.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8080/log.txt"</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</code></pre></div>
+<h3>Bénéfices</h3>
+
+<p>Quand j&#39;ai commencé cette modification, j&#39;espérais gagner un peu de temps. 
+Nous avions à ce moment là environ 100h de tests, et pour certains projets, je n&#39;attendais pas de gros gains. Et puis, j&#39;ai fait les calculs. </p>
+
+<ul>
+<li>Quelques centaines de scenarios n&#39;ont plus besoin du tout d&#39;initialisation. 10 à 15 secondes à chaque fois sur windows.</li>
+<li>Le fichier de log (1 Mo / scenario auparavant) a fortement diminué. Puisqu&#39;on ne log plus que ce qui est utile, on gagne plus de 99% de taille de fichier de log.</li>
+<li>La non ouverture du navigateur pour télécharger le fichier de log fait également gagner beaucoup de temps.</li>
+</ul>
+
+<p>Première estimation : environ 4h de gagnées parmi les 100h de tests.</p>
+
+<p>Lors des premiers tests, sur mon mac, j&#39;ai eu l&#39;impression que mes calculs sous estimaient les gains. On a en fait avoisiné les 6h30 de gain.</p>
+
+<p>Après analyses et contrôles, quelques pistes supplémentaires pour expliquer ces gains en plus:</p>
+
+<ul>
+<li>Sans proxy, les pages s&#39;affichent un tout petit peu plus vite. Non perceptible à l&#39;oeil humain, mais vu la quantité de pages de nos batteries de tests, c&#39;est sensible.</li>
+<li>La mémoire vive libérée par ce changement sur les serveurs windows peut être utilisée par le serveur à autre chose de &quot;plus utile&quot; pour les tests.</li>
+</ul>
+
+<p>C&#39;est finalement une clef primordiale quand on met en place des tests sur de gros projets: il faut tester brique par brique, et améliorer la solidité et la couvertue de façon empirique.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -424,7 +558,7 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 <li>Mon père va mieux, et devrait enfin rentrer à la maison dans les prochaines semaines. Depuis le printemps, ca commençait à faire long.</li>
 <li>La neige, qui est bien tombée juste après Noël, pour la faire découvrir aux petits. Mais sans gêner la circulation pour autant.</li>
 <li>La première bêtise de mon fils (un premier janvier). Sur le coup, je n&#39;étais pas content. Mais maintenant, ça fera un chouette souvenir. Nous aider au restaurant et faire tomber une assiette pleine...</li>
-<li>Mon fils se met à vouloir manger comme les grands. Il passe donc de &quot;je ne mange que les plats pour bébés&quot;, sans vouloir gouter aux plats préparer avec amour par sa mère à &quot;je ne veux manger que comme mes parents&quot;.</li>
+<li>Mon fils se met à vouloir manger comme les grands. Il passe donc de &quot;je ne mange que les plats pour bébés&quot;, sans vouloir gouter aux plats préparés avec amour par sa mère à &quot;je ne veux manger que comme mes parents&quot;.</li>
 <li>Mon fils qui accepte enfin de varier les gouts de ses yaourts.</li>
 <li>Mon fils qui a fait des progrès énormes dans l&#39;apprentissage du langage. On devine les phrases, on comprend de plus en plus de mots, et il se met à répéter tout ce qu&#39;on dit.</li>
 <li>Mon fils qui semble bien comprendre qu&#39;il y aura bientôt un bébé de plus dans la maison.</li>
@@ -433,150 +567,6 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 </ul>
 
 <p>Les petits plaisirs de la vie font mon bonheur. N&#39;oubliez jamais vos petits plaisirs.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2014/12/13/kiss-simple-et-efficace/" itemprop="url" rel="bookmark">
-        KISS : Keep it simple and stupid
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2014-12-13" itemprop="datePublished">
-			
-			13
-			décembre
-			
-			2014
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-		- <a href="/tag/ruby">Ruby</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Quand on travaille sur des gros projets, on a tendance à rajouter beaucoup de fonctions, de code, partout, à tout bout de champ.
-Il faut savoir prendre du recul, pour simplifier le code, et faire des choses simples et efficaces.</p>
-
-<p>Dans le cadre de mon travail, l&#39;équipe test a pas mal changé cet été, avec 2 nouveaux arrivants. Ca tombe bien, on a aussi récupéré des nouveaux projets à tester.
-C&#39;est en les formant à nos méthodes, notre code, que j&#39;ai repéré des améliorations à faire, et qu&#39;ils ont fait des suggestions intéressantes.</p>
-
-<p>Avec leur arrivée, une partie de ma charge de travail a pu diminuer un peu, me permettant de réflechir, de me poser des questions, de chercher des idées &quot;innovantes&quot; pour résoudre des problèmes mis de côté par manque de temps depuis des semaines (voire plus).</p>
-
-<h3>Mise en place en 3 clics</h3>
-
-<p>Bon, j&#39;éxagère, il faut plus que 3 clics. L&#39;utilisation d&#39;un Gemfile et de la gem <a href="https://rubygems.org/gems/bundler">bundler</a> permet de simplifier l&#39;ensemble de la procédure.</p>
-
-<p>Pour préparer un nouveau poste (suite à une embauche, une réinstallation, ou un nouveau serveur, il faut alors installer ruby, la gem bundler, récupérer le dépôt du code, puis lancer juste la commande <code>bundle install</code>. 
-Et le tour est joué.</p>
-
-<p>Pour aller plus loin : mise en place sur tous les serveurs de tests d&#39;une routine vérifiant que la liste est à jour et conforme à ce qu&#39;on attend, avec un </p>
-<div class="highlight"><pre><code class="language-" data-lang="">bundle update
-gem cleanup
-</code></pre></div>
-<h3>L&#39;information, le nerf de la guerre</h3>
-
-<p>Plongés dans les tests, nous disposions de plusieurs documentations, avec des buts plus ou moins précis. Localisées à plusieurs endroits.
-Du coup, petit ménage d&#39;été, pour les regrouper, classer, mettre à jour. Au final, on a gardé plusieurs documents, pour plusieurs rôles différents :</p>
-
-<ul>
-<li><strong>Documentation du code</strong> : présente depuis le début, avec génération automatique par la gem ruby <a href="https://rubygems.org/gems/rdoc">rdoc</a> et un petit script ruby (basé sur des expressions régulières) pour lister les step_definitons. Basée évidemment sur les commentaires dans le code, qui sont eux mêmes le premier niveau d&#39;explication.</li>
-<li><strong>Documentation sur comment coder</strong> : quelques documents précis sur comment installer l&#39;environnement, les conventions de codage, ou des points précis et complexe des tests.</li>
-<li><strong>Documentation sur les produits</strong> : nous testons une demie douzaine de projets, plus ou moins liés les uns avec les autres. Pour pouvoir teter efficacement, il vaut mieux savoir comment le projet fonctionne, et dans l&#39;idéal, connaître également les bugs les plus courants sur le projet.</li>
-</ul>
-
-<h3>Codes complexes et compliqués</h3>
-
-<p>Aujourd&#39;hui, l&#39;ensemble de nos codes testant les projets de la société représenter environ 11 000 lignes de codes (essentiellement en ruby, cucumber, shell)</p>
-
-<p>Il y a 10 jours, j&#39;ai regardé pour la première fois depuis des mois les résultats de <a href="https://rubygems.org/gems/flog">flog</a> sur le projet. 
-Pour résumer, flog analyse le code source, compte combien de fois on effectue chaque &quot;action&quot;, et s&#39;ensuit une note de complexité pour chaque méthode, et pour l&#39;ensemble.</p>
-
-<p>Comme on peut classer, on voit immédiatement les fonctions les plus compliquées. Reste à savoir si la complexité est normale ou non. Après avoir lu pas mal d&#39;articles sur le sujet, et testé moi même sur notre code, j&#39;estime qu&#39;une fonction avec un score supérieur à 50 doit être analysée, et éventuellement, modifiée.</p>
-
-<h4>Quelques chiffres</h4>
-
-<p>J&#39;ai profité d&#39;un &quot;temps calme&quot; au bureau pour bosser sur le sujet. </p>
-
-<p>Avant :</p>
-<div class="highlight"><pre><code class="language-" data-lang="">  7128.5: flog total
-    15.6: flog/method average
-
-   793.5: main#none
-   236.1: main#launch_browser
-   197.0: main#get_job_results
-   138.0: Then#/^HTML (contain|don't contain) (.*)$/
-   136.7: Then#/^I don't see errors$/
-   134.8: FormatPage#format_is_present
-   131.1: main#compare_stats
-    90.7: Then#/^I click on the insocial expand$/
-    81.4: main#stats_of_day
-</code></pre></div>
-<p>Après : </p>
-<div class="highlight"><pre><code class="language-" data-lang=""> 6166.2: flog total
-    13.8: flog/method average
-
-   827.4: main#none
-   197.0: main#get_job_results
-   168.0: main#launch_browser
-   134.8: FormatPage#format_is_present
-    90.7: Then#/^I click on the insocial expand$/
-    90.3: main#compare_stats
-    77.0: main#stats_of_day
-</code></pre></div>
-<p>On note plusieurs choses :</p>
-
-<ul>
-<li>La note globale a chuté (-14%). </li>
-<li>Cela fait mathématiquement baissé la moyenne par méthode.</li>
-<li>Certaines méthodes &quot;complexes&quot; ont bien baissé.</li>
-<li>D&#39;autres ont augmenté : avec les pull request de mes collègues, rien d&#39;aberrant. La note a donc baissé alors que dans le même temps, plus de 1 500 lignes de code ont été ajoutées / modifiées.</li>
-<li>Certaines méthodes, complexes, ont une note qui correspond à leur difficulté de compréhension. </li>
-</ul>
-
-<h4>Qu&#39;est ce que j&#39;ai changé ?</h4>
-
-<p>Rien de transcendant :</p>
-
-<ul>
-<li>Du code dupliqué a été &quot;mis en commun&quot; pour faciliter la maintenance.</li>
-<li>Des optimisations faciles : par exemple, dans une méthode utilisant beaucoup de données, j&#39;ai remplacé l&#39;utilisation d&#39;un tableau par une copie du contenu d&#39;une données. Passer de <code>my_array[&#39;result&#39;][&#39;report&#39;][&#39;url&#39;]</code> à <code>my_url</code> quand c&#39;est utilisé 7-8 fois, ça améliore la complexité et aussi la lisibilité et la maintenabilité.</li>
-<li>Des méthodes ont été découpées pour clarifier ce que le code faisait.</li>
-</ul>
-
-<h3>Et c&#39;est conventionnel tout ça ?</h3>
-
-<p>En parralèle, j&#39;ai mis à jour la gem <a href="https://rubygems.org/gems/rubocop">rubocop</a>. Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s&#39;est beaucoup étoffée depuis la dernière fois que j&#39;avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j&#39;ai passé quelques heures à modifier notre code pour qu&#39;il passe les nouvelles règles.</p>
-
-<p>Sur le projet, nous avons désactivé 27 règles parmi les centaines présentes. Par exemple, nous désactivons la limite sur le calcul de <a href="http://fr.wikipedia.org/wiki/Nombre_cyclomatique">complexité cyclomatique</a> puisque nous utilisons flog.</p>
-
-<p>Rubocop nous a aussi aidé sur la complexité : une nouvelle règle a fait remonté quelques variables non utilisés. Les supprimer à fait baisser les notes de flog.</p>
-
-<p>Pour l&#39;automatisation, un git-hooks lance un script shell :</p>
-
-<ul>
-<li>vérifiant le résultat de rubocop, </li>
-<li>vérifiant qu&#39;il ne reste pas de trace d&#39;un conflit dans les fichiers,</li>
-<li>vérifiant que tous les fichiers yaml sont syntaxiement juste (<code>find . -name *.yml -exec yaml-lint {} \;</code> pour les analyser, avec la gem <a href="https://rubygems.org/gems/yaml-lint">yaml-lint</a>)</li>
-</ul>
-
-<h3>KISS, et après</h3>
-
-<p>Le <a href="http://fr.wikipedia.org/wiki/Principe_KISS">principe KISS</a> (pour Keep it simple and stupid) est une façon de travailler qui incite à rester simple pour être efficace.
-Certains points cités plus hauts ne sont pas triviaux à mettre en place, mais permettent sur le long terme à limiter les risques, à garder facilement du code propre, compréhensible, et simple.</p>
-
-<p>Ma todolist pour la suite ? </p>
-
-<ul>
-<li>Traquer le code dupliqué (j&#39;en ai déjà repéré quelques morceaux, dont le nettoyage n&#39;était pas possible dans le temps que j&#39;avais), </li>
-<li>Supprimer le code mort et non utilisé.</li>
-<li>Continuer à documenter, ranger, classer.</li>
-<li>Refactoriser ce qui peut l&#39;être et dont le code n&#39;est pas amené à disparaître dans les prochains mois.</li>
-</ul>
 </div>
   </div>
   

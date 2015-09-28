@@ -4,13 +4,121 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2015-01-15T21:52:20+01:00</updated>
+ <updated>2015-09-28T23:22:22+02:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
    <email>fabrice.bournisien@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>L'empirique au service des tests</title>
+   <link href="http://blog.fabricebournisien.eu///2015/09/28/empirique-service-tests/"/>
+   <updated>2015-09-28T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests</id>
+   <content type="html">&lt;h3&gt;Contexte&lt;/h3&gt;
+
+&lt;p&gt;Je travaille souvent à tester des comportements liés à la vidéo. Vérifier qu&amp;#39;elle se déroule bien, qu&amp;#39;elle se finit au moment voulu, que les interactions sont possibles.
+Une des problématiques est de pouvoir vérifier que les évenements de tracking (statistiques, etc.) sont bien envoyés au bon moment.&lt;/p&gt;
+
+&lt;p&gt;Dans mon cas, chaque événement est un appel à un pixel précis, avec un tas de paramètres. L&amp;#39;intérêt pour l&amp;#39;utilisateur est de pouvoir vérifier le fonctionnement, et par exemple déterminer si les utilisateurs qui mettent en pause à un moment relancent la vidéo pour la regarder jusqu&amp;#39;au bout.&lt;/p&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;on teste ce genre de chose manuellement, il suffit d&amp;#39;ouvrir la console réseau du navigateur, et de vérifier que les urls sont bien appelées au bon moment.&lt;/p&gt;
+
+&lt;h3&gt;Industrialisation&lt;/h3&gt;
+
+&lt;p&gt;Dans mon cas, j&amp;#39;ai besoin d&amp;#39;effectuer une centaine de contrôles de ce type, sur différents navigateurs, tous les jours. L&amp;#39;ensemble des tests étant écrit en ruby / watir-webdriver, j&amp;#39;ai longtemps chercher une solution permettant via webdriver de vérifier ce qui passait au niveau réseau. &lt;/p&gt;
+
+&lt;p&gt;J&amp;#39;ai envisagé un temps de démarrer mes navigateurs en leur ajoutant un plugin : webdriver permet de le faire à la volée avec le fichier xpi. Mais cela ne marche pas pour Internet Explorer, que je ne peux pas exclure des tests.&lt;/p&gt;
+
+&lt;p&gt;Après des semaines de réflexions, par une nuit d&amp;#39;insomnie, j&amp;#39;ai trouvé une solution:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installer un proxy sur le serveur de tests&lt;/li&gt;
+&lt;li&gt;Analyser les logs de ce proxy pour mes besoins&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Le choix du proxy était &amp;quot;limité&amp;quot; avec de nombreuses contraintes : &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Besoin d&amp;#39;avoir un fichier de logs&lt;/li&gt;
+&lt;li&gt;Besoin de pouvoir le contrôler en ruby (ou dans un navigateur)&lt;/li&gt;
+&lt;li&gt;Besoin de fonctionner sur windows et mac&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mon choix s&amp;#39;est porté vers &lt;a href=&quot;http://www.charlesproxy.com/&quot;&gt;Charles proxy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Le fichier de log de charles étant horodaté, nous avons pu comparer les événements les uns par rapport aux autres. Pour vérifier, par exemple, que l&amp;#39;evenement &amp;quot;50%&amp;quot; se produit à la moitié de la durée de la vidéo.&lt;/p&gt;
+
+&lt;p&gt;Il a suffit d&amp;#39;ajouter des urls bien reconnaissables pour toutes nos vidéos de tests et de se retrousser les manches.&lt;/p&gt;
+
+&lt;h3&gt;Problèmes&lt;/h3&gt;
+
+&lt;p&gt;Durant la mise en place de cette solution (et sa maintenance), nous avons rencontrés plusieurs problèmes :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nécessité, pour chaque scénario, de redémarrer le proxy. Il est gourmand en ressources (mémoire principalement), et nos centaines de tests journaliers le mettent à rude épreuve.&lt;/li&gt;
+&lt;li&gt;Lors d&amp;#39;un test où nous en avons besoin, il faut pour l&amp;#39;analyser ouvrir un navigateur, télécharger le fichier de log (format CSV), filter les lignes utiles, etc. Cela est couteux en temps. Le fichier de log pèse environ 1mo à chaque fois. Cela est couteux en temps.&lt;/li&gt;
+&lt;li&gt;Les tests de vidéo sur mobile rencontrent parfois des lenteurs, ce qui compliquent l&amp;#39;analyse des écarts de temps.&lt;/li&gt;
+&lt;li&gt;Le format du fichier de log (en particulier les dates) est différent enttre windows et mac.&lt;/li&gt;
+&lt;li&gt;Cela empêche la paralélisation sur une même serveur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Bénéfices&lt;/h3&gt;
+
+&lt;p&gt;Malgré ces défauts, ce système nous convenait parfaitement.&lt;/p&gt;
+
+&lt;p&gt;Il nous a permis d&amp;#39;industrialiser des tests sur un point clé de certains projets, sur tous les navigateurs, y comrpis sur mobile.&lt;/p&gt;
+
+&lt;p&gt;Lorsqu&amp;#39;un nouveau collègue est arrivé dans l&amp;#39;équipe en juillet, et que je lui ai présenté cette brique bien pratique, il a trouvé ça intéressant, et trouvait l&amp;#39;idée originale.&lt;/p&gt;
+
+&lt;h3&gt;On prend les mêmes et on recommence, mais pas tout à fait&lt;/h3&gt;
+
+&lt;p&gt;Quelques mois plus tard, lors d&amp;#39;une discussion avec un collègue sans aucun rapport, j&amp;#39;ai eu une meilleure idée.
+Objectifs: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Diminuer le temps d&amp;#39;initialisation&lt;/li&gt;
+&lt;li&gt;Simplifier le code (et donc faciliter la maintenance)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Plutôt que d&amp;#39;analyser le départ de tous les pixels, on inverse la pensée. Comme dans la vraie vie, il faut que nous ayons notre propre serveur web, qui récupère les appels à des pixels, et il nous faut &amp;quot;juste&amp;quot; analyser les logs de ce serveur.
+C&amp;#39;est là qu&amp;#39;entre en scène node.js, et et plus précisement son http-server.&lt;/p&gt;
+
+&lt;p&gt;Dans un dossier proxy, on créer un fichier html. On édite les urls de pixels de toutes nos vidéos de tests, pour appeler le serveur local http://127..0.0.1:8080/track.htm?action=pause&amp;amp;id=123456&lt;/p&gt;
+
+&lt;p&gt;Ensuite, la ligne de commande &lt;code&gt;http-server proxy/ --cors -a 127.0.0.1 &amp;gt;&amp;gt; proxy/log.txt&lt;/code&gt; permet de lancer le serveur localement, et d&amp;#39;avoir le log dans un fichier lui même accessible sur le serveur.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;#39;analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d&amp;#39;ouvrir un navigateur comme avec le log de charles.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://127.0.0.1:8080/log.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Bénéfices&lt;/h3&gt;
+
+&lt;p&gt;Quand j&amp;#39;ai commencé cette modification, j&amp;#39;espérais gagner un peu de temps. 
+Nous avions à ce moment là environ 100h de tests, et pour certains projets, je n&amp;#39;attendais pas de gros gains. Et puis, j&amp;#39;ai fait les calculs. &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quelques centaines de scenarios n&amp;#39;ont plus besoin du tout d&amp;#39;initialisation. 10 à 15 secondes à chaque fois sur windows.&lt;/li&gt;
+&lt;li&gt;Le fichier de log (1 Mo / scenario auparavant) a fortement diminué. Puisqu&amp;#39;on ne log plus que ce qui est utile, on gagne plus de 99% de taille de fichier de log.&lt;/li&gt;
+&lt;li&gt;La non ouverture du navigateur pour télécharger le fichier de log fait également gagner beaucoup de temps.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Première estimation : environ 4h de gagnées parmi les 100h de tests.&lt;/p&gt;
+
+&lt;p&gt;Lors des premiers tests, sur mon mac, j&amp;#39;ai eu l&amp;#39;impression que mes calculs sous estimaient les gains. On a en fait avoisiné les 6h30 de gain.&lt;/p&gt;
+
+&lt;p&gt;Après analyses et contrôles, quelques pistes supplémentaires pour expliquer ces gains en plus:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sans proxy, les pages s&amp;#39;affichent un tout petit peu plus vite. Non perceptible à l&amp;#39;oeil humain, mais vu la quantité de pages de nos batteries de tests, c&amp;#39;est sensible.&lt;/li&gt;
+&lt;li&gt;La mémoire vive libérée par ce changement sur les serveurs windows peut être utilisée par le serveur à autre chose de &amp;quot;plus utile&amp;quot; pour les tests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;C&amp;#39;est finalement une clef primordiale quand on met en place des tests sur de gros projets: il faut tester brique par brique, et améliorer la solidité et la couvertue de façon empirique.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>La simplicité n'est pas toujours simple</title>
@@ -228,7 +336,7 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
 &lt;li&gt;Mon père va mieux, et devrait enfin rentrer à la maison dans les prochaines semaines. Depuis le printemps, ca commençait à faire long.&lt;/li&gt;
 &lt;li&gt;La neige, qui est bien tombée juste après Noël, pour la faire découvrir aux petits. Mais sans gêner la circulation pour autant.&lt;/li&gt;
 &lt;li&gt;La première bêtise de mon fils (un premier janvier). Sur le coup, je n&amp;#39;étais pas content. Mais maintenant, ça fera un chouette souvenir. Nous aider au restaurant et faire tomber une assiette pleine...&lt;/li&gt;
-&lt;li&gt;Mon fils se met à vouloir manger comme les grands. Il passe donc de &amp;quot;je ne mange que les plats pour bébés&amp;quot;, sans vouloir gouter aux plats préparer avec amour par sa mère à &amp;quot;je ne veux manger que comme mes parents&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Mon fils se met à vouloir manger comme les grands. Il passe donc de &amp;quot;je ne mange que les plats pour bébés&amp;quot;, sans vouloir gouter aux plats préparés avec amour par sa mère à &amp;quot;je ne veux manger que comme mes parents&amp;quot;.&lt;/li&gt;
 &lt;li&gt;Mon fils qui accepte enfin de varier les gouts de ses yaourts.&lt;/li&gt;
 &lt;li&gt;Mon fils qui a fait des progrès énormes dans l&amp;#39;apprentissage du langage. On devine les phrases, on comprend de plus en plus de mots, et il se met à répéter tout ce qu&amp;#39;on dit.&lt;/li&gt;
 &lt;li&gt;Mon fils qui semble bien comprendre qu&amp;#39;il y aura bientôt un bébé de plus dans la maison.&lt;/li&gt;

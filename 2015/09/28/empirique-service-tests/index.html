@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
+  <meta name="robots" content="index,follow" />
+
+  <title>
+    
+      L'empirique au service des tests &middot; Je teste donc je suis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
+
+  <!-- Icons --
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
+  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> 
+		<input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2015 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">L'empirique au service des tests</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2015-09-28" itemprop="datePublished">
+		
+		28
+		septembre
+		  
+		2015
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/webdriver">Webdriver</a>
+		
+		- <a href="/tag/proxy">Proxy</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><h3>Contexte</h3>
+
+<p>Je travaille souvent à tester des comportements liés à la vidéo. Vérifier qu&#39;elle se déroule bien, qu&#39;elle se finit au moment voulu, que les interactions sont possibles.
+Une des problématiques est de pouvoir vérifier que les évenements de tracking (statistiques, etc.) sont bien envoyés au bon moment.</p>
+
+<p>Dans mon cas, chaque événement est un appel à un pixel précis, avec un tas de paramètres. L&#39;intérêt pour l&#39;utilisateur est de pouvoir vérifier le fonctionnement, et par exemple déterminer si les utilisateurs qui mettent en pause à un moment relancent la vidéo pour la regarder jusqu&#39;au bout.</p>
+
+<p>Lorsqu&#39;on teste ce genre de chose manuellement, il suffit d&#39;ouvrir la console réseau du navigateur, et de vérifier que les urls sont bien appelées au bon moment.</p>
+
+<h3>Industrialisation</h3>
+
+<p>Dans mon cas, j&#39;ai besoin d&#39;effectuer une centaine de contrôles de ce type, sur différents navigateurs, tous les jours. L&#39;ensemble des tests étant écrit en ruby / watir-webdriver, j&#39;ai longtemps chercher une solution permettant via webdriver de vérifier ce qui passait au niveau réseau. </p>
+
+<p>J&#39;ai envisagé un temps de démarrer mes navigateurs en leur ajoutant un plugin : webdriver permet de le faire à la volée avec le fichier xpi. Mais cela ne marche pas pour Internet Explorer, que je ne peux pas exclure des tests.</p>
+
+<p>Après des semaines de réflexions, par une nuit d&#39;insomnie, j&#39;ai trouvé une solution:</p>
+
+<ul>
+<li>Installer un proxy sur le serveur de tests</li>
+<li>Analyser les logs de ce proxy pour mes besoins</li>
+</ul>
+
+<p>Le choix du proxy était &quot;limité&quot; avec de nombreuses contraintes : </p>
+
+<ul>
+<li>Besoin d&#39;avoir un fichier de logs</li>
+<li>Besoin de pouvoir le contrôler en ruby (ou dans un navigateur)</li>
+<li>Besoin de fonctionner sur windows et mac</li>
+</ul>
+
+<p>Mon choix s&#39;est porté vers <a href="http://www.charlesproxy.com/">Charles proxy</a>.</p>
+
+<p>Le fichier de log de charles étant horodaté, nous avons pu comparer les événements les uns par rapport aux autres. Pour vérifier, par exemple, que l&#39;evenement &quot;50%&quot; se produit à la moitié de la durée de la vidéo.</p>
+
+<p>Il a suffit d&#39;ajouter des urls bien reconnaissables pour toutes nos vidéos de tests et de se retrousser les manches.</p>
+
+<h3>Problèmes</h3>
+
+<p>Durant la mise en place de cette solution (et sa maintenance), nous avons rencontrés plusieurs problèmes :</p>
+
+<ul>
+<li>Nécessité, pour chaque scénario, de redémarrer le proxy. Il est gourmand en ressources (mémoire principalement), et nos centaines de tests journaliers le mettent à rude épreuve.</li>
+<li>Lors d&#39;un test où nous en avons besoin, il faut pour l&#39;analyser ouvrir un navigateur, télécharger le fichier de log (format CSV), filter les lignes utiles, etc. Cela est couteux en temps. Le fichier de log pèse environ 1mo à chaque fois. Cela est couteux en temps.</li>
+<li>Les tests de vidéo sur mobile rencontrent parfois des lenteurs, ce qui compliquent l&#39;analyse des écarts de temps.</li>
+<li>Le format du fichier de log (en particulier les dates) est différent enttre windows et mac.</li>
+<li>Cela empêche la paralélisation sur une même serveur.</li>
+</ul>
+
+<h3>Bénéfices</h3>
+
+<p>Malgré ces défauts, ce système nous convenait parfaitement.</p>
+
+<p>Il nous a permis d&#39;industrialiser des tests sur un point clé de certains projets, sur tous les navigateurs, y comrpis sur mobile.</p>
+
+<p>Lorsqu&#39;un nouveau collègue est arrivé dans l&#39;équipe en juillet, et que je lui ai présenté cette brique bien pratique, il a trouvé ça intéressant, et trouvait l&#39;idée originale.</p>
+
+<h3>On prend les mêmes et on recommence, mais pas tout à fait</h3>
+
+<p>Quelques mois plus tard, lors d&#39;une discussion avec un collègue sans aucun rapport, j&#39;ai eu une meilleure idée.
+Objectifs: </p>
+
+<ul>
+<li>Diminuer le temps d&#39;initialisation</li>
+<li>Simplifier le code (et donc faciliter la maintenance)</li>
+</ul>
+
+<p>Plutôt que d&#39;analyser le départ de tous les pixels, on inverse la pensée. Comme dans la vraie vie, il faut que nous ayons notre propre serveur web, qui récupère les appels à des pixels, et il nous faut &quot;juste&quot; analyser les logs de ce serveur.
+C&#39;est là qu&#39;entre en scène node.js, et et plus précisement son http-server.</p>
+
+<p>Dans un dossier proxy, on créer un fichier html. On édite les urls de pixels de toutes nos vidéos de tests, pour appeler le serveur local http://127..0.0.1:8080/track.htm?action=pause&amp;id=123456</p>
+
+<p>Ensuite, la ligne de commande <code>http-server proxy/ --cors -a 127.0.0.1 &gt;&gt; proxy/log.txt</code> permet de lancer le serveur localement, et d&#39;avoir le log dans un fichier lui même accessible sur le serveur.</p>
+
+<p>Pour l&#39;analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d&#39;ouvrir un navigateur comme avec le log de charles.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8080/log.txt"</span>
+<span class="n">content</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+</code></pre></div>
+<h3>Bénéfices</h3>
+
+<p>Quand j&#39;ai commencé cette modification, j&#39;espérais gagner un peu de temps. 
+Nous avions à ce moment là environ 100h de tests, et pour certains projets, je n&#39;attendais pas de gros gains. Et puis, j&#39;ai fait les calculs. </p>
+
+<ul>
+<li>Quelques centaines de scenarios n&#39;ont plus besoin du tout d&#39;initialisation. 10 à 15 secondes à chaque fois sur windows.</li>
+<li>Le fichier de log (1 Mo / scenario auparavant) a fortement diminué. Puisqu&#39;on ne log plus que ce qui est utile, on gagne plus de 99% de taille de fichier de log.</li>
+<li>La non ouverture du navigateur pour télécharger le fichier de log fait également gagner beaucoup de temps.</li>
+</ul>
+
+<p>Première estimation : environ 4h de gagnées parmi les 100h de tests.</p>
+
+<p>Lors des premiers tests, sur mon mac, j&#39;ai eu l&#39;impression que mes calculs sous estimaient les gains. On a en fait avoisiné les 6h30 de gain.</p>
+
+<p>Après analyses et contrôles, quelques pistes supplémentaires pour expliquer ces gains en plus:</p>
+
+<ul>
+<li>Sans proxy, les pages s&#39;affichent un tout petit peu plus vite. Non perceptible à l&#39;oeil humain, mais vu la quantité de pages de nos batteries de tests, c&#39;est sensible.</li>
+<li>La mémoire vive libérée par ce changement sur les serveurs windows peut être utilisée par le serveur à autre chose de &quot;plus utile&quot; pour les tests.</li>
+</ul>
+
+<p>C&#39;est finalement une clef primordiale quand on met en place des tests sur de gros projets: il faut tester brique par brique, et améliorer la solidité et la couvertue de façon empirique.</p>
+</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2015%2F09%2F28%2Fempirique-service-tests%2F&amp;via=fabrice31&amp;text=L'empirique au service des tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2014/12/13/kiss-simple-et-efficace/">
+			KISS : Keep it simple and stupid
+			<small>13 Dec 2014</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
+  </body>
+</html>

@@ -156,6 +156,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -175,6 +183,52 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2013/10/17/bug-de-l-espace-temps/" itemprop="url" rel="bookmark">
+        Bug de l'espace temps
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-10-17" itemprop="datePublished">
+			
+			17
+			octobre
+			  
+			2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&#39;avoir un moteur déjà bien robuste.</p>
+
+<p>Prenons par exemple l&#39;affichage d&#39;une date avec ce code :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Post</span><span class="o">.</span><span class="no">Date</span><span class="o">|</span><span class="n">datel</span><span class="p">(</span><span class="no">Lang</span><span class="o">.</span><span class="no">Get</span><span class="p">(</span><span class="s2">"Default date format"</span><span class="p">))</span>
+</code></pre></div>
+<p>Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&#39;agit d&#39;une chaîne de caractères indiquant le format.</p>
+
+<p>On pourrait avoir HH:mm pour l&#39;heure par exemple.</p>
+
+<p>Dans l&#39;analyse du bug du jour, nous avons un signalement de date fausse sur certaines pages. Après vérifications nous trouvons une page datant du 3 janvier 2010, mais qui est affichée comme étant le 3 janvier 2009.</p>
+
+<p>L&#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).</p>
+
+<p>Le collègue qui cherchait a trouvé le problème.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="no">Y</span>
+</code></pre></div>
+<p>Dans la documentation de datel, Y = year of &quot;Week of Year&quot;. Il s&#39;agit de l&#39;année durant laquelle le week end du jour en question a eu lieu.</p>
+
+<p>Il s&#39;agit donc d&#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&#39;année d&#39;avant. Tordu non ?</p>
+
+<p>Pour la petite histoire, le code corrigé sans bug donne :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="n">yyyy</span>
+</code></pre></div></div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -473,78 +527,6 @@ Voici deux exemples &quot;simplifiés&quot; pour mon exemple.</p>
 <li>J&#39;ai depuis très envie de l&#39;étendre pour ajouter de nouvelles procédures de remises à zéro.</li>
 <li>La documentation est primordiale (que ce soit celle de l&#39;API ou celle de OAuth)</li>
 </ul>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/04/22/comment-organiser-les-tests-sur-le-long-terme/" itemprop="url" rel="bookmark">
-        Comment organiser les tests sur le long terme
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-04-22" itemprop="datePublished">
-			
-			22
-			avril
-			  
-			2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/jenkins">Jenkins</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><h3>Exécuter une partie des tests</h3>
-
-<p>Les scénarios sont taggués pour être lancé par jenkins par la commande : <code>cucumber --tag @montag</code>
-Cela permet de ne lancer qu&#39;une partie des tests. (voir &quot;<a href="http://web-quality.over-blog.com/tester-sur-plusieurs-navigateurs">Tester sur plusieurs navigateurs</a>&quot; pour les détails)</p>
-
-<h3>Serveurs</h3>
-
-<p>Côté serveur, nous avons 2 serveurs jenkins.
-Le principal, une grosse machine debian quadri core, qui exécute jusqu&#39;à 3 jobs en même temps.</p>
-
-<p>Ensuite, un serveur Windows, avec un jenkins &quot;slave&quot;.
-L&#39;esclave reçoit ses ordres du maître, qui lui demande d’exécuter des jobs particuliers.
-Il est sous Windows pour pouvoir les exécuter sur Internet Explorer.</p>
-
-<p>Pour éviter les effets de bords entre les tests sur IE, pas de solution. On vide donc les cookies, le cache, etc à la fermeture d&#39;Internet Explorer.
-On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serveur : les sessions se mélangeraient.</p>
-
-<h3>Quelques chiffres</h3>
-
-<p>Les scenarios sont regroupés en feature, dont le temps d&#39;execution est de maximum 10 minutes. Dans Jenkins on a 38 &quot;jobs&quot; sur FF (+ 34 sur IE)</p>
-
-<p><strong>Firefox</strong></p>
-
-<p>Chaque jour : 323 scénarios / 2693 step =&gt; 3h</p>
-
-<p><strong>IE</strong> (1 fois par semaine actuellement, 1 fois par jour bientôt)</p>
-
-<p>Chaque jour : 302 scénarios / 2527 step =&gt; 4h 30</p>
-
-<p>Cela représente 227 500 scénarios par an (pour 2 737 heures de tests).</p>
-
-<p>Sans oublier les lancements à la demande de certains jobs.</p>
-
-<h4>Comptes utilisateurs</h4>
-
-<p>Du côté des scénarios, ils utilisent pour le moment 70 comptes utilisateurs différents (avec des options particulières, etc...)</p>
-
-<p>Un changement prochain de notre offre me fait penser que les tests auront besoin de 100 comptes d&#39;ici 2 à 3 semaines.</p>
-
-<p>Sans oublier de dupliquer tout ça pour nos 2 environnements (test / stable)</p>
-
-<p>Ni d&#39;ajouter l&#39;exécution de ces tests sur chrome.</p>
-
-<p>Et on ajoute des tests fonctionnels en dehors de ce schéma, pour tester des choses particulière, que ce soit en production sur des points essentiels ou la validité de données particulières.</p>
-
-<p>Et vous, combien vous testez ?</p>
 </div>
   </div>
   
