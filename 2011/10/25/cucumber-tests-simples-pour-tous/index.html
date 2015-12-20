@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
+  <meta name="robots" content="index,follow" />
+
+  <title>
+    
+      Cucumber : des tests plus simples pour tous &middot; Je teste donc je suis
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700">
+
+  <!-- Icons --
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
+  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archive</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> 
+		<input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2015 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Cucumber : des tests plus simples pour tous</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2011-10-25" itemprop="datePublished">
+		
+		25
+		octobre
+		  
+		2011
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/cucumber">Cucumber</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Mettre régulièrement à jour ses batteries de tests est indispensable.</p>
+
+<p>Cela permet de découvrir un test qui ne fonctionne plus, d&#39;optimiser le comportement des tests. Parfois, on intègre une nouvelle technologie qui change tout dans la façon de tester.</p>
+
+<h3>Mise à jour des tests</h3>
+
+<p>Pour mettre à jour mes tests, j&#39;ai décidé de repartir de zéro. De réflexions en réflexions, j&#39;en était arrivé à me poser des questions (existentielles) du genre :</p>
+
+<ul>
+<li>Est-ce que je peux envisager de créer des Tests Unitaires pour tester que mes tests testent bien ?</li>
+<li>Pour éviter de toujours refaire la même chose, il faudrait que je crée des &quot;primitives&quot; à réutiliser partout. Comment les gérer au mieux ?</li>
+<li>Avec ces primitives, je pourrais envisager de créer des tests dans toutes les langues du site de façon très rapide...</li>
+</ul>
+
+<p>Après quelques tests d&#39;outils, etc, j&#39;en suis arrivé aux conclusions suivantes:</p>
+
+<ul>
+<li>Le système de primitive existe. Il s&#39;appelle Cucumber. J&#39;avais parlé succintement de Cucumber lors d&#39;une présentation que j&#39;ai faite lors d&#39;un apéroweb Toulouse. Pour résumer, Cucumber permet de rédiger les scénarios en anglais, simplifiant ainsi la création et la mise à jour de test.</li>
+<li>Créer des tests unitaires de mes tests fonctionnels automatisés ne me garantirait pas qu&#39;ils détectent les bugs. Pour cela, il faut un oeil humain, qui lance les tests, vérifient, etc.</li>
+</ul>
+
+<h3>Nouvelle configuration</h3>
+
+<p>Je suis donc passé de Watir / Webdriver à Cucumber / Watir / Wedriver pour les tests. Nouvelle organisation, nouvelle façon de lancer les tests, etc. Après un mois d&#39;utilisation, je vois déjà des avancées :</p>
+
+<ul>
+<li>La réutilisation des primitives est un énorme gain de temps</li>
+<li>La lecture d&#39;un scénario de test est possible pour tout le monde. Il en va de même pour leur écriture (à faire relire / adapter par le responsable qualité tout de même)</li>
+</ul>
+
+<p>Voici un petit exemple fait maison, on en trouve une quantité sur le net.</p>
+
+<p><em>Fichier features/webQualiteBlog.feature</em></p>
+<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="kd">Feature</span><span class="p">:</span> WeQualite Blog
+Generic tests about my blog
+@portal
+<span class="kn">Scenario</span><span class="p">:</span> First page of blog
+    <span class="nf">When</span> I go to <span class="s">"web-quality.over-blog.com"</span>
+    <span class="nf">Then</span> I shouldn't see errors
+    <span class="nf">And</span> page should contain <span class="s">"Web qualité"</span>
+    <span class="nf">And</span> page should contain <span class="s">"Dieu du web"</span>
+
+<span class="nt">@portal</span> <span class="nt">@google</span>
+<span class="kn">Scenario</span><span class="p">:</span> Verify blog is in first page of google search
+    <span class="nf">When</span> I go to <span class="s">"www.google.fr"</span>
+    <span class="nf">And</span> I search <span class="s">"web-qalite"</span>
+    <span class="nf">Then</span> page should contain <span class="s">"Beaucoup d'outil de tests"</span> 
+    <span class="nf">And</span> page should contain <span class="s">"web-quality.over-blog.com"</span>
+</code></pre></div>
+<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Sous Windows, la coloration syntaxique est possible grâce à AnsiColor"></p>
+
+<p>On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&#39;appel du fichier etc..</p>
+
+<p><em>Fichier features/step_definitions/common.rb</em></p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
+
+<span class="n">caps</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Remote</span><span class="o">::</span><span class="no">Capabilities</span><span class="p">.</span><span class="nf">htmlunit</span><span class="p">()</span>
+<span class="no">BROWSER</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">caps</span><span class="p">)</span>
+
+<span class="no">When</span> <span class="sr">/^I go to "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="o">|</span>
+  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="no">Then</span> <span class="sr">/^I shouldn't see errors$/</span> <span class="k">do</span>
+  <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Call Stack"</span><span class="p">,</span> <span class="s2">"Erreur 404"</span><span class="p">,</span> <span class="s2">"Erreur 50"</span><span class="p">,</span> <span class="s2">"Page Web introuvable"</span><span class="p">,</span>
+            <span class="s2">"Undefined "</span><span class="p">,</span> <span class="s2">"Trying to"</span><span class="p">,</span> <span class="s2">"cette page n'est pas accessible"</span><span class="p">,</span>
+            <span class="s2">"Warning "</span><span class="p">,</span> <span class="s2">"Fatal exception"</span><span class="p">,</span> <span class="s2">"Syntax error"</span><span class="p">]</span>
+  <span class="n">errors</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+    <span class="no">BROWSER</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">error</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Then</span> <span class="sr">/^page should contain "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">txt</span><span class="o">|</span>
+  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">txt</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">true</span>
+<span class="k">end</span>
+
+</code></pre></div>
+<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Ca marche (ou pas)"></p>
+
+Explication de l&#39;affichage</h3>
+
+<ul>
+<li>En rouge : les primitives ne s&#39;étant pas bien passés.</li>
+<li>En bleu : les primitives n&#39;ayant pas été exécutés (une étape précédente a échoué).</li>
+<li>En marron: les primitives n&#39;étant pas définies.</li>
+</ul>
+
+<h3>Optimisations</h3>
+
+<p>J&#39;ai déjà un peu d&#39;expérience, et j&#39;ai déjà intégré des optimisations directement dans l&#39;exemple:</p>
+
+<ul>
+<li>Les primitives doivent être le plus &quot;générique&quot; possible. Cela évite de devoir code deux primitives similaires deux fois.</li>
+<li>L&#39;utilisation de paramètres est un point très important pour optimiser ces primitives.</li>
+<li>Il est possible de rendre l&#39;affichage du résultat moins verbeux (ex: cucumber features --format progress permet d&#39;afficher une liste de point comme les tests unitaires classiques)</li>
+</ul>
+
+<p>Pour aller plus loin</p>
+
+<ul>
+<li><a href="http://watirmelon.com/2011/01/21/my-simple-cucumber-watir-page-object-pattern-framework">Le blog d&#39;Alister Scott [en]</a></li>
+<li><a href="http://rubygems.org/gems/cucumber">La gem ruby de cucumber</a></li>
+</ul>
+</div>
+
+	<div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2011%2F10%2F25%2Fcucumber-tests-simples-pour-tous%2F&amp;via=fabrice31&amp;text=Cucumber : des tests plus simples pour tous&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
+  </body>
+</html>

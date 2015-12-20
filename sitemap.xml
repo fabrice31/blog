@@ -298,6 +298,15 @@
     <priority>1.0</priority>
   </url>
   
+  <url>
+    <loc>http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous/</loc>
+    
+	  <lastmod>2011-10-25T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   
   
   
@@ -308,6 +317,8 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  
   
   
   

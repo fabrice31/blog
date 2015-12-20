@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2015-09-28T23:22:22+02:00</updated>
+ <updated>2015-12-20T16:01:07+01:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -2345,6 +2345,118 @@ Faire lancer les tests par les développeurs en environnement de développement.
 &lt;p&gt;En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point “techniques” ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours “qualité”. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme.&lt;/p&gt;
 
 &lt;p&gt;Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Cucumber : des tests plus simples pour tous</title>
+   <link href="http://blog.fabricebournisien.eu///2011/10/25/cucumber-tests-simples-pour-tous/"/>
+   <updated>2011-10-25T00:00:00+02:00</updated>
+   <id>http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous</id>
+   <content type="html">&lt;p&gt;Mettre régulièrement à jour ses batteries de tests est indispensable.&lt;/p&gt;
+
+&lt;p&gt;Cela permet de découvrir un test qui ne fonctionne plus, d&amp;#39;optimiser le comportement des tests. Parfois, on intègre une nouvelle technologie qui change tout dans la façon de tester.&lt;/p&gt;
+
+&lt;h3&gt;Mise à jour des tests&lt;/h3&gt;
+
+&lt;p&gt;Pour mettre à jour mes tests, j&amp;#39;ai décidé de repartir de zéro. De réflexions en réflexions, j&amp;#39;en était arrivé à me poser des questions (existentielles) du genre :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Est-ce que je peux envisager de créer des Tests Unitaires pour tester que mes tests testent bien ?&lt;/li&gt;
+&lt;li&gt;Pour éviter de toujours refaire la même chose, il faudrait que je crée des &amp;quot;primitives&amp;quot; à réutiliser partout. Comment les gérer au mieux ?&lt;/li&gt;
+&lt;li&gt;Avec ces primitives, je pourrais envisager de créer des tests dans toutes les langues du site de façon très rapide...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Après quelques tests d&amp;#39;outils, etc, j&amp;#39;en suis arrivé aux conclusions suivantes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Le système de primitive existe. Il s&amp;#39;appelle Cucumber. J&amp;#39;avais parlé succintement de Cucumber lors d&amp;#39;une présentation que j&amp;#39;ai faite lors d&amp;#39;un apéroweb Toulouse. Pour résumer, Cucumber permet de rédiger les scénarios en anglais, simplifiant ainsi la création et la mise à jour de test.&lt;/li&gt;
+&lt;li&gt;Créer des tests unitaires de mes tests fonctionnels automatisés ne me garantirait pas qu&amp;#39;ils détectent les bugs. Pour cela, il faut un oeil humain, qui lance les tests, vérifient, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Nouvelle configuration&lt;/h3&gt;
+
+&lt;p&gt;Je suis donc passé de Watir / Webdriver à Cucumber / Watir / Wedriver pour les tests. Nouvelle organisation, nouvelle façon de lancer les tests, etc. Après un mois d&amp;#39;utilisation, je vois déjà des avancées :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La réutilisation des primitives est un énorme gain de temps&lt;/li&gt;
+&lt;li&gt;La lecture d&amp;#39;un scénario de test est possible pour tout le monde. Il en va de même pour leur écriture (à faire relire / adapter par le responsable qualité tout de même)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Voici un petit exemple fait maison, on en trouve une quantité sur le net.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Fichier features/webQualiteBlog.feature&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cucumber&quot; data-lang=&quot;cucumber&quot;&gt;&lt;span class=&quot;kd&quot;&gt;Feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; WeQualite Blog
+Generic tests about my blog
+@portal
+&lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; First page of blog
+    &lt;span class=&quot;nf&quot;&gt;When&lt;/span&gt; I go to &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;Then&lt;/span&gt; I shouldn&#39;t see errors
+    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Web qualité&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Dieu du web&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;@portal&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;@google&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; Verify blog is in first page of google search
+    &lt;span class=&quot;nf&quot;&gt;When&lt;/span&gt; I go to &lt;span class=&quot;s&quot;&gt;&quot;www.google.fr&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; I search &lt;span class=&quot;s&quot;&gt;&quot;web-qalite&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;Then&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Beaucoup d&#39;outil de tests&quot;&lt;/span&gt; 
+    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2011/cucumber-first.jpg&quot; alt=&quot;Résultats de l&amp;#39;éxecution&quot; title=&quot;Sous Windows, la coloration syntaxique est possible grâce à AnsiColor&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&amp;#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&amp;#39;appel du fichier etc..&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Fichier features/step_definitions/common.rb&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;rubygems&#39;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;watir-webdriver&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;caps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Remote&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;htmlunit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:desired_capabilities&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I go to &quot;([^&quot;]*)&quot;$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I shouldn&#39;t see errors$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Call Stack&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Erreur 404&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Erreur 50&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Page Web introuvable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;Undefined &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Trying to&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cette page n&#39;est pas accessible&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&quot;Warning &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Fatal exception&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Syntax error&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;include?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^page should contain &quot;([^&quot;]*)&quot;$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;include?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/public/pictures/2011/cucumber-first.jpg&quot; alt=&quot;Résultats de l&amp;#39;éxecution&quot; title=&quot;Ca marche (ou pas)&quot;&gt;&lt;/p&gt;
+
+Explication de l&amp;#39;affichage&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;En rouge : les primitives ne s&amp;#39;étant pas bien passés.&lt;/li&gt;
+&lt;li&gt;En bleu : les primitives n&amp;#39;ayant pas été exécutés (une étape précédente a échoué).&lt;/li&gt;
+&lt;li&gt;En marron: les primitives n&amp;#39;étant pas définies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Optimisations&lt;/h3&gt;
+
+&lt;p&gt;J&amp;#39;ai déjà un peu d&amp;#39;expérience, et j&amp;#39;ai déjà intégré des optimisations directement dans l&amp;#39;exemple:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Les primitives doivent être le plus &amp;quot;générique&amp;quot; possible. Cela évite de devoir code deux primitives similaires deux fois.&lt;/li&gt;
+&lt;li&gt;L&amp;#39;utilisation de paramètres est un point très important pour optimiser ces primitives.&lt;/li&gt;
+&lt;li&gt;Il est possible de rendre l&amp;#39;affichage du résultat moins verbeux (ex: cucumber features --format progress permet d&amp;#39;afficher une liste de point comme les tests unitaires classiques)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pour aller plus loin&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://watirmelon.com/2011/01/21/my-simple-cucumber-watir-page-object-pattern-framework&quot;&gt;Le blog d&amp;#39;Alister Scott [en]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://rubygems.org/gems/cucumber&quot;&gt;La gem ruby de cucumber&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
