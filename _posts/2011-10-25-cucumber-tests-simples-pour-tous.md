@@ -1,6 +1,10 @@
 ---
 layout: post
 title: "Cucumber : des tests plus simples pour tous"
+tags:
+  cucumber
+  watir
+  ruby
 ---
 
 Mettre régulièrement à jour ses batteries de tests est indispensable.
