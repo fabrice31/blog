@@ -19,14 +19,14 @@ author:
   email:          fabrice.bournisien@gmail.com
 
 destination:      ../gh-pages/
-  
+
 # Custom vars
 version:          1.0.0
 github:
   repo:           https://github.com/poole/poole
 
 exclude: ["vendor"]
-  
+
 pages_list:       
   About: 'about'
   Archive: 'archive'
