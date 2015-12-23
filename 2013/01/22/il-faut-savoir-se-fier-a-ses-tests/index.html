@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      Il faut savoir se fier à ses tests &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>Il faut savoir se fier à ses tests &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="Il faut savoir se fier à ses tests" />
+    <meta property="og:url" content="/2013/01/22/il-faut-savoir-se-fier-a-ses-tests/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,123 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Il faut savoir se fier à ses tests</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2013-01-22" itemprop="datePublished">
+		
+		22
+		janvier
+		  
+		2013
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/bug">Bug</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Vroici l&#39;histoire d&#39;un test fonctionnel &quot;basique&quot; mais techniquement compliqué à mettre en place.</p>
+
+<h3>Passé</h3>
+
+<p>Depuis plusieurs mois, nous sommes 2 à developper les tests automatiques. Nous avons une longue liste de tests à ajouter que nous dépilons progressivement. Certains tests sont présents depuis longtemps dans cette liste, mais nous ne réussissons tout simplement pas à les créer, pour des raisons purement techniques. D&#39;autres sont en attente de la correction du bug sur le produit.</p>
+
+<h3>Lundi</h3>
+
+<p>Pour l&#39;un d&#39;eux, je réussi finalement à trouver une solution tarabiscotée qui semble marcher. La solution ne me plait pas totalement, cela revient à exécuter du javascript dans un navigateur que je controle avec watir, lancé depuis un cucumber géré par un jenkins.</p>
+
+<p>L&#39;utilisation du javascript (langage que je ne maîtrise pas) pour ce détail me gêne : s&#39;il me permet de tester la fonctionnalité, je ne pourrais pas simplement tester certains points de la fonctionnalité.</p>
+
+<p>En outre, cela m&#39;empêche d&#39;être sur de moi pour ce test : j&#39;ai peur qu&#39;il ne soit pas stable et pérenne.</p>
+
+<h3>Mercredi</h3>
+
+<p>Mercredi dernier, j&#39;ai remonté un problème qui entrainait un problème en cascade sur l&#39;ensemble de mes tests fonctionnels (40 scenarios échoués sur 270).</p>
+
+<p>Il y avait deux importants chantiers effectués par mes collègues pour des mises à jours importantes, qui demandait des corrections.</p>
+
+<p><img src="/public/pictures/2013/mug-qualite.jpg" alt="Il faut savoir se fier à ses tests"></p>
+
+<h3>Jeudi</h3>
+
+<p>Jeudi, c&#39;est normalement la fin du codage des nouveautés pour le sprint en cours. Le jeudi c&#39;est donc débug, tests, préparation du changelog et de la mise en production...</p>
+
+<p>Lorsque j&#39;arrive un jeudi avec mes indicateurs qui clignotent en rouge, je n&#39;aime pas ça. Je survole rapidement, vois que c&#39;est un problème commun pour les 10 premiers rapports que j&#39;analyse en profondeur. Je demande donc une nouvelle correction, puis je relance des tests qui semblent être juste des faux positifs. Certains reviennent à la normale.</p>
+
+<p>Je désactive certains tests qui paraissent toujours instables. Parmi eux, les tests ajoutés le lundi : je ne les sentais pas en les codant, je n&#39;ai pas cru en eux lorsqu&#39;ils ont signalé un bug.</p>
+
+<h3>Lundi</h3>
+
+<p>Lundi, jour de la mise en production. Une fois finie, l&#39;équipe teste en production les changements pour vérifier que tout est normal.</p>
+
+<p>En faisant un test sur tout à fait autre chose, je me suis dit &quot;y&#39;a un truc qui cloche, (pas ce que je suis en train de tester), mais je vois pas quoi&quot;. Mon instinct me disait que j&#39;avais raté un truc. Je fais donc un tour du côté du support.</p>
+
+<p>Les premiers retours utilisateurs signalent un bug m&#39;a fait sourciller : on signale un bug sur la fonction testée depuis peu. Je vérifie le dernier rapport de tests : ils détectaient le bug, et étaient parfaitement stables.</p>
+
+<h3>Conclusion</h3>
+
+<p>En n&#39;ayant pas cru en la stabilité d&#39;un test que j&#39;ai codé moi-même, j&#39;ai laissé passer un bug en production.</p>
+
+<p>J&#39;ai vu un faux positif plutôt qu&#39;un bug réel, alors que j&#39;expliquais ce risque il y a longtemps.</p>
+
+<p>J&#39;ai l&#39;impression d&#39;avoir échoué à garantir la qualité de notre produit. J&#39;ai eu trop confiance dans mes collègues, et pas assez en moi.</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F01%2F22%2Fil-faut-savoir-se-fier-a-ses-tests%2F&amp;via=fabrice31&amp;text=Il faut savoir se fier à ses tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +297,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,123 +307,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Il faut savoir se fier à ses tests</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2013-01-22" itemprop="datePublished">
-		
-		22
-		janvier
-		  
-		2013
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/bug">Bug</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Vroici l&#39;histoire d&#39;un test fonctionnel &quot;basique&quot; mais techniquement compliqué à mettre en place.</p>
-
-<h3>Passé</h3>
-
-<p>Depuis plusieurs mois, nous sommes 2 à developper les tests automatiques. Nous avons une longue liste de tests à ajouter que nous dépilons progressivement. Certains tests sont présents depuis longtemps dans cette liste, mais nous ne réussissons tout simplement pas à les créer, pour des raisons purement techniques. D&#39;autres sont en attente de la correction du bug sur le produit.</p>
-
-<h3>Lundi</h3>
-
-<p>Pour l&#39;un d&#39;eux, je réussi finalement à trouver une solution tarabiscotée qui semble marcher. La solution ne me plait pas totalement, cela revient à exécuter du javascript dans un navigateur que je controle avec watir, lancé depuis un cucumber géré par un jenkins.</p>
-
-<p>L&#39;utilisation du javascript (langage que je ne maîtrise pas) pour ce détail me gêne : s&#39;il me permet de tester la fonctionnalité, je ne pourrais pas simplement tester certains points de la fonctionnalité.</p>
-
-<p>En outre, cela m&#39;empêche d&#39;être sur de moi pour ce test : j&#39;ai peur qu&#39;il ne soit pas stable et pérenne.</p>
-
-<h3>Mercredi</h3>
-
-<p>Mercredi dernier, j&#39;ai remonté un problème qui entrainait un problème en cascade sur l&#39;ensemble de mes tests fonctionnels (40 scenarios échoués sur 270).</p>
-
-<p>Il y avait deux importants chantiers effectués par mes collègues pour des mises à jours importantes, qui demandait des corrections.</p>
-
-<p><img src="/public/pictures/2013/mug-qualite.jpg" alt="Il faut savoir se fier à ses tests"></p>
-
-<h3>Jeudi</h3>
-
-<p>Jeudi, c&#39;est normalement la fin du codage des nouveautés pour le sprint en cours. Le jeudi c&#39;est donc débug, tests, préparation du changelog et de la mise en production...</p>
-
-<p>Lorsque j&#39;arrive un jeudi avec mes indicateurs qui clignotent en rouge, je n&#39;aime pas ça. Je survole rapidement, vois que c&#39;est un problème commun pour les 10 premiers rapports que j&#39;analyse en profondeur. Je demande donc une nouvelle correction, puis je relance des tests qui semblent être juste des faux positifs. Certains reviennent à la normale.</p>
-
-<p>Je désactive certains tests qui paraissent toujours instables. Parmi eux, les tests ajoutés le lundi : je ne les sentais pas en les codant, je n&#39;ai pas cru en eux lorsqu&#39;ils ont signalé un bug.</p>
-
-<h3>Lundi</h3>
-
-<p>Lundi, jour de la mise en production. Une fois finie, l&#39;équipe teste en production les changements pour vérifier que tout est normal.</p>
-
-<p>En faisant un test sur tout à fait autre chose, je me suis dit &quot;y&#39;a un truc qui cloche, (pas ce que je suis en train de tester), mais je vois pas quoi&quot;. Mon instinct me disait que j&#39;avais raté un truc. Je fais donc un tour du côté du support.</p>
-
-<p>Les premiers retours utilisateurs signalent un bug m&#39;a fait sourciller : on signale un bug sur la fonction testée depuis peu. Je vérifie le dernier rapport de tests : ils détectaient le bug, et étaient parfaitement stables.</p>
-
-<h3>Conclusion</h3>
-
-<p>En n&#39;ayant pas cru en la stabilité d&#39;un test que j&#39;ai codé moi-même, j&#39;ai laissé passer un bug en production.</p>
-
-<p>J&#39;ai vu un faux positif plutôt qu&#39;un bug réel, alors que j&#39;expliquais ce risque il y a longtemps.</p>
-
-<p>J&#39;ai l&#39;impression d&#39;avoir échoué à garantir la qualité de notre produit. J&#39;ai eu trop confiance dans mes collègues, et pas assez en moi.</p>
-</div>
-
-	<div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F01%2F22%2Fil-faut-savoir-se-fier-a-ses-tests%2F&amp;via=fabrice31&amp;text=Il faut savoir se fier à ses tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div>
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

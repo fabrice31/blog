@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      Une petite boulette peut coûter cher &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>Une petite boulette peut coûter cher &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="Une petite boulette peut coûter cher" />
+    <meta property="og:url" content="/2012/10/30/une-petite-boulette-peut-couter-cher/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,132 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Une petite boulette peut coûter cher</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-10-30" itemprop="datePublished">
+		
+		30
+		octobre
+		  
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Comme je l&#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&#39;ai quelques centaines de scénarios, des milliers d&#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &quot;instable&quot;, il faut lire le rapport détaillé.
+Deux anecdotes récentes à ce sujet.</p>
+
+<h3>Le bug est détecté</h3>
+
+<p>L&#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &quot;mais je l&#39;ai corrigé vendredi&quot;. Après test manuel, je confirme, le bug n&#39;est plus présent. Pourtant, le test ne fonctionne pas.</p>
+
+<p>Commence alors une rapide enquête pour comprendre.</p>
+
+<p>Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.</p>
+
+<p>Le test a été mis en place au moment du bug, et une partie du test n&#39;avait donc jamais été vérifiée avant la mise en service du test.</p>
+
+<p>La correction a consisté à attendre que l&#39;élément testé soit bien affiché avant de le tester.</p>
+
+<h3>J&#39;ai cru voir un petit bug</h3>
+
+<p>Plus tôt cette semaine, un collègue me signale qu&#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.</p>
+
+<p>Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.</p>
+
+<p>Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.</p>
+
+<p>Nous avons donc une suite de vérifications, en ruby+watir</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Pour traduire : On vérifie qu&#39;une image est présente, puis si l&#39;option alignement est &quot;droite&quot;, je vérifie que l&#39;image est aligné à droite. Sinon, je vérifie à gauche.</p>
+
+<p>Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.</p>
+
+<p>En ruby, le and est prioritaire sur le .exists. Je teste donc l&#39;existence d&#39;un booléen au lieu de tester deux booléens.</p>
+
+<p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">end</span>    
+</code></pre></div>
+<h3>Conclusion</h3>
+
+<p>Ce que je retiens de ces événements récents ?</p>
+
+<ul>
+<li>La communication dans l&#39;équipe est très importante.</li>
+<li>Tester qu&#39;un test détecte une panne est complexe.</li>
+<li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
+</ul>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F10%2F30%2Fune-petite-boulette-peut-couter-cher%2F&amp;via=fabrice31&amp;text=Une petite boulette peut coûter cher&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +306,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,132 +316,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Une petite boulette peut coûter cher</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-10-30" itemprop="datePublished">
-		
-		30
-		octobre
-		  
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Comme je l&#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&#39;ai quelques centaines de scénarios, des milliers d&#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &quot;instable&quot;, il faut lire le rapport détaillé.
-Deux anecdotes récentes à ce sujet.</p>
-
-<h3>Le bug est détecté</h3>
-
-<p>L&#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &quot;mais je l&#39;ai corrigé vendredi&quot;. Après test manuel, je confirme, le bug n&#39;est plus présent. Pourtant, le test ne fonctionne pas.</p>
-
-<p>Commence alors une rapide enquête pour comprendre.</p>
-
-<p>Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.</p>
-
-<p>Le test a été mis en place au moment du bug, et une partie du test n&#39;avait donc jamais été vérifiée avant la mise en service du test.</p>
-
-<p>La correction a consisté à attendre que l&#39;élément testé soit bien affiché avant de le tester.</p>
-
-<h3>J&#39;ai cru voir un petit bug</h3>
-
-<p>Plus tôt cette semaine, un collègue me signale qu&#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.</p>
-
-<p>Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.</p>
-
-<p>Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.</p>
-
-<p>Nous avons donc une suite de vérifications, en ruby+watir</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
-<span class="k">else</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Pour traduire : On vérifie qu&#39;une image est présente, puis si l&#39;option alignement est &quot;droite&quot;, je vérifie que l&#39;image est aligné à droite. Sinon, je vérifie à gauche.</p>
-
-<p>Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.</p>
-
-<p>En ruby, le and est prioritaire sur le .exists. Je teste donc l&#39;existence d&#39;un booléen au lieu de tester deux booléens.</p>
-
-<p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">else</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">end</span>    
-</code></pre></div>
-<h3>Conclusion</h3>
-
-<p>Ce que je retiens de ces événements récents ?</p>
-
-<ul>
-<li>La communication dans l&#39;équipe est très importante.</li>
-<li>Tester qu&#39;un test détecte une panne est complexe.</li>
-<li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
-</ul>
-</div>
-
-	<div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F10%2F30%2Fune-petite-boulette-peut-couter-cher%2F&amp;via=fabrice31&amp;text=Une petite boulette peut coûter cher&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div>
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

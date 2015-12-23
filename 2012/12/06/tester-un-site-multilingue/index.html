@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      Tester un site multilingue &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>Tester un site multilingue &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="Tester un site multilingue" />
+    <meta property="og:url" content="/2012/12/06/tester-un-site-multilingue/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,128 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Tester un site multilingue</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-12-06" itemprop="datePublished">
+		
+		6
+		décembre
+		
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
+
+<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
+
+<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
+
+<h3>Le test</h3>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
+    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">teardown</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_it</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3>L&#39;explication</h3>
+
+<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
+
+<ul>
+<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
+<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
+<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
+<li>Ligne 18 à 21 : second test, depuis google.fr</li>
+</ul>
+
+<h3>Pourquoi j&#39;ai perdu du temps</h3>
+
+<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
+
+<p>Quelques rappels :</p>
+
+<ul>
+<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
+<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
+</ul>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span>
+</code></pre></div></div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F12%2F06%2Ftester-un-site-multilingue%2F&amp;via=fabrice31&amp;text=Tester un site multilingue&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +302,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,128 +312,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Tester un site multilingue</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-12-06" itemprop="datePublished">
-		
-		6
-		décembre
-		
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
-
-<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
-
-<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
-
-<h3>Le test</h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
-  <span class="k">def</span> <span class="nf">setup</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">teardown</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_it</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<h3>L&#39;explication</h3>
-
-<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
-
-<ul>
-<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
-<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
-<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
-<li>Ligne 18 à 21 : second test, depuis google.fr</li>
-</ul>
-
-<h3>Pourquoi j&#39;ai perdu du temps</h3>
-
-<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
-
-<p>Quelques rappels :</p>
-
-<ul>
-<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
-<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
-</ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span>
-</code></pre></div></div>
-
-	<div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F12%2F06%2Ftester-un-site-multilingue%2F&amp;via=fabrice31&amp;text=Tester un site multilingue&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div>
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

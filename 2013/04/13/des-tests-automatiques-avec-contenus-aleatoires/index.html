@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      Des tests automatiques avec contenus aléatoires &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>Des tests automatiques avec contenus aléatoires &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="Des tests automatiques avec contenus aléatoires" />
+    <meta property="og:url" content="/2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,150 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Des tests automatiques avec contenus aléatoires</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2013-04-13" itemprop="datePublished">
+		
+		13
+		avril
+		  
+		2013
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/cucumber">Cucumber</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
+
+<p>Prenons un exemple de deux tests exécutés en même temps :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">"pseudo-tmp"</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo-tmp"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo-tmp"</span>
+<span class="vi">@scenario2</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Pseudo</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">when</span> <span class="n">you</span> <span class="n">publish</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span>
+</code></pre></div>
+<p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
+
+<p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
+
+<p>A un détail près :</p>
+
+<ul>
+<li>A 10h, le test s’exécute, il fonctionne.</li>
+<li>A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &quot;test pseudo&quot; sur la page alors qu&#39;un bug sera présent.</li>
+</ul>
+
+<p>Ma solution : <strong>ajouter de l&#39;aléatoire dans les tests</strong>.
+Avant chaque scénario, je crée un token, composé de :
+* 2 lettres du navigateur (ff, ie, ch..)
+* un nombre aléatoire.
+Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
+  <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
+  <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
+  <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
+<span class="no">End</span>
+</code></pre></div>
+<p>Ma classe Token :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
+<span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
+<span class="c1"># Author:: Fabrice</span>
+<span class="k">class</span> <span class="nc">Token</span>
+  <span class="c1"># Create a new token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@value</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span><span class="si">}#{</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span><span class="o">+</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="c1"># Get the value of the last token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">value</span>
+    <span class="vi">@value</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>Et côté vérification, on en tient compte également.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">else</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
+
+<p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F04%2F13%2Fdes-tests-automatiques-avec-contenus-aleatoires%2F&amp;via=fabrice31&amp;text=Des tests automatiques avec contenus aléatoires&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +324,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,150 +334,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Des tests automatiques avec contenus aléatoires</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2013-04-13" itemprop="datePublished">
-		
-		13
-		avril
-		  
-		2013
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/cucumber">Cucumber</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
-
-<p>Prenons un exemple de deux tests exécutés en même temps :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
-   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">"pseudo-tmp"</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo-tmp"</span>
-     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo-tmp"</span>
-<span class="vi">@scenario2</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="no">Pseudo</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">when</span> <span class="n">you</span> <span class="n">publish</span>
-   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
-     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span>
-</code></pre></div>
-<p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
-
-<p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
-
-<p>A un détail près :</p>
-
-<ul>
-<li>A 10h, le test s’exécute, il fonctionne.</li>
-<li>A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &quot;test pseudo&quot; sur la page alors qu&#39;un bug sera présent.</li>
-</ul>
-
-<p>Ma solution : <strong>ajouter de l&#39;aléatoire dans les tests</strong>.
-Avant chaque scénario, je crée un token, composé de :
-* 2 lettres du navigateur (ff, ie, ch..)
-* un nombre aléatoire.
-Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
-  <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
-  <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
-  <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
-<span class="no">End</span>
-</code></pre></div>
-<p>Ma classe Token :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
-<span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
-<span class="c1"># Author:: Fabrice</span>
-<span class="k">class</span> <span class="nc">Token</span>
-  <span class="c1"># Create a new token</span>
-  <span class="c1"># Author:: Fabrice</span>
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@value</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span><span class="si">}#{</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span><span class="o">+</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
-  <span class="k">end</span>
-  <span class="c1"># Get the value of the last token</span>
-  <span class="c1"># Author:: Fabrice</span>
-  <span class="k">def</span> <span class="nf">value</span>
-    <span class="vi">@value</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
-</code></pre></div>
-<p>Et côté vérification, on en tient compte également.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
-  <span class="k">else</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
-
-<p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
-</div>
-
-	<div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F04%2F13%2Fdes-tests-automatiques-avec-contenus-aleatoires%2F&amp;via=fabrice31&amp;text=Des tests automatiques avec contenus aléatoires&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div>
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

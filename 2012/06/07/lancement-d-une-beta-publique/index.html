@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      Lancement d'une beta publique &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>Lancement d'une beta publique &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="Lancement d'une beta publique" />
+    <meta property="og:url" content="/2012/06/07/lancement-d-une-beta-publique/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,101 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Lancement d'une beta publique</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-06-07" itemprop="datePublished">
+		
+		7
+		juin
+		  
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Cette semaine, nous lançons officiellement la beta publique de notre produit phare, <a href="http://www.overblog.com">OverBlog</a>. Cela fait près d&#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&#39;organisation de travail (passage à <a href="http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)">scrum</a>), nous avons accentué le TDD (<a href="http://fr.wikipedia.org/wiki/TDD">test driven development</a>), nous avons changé de technologie (<a href="http://symfony.com/">Symfony</a>)</p>
+
+<p>Nous avons mis en place de nombreux contrôles afin de mieux tester et s&#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.</p>
+
+<h3>Pour ajouter au stress :</h3>
+
+<ul>
+<li>Certains collègues sont absents (pour assister à des conférences)</li>
+<li>Le lancement se fait à New-York, pendant le BlogWorld. (Donc, avec du décalage horaire)</li>
+<li>Il faut continuer de gérer la version actuelle : cela complique un peu la tâche, surtout lorsque l&#39;utilisateur vous parle sans vous préciser quelle plateforme il utilise...</li>
+</ul>
+
+<h3>Ce que je retiens de ma nuit ?</h3>
+
+<ul>
+<li>Faire une modification en urgence à 17h était une mauvaise idée. Suite à un problème, elle a provoqué un effet de bord désastreux durant une demie-heure.</li>
+<li>L&#39;équipe est restée mobilisée une grande partie de la nuit pour s&#39;assurer que tout se passait bien.</li>
+<li>Suivre l&#39;avancement du trafic sur cette version était une émotion forte : cela fait 5 ans que je travaille dans les bureaux d&#39;OverBlog, mais c&#39;est la première fois que j&#39;attends devant un graphique pour voir s&#39;il va monter.</li>
+<li>Un souci sur un détail technique particulier : une seule personne était capable de le résoudre, et il nous a fallu une heure pour le contacter, et 2 heures pour que le problème soit totalement corrigé.</li>
+<li>La nuit a été courte pour certains d&#39;entre nous. Mais ce matin, l&#39;envie de finir au plus tôt les correctifs nécessaires pour que ce soit parfait est toujours là.</li>
+</ul>
+
+<p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
+
+<p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F06%2F07%2Flancement-d-une-beta-publique%2F&amp;via=fabrice31&amp;text=Lancement d'une beta publique&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +275,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,101 +285,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Lancement d'une beta publique</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-06-07" itemprop="datePublished">
-		
-		7
-		juin
-		  
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Cette semaine, nous lançons officiellement la beta publique de notre produit phare, <a href="http://www.overblog.com">OverBlog</a>. Cela fait près d&#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&#39;organisation de travail (passage à <a href="http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)">scrum</a>), nous avons accentué le TDD (<a href="http://fr.wikipedia.org/wiki/TDD">test driven development</a>), nous avons changé de technologie (<a href="http://symfony.com/">Symfony</a>)</p>
-
-<p>Nous avons mis en place de nombreux contrôles afin de mieux tester et s&#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.</p>
-
-<h3>Pour ajouter au stress :</h3>
-
-<ul>
-<li>Certains collègues sont absents (pour assister à des conférences)</li>
-<li>Le lancement se fait à New-York, pendant le BlogWorld. (Donc, avec du décalage horaire)</li>
-<li>Il faut continuer de gérer la version actuelle : cela complique un peu la tâche, surtout lorsque l&#39;utilisateur vous parle sans vous préciser quelle plateforme il utilise...</li>
-</ul>
-
-<h3>Ce que je retiens de ma nuit ?</h3>
-
-<ul>
-<li>Faire une modification en urgence à 17h était une mauvaise idée. Suite à un problème, elle a provoqué un effet de bord désastreux durant une demie-heure.</li>
-<li>L&#39;équipe est restée mobilisée une grande partie de la nuit pour s&#39;assurer que tout se passait bien.</li>
-<li>Suivre l&#39;avancement du trafic sur cette version était une émotion forte : cela fait 5 ans que je travaille dans les bureaux d&#39;OverBlog, mais c&#39;est la première fois que j&#39;attends devant un graphique pour voir s&#39;il va monter.</li>
-<li>Un souci sur un détail technique particulier : une seule personne était capable de le résoudre, et il nous a fallu une heure pour le contacter, et 2 heures pour que le problème soit totalement corrigé.</li>
-<li>La nuit a été courte pour certains d&#39;entre nous. Mais ce matin, l&#39;envie de finir au plus tôt les correctifs nécessaires pour que ce soit parfait est toujours là.</li>
-</ul>
-
-<p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
-
-<p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
-</div>
-
-	<div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F06%2F07%2Flancement-d-une-beta-publique%2F&amp;via=fabrice31&amp;text=Lancement d'une beta publique&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div>
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

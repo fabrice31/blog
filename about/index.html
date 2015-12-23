@@ -4,6 +4,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -11,11 +12,15 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    
-      About &middot; Je teste donc je suis
-    
-  </title>
+  
+  
+    <title>About &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="About" />
+    <meta property="og:url" content="/about/" />
+    <meta property="og:type" content="article" />
+  
+  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/public/css/poole.css">
@@ -25,7 +30,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="/public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -38,6 +43,23 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
+    <div class="content container">
+      <div class="page">
+  <h2 class="page-title">About</h2>
+  <p class="message">
+  Blog sur la qualité web en général, et l'automatisation de test web en particulier.
+</p>
+
+<p>
+    <strong>Quelques mots sur l'auteur</strong><br />
+    Responsable tests et qualité web chez OverBlog durant 6 ans, puis chez Ebuzzing depuis 2013.
+    <br/>
+    <a href="http://www.fabricebournisien.eu/" title="CV Fabrice Bournisien - Automatiseur de tests web">Voir le CV détaillé</a>
+</p>
+
+</div>
+
+    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -175,7 +197,7 @@
 		<input type="hidden" name="oe" value="UTF-8" /> 
 		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
 		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
-		<input type="text" name="q" size="18" maxlength="255" value="" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
 		<input type="submit" name="btnG" value="Chercher" /> 
 	  </form>
 	  <!-- SiteSearch Google -->
@@ -185,23 +207,6 @@
   </div>
 </div>
 
-    <div class="content container">
-      <div class="page">
-  <h2 class="page-title">About</h2>
-  <p class="message">
-  Blog sur la qualité web en général, et l'automatisation de test web en particulier.
-</p>
-
-<p>
-    <strong>Quelques mots sur l'auteur</strong><br />
-    Responsable tests et qualité web chez OverBlog durant 6 ans, puis chez Ebuzzing depuis 2013.
-    <br/>
-    <a href="http://www.fabricebournisien.eu/" title="CV Fabrice Bournisien - Automatiseur de tests web">Voir le CV détaillé</a>
-</p>
-
-</div>
-
-    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
