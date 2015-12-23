@@ -2,6 +2,7 @@
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' http://fonts.googleapis.com/ http://fonts.gstatic.com; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -9,13 +10,19 @@
   <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
   <meta name="robots" content="index,follow" />
 
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
-  </title>
+
+  {% if page.title == "Home" %}
+    <title>{{ site.title }} - {{ site.tagline }}</title>
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta property="og:url" content="{{ site.url }}" />
+    <meta property="og:type" content="website" />
+  {% else %}
+    <title>{{ page.title }} &middot; {{ site.title }}</title>
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:url" content="{{ page.url }}" />
+    <meta property="og:type" content="article" />
+  {% endif %}
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
@@ -25,7 +32,7 @@
 
   <!-- Icons --
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}public/apple-touch-icon-144-precomposed.png">-->
-  <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}public/qualite.jpg">
+  <link rel="shortcut icon" type="image/png" href="{{ site.baseurl }}public/qualite-min.jpg">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
