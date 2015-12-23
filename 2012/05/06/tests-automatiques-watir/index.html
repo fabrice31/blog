@@ -42,118 +42,6 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Tests automatiques : watir</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-05-06" itemprop="datePublished">
-		
-		6
-		mai
-		  
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
-Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
-
-<iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
-<span class="nb">require</span> <span class="s2">"rubygems"</span>
-
-<span class="c1"># chargement de la libraire watir</span>
-<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
-
-<span class="c1"># ouvrir un navigateur</span>
-<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
-
-<span class="c1"># Ouvrir le site</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
-
-<span class="c1"># Clignotement</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
-
-<span class="c1"># Vérifier que le mot qualité est présent</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
-<span class="k">else</span>
-  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
-<span class="k">end</span>
-
-<span class="c1"># Fermeture</span>
-<span class="no">B</span><span class="p">.</span><span class="nf">close</span>
-</code></pre></div>
-<p>Pour résumer :</p>
-
-<ul>
-<li>on charge les libraires adéquates</li>
-<li>on ouvre un navigateur</li>
-<li>on va sur le site web à tester</li>
-<li>on effectue des actions et/ou de tests</li>
-</ul>
-
-<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
-</div>
-
-	<!--div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F05%2F06%2Ftests-automatiques-watir%2F&amp;via=fabrice31&amp;text=Tests automatiques : watir&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div-->
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -301,6 +189,118 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
   </div>
 </div>
 
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Tests automatiques : watir</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-05-06" itemprop="datePublished">
+		
+		6
+		mai
+		  
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
+Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
+
+<iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
+<span class="nb">require</span> <span class="s2">"rubygems"</span>
+
+<span class="c1"># chargement de la libraire watir</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
+
+<span class="c1"># ouvrir un navigateur</span>
+<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="c1"># Ouvrir le site</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
+
+<span class="c1"># Clignotement</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
+
+<span class="c1"># Vérifier que le mot qualité est présent</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
+<span class="k">end</span>
+
+<span class="c1"># Fermeture</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div>
+<p>Pour résumer :</p>
+
+<ul>
+<li>on charge les libraires adéquates</li>
+<li>on ouvre un navigateur</li>
+<li>on va sur le site web à tester</li>
+<li>on effectue des actions et/ou de tests</li>
+</ul>
+
+<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F05%2F06%2Ftests-automatiques-watir%2F&amp;via=fabrice31&amp;text=Tests automatiques : watir&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

@@ -42,98 +42,6 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Bug de l'espace temps</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2013-10-17" itemprop="datePublished">
-		
-		17
-		octobre
-		  
-		2013
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&#39;avoir un moteur déjà bien robuste.</p>
-
-<p>Prenons par exemple l&#39;affichage d&#39;une date avec ce code :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Post</span><span class="o">.</span><span class="no">Date</span><span class="o">|</span><span class="n">datel</span><span class="p">(</span><span class="no">Lang</span><span class="o">.</span><span class="no">Get</span><span class="p">(</span><span class="s2">"Default date format"</span><span class="p">))</span>
-</code></pre></div>
-<p>Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&#39;agit d&#39;une chaîne de caractères indiquant le format.</p>
-
-<p>On pourrait avoir HH:mm pour l&#39;heure par exemple.</p>
-
-<p>Dans l&#39;analyse du bug du jour, nous avons un signalement de date fausse sur certaines pages. Après vérifications nous trouvons une page datant du 3 janvier 2010, mais qui est affichée comme étant le 3 janvier 2009.</p>
-
-<p>L&#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).</p>
-
-<p>Le collègue qui cherchait a trouvé le problème.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="no">Y</span>
-</code></pre></div>
-<p>Dans la documentation de datel, Y = year of &quot;Week of Year&quot;. Il s&#39;agit de l&#39;année durant laquelle le week end du jour en question a eu lieu.</p>
-
-<p>Il s&#39;agit donc d&#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&#39;année d&#39;avant. Tordu non ?</p>
-
-<p>Pour la petite histoire, le code corrigé sans bug donne :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="n">yyyy</span>
-</code></pre></div></div>
-
-	<!--div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F10%2F17%2Fbug-de-l-espace-temps%2F&amp;via=fabrice31&amp;text=Bug de l'espace temps&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div-->
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -281,6 +189,98 @@
   </div>
 </div>
 
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Bug de l'espace temps</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2013-10-17" itemprop="datePublished">
+		
+		17
+		octobre
+		  
+		2013
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&#39;avoir un moteur déjà bien robuste.</p>
+
+<p>Prenons par exemple l&#39;affichage d&#39;une date avec ce code :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Post</span><span class="o">.</span><span class="no">Date</span><span class="o">|</span><span class="n">datel</span><span class="p">(</span><span class="no">Lang</span><span class="o">.</span><span class="no">Get</span><span class="p">(</span><span class="s2">"Default date format"</span><span class="p">))</span>
+</code></pre></div>
+<p>Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&#39;agit d&#39;une chaîne de caractères indiquant le format.</p>
+
+<p>On pourrait avoir HH:mm pour l&#39;heure par exemple.</p>
+
+<p>Dans l&#39;analyse du bug du jour, nous avons un signalement de date fausse sur certaines pages. Après vérifications nous trouvons une page datant du 3 janvier 2010, mais qui est affichée comme étant le 3 janvier 2009.</p>
+
+<p>L&#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).</p>
+
+<p>Le collègue qui cherchait a trouvé le problème.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="no">Y</span>
+</code></pre></div>
+<p>Dans la documentation de datel, Y = year of &quot;Week of Year&quot;. Il s&#39;agit de l&#39;année durant laquelle le week end du jour en question a eu lieu.</p>
+
+<p>Il s&#39;agit donc d&#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&#39;année d&#39;avant. Tordu non ?</p>
+
+<p>Pour la petite histoire, le code corrigé sans bug donne :</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="n">yyyy</span>
+</code></pre></div></div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2013%2F10%2F17%2Fbug-de-l-espace-temps%2F&amp;via=fabrice31&amp;text=Bug de l'espace temps&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

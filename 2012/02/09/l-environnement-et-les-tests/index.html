@@ -42,133 +42,6 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">L'environnement et les tests</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-02-09" itemprop="datePublished">
-		
-		9
-		février
-		  
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><p>Cet article n&#39;a rien à voir avec l&#39;écologie, mais beaucoup avec l&#39;<a href="http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique">environnement</a>.</p>
-
-<p>Lorsque l&#39;on teste un projet web, il faut toujours savoir &quot;où&quot; nous testons : est-on sur un serveur de test ? de développement ? de pré-prod ? de production ?</p>
-
-<p>Lorsque vous êtes en pleine création d&#39;un projet, il est intéressant de définir clairement, le plus tôt possible, les différents environnements et leurs stratégies de tests respectives.</p>
-
-<p>L&#39;intégration continue sera d&#39;autant plus simple que vous aurez défini clairement les règles du jeu.</p>
-
-<h3>Environnements pour un projet web</h3>
-
-<ul>
-<li>Environnement de pré-prod : ce serveur doit être stable, mis à jour très régulièrement, comporter toutes les nouveautés.</li>
-<li>Environnement de développement : utilisé par tous les développeurs, il peut être soit centralisé, soit individuel (avec des machines virtuelles).</li>
-<li>Environnement de prod : c&#39;est le serveur qui sera utilisé par vos utilisateurs/clients. Il doit être choyé, aux petits oignons.</li>
-</ul>
-
-<h3>Comment organiser le travail (du point de vue de la qualité)</h3>
-
-<ul>
-<li>Les développeurs codent sur le serveur de dév.</li>
-<li>Les tests unitaires (côté php ou js) sont aussi jouer sur le serveur de développement.</li>
-<li>L&#39;environnement de préprod est posé en tant que référent : il est mis à jour régulièrement, avec des versions stables. Pour contrôler sa mise à jour, un outil d&#39;intégration continu (nous utilisons hudson) qui rejoue tous les tests unitaires de tous les sous projets.</li>
-</ul>
-
-<h3>Comment organiser les tests fonctionnels</h3>
-
-<ul>
-<li>Pour les tests manuels, en fonction du test, il faut le faire sur l&#39;un des environnements. Il est parfois utile de le faire sur chaque environnement, afin de pouvoir dire &quot;ce bug particulier n&#39;existe pas encore en prod, mais il est apparut sur la pré prod&quot;.</li>
-<li>L&#39;environnement de prod peut être utilisé pour vérifier la présence d&#39;un bug, mais ne devrait pas être utilisé pour des tests automatiques.</li>
-<li>Pour les tests automatiques, il y a 2 écoles: 
-Lancer sur la version de pré-prod. Défaut principal : il n&#39;est pas toujours évident de créer des tests fonctionnels avant de voir la fonction tourner réellement. Chaque nouvelle fonctionnalité aura donc ses tests ajoutés dans les jours qui suivront, et pas avant.
-Faire lancer les tests par les développeurs en environnement de développement. C&#39;est plus coûteux à mettre en place (il faut par exemple former tous les développeurs à l&#39;analyse du rapport de tests...), mais cela peut améliorer la détection des bugs.</li>
-</ul>
-
-<p>Pour moi, ces deux écoles ne s&#39;excluent pas. Je les vois plutôt comme des étapes. C&#39;est d&#39;ailleurs le cas dans ma société : lors de la refonte du projet, il a été décidé que les tests fonctionnels automatiques devront pouvoir s&#39;exécuter partout (y compris la prod). Pour l&#39;instant, ils peuvent être exécuter sur la pré prod, avec une configuration prévue théoriquement pour qu&#39;ils puissent être exécuter sur d&#39;autres environnements. (La gestion de profils de cucumber est parfaite pour ça)</p>
-
-<h3>Pourquoi est-il essentiel de connaître les environnements ?</h3>
-
-<p>Il m&#39;arrive régulièrement de tester un bug sur un onglet, de faire autre chose, et de revenir dans mon onglet pour avoir d&#39;autres informations au sujet des bugs. Et là, miracle, le bug est résolu. Pourtant, personne n&#39;a modifié le code. Un enquête de quelques minutes permet de comprendre que le bug n&#39;existe que dans un environnement particulier, et que j&#39;ai changé d&#39;onglet par inadvertance.</p>
-
-<p>Cela peut avoir des conséquences plus grave. Pour un projet personnel, j&#39;héberge un forum &quot;privé&quot;. J&#39;ai l&#39;habitude de &quot;stocker&quot; ce forum sur mes sites successifs, dans un sous-domaine, et de faire suivre aux utilisateurs la nouvelle adresse, voire de mettre en place une redirection.</p>
-
-<h3>Erreur d&#39;environnement</h3>
-
-<p>En novembre dernier, j&#39;ai lancé un déménagement. (La qualité de service de mon hébergeur devenait déplorable avec un uptime passant parfois sous les 90%)</p>
-
-<ul>
-<li>Je verrouille l&#39;accès en écriture sur l&#39;ancien</li>
-<li>Je déplace la totalité des fichiers d&#39;un serveur à un autre, tranquillement.</li>
-<li>Je copie la base de données.</li>
-<li>Je teste avec quelques utilisateurs le nouveau.</li>
-<li>Fin de l&#39;opération.</li>
-</ul>
-
-<p>Jusqu&#39;à ce matin, lorsque j&#39;ai vu un message d&#39;erreur &quot;Can&#39;t connect to MySQL server on anciendomaine.com&quot;. J&#39;ai mal lu le message, et n&#39;ai pas fait attention, et j&#39;ai attendu quelques minutes, pensant à une maintenance sur mon hébergeur. Puis j&#39;ai fini par réaliser que sur mon nouveau domaine, opérationnel depuis 4 mois, la base de données utilisée était toujours l&#39;ancienne. Du coup, nouvelle copie des bases de données, modification du fichier config.php qui contenait les données pour la base, et voilà, tout est rentré dans l&#39;ordre.</p>
-
-<p>Si mon ancien domaine (et sa base) avait expiré avant que je m&#39;en rende compte, j&#39;aurais perdu une partie de l&#39;historique. Pour un petit forum privé, cela n&#39;aurait pas été trop grave. Mais pour un projet plus important, cela aurait pu provoquer des catastrophes.</p>
-</div>
-
-	<!--div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F02%2F09%2Fl-environnement-et-les-tests%2F&amp;via=fabrice31&amp;text=L'environnement et les tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div-->
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -316,6 +189,133 @@ Faire lancer les tests par les développeurs en environnement de développement.
   </div>
 </div>
 
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">L'environnement et les tests</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-02-09" itemprop="datePublished">
+		
+		9
+		février
+		  
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><p>Cet article n&#39;a rien à voir avec l&#39;écologie, mais beaucoup avec l&#39;<a href="http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique">environnement</a>.</p>
+
+<p>Lorsque l&#39;on teste un projet web, il faut toujours savoir &quot;où&quot; nous testons : est-on sur un serveur de test ? de développement ? de pré-prod ? de production ?</p>
+
+<p>Lorsque vous êtes en pleine création d&#39;un projet, il est intéressant de définir clairement, le plus tôt possible, les différents environnements et leurs stratégies de tests respectives.</p>
+
+<p>L&#39;intégration continue sera d&#39;autant plus simple que vous aurez défini clairement les règles du jeu.</p>
+
+<h3>Environnements pour un projet web</h3>
+
+<ul>
+<li>Environnement de pré-prod : ce serveur doit être stable, mis à jour très régulièrement, comporter toutes les nouveautés.</li>
+<li>Environnement de développement : utilisé par tous les développeurs, il peut être soit centralisé, soit individuel (avec des machines virtuelles).</li>
+<li>Environnement de prod : c&#39;est le serveur qui sera utilisé par vos utilisateurs/clients. Il doit être choyé, aux petits oignons.</li>
+</ul>
+
+<h3>Comment organiser le travail (du point de vue de la qualité)</h3>
+
+<ul>
+<li>Les développeurs codent sur le serveur de dév.</li>
+<li>Les tests unitaires (côté php ou js) sont aussi jouer sur le serveur de développement.</li>
+<li>L&#39;environnement de préprod est posé en tant que référent : il est mis à jour régulièrement, avec des versions stables. Pour contrôler sa mise à jour, un outil d&#39;intégration continu (nous utilisons hudson) qui rejoue tous les tests unitaires de tous les sous projets.</li>
+</ul>
+
+<h3>Comment organiser les tests fonctionnels</h3>
+
+<ul>
+<li>Pour les tests manuels, en fonction du test, il faut le faire sur l&#39;un des environnements. Il est parfois utile de le faire sur chaque environnement, afin de pouvoir dire &quot;ce bug particulier n&#39;existe pas encore en prod, mais il est apparut sur la pré prod&quot;.</li>
+<li>L&#39;environnement de prod peut être utilisé pour vérifier la présence d&#39;un bug, mais ne devrait pas être utilisé pour des tests automatiques.</li>
+<li>Pour les tests automatiques, il y a 2 écoles: 
+Lancer sur la version de pré-prod. Défaut principal : il n&#39;est pas toujours évident de créer des tests fonctionnels avant de voir la fonction tourner réellement. Chaque nouvelle fonctionnalité aura donc ses tests ajoutés dans les jours qui suivront, et pas avant.
+Faire lancer les tests par les développeurs en environnement de développement. C&#39;est plus coûteux à mettre en place (il faut par exemple former tous les développeurs à l&#39;analyse du rapport de tests...), mais cela peut améliorer la détection des bugs.</li>
+</ul>
+
+<p>Pour moi, ces deux écoles ne s&#39;excluent pas. Je les vois plutôt comme des étapes. C&#39;est d&#39;ailleurs le cas dans ma société : lors de la refonte du projet, il a été décidé que les tests fonctionnels automatiques devront pouvoir s&#39;exécuter partout (y compris la prod). Pour l&#39;instant, ils peuvent être exécuter sur la pré prod, avec une configuration prévue théoriquement pour qu&#39;ils puissent être exécuter sur d&#39;autres environnements. (La gestion de profils de cucumber est parfaite pour ça)</p>
+
+<h3>Pourquoi est-il essentiel de connaître les environnements ?</h3>
+
+<p>Il m&#39;arrive régulièrement de tester un bug sur un onglet, de faire autre chose, et de revenir dans mon onglet pour avoir d&#39;autres informations au sujet des bugs. Et là, miracle, le bug est résolu. Pourtant, personne n&#39;a modifié le code. Un enquête de quelques minutes permet de comprendre que le bug n&#39;existe que dans un environnement particulier, et que j&#39;ai changé d&#39;onglet par inadvertance.</p>
+
+<p>Cela peut avoir des conséquences plus grave. Pour un projet personnel, j&#39;héberge un forum &quot;privé&quot;. J&#39;ai l&#39;habitude de &quot;stocker&quot; ce forum sur mes sites successifs, dans un sous-domaine, et de faire suivre aux utilisateurs la nouvelle adresse, voire de mettre en place une redirection.</p>
+
+<h3>Erreur d&#39;environnement</h3>
+
+<p>En novembre dernier, j&#39;ai lancé un déménagement. (La qualité de service de mon hébergeur devenait déplorable avec un uptime passant parfois sous les 90%)</p>
+
+<ul>
+<li>Je verrouille l&#39;accès en écriture sur l&#39;ancien</li>
+<li>Je déplace la totalité des fichiers d&#39;un serveur à un autre, tranquillement.</li>
+<li>Je copie la base de données.</li>
+<li>Je teste avec quelques utilisateurs le nouveau.</li>
+<li>Fin de l&#39;opération.</li>
+</ul>
+
+<p>Jusqu&#39;à ce matin, lorsque j&#39;ai vu un message d&#39;erreur &quot;Can&#39;t connect to MySQL server on anciendomaine.com&quot;. J&#39;ai mal lu le message, et n&#39;ai pas fait attention, et j&#39;ai attendu quelques minutes, pensant à une maintenance sur mon hébergeur. Puis j&#39;ai fini par réaliser que sur mon nouveau domaine, opérationnel depuis 4 mois, la base de données utilisée était toujours l&#39;ancienne. Du coup, nouvelle copie des bases de données, modification du fichier config.php qui contenait les données pour la base, et voilà, tout est rentré dans l&#39;ordre.</p>
+
+<p>Si mon ancien domaine (et sa base) avait expiré avant que je m&#39;en rende compte, j&#39;aurais perdu une partie de l&#39;historique. Pour un petit forum privé, cela n&#39;aurait pas été trop grave. Mais pour un projet plus important, cela aurait pu provoquer des catastrophes.</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F02%2F09%2Fl-environnement-et-les-tests%2F&amp;via=fabrice31&amp;text=L'environnement et les tests&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>

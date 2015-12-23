@@ -42,121 +42,6 @@
 </head>
 
   <body class="theme-base-0c layout-reverse">
-    <div class="content container">
-      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <h2 class="post-title" itemprop="name">Les tests doivent-ils tester ?</h2>
-  <span class="post-date">
-	  <time class="date" datetime="2012-06-18" itemprop="datePublished">
-		
-		18
-		juin
-		  
-		2012
-	  </time>
-	  - par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-  </span>
-
-	<div itemprop="ArticleBody"><h3>Le juste équilibre dans les tests</h3>
-
-<p>Mettre en place des <strong>tests fonctionnels automatiques</strong> revient à jouer à l&#39;équilibriste entre l&#39;existant (déjà testé et &quot;stable&quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...</p>
-
-<p>Le responsable qualité et l&#39;équipe doivent avoir confiance dans leurs indicateurs, et doivent connaître leurs limites, afin de pouvoir planifier les actions pour éliminer les bugs.</p>
-
-<h3>Des tests toujours réussis</h3>
-
-<p>J&#39;ai lu récemment que des tests fonctionnels toujours &quot;vert&quot; sont mauvais, qu&#39;ils ne testent rien. (<a href="http://experttesters.com/2012/05/17/why-100-test-pass-rates-are-bad/">Why 100% Test Pass rates are Bad</a>)</p>
-
-<p>Je ne suis pas d&#39;accord : j&#39;ai la hantise de tests &quot;rouge&quot; : à chaque fois, cela demande d&#39;aller analyser le rapport, vérifier si c&#39;est un faux positif. (Cela arrive régulièrement : même en prévoyant au mieux, il arrive qu&#39;une action dépasse le temps prévue pour s&#39;exécuter, etc.)</p>
-
-<h4>Les tests doivent être toujours vert</h4>
-
-<p>Si votre écran de contrôle affiche toujours du rouge, vous finirez pas ne plus lui faire confiance. Le problème, c&#39;est que si vous n&#39;avez pas confiance dans des tests automatisés, c&#39;est que vous perdrez du temps à les refaire à la main. Et que lorsqu&#39;ils passeront au rouge, vous penserez à un faux positif avant même de regarder, et vous pourriez laisser passer un bug.</p>
-
-<h4>L&#39;important n&#39;est pas la couleur, mais la couverture</h4>
-
-<p>Je préfère avoir une couverture de 50% fiable qu&#39;une plus grande couverture mais instable. Il faut bien comprendre qu&#39;un test vert ne dit pas &quot;il n&#39;y a pas de bug sur ce projet&quot;, mais plutôt &quot;aucun bug prévu n&#39;a été trouvé cette fois-ci&quot;. La différence semble tenue, mais elle est primordiale.</p>
-
-<p>L&#39;équipe doit savoir si les tests ont des lacunes, afin de redoubler d&#39;effort &quot;manuels&quot; dans cette partie. Il ne faut jamais oublier que les tests automatiques ne testent pas tout le projet, mais seulement ce qu&#39;ils sont sensés tester.</p>
-
-<p><img src="/public/pictures/2012/screen_tests.jpg" title="Ecran de contrôle" style="width: 200px; float: left;"/>
-<img src="/public/pictures/2012/cucumber-report.png" title="Résultats de tests cucumber" style="width: 200px; float: left;"/>
-<img src="/public/pictures/2012/graphique-nb-issues.jpg" title="Evolution du nombre de bugs" style="width: 200px; float: left;"/>
-<p style="clear: both;"></p></p>
-
-<h3>Choix des métriques</h3>
-
-<p>Le choix des métriques est primordial : cela influe sur le ressenti de la qualité par l&#39;équipe qui développe le produit. (<a href="http://martijndevrieze.net/2012/05/30/test-automation-metrics-what-do-you-report-on/">Test automation metrics - what do you report on?</a>)</p>
-
-<h4>Mise à jour des métriques</h4>
-
-<ul>
-<li>En début de projet, la pertinence du &quot;nombre&quot; de bugs est relative. Quand le projet a déjà été livré dans une version beta au public, ce nombre est déjà plus réaliste.</li>
-<li>Les tests de charge sont importants tout le temps, mais il ne faut jamais oublier le stade d&#39;avancement du projet. Un test de charge qui semble échouer peut ne pas l&#39;être si on le fait durant une &quot;maintenance programmée&quot; du serveur.</li>
-</ul>
-
-<p>Certains pensent qu&#39;il vaut mieux avoir trop de métriques que pas assez. Mais il faut pondérer ceci par le temps pour les analyser et les comprendre.</p>
-
-<h4>Stratégie générale</h4>
-
-<p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
-</div>
-
-	<!--div class="share">
-		<div class="twitter-share">
-			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F06%2F18%2Fles-tests-doivent-ils-tester%2F&amp;via=fabrice31&amp;text=Les tests doivent-ils tester ?&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="facebook-share">
-			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
-		</div>
-		<div class="google-share">
-			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
-		</div>
-	</div-->
-
-</div>
-
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
-			L'empirique au service des tests
-			<small>28 Sep 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
-			La simplicité n'est pas toujours simple
-			<small>15 Jan 2015</small>
-		  </a>
-      </li>
-    
-      <li>
-		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
-			Petits plaisirs de la vie
-			<small>07 Jan 2015</small>
-		  </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script src="https://apis.google.com/js/plusone.js"></script>
-<div class="g-comments"
-    data-href="http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/"
-    data-width="642"
-    data-first_party_property="BLOGGER"
-    data-view_type="FILTERED_POSTMOD">
-</div>
-
-    </div>
     <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
@@ -304,6 +189,121 @@
   </div>
 </div>
 
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">Les tests doivent-ils tester ?</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2012-06-18" itemprop="datePublished">
+		
+		18
+		juin
+		  
+		2012
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><h3>Le juste équilibre dans les tests</h3>
+
+<p>Mettre en place des <strong>tests fonctionnels automatiques</strong> revient à jouer à l&#39;équilibriste entre l&#39;existant (déjà testé et &quot;stable&quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...</p>
+
+<p>Le responsable qualité et l&#39;équipe doivent avoir confiance dans leurs indicateurs, et doivent connaître leurs limites, afin de pouvoir planifier les actions pour éliminer les bugs.</p>
+
+<h3>Des tests toujours réussis</h3>
+
+<p>J&#39;ai lu récemment que des tests fonctionnels toujours &quot;vert&quot; sont mauvais, qu&#39;ils ne testent rien. (<a href="http://experttesters.com/2012/05/17/why-100-test-pass-rates-are-bad/">Why 100% Test Pass rates are Bad</a>)</p>
+
+<p>Je ne suis pas d&#39;accord : j&#39;ai la hantise de tests &quot;rouge&quot; : à chaque fois, cela demande d&#39;aller analyser le rapport, vérifier si c&#39;est un faux positif. (Cela arrive régulièrement : même en prévoyant au mieux, il arrive qu&#39;une action dépasse le temps prévue pour s&#39;exécuter, etc.)</p>
+
+<h4>Les tests doivent être toujours vert</h4>
+
+<p>Si votre écran de contrôle affiche toujours du rouge, vous finirez pas ne plus lui faire confiance. Le problème, c&#39;est que si vous n&#39;avez pas confiance dans des tests automatisés, c&#39;est que vous perdrez du temps à les refaire à la main. Et que lorsqu&#39;ils passeront au rouge, vous penserez à un faux positif avant même de regarder, et vous pourriez laisser passer un bug.</p>
+
+<h4>L&#39;important n&#39;est pas la couleur, mais la couverture</h4>
+
+<p>Je préfère avoir une couverture de 50% fiable qu&#39;une plus grande couverture mais instable. Il faut bien comprendre qu&#39;un test vert ne dit pas &quot;il n&#39;y a pas de bug sur ce projet&quot;, mais plutôt &quot;aucun bug prévu n&#39;a été trouvé cette fois-ci&quot;. La différence semble tenue, mais elle est primordiale.</p>
+
+<p>L&#39;équipe doit savoir si les tests ont des lacunes, afin de redoubler d&#39;effort &quot;manuels&quot; dans cette partie. Il ne faut jamais oublier que les tests automatiques ne testent pas tout le projet, mais seulement ce qu&#39;ils sont sensés tester.</p>
+
+<p><img src="/public/pictures/2012/screen_tests.jpg" title="Ecran de contrôle" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/cucumber-report.png" title="Résultats de tests cucumber" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/graphique-nb-issues.jpg" title="Evolution du nombre de bugs" style="width: 200px; float: left;"/>
+<p style="clear: both;"></p></p>
+
+<h3>Choix des métriques</h3>
+
+<p>Le choix des métriques est primordial : cela influe sur le ressenti de la qualité par l&#39;équipe qui développe le produit. (<a href="http://martijndevrieze.net/2012/05/30/test-automation-metrics-what-do-you-report-on/">Test automation metrics - what do you report on?</a>)</p>
+
+<h4>Mise à jour des métriques</h4>
+
+<ul>
+<li>En début de projet, la pertinence du &quot;nombre&quot; de bugs est relative. Quand le projet a déjà été livré dans une version beta au public, ce nombre est déjà plus réaliste.</li>
+<li>Les tests de charge sont importants tout le temps, mais il ne faut jamais oublier le stade d&#39;avancement du projet. Un test de charge qui semble échouer peut ne pas l&#39;être si on le fait durant une &quot;maintenance programmée&quot; du serveur.</li>
+</ul>
+
+<p>Certains pensent qu&#39;il vaut mieux avoir trop de métriques que pas assez. Mais il faut pondérer ceci par le temps pour les analyser et les comprendre.</p>
+
+<h4>Stratégie générale</h4>
+
+<p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2012%2F06%2F18%2Fles-tests-doivent-ils-tester%2F&amp;via=fabrice31&amp;text=Les tests doivent-ils tester ?&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
