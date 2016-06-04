@@ -54,7 +54,7 @@ Durant la mise en place de cette solution (et sa maintenance), nous avons rencon
 
 Malgré ces défauts, ce système nous convenait parfaitement.
 
-Il nous a permis d'industrialiser des tests sur un point clé de certains projets, sur tous les navigateurs, y comrpis sur mobile.
+Il nous a permis d'industrialiser des tests sur un point clé de certains projets, sur tous les navigateurs, y compris sur mobile.
 
 Lorsqu'un nouveau collègue est arrivé dans l'équipe en juillet, et que je lui ai présenté cette brique bien pratique, il a trouvé ça intéressant, et trouvait l'idée originale.
 
