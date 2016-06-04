@@ -168,6 +168,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -181,12 +189,205 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2015 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests/" itemprop="url" rel="bookmark">
+        Ruby - OAuth v1.0a pour optimiser les tests
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-06-10" itemprop="datePublished">
+			
+			10
+			juin
+			  
+			2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/api">Api</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lors de tests, il arrive souvent qu&#39;on ait besoin de &quot;faire le ménage&quot; pour retrouver un état comme à l&#39;origine.
+Plusieurs stratégies possibles, en fonction des technologies qu&#39;on souhaite utiliser.</p>
+
+<h3>Un par un, à la fin</h3>
+
+<p>Après chaque scénario, supprimer ce qui a été ajouté, annuler les modifications une par une.</p>
+
+<p>Avantages : </p>
+
+<ul>
+<li>Facile à mettre en place (on réutilise ce qui a déjà été fait)</li>
+</ul>
+
+<p>Défauts : </p>
+
+<ul>
+<li>Si le scénario plante, on ne remet pas en l&#39;état</li>
+<li>Chaque scénario prend un peu plus de temps (jusqu&#39;au double, dans le pire des cas)</li>
+</ul>
+
+<h3>Un par un, au début</h3>
+
+<p>Avant chaque scénario, remettre les valeurs par défauts pour le test</p>
+
+<p>Avantages :</p>
+
+<ul>
+<li>Facile à mettre en place (on réutilise ce qui a déjà été fait)</li>
+</ul>
+
+<p>Défauts :</p>
+
+<ul>
+<li>Si la remise à zéro ne marche pas, on ne teste pas</li>
+<li>Chaque scénario prend un peu plus de temps (jusqu&#39;au double, dans le pire des cas)</li>
+</ul>
+
+<h3>Tous d&#39;un coup, dans une routine à part</h3>
+
+<p>Puisqu&#39;on utilise un outil comme jenkins pour organiser tous les tests, on peut ajouter une routine &quot;à part&quot;, qui va se connecter sur chaque compte pour effectuer cette remise à zéro.</p>
+
+<p>Avantages :</p>
+
+<ul>
+<li>Toutes les procédures de remises à zéro sont au même endroit</li>
+</ul>
+
+<p>Défauts :</p>
+
+<ul>
+<li>Un peu plus long à mettre en place</li>
+<li>Demande d&#39;ajouter une sécurité pour ne pas la lancer au mauvais moment</li>
+<li>Ca prend du temps (mais autant que de le faire un par un)</li>
+</ul>
+
+<h3>Optimisation : utilisation d&#39;une API</h3>
+
+<p>Dans mon cas, nous disposons aussi d&#39;une API publique (en alpha, elle n&#39;est pas encore ouverte à tout le monde)</p>
+
+<p>Avantages :</p>
+
+<ul>
+<li>Pas d&#39;interface web, cela devrait aller plus vite</li>
+<li>Ajoutera &quot;en passant&quot; des tests sur la public API</li>
+</ul>
+
+<p>Défauts :</p>
+
+<ul>
+<li>Je ne maitrise pas du tout Oauth 1.0a (ça me permettra d&#39;apprendre : tant mieux)</li>
+<li>Nous disposons d&#39;un SDK pour faciliter l&#39;utilisation de l&#39;API, en php. Pour des raisons pratiques, je préfère le faire en ruby, le serveur de tests étant déjà configuré pour cela. Je pars donc &quot;de zéro&quot;</li>
+</ul>
+
+<h3>Utiliser une API OAuth 1.0a en Ruby</h3>
+
+<p>On trouve un peu de documentation pour le faire, et quelques exemples. Quelques remarques sur ces articles :
+* La quasi totalité expose le même code d&#39;exemple.
+* Rares sont ceux qui signalent la version d&#39;OAuth
+* Les exemples se concentrent beaucoup sur &quot;comment se connecter à l&#39;api&quot;, et très rarement sur &quot;comment l&#39;utiliser&quot;</p>
+
+<p>Voilà quelques astuces pour utiliser &quot;rapidement&quot; une API OAuth en ruby</p>
+
+<h4>Utilisation de gems</h4>
+
+<p>Elles facilitent la vie, autant en profiter.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'oauth'</span>
+<span class="nb">require</span> <span class="s1">'watir-webdriver'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+</code></pre></div>
+<h4>Définition de constantes de l&#39;api</h4>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">OB_API_SERVER</span>                 <span class="o">=</span> <span class="s1">'http://url_server_api'</span>
+<span class="no">OB_API_BASE_URL</span>               <span class="o">=</span> <span class="no">OB_API_SERVER</span><span class="o">+</span><span class="s1">'/public/0.1'</span>
+<span class="no">OB_API_ENDPOINT_REQUEST_TOKEN</span> <span class="o">=</span> <span class="s1">'/oauth/request_token'</span>
+<span class="no">OB_API_ENDPOINT_ACCESS_TOKEN</span>  <span class="o">=</span> <span class="s1">'/oauth/access_token'</span>
+<span class="no">OB_API_ENDPOINT_AUTHORIZE</span>     <span class="o">=</span> <span class="s1">'/oauth/authorize'</span>
+<span class="no">OB_API_MY_CONSUMER_KEY</span>        <span class="o">=</span> <span class="s1">'######'</span>
+<span class="no">OB_API_MY_CONSUMER_SECRET</span>     <span class="o">=</span> <span class="s1">'######'</span>
+</code></pre></div>
+<p>Obtenir la connexion à l&#39;API</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># create the OAuth consumer</span>
+<span class="vi">@consumer</span> <span class="o">=</span> <span class="no">OAuth</span><span class="o">::</span><span class="no">Consumer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> 
+    <span class="no">OB_API_MY_CONSUMER_KEY</span><span class="p">,</span>
+    <span class="no">OB_API_MY_CONSUMER_SECRET</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="ss">:oauth_version</span>      <span class="o">=&gt;</span> <span class="s1">'1.0a'</span><span class="p">,</span>
+        <span class="ss">:site</span>               <span class="o">=&gt;</span> <span class="no">OB_API_SERVER</span><span class="p">,</span>
+        <span class="ss">:request_token_path</span> <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_REQUEST_TOKEN</span><span class="p">,</span>
+        <span class="ss">:access_token_path</span>  <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_ACCESS_TOKEN</span><span class="p">,</span>
+        <span class="ss">:authorize_path</span>     <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_AUTHORIZE</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="c1"># show all debugs in console</span>
+<span class="c1"># @consumer.http.set_debug_output($stdout)</span>
+<span class="c1"># get the authorize url</span>
+<span class="vi">@request_token</span> <span class="o">=</span> <span class="vi">@consumer</span><span class="p">.</span><span class="nf">get_request_token</span>
+<span class="c1"># Make as if the user authorize the app</span>
+<span class="c1"># If you make a web app, you should show the link to your user, and let it click it</span>
+<span class="c1"># browse the authorize url</span>
+<span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="vi">@request_token</span><span class="p">.</span><span class="nf">authorize_url</span><span class="p">())</span>
+<span class="c1"># connect with account</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">text_field</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'email'</span><span class="p">).</span><span class="nf">set</span><span class="p">(</span><span class="s2">"test@test.fr"</span><span class="p">)</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">text_field</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'passwd'</span><span class="p">).</span><span class="nf">set</span><span class="p">(</span><span class="s2">"monmotdepasse"</span><span class="p">)</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">button</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'loginSubmit'</span><span class="p">).</span><span class="nf">click</span>
+<span class="c1"># give access</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">form</span><span class="p">.</span><span class="nf">submit</span>
+<span class="c1"># get verifier token</span>
+<span class="c1"># browser url contain oauth_verifier_token</span>
+<span class="n">oauth_verifier_token</span> <span class="o">=</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"oauth_verifier="</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># grant total access</span>
+<span class="vi">@access_token</span> <span class="o">=</span> <span class="vi">@request_token</span><span class="p">.</span><span class="nf">get_access_token</span><span class="p">(</span><span class="ss">:oauth_verifier</span> <span class="o">=&gt;</span> <span class="n">oauth_verifier_token</span><span class="p">)</span>
+<span class="c1"># no more browser needed</span>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div>
+<h4>Exemples d&#39;utilisation de l&#39;API OAuth</h4>
+
+<p>Une fois qu&#39;on est connecté à l&#39;API, on peut l&#39;utiliser. Il faut lire sa documentation, en général assez touffue, pour savoir ce qu&#39;on peut faire (lister / ajouter / modifier / supprimer).
+Voici deux exemples &quot;simplifiés&quot; pour mon exemple.</p>
+
+<h5>Classique</h5>
+
+<p>Afficher les informations sur le blog courant.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_url_info</span> <span class="o">=</span>  <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/info'</span>
+<span class="n">current_blog_info</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_url_info</span><span class="p">)</span>
+</code></pre></div>
+<h5>Avec une option</h5>
+
+<p>Afficher la liste des titres des articles en brouillons.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_lists_content</span> <span class="o">=</span> <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/posts/draft?limit=20'</span>
+<span class="n">content_list</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_lists_content</span><span class="p">)</span>
+<span class="c1"># read json results</span>
+<span class="n">result</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">content_list</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+<span class="n">result</span><span class="p">[</span><span class="s1">'response'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">content</span> <span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">content</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Conclusions</p>
+
+<ul>
+<li>Ma routine journalière prenait environ 55 minutes. La nouvelle routine, via l&#39;api, dure environ 90 secondes.</li>
+<li>J&#39;ai depuis très envie de l&#39;étendre pour ajouter de nouvelles procédures de remises à zéro.</li>
+<li>La documentation est primordiale (que ce soit celle de l&#39;API ou celle de OAuth)</li>
+</ul>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -355,81 +556,6 @@ Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
 <p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
 
 <p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/04/02/l-armee-paie-ses-militaires-ou-pas/" itemprop="url" rel="bookmark">
-        L'armée ne paie pas toujours ses militaires
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-04-02" itemprop="datePublished">
-			
-			2
-			avril
-			  
-			2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Il y a plusieurs mois, j&#39;avais tweeté &quot;Les bugs, ça coûte cher : Noël sans solde pour des milliers de soldats français&quot;</p>
-
-<p>Source : <a href="http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique_1809606_3210.html">http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique<em>1809606</em>3210.html</a></p>
-
-<p>Pour résumer : dans les anciens logiciels de paie des militaires français, il y avait parfois des petites erreurs, des petits bugs, qui étaient corrigés les mois suivants. Mais en 2012, mise à jour complète du logiciel.</p>
-
-<h2>Louvois, le logiciel le plus buggué de l&#39;histoire ?</h2>
-
-<p>La dernière version du logiciel, surnommée &quot;Louvois&quot; (Logiciel unique à vocation interarmées de la solde) , est tellement remplie de bugs que certains militaires ont de légers problèmes. (Exemples en fin d&#39;article)</p>
-
-<p>Il y a un mois, on pouvait lire dans la presse que les bugs devaient être corrigés pour Noël 2012, mais ne l&#39;étaient pas encore mi février 2013.</p>
-
-<p>Source : <a href="http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/">http://www.lemagit.fr/technologie/applications/applications-transversales-pgi/2013/02/20/logiciel-de-paie-louvois-la-guerre-de-le-drian-est-loin-detre-gagnee/</a></p>
-
-<p>On envisagerait donc de revenir à l&#39;ancien logiciel, moins buggué. Mais cela prendrait entre 12 et 14 mois, donc, mi 2014 au mieux.</p>
-
-<p>Une autre source indique que l&#39;armée de l&#39;air paierait déjà ses hommes via un autre logiciel pour éviter les bugs : <a href="http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html">http://www.marianne.net/blogsecretdefense/Louvois-l-armee-de-Terre-pourrait-revenir-a-l-ancien-systeme-de-paiement-des-soldes_a942.html</a></p>
-
-<blockquote>
-<p>Les erreurs occasionnées par Louvois représentent 1 % de la masse salariale du ministère de la Défense, pour près de 120 000 incidents
-<em>Le Canard Enchaîné</em></p>
-</blockquote>
-
-<h3>Et pendant ce temps, dans l&#39;armée de terrain</h3>
-
-<ul>
-<li>Saisie sur salaire à un miliaire, pour une somme déjà payée au trésor public par le militaire par ailleurs. (Donc, il est dans le rouge, et paie 2 fois). Temps avant remboursement : plusieurs mois.</li>
-<li>Un homme qui doit faire vivre sa famille un mois entier avec 60 euros : <a href="http://storify.com/fabrice31/l-armee-mauvais-payeur">http://storify.com/fabrice31/l-armee-mauvais-payeur</a></li>
-<li>Soldes payées avec des mois de retard sur le terrain</li>
-<li>Primes prévues mais reportées, payées avec plusieurs mois de retard...</li>
-<li>Sur une compagnie de 120 hommes, pour le même mois, déjà plus de 20 cas recensés avec une erreur sur le solde, de 150 à 1 400 €. (La cause serait la prime versée le mois précédent, considérée comme un trop perçu par le logiciel)</li>
-</ul>
-
-<p>Si des militaires veulent poursuivre la liste, n&#39;hésitez pas, je compléterai avec plaisir cette liste de bugs. (un formulaire de contact anonyme est disponible en bas de page)</p>
-
-<p><img src="/public/pictures/2013/armee-francaise1.jpg" alt="L&#39;armée ne paie pas toujours ses militaires." title="L&#39;armée, quel beau métier"></p>
-
-<h3>Et si c&#39;était vous ?</h3>
-
-<p><strong>Rappel</strong> : les militaires n&#39;ont pas le droit de manifester / faire grève...</p>
-
-<p>Imaginez, si cela ne touchait pas l&#39;armée, mais une société lambda ?</p>
-
-<ul>
-<li>Une société privée avec un bug aussi important (même une seule fois) qui ne corrige pas dans les jours qui suivent la situation de tous les salariés : que diront les prud&#39;hommes ?</li>
-<li>Une société qui a un bug dans 1% des paies qu&#39;elle verse, Sur une petite PME de 20 personnes, cela fait 1 seule erreur de paie tous les 5 mois. 2.5 erreurs par an.</li>
-<li>Pour l&#39;armée, ça représente 3220 personnes par mois. (322 000 emplois en 2007)</li>
-<li>Imaginez, si ce mois-ci, votre conjoint(e) reçoit un salaire de 60 € à cause d&#39;une erreur de logiciel, et la suite viendra &quot;plus tard&quot;, délai non confirmé. De quoi vous passez vous ? Payer votre loyer, vos crédits ? Les couches de bébé ?</li>
-</ul>
-
-<p>Une page facebook parlait en 2012 du problème : <a href="Le%20paquet%20de%20gauloises%20en%20col%C3%A8re%5D">https://www.facebook.com/pages/Un-paquet-de-Gauloises/416293095105059</a></p>
 </div>
   </div>
   

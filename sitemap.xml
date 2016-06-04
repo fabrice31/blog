@@ -2,6 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme/</loc>
+    
+	  <lastmod>2016-06-04T00:00:00+02:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/</loc>
     
 	  <lastmod>2015-09-28T00:00:00+02:00</lastmod>
@@ -317,6 +326,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  
+  
+  
   
   
   

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr-fr" itemscope="" itemtype="http://schema.org/Blog">
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; frame-src 'self' https://apis.google.com https://accounts.google.com; script-src 'self' http://code.jquery.com http://www.google-analytics.com https://apis.google.com; img-src 'self' http://www.google-analytics.com">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Blog sur la qualité web en général, et l'automatisation de test web en particulier. Responsable tests et qualité web depuis 7 ans." />
+  <meta name="keywords" content="test, watir, qualité, cucumber, jenkins, bug, selenium, appium, bournisien" />
+  <meta name="robots" content="index,follow" />
+
+
+  
+    <title>L'important, c'est le paradigme &middot; Je teste donc je suis</title>
+    <meta property="og:title" content="L'important, c'est le paradigme" />
+    <meta property="og:url" content="/2016/06/04/important-est-le-paradigme/" />
+    <meta property="og:type" content="article" />
+  
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+
+  <!-- Icons -->
+  <link rel="shortcut icon" type="image/png" href="/public/qualite-min.jpg">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <link rel="stylesheet" href="/public/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+
+  <meta property="og:image"  content="/public/pictures/web-qualite.jpg"/>
+  <meta itemprop="image"     content="/public/pictures/web-qualite.jpg" />
+  <meta name="twitter:image" content="/public/pictures/web-qualite.jpg" />  
+</head>
+
+  <body class="theme-base-0c layout-reverse">
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Je teste donc je suis
+        </a>
+      </h1>
+      <p class="lead">Blog d'un automatiseur de tests web.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about/">About</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/archive/">Archives</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
+	  <!-- SiteSearch Google --> 
+	  <form method="get" action="http://www.google.com/search"> 
+		<input type="hidden" name="ie" value="UTF-8" /> 
+		<input type="hidden" name="oe" value="UTF-8" /> 
+		<input type="hidden" name="domains" value="blog.fabricebournisien.eu" /> 
+		<input type="hidden" name="sitesearch" value="blog.fabricebournisien.eu" checked="checked" />
+		<input type="text" name="q" size="18" maxlength="255" value="" title="Chercher sur le blog" />
+		<input type="submit" name="btnG" value="Chercher" /> 
+	  </form>
+	  <!-- SiteSearch Google -->
+    </nav>
+
+    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+  </div>
+</div>
+
+    <div class="content container">
+      <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <h2 class="post-title" itemprop="name">L'important, c'est le paradigme</h2>
+  <span class="post-date">
+	  <time class="date" datetime="2016-06-04" itemprop="datePublished">
+		
+		4
+		juin
+		  
+		2016
+	  </time>
+	  - par Fabrice Bournisien
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+		- <a href="/tag/python">Python</a>
+		
+		- <a href="/tag/selenium">Selenium</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+  </span>
+
+	<div itemprop="ArticleBody"><h3>Technologie de tests</h3>
+
+<p>Dans le passé, j&#39;ai travaillé avec webtest, selenium en 2007/2008, mais ils ne me suffisaient pas. J&#39;avais donc une stack classique depuis 5 ans déjà, améliorée de temps en temps par l&#39;ajout d&#39;une librairie ou une organisation de code différente.</p>
+
+<ul>
+<li>Scenario : Cucumber</li>
+<li>Code : Ruby</li>
+<li>Navigateur : Watir-webdriver</li>
+<li>Framework : page-object</li>
+<li>Mobile : appium, avec vrais android et xcode simulator pour iOS</li>
+<li>Serveur : Jenkins</li>
+<li>Autres technologies : applytools, http-server, ... </li>
+</ul>
+
+<p>A plusieurs reprises, j&#39;ai hésité à changer de langage, mais cela voulait aussi dire de changer l&#39;ensemble du code actuel pour changer de langage, avoir accès à des choses qui n&#39;existent pas, ou pour faciliter les recrutements. Trouver des développeurs ruby n&#39;est pas toujours facile, en passant à java, ils sont plus nombreux par exemple. Ayant même des développeurs java dans les équipes de développement, on aurait pu avoir des appuis en cas de charge momentanée de travail.</p>
+
+<p>Je n&#39;ai jamais franchi le cap de changer cette stack, qu&#39;on arrivait à adapter et exploiter de mieux en mieux avec le temps. Former mes nouveaux collègues me paraissait simple, et était &quot;facile&quot; parce que tout était logique pour moi. Ils comprenaient vite, posaient des questions parfois pertinentes.</p>
+
+<p>Il m&#39;est arrivé de dire qu&#39;on n&#39;avait pas fait comme il pensait, parce qu&#39;on avait du passif, qui imposait tel ou tel gestion particulière dans un cas précis, qui avait disparu depuis. Ou comment lever une refacto pour simplifier du code en parlant &quot;à bâtons rompus&quot; autour de la stack actuelle.</p>
+
+<h3>Nouvelle stack</h3>
+
+<p>Fin 2015, nous étions une équipe qualité de 6 personnes, codant des tests automatiques.
+En janvier 2016, j&#39;ai changé de société. 
+Dans la nouvelle, j&#39;ai le même rôle : j&#39;automatise des tests pour assurer la qualité, éviter les bugs, supprimer les régressions à chaque mise en production, etc.</p>
+
+<p>Cette société utilise beaucoup de langage, et j&#39;ai décidé de me mettre un challenge en plus : m&#39;adapter à un des langages utilisés en interne, pour faciliter les interactions en internes : si un développeur veut me filer un coup de main, il peut plus facilement. Etant seul à l&#39;automatisation, si je suis en vacances et qu&#39;un problème survient, ils auront des gens capables de lire les erreurs de code et de débugguer / tenir à jour si c&#39;est urgent.</p>
+
+<ul>
+<li>Scenario : behave</li>
+<li>Code : Python</li>
+<li>Navigateur : Selenium-webdriver2</li>
+<li>Framework : page-object</li>
+<li>Mobile : pour le moment, simulateur dans chrome via les user-agents</li>
+<li>Serveur : Jenkins</li>
+<li>Autres technologies : aucune pour le moment</li>
+</ul>
+
+<p>On voit que c&#39;est très proche : </p>
+
+<ul>
+<li>Cucumber et behave sont pareils, avec quelques subtilités. Par exemple, je n&#39;ai pas trouvé de solution pour tagguer différement des exemples de scenarios outlines.</li>
+<li>Watir et selenium se ressemblent beaucoup. Je préfère parfois la syntaxe et la facilité de watir/ruby, qui me permet d&#39;écrire <code>browser.div(class: &#39;maClasse&#39;).span(index: 1)</code> au lieu de selenium/python qui donne <code>browser.find_element_by_class_name(&#39;maClasse&#39;).find_elements_by_tag_name(&#39;span&#39;)[1]</code></li>
+<li>Le page object de python me parait moins abouti (et moins utile) que celui de ruby. Je n&#39;utilise au final qu&#39;une partie de ses possibilités, le reste étant déjà gérées par l&#39;organisation de code de behave.</li>
+</ul>
+
+<p>Il m&#39;a fallu plusieurs semaines pour arriver à coder du python aussi propre que je le souhaitais, quelques jours pour coder en selenium sans penser à watir.</p>
+
+<p>C&#39;est surtout un changement de mentalité, comme quand on change de langue entre français et anglais : on ne traduit pas littéralement, il faut changer sa façon de penser.</p>
+
+<p>Cela étant, garder quelques points figés, comme les scenarios en BDD (behaviour driven development) m&#39;a permis de gagner beaucoup de temps, de savoir où je voulais aller, ce dont j&#39;avais besoin, pour facilirer la transition.</p>
+
+<p>Le paradigme reste le même : avoir des cas de tests simples, découpés, qui permettent de tester point par point que l&#39;interface utilisateur réagit comme prévu.</p>
+</div>
+
+	<!--div class="share">
+		<div class="twitter-share">
+			<iframe src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fblog.fabricebournisien.eu%2F%2F2016%2F06%2F04%2Fimportant-est-le-paradigme%2F&amp;via=fabrice31&amp;text=L'important, c'est le paradigme&amp;lang=fr&amp;count=horizontal" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="facebook-share">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme/&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:133px;"></iframe>
+		</div>
+		<div class="google-share">
+			<iframe src="https://plusone.google.com/u/0/_/+1/fastbutton?url=http://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme/&amp;size=medium&amp;annotation=bubble&amp;lang=fr" frameborder="0" allowTransparency="1" scrolling="no" style="height:20px;width:90px;"></iframe>
+		</div>
+	</div-->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests/">
+			L'empirique au service des tests
+			<small>28 Sep 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple/">
+			La simplicité n'est pas toujours simple
+			<small>15 Jan 2015</small>
+		  </a>
+      </li>
+    
+      <li>
+		  <a href="http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie/">
+			Petits plaisirs de la vie
+			<small>07 Jan 2015</small>
+		  </a>
+      </li>
+    
+  </ul>
+</div>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+<div class="g-comments"
+    data-href="http://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme/"
+    data-width="642"
+    data-first_party_property="BLOGGER"
+    data-view_type="FILTERED_POSTMOD">
+</div>
+
+    </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/public/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/public/js/script.js"></script>
+  </body>
+</html>

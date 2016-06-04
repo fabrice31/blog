@@ -168,6 +168,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -181,12 +189,61 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2015 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/09/17/l-art-de-signaler-un-bug/" itemprop="url" rel="bookmark">
+        L'art de signaler un bug
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-09-17" itemprop="datePublished">
+			
+			17
+			septembre
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;un utilisateur lambda signale un bug, il a tendance à penser qu&#39;il est évident, et qu&#39;il n&#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &quot;tomber dessus par hasard&quot;.</p>
+
+<p>Dans tous les cas, il y a beaucoup de temps &quot;perdu&quot; pour trouver un bug, qui parfois n&#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.</p>
+
+<p>Lorsqu&#39;on emmène sa voiture chez le garagiste, on lui donne souvent plein d&#39;informations inutiles. Je me souviens d&#39;une fois, où je suis arrivé pour lui dire : &quot;<em>je sais pas ce qu&#39;elle a : elle vibre quand je roule, les vibrations augmentent avec la vitesse. Et j&#39;ai du mal à passer les vitesses, comme si ce n&#39;était plus aligné.</em>&quot;</p>
+
+<p>La garagiste a dit &quot;je pense que je sais&quot;, a été démarré la voiture sur le parking, puis a éteint et a répondu : &quot;<em>Supports moteurs HS : il va falloir les changer</em>&quot;. A peu de chose près, je pensais à Bourvil.</p>
+
+<p>(Pour la petite histoire, 2 supports moteurs sur 3 cassés, à la fin d&#39;un voyage de 800km.)</p>
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/Ipl67KqEkWc?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Mais alors, quelles informations donner lors du signalement d&#39;un bug ? toutes celles qui peuvent être utiles :</p>
+
+<ul>
+<li>Navigateur (et version : Firefox 3.5 et Firefox 14 se ressemblent, mais ne sont pas identique, loin de là)</li>
+<li>Système d&#39;exploitation (non, Safari pour windows et pour mac ne se comportent pas de la même façon)</li>
+<li>Antivirus (pas utile à chaque fois, mais c&#39;est quand il manque qu&#39;il est utile)</li>
+<li>Messages d&#39;erreur : tous, en entier.</li>
+<li>Procédure pour reproduire le bug : où cliquez-vous, dans quel ordre...</li>
+</ul>
+
+<p>Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?</p>
+
+<p>Plus vous donnez d&#39;informations précises, plus cela peut être utile à corriger le bug.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -329,55 +386,6 @@
 <h4>Stratégie générale</h4>
 
 <p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/06/07/lancement-d-une-beta-publique/" itemprop="url" rel="bookmark">
-        Lancement d'une beta publique
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-06-07" itemprop="datePublished">
-			
-			7
-			juin
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Cette semaine, nous lançons officiellement la beta publique de notre produit phare, <a href="http://www.overblog.com">OverBlog</a>. Cela fait près d&#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&#39;organisation de travail (passage à <a href="http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)">scrum</a>), nous avons accentué le TDD (<a href="http://fr.wikipedia.org/wiki/TDD">test driven development</a>), nous avons changé de technologie (<a href="http://symfony.com/">Symfony</a>)</p>
-
-<p>Nous avons mis en place de nombreux contrôles afin de mieux tester et s&#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.</p>
-
-<h3>Pour ajouter au stress :</h3>
-
-<ul>
-<li>Certains collègues sont absents (pour assister à des conférences)</li>
-<li>Le lancement se fait à New-York, pendant le BlogWorld. (Donc, avec du décalage horaire)</li>
-<li>Il faut continuer de gérer la version actuelle : cela complique un peu la tâche, surtout lorsque l&#39;utilisateur vous parle sans vous préciser quelle plateforme il utilise...</li>
-</ul>
-
-<h3>Ce que je retiens de ma nuit ?</h3>
-
-<ul>
-<li>Faire une modification en urgence à 17h était une mauvaise idée. Suite à un problème, elle a provoqué un effet de bord désastreux durant une demie-heure.</li>
-<li>L&#39;équipe est restée mobilisée une grande partie de la nuit pour s&#39;assurer que tout se passait bien.</li>
-<li>Suivre l&#39;avancement du trafic sur cette version était une émotion forte : cela fait 5 ans que je travaille dans les bureaux d&#39;OverBlog, mais c&#39;est la première fois que j&#39;attends devant un graphique pour voir s&#39;il va monter.</li>
-<li>Un souci sur un détail technique particulier : une seule personne était capable de le résoudre, et il nous a fallu une heure pour le contacter, et 2 heures pour que le problème soit totalement corrigé.</li>
-<li>La nuit a été courte pour certains d&#39;entre nous. Mais ce matin, l&#39;envie de finir au plus tôt les correctifs nécessaires pour que ce soit parfait est toujours là.</li>
-</ul>
-
-<p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
-
-<p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
 </div>
   </div>
   

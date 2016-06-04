@@ -168,6 +168,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -181,12 +189,83 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2015 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2013/01/22/il-faut-savoir-se-fier-a-ses-tests/" itemprop="url" rel="bookmark">
+        Il faut savoir se fier à ses tests
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-01-22" itemprop="datePublished">
+			
+			22
+			janvier
+			  
+			2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Vroici l&#39;histoire d&#39;un test fonctionnel &quot;basique&quot; mais techniquement compliqué à mettre en place.</p>
+
+<h3>Passé</h3>
+
+<p>Depuis plusieurs mois, nous sommes 2 à developper les tests automatiques. Nous avons une longue liste de tests à ajouter que nous dépilons progressivement. Certains tests sont présents depuis longtemps dans cette liste, mais nous ne réussissons tout simplement pas à les créer, pour des raisons purement techniques. D&#39;autres sont en attente de la correction du bug sur le produit.</p>
+
+<h3>Lundi</h3>
+
+<p>Pour l&#39;un d&#39;eux, je réussi finalement à trouver une solution tarabiscotée qui semble marcher. La solution ne me plait pas totalement, cela revient à exécuter du javascript dans un navigateur que je controle avec watir, lancé depuis un cucumber géré par un jenkins.</p>
+
+<p>L&#39;utilisation du javascript (langage que je ne maîtrise pas) pour ce détail me gêne : s&#39;il me permet de tester la fonctionnalité, je ne pourrais pas simplement tester certains points de la fonctionnalité.</p>
+
+<p>En outre, cela m&#39;empêche d&#39;être sur de moi pour ce test : j&#39;ai peur qu&#39;il ne soit pas stable et pérenne.</p>
+
+<h3>Mercredi</h3>
+
+<p>Mercredi dernier, j&#39;ai remonté un problème qui entrainait un problème en cascade sur l&#39;ensemble de mes tests fonctionnels (40 scenarios échoués sur 270).</p>
+
+<p>Il y avait deux importants chantiers effectués par mes collègues pour des mises à jours importantes, qui demandait des corrections.</p>
+
+<p><img src="/public/pictures/2013/mug-qualite.jpg" alt="Il faut savoir se fier à ses tests"></p>
+
+<h3>Jeudi</h3>
+
+<p>Jeudi, c&#39;est normalement la fin du codage des nouveautés pour le sprint en cours. Le jeudi c&#39;est donc débug, tests, préparation du changelog et de la mise en production...</p>
+
+<p>Lorsque j&#39;arrive un jeudi avec mes indicateurs qui clignotent en rouge, je n&#39;aime pas ça. Je survole rapidement, vois que c&#39;est un problème commun pour les 10 premiers rapports que j&#39;analyse en profondeur. Je demande donc une nouvelle correction, puis je relance des tests qui semblent être juste des faux positifs. Certains reviennent à la normale.</p>
+
+<p>Je désactive certains tests qui paraissent toujours instables. Parmi eux, les tests ajoutés le lundi : je ne les sentais pas en les codant, je n&#39;ai pas cru en eux lorsqu&#39;ils ont signalé un bug.</p>
+
+<h3>Lundi</h3>
+
+<p>Lundi, jour de la mise en production. Une fois finie, l&#39;équipe teste en production les changements pour vérifier que tout est normal.</p>
+
+<p>En faisant un test sur tout à fait autre chose, je me suis dit &quot;y&#39;a un truc qui cloche, (pas ce que je suis en train de tester), mais je vois pas quoi&quot;. Mon instinct me disait que j&#39;avais raté un truc. Je fais donc un tour du côté du support.</p>
+
+<p>Les premiers retours utilisateurs signalent un bug m&#39;a fait sourciller : on signale un bug sur la fonction testée depuis peu. Je vérifie le dernier rapport de tests : ils détectaient le bug, et étaient parfaitement stables.</p>
+
+<h3>Conclusion</h3>
+
+<p>En n&#39;ayant pas cru en la stabilité d&#39;un test que j&#39;ai codé moi-même, j&#39;ai laissé passer un bug en production.</p>
+
+<p>J&#39;ai vu un faux positif plutôt qu&#39;un bug réel, alors que j&#39;expliquais ce risque il y a longtemps.</p>
+
+<p>J&#39;ai l&#39;impression d&#39;avoir échoué à garantir la qualité de notre produit. J&#39;ai eu trop confiance dans mes collègues, et pas assez en moi.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -341,55 +420,6 @@ Deux anecdotes récentes à ce sujet.</p>
 <li>Tester qu&#39;un test détecte une panne est complexe.</li>
 <li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
 </ul>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/09/17/l-art-de-signaler-un-bug/" itemprop="url" rel="bookmark">
-        L'art de signaler un bug
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-09-17" itemprop="datePublished">
-			
-			17
-			septembre
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/bug">Bug</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Lorsqu&#39;un utilisateur lambda signale un bug, il a tendance à penser qu&#39;il est évident, et qu&#39;il n&#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &quot;tomber dessus par hasard&quot;.</p>
-
-<p>Dans tous les cas, il y a beaucoup de temps &quot;perdu&quot; pour trouver un bug, qui parfois n&#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.</p>
-
-<p>Lorsqu&#39;on emmène sa voiture chez le garagiste, on lui donne souvent plein d&#39;informations inutiles. Je me souviens d&#39;une fois, où je suis arrivé pour lui dire : &quot;<em>je sais pas ce qu&#39;elle a : elle vibre quand je roule, les vibrations augmentent avec la vitesse. Et j&#39;ai du mal à passer les vitesses, comme si ce n&#39;était plus aligné.</em>&quot;</p>
-
-<p>La garagiste a dit &quot;je pense que je sais&quot;, a été démarré la voiture sur le parking, puis a éteint et a répondu : &quot;<em>Supports moteurs HS : il va falloir les changer</em>&quot;. A peu de chose près, je pensais à Bourvil.</p>
-
-<p>(Pour la petite histoire, 2 supports moteurs sur 3 cassés, à la fin d&#39;un voyage de 800km.)</p>
-
-<iframe width="560" height="315" src="//www.youtube.com/embed/Ipl67KqEkWc?rel=0" frameborder="0" allowfullscreen></iframe>
-
-<p>Mais alors, quelles informations donner lors du signalement d&#39;un bug ? toutes celles qui peuvent être utiles :</p>
-
-<ul>
-<li>Navigateur (et version : Firefox 3.5 et Firefox 14 se ressemblent, mais ne sont pas identique, loin de là)</li>
-<li>Système d&#39;exploitation (non, Safari pour windows et pour mac ne se comportent pas de la même façon)</li>
-<li>Antivirus (pas utile à chaque fois, mais c&#39;est quand il manque qu&#39;il est utile)</li>
-<li>Messages d&#39;erreur : tous, en entier.</li>
-<li>Procédure pour reproduire le bug : où cliquez-vous, dans quel ordre...</li>
-</ul>
-
-<p>Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?</p>
-
-<p>Plus vous donnez d&#39;informations précises, plus cela peut être utile à corriger le bug.</p>
 </div>
   </div>
   
