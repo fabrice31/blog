@@ -53,6 +53,6 @@ Il m'a fallu plusieurs semaines pour arriver à coder du python aussi propre que
 
 C'est surtout un changement de mentalité, comme quand on change de langue entre français et anglais : on ne traduit pas littéralement, il faut changer sa façon de penser.
 
-Cela étant, garder quelques points figés, comme les scenarios en BDD (behaviour driven development) m'a permis de gagner beaucoup de temps, de savoir où je voulais aller, ce dont j'avais besoin, pour facilirer la transition.
+Cela étant, garder quelques points figés, comme les scenarios en BDD (behaviour driven development) m'a permis de gagner beaucoup de temps, de savoir où je voulais aller, ce dont j'avais besoin, pour faciliter la transition.
 
 Le paradigme reste le même : avoir des cas de tests simples, découpés, qui permettent de tester point par point que l'interface utilisateur réagit comme prévu.
