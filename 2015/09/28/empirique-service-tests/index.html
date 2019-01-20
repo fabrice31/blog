@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -286,9 +238,10 @@ C&#39;est là qu&#39;entre en scène node.js, et et plus précisement son http-s
 <p>Ensuite, la ligne de commande <code>http-server proxy/ --cors -a 127.0.0.1 &gt;&gt; proxy/log.txt</code> permet de lancer le serveur localement, et d&#39;avoir le log dans un fichier lui même accessible sur le serveur.</p>
 
 <p>Pour l&#39;analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d&#39;ouvrir un navigateur comme avec le log de charles.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:8080/log.txt"</span>
-<span class="n">content</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
-</code></pre></div>
+<span class="n">content</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">url</span><span class="p">))</span></code></pre></div>
+
 <h3>Bénéfices</h3>
 
 <p>Quand j&#39;ai commencé cette modification, j&#39;espérais gagner un peu de temps. 

@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -219,6 +171,7 @@
 <p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
 
 <h3>Le test</h3>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
   <span class="k">def</span> <span class="nf">setup</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
@@ -236,8 +189,8 @@
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
     <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <h3>L&#39;explication</h3>
 
 <p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
@@ -259,10 +212,11 @@
 <li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
 <li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
 </ul>
+
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
     <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span>
-</code></pre></div></div>
+    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span></code></pre></div>
+</div>
 
 	<!--div class="share">
 		<div class="twitter-share">

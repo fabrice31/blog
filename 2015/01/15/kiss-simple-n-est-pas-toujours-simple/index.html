@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -239,6 +191,7 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 <h3>Complexe ou compliqué ?</h3>
 
 <p>J&#39;ai enquêté sur une fonction particulière, assez longue, qui vérifie la présence d&#39;un élément particulier. Cet élément varie en fonction du type de page que l&#39;on teste.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
     <span class="k">case</span> <span class="p">(</span><span class="nb">format</span><span class="p">.</span><span class="nf">downcase</span><span class="p">)</span>
     <span class="k">when</span> <span class="s1">'bt'</span>
@@ -281,8 +234,8 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
         <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
         <span class="k">return</span> <span class="s2">"pending"</span>
     <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Score flog : 135.8. </p>
 
 <p>Vraiment pas terrible, mais le nombre de cas différents ne simplifie pas la tâche.</p>
@@ -292,6 +245,7 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 <p>J&#39;ai commencé par créer un fichier yaml contenant toutes les informations des tests, pour n&#39;avoir ensuite qu&#39;un algorithme commun à tous les cas.</p>
 
 <p>Voici le code ruby de la fonction ainsi modifié:</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present_with_yaml</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
     <span class="n">which</span> <span class="o">=</span> <span class="nb">format</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">).</span><span class="nf">downcase</span>
     <span class="c1"># Get checkers from the yaml</span>
@@ -329,8 +283,8 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
         <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
         <span class="k">return</span> <span class="s2">"pending"</span>
     <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Score flog : 75.3. Score presque divisé par deux : impressionnant. </p>
 
 <p>Par contre, contrairement à la première fonction :</p>
@@ -344,6 +298,7 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 <h4>Un compromis</h4>
 
 <p>Autre solution, regrouper les différents cas par lots similaires. </p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">format_is_present_new</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
     <span class="n">ids</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'ib'</span>    <span class="o">=&gt;</span> <span class="s1">'ebib'</span><span class="p">,</span>
@@ -387,8 +342,8 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
         <span class="nb">puts</span> <span class="s2">"Format </span><span class="si">#{</span><span class="nb">format</span><span class="si">}</span><span class="s2"> Not yet implemented"</span>
         <span class="k">return</span> <span class="s2">"pending"</span>
     <span class="k">end</span>
-<span class="k">end</span> 
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Quelques détails :</p>
 
 <ul>

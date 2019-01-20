@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -198,364 +150,325 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
-      <a href="/2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests/" itemprop="url" rel="bookmark">
-        Ruby - OAuth v1.0a pour optimiser les tests
+      <a href="/2012/10/30/une-petite-boulette-peut-couter-cher/" itemprop="url" rel="bookmark">
+        Une petite boulette peut coûter cher
       </a>
     </h2>
 
 	<span class="post-date">
-		<time class="date" datetime="2013-06-10" itemprop="datePublished">
+		<time class="date" datetime="2012-10-30" itemprop="datePublished">
 			
-			10
+			30
+			octobre
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Comme je l&#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&#39;ai quelques centaines de scénarios, des milliers d&#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &quot;instable&quot;, il faut lire le rapport détaillé.
+Deux anecdotes récentes à ce sujet.</p>
+
+<h3>Le bug est détecté</h3>
+
+<p>L&#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &quot;mais je l&#39;ai corrigé vendredi&quot;. Après test manuel, je confirme, le bug n&#39;est plus présent. Pourtant, le test ne fonctionne pas.</p>
+
+<p>Commence alors une rapide enquête pour comprendre.</p>
+
+<p>Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.</p>
+
+<p>Le test a été mis en place au moment du bug, et une partie du test n&#39;avait donc jamais été vérifiée avant la mise en service du test.</p>
+
+<p>La correction a consisté à attendre que l&#39;élément testé soit bien affiché avant de le tester.</p>
+
+<h3>J&#39;ai cru voir un petit bug</h3>
+
+<p>Plus tôt cette semaine, un collègue me signale qu&#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.</p>
+
+<p>Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.</p>
+
+<p>Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.</p>
+
+<p>Nous avons donc une suite de vérifications, en ruby+watir</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Pour traduire : On vérifie qu&#39;une image est présente, puis si l&#39;option alignement est &quot;droite&quot;, je vérifie que l&#39;image est aligné à droite. Sinon, je vérifie à gauche.</p>
+
+<p>Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.</p>
+
+<p>En ruby, le and est prioritaire sur le .exists. Je teste donc l&#39;existence d&#39;un booléen au lieu de tester deux booléens.</p>
+
+<p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">else</span>
+  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
+<span class="k">end</span></code></pre></div>
+
+<h3>Conclusion</h3>
+
+<p>Ce que je retiens de ces événements récents ?</p>
+
+<ul>
+<li>La communication dans l&#39;équipe est très importante.</li>
+<li>Tester qu&#39;un test détecte une panne est complexe.</li>
+<li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
+</ul>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/09/17/l-art-de-signaler-un-bug/" itemprop="url" rel="bookmark">
+        L'art de signaler un bug
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-09-17" itemprop="datePublished">
+			
+			17
+			septembre
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;un utilisateur lambda signale un bug, il a tendance à penser qu&#39;il est évident, et qu&#39;il n&#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &quot;tomber dessus par hasard&quot;.</p>
+
+<p>Dans tous les cas, il y a beaucoup de temps &quot;perdu&quot; pour trouver un bug, qui parfois n&#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.</p>
+
+<p>Lorsqu&#39;on emmène sa voiture chez le garagiste, on lui donne souvent plein d&#39;informations inutiles. Je me souviens d&#39;une fois, où je suis arrivé pour lui dire : &quot;<em>je sais pas ce qu&#39;elle a : elle vibre quand je roule, les vibrations augmentent avec la vitesse. Et j&#39;ai du mal à passer les vitesses, comme si ce n&#39;était plus aligné.</em>&quot;</p>
+
+<p>La garagiste a dit &quot;je pense que je sais&quot;, a été démarré la voiture sur le parking, puis a éteint et a répondu : &quot;<em>Supports moteurs HS : il va falloir les changer</em>&quot;. A peu de chose près, je pensais à Bourvil.</p>
+
+<p>(Pour la petite histoire, 2 supports moteurs sur 3 cassés, à la fin d&#39;un voyage de 800km.)</p>
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/Ipl67KqEkWc?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<p>Mais alors, quelles informations donner lors du signalement d&#39;un bug ? toutes celles qui peuvent être utiles :</p>
+
+<ul>
+<li>Navigateur (et version : Firefox 3.5 et Firefox 14 se ressemblent, mais ne sont pas identique, loin de là)</li>
+<li>Système d&#39;exploitation (non, Safari pour windows et pour mac ne se comportent pas de la même façon)</li>
+<li>Antivirus (pas utile à chaque fois, mais c&#39;est quand il manque qu&#39;il est utile)</li>
+<li>Messages d&#39;erreur : tous, en entier.</li>
+<li>Procédure pour reproduire le bug : où cliquez-vous, dans quel ordre...</li>
+</ul>
+
+<p>Parfois, un bug se joue à un détail : vous cliquez sur le bouton, ou alors vous tabulez et validez au clavier ?</p>
+
+<p>Plus vous donnez d&#39;informations précises, plus cela peut être utile à corriger le bug.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/07/19/les-logiciels-tiers-une-calamite/" itemprop="url" rel="bookmark">
+        Les logiciels tiers, une calamité
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-07-19" itemprop="datePublished">
+			
+			19
+			juillet
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/bug">Bug</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;on rencontre des problèmes vraiment étranges sur une fonction particulière, on pense d&#39;abord que cela n&#39;a jamais pu marcher, on ne comprend plus.</p>
+
+<p>Puis on enquête. Et parfois, la cause du problème est une surprise, autant pour nous que pour les personnes touchées. Quelques exemples plus ou moins vieux.</p>
+
+<h3>La box qui coupe</h3>
+
+<p>Petit retour sur l&#39;article : Les bugs poilus sont-ils solubles dans le temps ?</p>
+
+<p>Au début, il s&#39;agissait d&#39;un simple problème de validation de formulaire AJAX pour une partie des utilisateurs. Ils emblaient tous utiliser une LiveBox. Nous avons éliminé cette piste au bout de plusieurs jours, certains cas ne collant pas.</p>
+
+<p>Mais au final, il semble que ce problème qui nous a occupé pendant plus d&#39;un mois était bien une mise à jour de la LiveBox : la mise à jour suivante a corrigé le problème.</p>
+
+<h3>L&#39;antivirus anti web</h3>
+
+<p>En général, je ne cite pas, mais cela fait trop de fois où nous rencontrons des problèmes avec Kaspersky.</p>
+
+<p>Deux points sans rapport, tous les deux liés à des classiques du web.</p>
+
+<ul>
+<li><p>Lorsque vous envoyez une photo via certains protocoles, on a un comportement aléatoire :</p>
+
+<ul>
+<li>Images non envoyées</li>
+<li>Images envoyées de façon incomplète.</li>
+</ul>
+
+<p>Evidemment, il suffit de désactiver Kaspersky pour que cela fonctionne. Selon les navigateurs, nous utilisons le protocole PUT ou le protocole GET. si le get fonctionne, le put pose de nombreux problèmes.</p></li>
+<li><p>Les notifications, très utilisées sur les réseaux sociaux, sont dégradées : le nombre de notifications n&#39;est pas mis à jour après leur lecture, en particulier sur Google+. Là encore, désactiver l&#39;antivirus suffit à régler le problème.</p></li>
+</ul>
+
+<p><img src="/public/pictures/2012/bug-kaspersky-notif.jpg" alt="Toutes les notifications ont été lues, et pourtant"></p>
+
+<h3>La navigation compatible</h3>
+
+<p>Lorsqu&#39;on utilise Internet Explorer, il lui arrive de décider d&#39;utiliser le mode compatible sur certains sites. Un utilisateur qui ne fait pas attention pensera utiliser la dernière version du navigateur, mais aura entre les mains un navigateur se comportant comme IE7 ou IE8 dans le meilleur des cas.</p>
+
+<p>Les éditeurs wysiwyg sont particulièrement concernés par ce genre de problème, mais ce ne sont pas les seuls.</p>
+
+<p>Lorsqu&#39;on sait en outre que le mode compatible IE8 est différent d&#39;IE8, on sait qu&#39;on va s&#39;arracher les cheveux pour trouver la cause du problème.</p>
+
+<h3>Le plugin défaillant</h3>
+
+<p>Les navigateurs sont depuis plusieurs années extensibles : on peut ajouter des fonctionnalités plus ou moins intéressantes. La plupart des développeurs ont installé FireBug par exemple.</p>
+
+<p>Revenons à celle qui me pose problème : &quot;Facebook Disconnect&quot;. Cette extension sous chrome permet d&#39;empêcher Facebook de vous traquer. En contre partie, elle bloque des scripts, sans vous demander votre avis. Un exemple ? notre éditeur wysiwym. Ce n&#39;est apparement pas la seule à bloquer l&#39;éditeur, mais la récupération des informations auprès de nos utilisateurs prend beaucoup de temps sur des problèmes aussi pointus.</p>
+
+<h3>Conclusion</h3>
+
+<p>Les mises à jour automatiques sont une plaie : les utilisateurs ne comprennent pas pourquoi le comportement change sans modification, et pense systématiquement à un problème du produit concerné, pas d&#39;un logiciel tiers.</p>
+
+<p>Certains logiciels s&#39;adjugent des pouvoirs très importants, sans le signaler à leurs utilisateurs, dégradant par la même occasion la navigation sur des sites web qui fonctionnent pourtant parfaitement par ailleurs.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/06/18/les-tests-doivent-ils-tester/" itemprop="url" rel="bookmark">
+        Les tests doivent-ils tester ?
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-06-18" itemprop="datePublished">
+			
+			18
 			juin
 			  
-			2013
+			2012
 		</time>
 		- par Fabrice Bournisien
 		
-		- <a href="/tag/ruby">Ruby</a>
+		- <a href="/tag/qualite">Qualite</a>
 		
 		- <a href="/tag/test">Test</a>
 		
-		- <a href="/tag/api">Api</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
 	</span>
 
-	<div itemprop="ArticleBody"><p>Lors de tests, il arrive souvent qu&#39;on ait besoin de &quot;faire le ménage&quot; pour retrouver un état comme à l&#39;origine.
-Plusieurs stratégies possibles, en fonction des technologies qu&#39;on souhaite utiliser.</p>
+	<div itemprop="ArticleBody"><h3>Le juste équilibre dans les tests</h3>
 
-<h3>Un par un, à la fin</h3>
+<p>Mettre en place des <strong>tests fonctionnels automatiques</strong> revient à jouer à l&#39;équilibriste entre l&#39;existant (déjà testé et &quot;stable&quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...</p>
 
-<p>Après chaque scénario, supprimer ce qui a été ajouté, annuler les modifications une par une.</p>
+<p>Le responsable qualité et l&#39;équipe doivent avoir confiance dans leurs indicateurs, et doivent connaître leurs limites, afin de pouvoir planifier les actions pour éliminer les bugs.</p>
 
-<p>Avantages : </p>
+<h3>Des tests toujours réussis</h3>
 
-<ul>
-<li>Facile à mettre en place (on réutilise ce qui a déjà été fait)</li>
-</ul>
+<p>J&#39;ai lu récemment que des tests fonctionnels toujours &quot;vert&quot; sont mauvais, qu&#39;ils ne testent rien. (<a href="http://experttesters.com/2012/05/17/why-100-test-pass-rates-are-bad/">Why 100% Test Pass rates are Bad</a>)</p>
 
-<p>Défauts : </p>
+<p>Je ne suis pas d&#39;accord : j&#39;ai la hantise de tests &quot;rouge&quot; : à chaque fois, cela demande d&#39;aller analyser le rapport, vérifier si c&#39;est un faux positif. (Cela arrive régulièrement : même en prévoyant au mieux, il arrive qu&#39;une action dépasse le temps prévue pour s&#39;exécuter, etc.)</p>
 
-<ul>
-<li>Si le scénario plante, on ne remet pas en l&#39;état</li>
-<li>Chaque scénario prend un peu plus de temps (jusqu&#39;au double, dans le pire des cas)</li>
-</ul>
+<h4>Les tests doivent être toujours vert</h4>
 
-<h3>Un par un, au début</h3>
+<p>Si votre écran de contrôle affiche toujours du rouge, vous finirez pas ne plus lui faire confiance. Le problème, c&#39;est que si vous n&#39;avez pas confiance dans des tests automatisés, c&#39;est que vous perdrez du temps à les refaire à la main. Et que lorsqu&#39;ils passeront au rouge, vous penserez à un faux positif avant même de regarder, et vous pourriez laisser passer un bug.</p>
 
-<p>Avant chaque scénario, remettre les valeurs par défauts pour le test</p>
+<h4>L&#39;important n&#39;est pas la couleur, mais la couverture</h4>
 
-<p>Avantages :</p>
+<p>Je préfère avoir une couverture de 50% fiable qu&#39;une plus grande couverture mais instable. Il faut bien comprendre qu&#39;un test vert ne dit pas &quot;il n&#39;y a pas de bug sur ce projet&quot;, mais plutôt &quot;aucun bug prévu n&#39;a été trouvé cette fois-ci&quot;. La différence semble tenue, mais elle est primordiale.</p>
 
-<ul>
-<li>Facile à mettre en place (on réutilise ce qui a déjà été fait)</li>
-</ul>
+<p>L&#39;équipe doit savoir si les tests ont des lacunes, afin de redoubler d&#39;effort &quot;manuels&quot; dans cette partie. Il ne faut jamais oublier que les tests automatiques ne testent pas tout le projet, mais seulement ce qu&#39;ils sont sensés tester.</p>
 
-<p>Défauts :</p>
+<p><img src="/public/pictures/2012/screen_tests.jpg" title="Ecran de contrôle" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/cucumber-report.png" title="Résultats de tests cucumber" style="width: 200px; float: left;"/>
+<img src="/public/pictures/2012/graphique-nb-issues.jpg" title="Evolution du nombre de bugs" style="width: 200px; float: left;"/>
+<p style="clear: both;"></p></p>
 
-<ul>
-<li>Si la remise à zéro ne marche pas, on ne teste pas</li>
-<li>Chaque scénario prend un peu plus de temps (jusqu&#39;au double, dans le pire des cas)</li>
-</ul>
+<h3>Choix des métriques</h3>
 
-<h3>Tous d&#39;un coup, dans une routine à part</h3>
+<p>Le choix des métriques est primordial : cela influe sur le ressenti de la qualité par l&#39;équipe qui développe le produit. (<a href="http://martijndevrieze.net/2012/05/30/test-automation-metrics-what-do-you-report-on/">Test automation metrics - what do you report on?</a>)</p>
 
-<p>Puisqu&#39;on utilise un outil comme jenkins pour organiser tous les tests, on peut ajouter une routine &quot;à part&quot;, qui va se connecter sur chaque compte pour effectuer cette remise à zéro.</p>
-
-<p>Avantages :</p>
+<h4>Mise à jour des métriques</h4>
 
 <ul>
-<li>Toutes les procédures de remises à zéro sont au même endroit</li>
+<li>En début de projet, la pertinence du &quot;nombre&quot; de bugs est relative. Quand le projet a déjà été livré dans une version beta au public, ce nombre est déjà plus réaliste.</li>
+<li>Les tests de charge sont importants tout le temps, mais il ne faut jamais oublier le stade d&#39;avancement du projet. Un test de charge qui semble échouer peut ne pas l&#39;être si on le fait durant une &quot;maintenance programmée&quot; du serveur.</li>
 </ul>
 
-<p>Défauts :</p>
+<p>Certains pensent qu&#39;il vaut mieux avoir trop de métriques que pas assez. Mais il faut pondérer ceci par le temps pour les analyser et les comprendre.</p>
 
-<ul>
-<li>Un peu plus long à mettre en place</li>
-<li>Demande d&#39;ajouter une sécurité pour ne pas la lancer au mauvais moment</li>
-<li>Ca prend du temps (mais autant que de le faire un par un)</li>
-</ul>
+<h4>Stratégie générale</h4>
 
-<h3>Optimisation : utilisation d&#39;une API</h3>
-
-<p>Dans mon cas, nous disposons aussi d&#39;une API publique (en alpha, elle n&#39;est pas encore ouverte à tout le monde)</p>
-
-<p>Avantages :</p>
-
-<ul>
-<li>Pas d&#39;interface web, cela devrait aller plus vite</li>
-<li>Ajoutera &quot;en passant&quot; des tests sur la public API</li>
-</ul>
-
-<p>Défauts :</p>
-
-<ul>
-<li>Je ne maitrise pas du tout Oauth 1.0a (ça me permettra d&#39;apprendre : tant mieux)</li>
-<li>Nous disposons d&#39;un SDK pour faciliter l&#39;utilisation de l&#39;API, en php. Pour des raisons pratiques, je préfère le faire en ruby, le serveur de tests étant déjà configuré pour cela. Je pars donc &quot;de zéro&quot;</li>
-</ul>
-
-<h3>Utiliser une API OAuth 1.0a en Ruby</h3>
-
-<p>On trouve un peu de documentation pour le faire, et quelques exemples. Quelques remarques sur ces articles :
-* La quasi totalité expose le même code d&#39;exemple.
-* Rares sont ceux qui signalent la version d&#39;OAuth
-* Les exemples se concentrent beaucoup sur &quot;comment se connecter à l&#39;api&quot;, et très rarement sur &quot;comment l&#39;utiliser&quot;</p>
-
-<p>Voilà quelques astuces pour utiliser &quot;rapidement&quot; une API OAuth en ruby</p>
-
-<h4>Utilisation de gems</h4>
-
-<p>Elles facilitent la vie, autant en profiter.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'oauth'</span>
-<span class="nb">require</span> <span class="s1">'watir-webdriver'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-</code></pre></div>
-<h4>Définition de constantes de l&#39;api</h4>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">OB_API_SERVER</span>                 <span class="o">=</span> <span class="s1">'http://url_server_api'</span>
-<span class="no">OB_API_BASE_URL</span>               <span class="o">=</span> <span class="no">OB_API_SERVER</span><span class="o">+</span><span class="s1">'/public/0.1'</span>
-<span class="no">OB_API_ENDPOINT_REQUEST_TOKEN</span> <span class="o">=</span> <span class="s1">'/oauth/request_token'</span>
-<span class="no">OB_API_ENDPOINT_ACCESS_TOKEN</span>  <span class="o">=</span> <span class="s1">'/oauth/access_token'</span>
-<span class="no">OB_API_ENDPOINT_AUTHORIZE</span>     <span class="o">=</span> <span class="s1">'/oauth/authorize'</span>
-<span class="no">OB_API_MY_CONSUMER_KEY</span>        <span class="o">=</span> <span class="s1">'######'</span>
-<span class="no">OB_API_MY_CONSUMER_SECRET</span>     <span class="o">=</span> <span class="s1">'######'</span>
-</code></pre></div>
-<p>Obtenir la connexion à l&#39;API</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># create the OAuth consumer</span>
-<span class="vi">@consumer</span> <span class="o">=</span> <span class="no">OAuth</span><span class="o">::</span><span class="no">Consumer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> 
-    <span class="no">OB_API_MY_CONSUMER_KEY</span><span class="p">,</span>
-    <span class="no">OB_API_MY_CONSUMER_SECRET</span><span class="p">,</span>
-    <span class="p">{</span>
-        <span class="ss">:oauth_version</span>      <span class="o">=&gt;</span> <span class="s1">'1.0a'</span><span class="p">,</span>
-        <span class="ss">:site</span>               <span class="o">=&gt;</span> <span class="no">OB_API_SERVER</span><span class="p">,</span>
-        <span class="ss">:request_token_path</span> <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_REQUEST_TOKEN</span><span class="p">,</span>
-        <span class="ss">:access_token_path</span>  <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_ACCESS_TOKEN</span><span class="p">,</span>
-        <span class="ss">:authorize_path</span>     <span class="o">=&gt;</span> <span class="no">OB_API_ENDPOINT_AUTHORIZE</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-<span class="c1"># show all debugs in console</span>
-<span class="c1"># @consumer.http.set_debug_output($stdout)</span>
-<span class="c1"># get the authorize url</span>
-<span class="vi">@request_token</span> <span class="o">=</span> <span class="vi">@consumer</span><span class="p">.</span><span class="nf">get_request_token</span>
-<span class="c1"># Make as if the user authorize the app</span>
-<span class="c1"># If you make a web app, you should show the link to your user, and let it click it</span>
-<span class="c1"># browse the authorize url</span>
-<span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="vi">@request_token</span><span class="p">.</span><span class="nf">authorize_url</span><span class="p">())</span>
-<span class="c1"># connect with account</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">text_field</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'email'</span><span class="p">).</span><span class="nf">set</span><span class="p">(</span><span class="s2">"test@test.fr"</span><span class="p">)</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">text_field</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'passwd'</span><span class="p">).</span><span class="nf">set</span><span class="p">(</span><span class="s2">"monmotdepasse"</span><span class="p">)</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">button</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'loginSubmit'</span><span class="p">).</span><span class="nf">click</span>
-<span class="c1"># give access</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">form</span><span class="p">.</span><span class="nf">submit</span>
-<span class="c1"># get verifier token</span>
-<span class="c1"># browser url contain oauth_verifier_token</span>
-<span class="n">oauth_verifier_token</span> <span class="o">=</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"oauth_verifier="</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="c1"># grant total access</span>
-<span class="vi">@access_token</span> <span class="o">=</span> <span class="vi">@request_token</span><span class="p">.</span><span class="nf">get_access_token</span><span class="p">(</span><span class="ss">:oauth_verifier</span> <span class="o">=&gt;</span> <span class="n">oauth_verifier_token</span><span class="p">)</span>
-<span class="c1"># no more browser needed</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
-</code></pre></div>
-<h4>Exemples d&#39;utilisation de l&#39;API OAuth</h4>
-
-<p>Une fois qu&#39;on est connecté à l&#39;API, on peut l&#39;utiliser. Il faut lire sa documentation, en général assez touffue, pour savoir ce qu&#39;on peut faire (lister / ajouter / modifier / supprimer).
-Voici deux exemples &quot;simplifiés&quot; pour mon exemple.</p>
-
-<h5>Classique</h5>
-
-<p>Afficher les informations sur le blog courant.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_url_info</span> <span class="o">=</span>  <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/info'</span>
-<span class="n">current_blog_info</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_url_info</span><span class="p">)</span>
-</code></pre></div>
-<h5>Avec une option</h5>
-
-<p>Afficher la liste des titres des articles en brouillons.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_lists_content</span> <span class="o">=</span> <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/posts/draft?limit=20'</span>
-<span class="n">content_list</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_lists_content</span><span class="p">)</span>
-<span class="c1"># read json results</span>
-<span class="n">result</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">content_list</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-<span class="n">result</span><span class="p">[</span><span class="s1">'response'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">content</span> <span class="o">|</span>
-    <span class="nb">puts</span> <span class="n">content</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Conclusions</p>
-
-<ul>
-<li>Ma routine journalière prenait environ 55 minutes. La nouvelle routine, via l&#39;api, dure environ 90 secondes.</li>
-<li>J&#39;ai depuis très envie de l&#39;étendre pour ajouter de nouvelles procédures de remises à zéro.</li>
-<li>La documentation est primordiale (que ce soit celle de l&#39;API ou celle de OAuth)</li>
-</ul>
+<p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
 </div>
   </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
-      <a href="/2013/04/22/comment-organiser-les-tests-sur-le-long-terme/" itemprop="url" rel="bookmark">
-        Comment organiser les tests sur le long terme
+      <a href="/2012/06/07/lancement-d-une-beta-publique/" itemprop="url" rel="bookmark">
+        Lancement d'une beta publique
       </a>
     </h2>
 
 	<span class="post-date">
-		<time class="date" datetime="2013-04-22" itemprop="datePublished">
+		<time class="date" datetime="2012-06-07" itemprop="datePublished">
 			
-			22
-			avril
+			7
+			juin
 			  
-			2013
+			2012
 		</time>
 		- par Fabrice Bournisien
 		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/jenkins">Jenkins</a>
+		- <a href="/tag/qualite">Qualite</a>
 		
 	</span>
 
-	<div itemprop="ArticleBody"><h3>Exécuter une partie des tests</h3>
+	<div itemprop="ArticleBody"><p>Cette semaine, nous lançons officiellement la beta publique de notre produit phare, <a href="http://www.overblog.com">OverBlog</a>. Cela fait près d&#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&#39;organisation de travail (passage à <a href="http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)">scrum</a>), nous avons accentué le TDD (<a href="http://fr.wikipedia.org/wiki/TDD">test driven development</a>), nous avons changé de technologie (<a href="http://symfony.com/">Symfony</a>)</p>
 
-<p>Les scénarios sont taggués pour être lancé par jenkins par la commande : <code>cucumber --tag @montag</code>
-Cela permet de ne lancer qu&#39;une partie des tests. (voir &quot;<a href="http://web-quality.over-blog.com/tester-sur-plusieurs-navigateurs">Tester sur plusieurs navigateurs</a>&quot; pour les détails)</p>
+<p>Nous avons mis en place de nombreux contrôles afin de mieux tester et s&#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.</p>
 
-<h3>Serveurs</h3>
-
-<p>Côté serveur, nous avons 2 serveurs jenkins.
-Le principal, une grosse machine debian quadri core, qui exécute jusqu&#39;à 3 jobs en même temps.</p>
-
-<p>Ensuite, un serveur Windows, avec un jenkins &quot;slave&quot;.
-L&#39;esclave reçoit ses ordres du maître, qui lui demande d’exécuter des jobs particuliers.
-Il est sous Windows pour pouvoir les exécuter sur Internet Explorer.</p>
-
-<p>Pour éviter les effets de bords entre les tests sur IE, pas de solution. On vide donc les cookies, le cache, etc à la fermeture d&#39;Internet Explorer.
-On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serveur : les sessions se mélangeraient.</p>
-
-<h3>Quelques chiffres</h3>
-
-<p>Les scenarios sont regroupés en feature, dont le temps d&#39;execution est de maximum 10 minutes. Dans Jenkins on a 38 &quot;jobs&quot; sur FF (+ 34 sur IE)</p>
-
-<p><strong>Firefox</strong></p>
-
-<p>Chaque jour : 323 scénarios / 2693 step =&gt; 3h</p>
-
-<p><strong>IE</strong> (1 fois par semaine actuellement, 1 fois par jour bientôt)</p>
-
-<p>Chaque jour : 302 scénarios / 2527 step =&gt; 4h 30</p>
-
-<p>Cela représente 227 500 scénarios par an (pour 2 737 heures de tests).</p>
-
-<p>Sans oublier les lancements à la demande de certains jobs.</p>
-
-<h4>Comptes utilisateurs</h4>
-
-<p>Du côté des scénarios, ils utilisent pour le moment 70 comptes utilisateurs différents (avec des options particulières, etc...)</p>
-
-<p>Un changement prochain de notre offre me fait penser que les tests auront besoin de 100 comptes d&#39;ici 2 à 3 semaines.</p>
-
-<p>Sans oublier de dupliquer tout ça pour nos 2 environnements (test / stable)</p>
-
-<p>Ni d&#39;ajouter l&#39;exécution de ces tests sur chrome.</p>
-
-<p>Et on ajoute des tests fonctionnels en dehors de ce schéma, pour tester des choses particulière, que ce soit en production sur des points essentiels ou la validité de données particulières.</p>
-
-<p>Et vous, combien vous testez ?</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/" itemprop="url" rel="bookmark">
-        Des tests automatiques avec contenus aléatoires
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2013-04-13" itemprop="datePublished">
-			
-			13
-			avril
-			  
-			2013
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/cucumber">Cucumber</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/test">Test</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
-
-<p>Prenons un exemple de deux tests exécutés en même temps :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
-   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">"pseudo-tmp"</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo-tmp"</span>
-     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo-tmp"</span>
-<span class="vi">@scenario2</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="no">Pseudo</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">when</span> <span class="n">you</span> <span class="n">publish</span>
-   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
-     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
-     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span>
-</code></pre></div>
-<p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
-
-<p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
-
-<p>A un détail près :</p>
+<h3>Pour ajouter au stress :</h3>
 
 <ul>
-<li>A 10h, le test s’exécute, il fonctionne.</li>
-<li>A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &quot;test pseudo&quot; sur la page alors qu&#39;un bug sera présent.</li>
+<li>Certains collègues sont absents (pour assister à des conférences)</li>
+<li>Le lancement se fait à New-York, pendant le BlogWorld. (Donc, avec du décalage horaire)</li>
+<li>Il faut continuer de gérer la version actuelle : cela complique un peu la tâche, surtout lorsque l&#39;utilisateur vous parle sans vous préciser quelle plateforme il utilise...</li>
 </ul>
 
-<p>Ma solution : <strong>ajouter de l&#39;aléatoire dans les tests</strong>.
-Avant chaque scénario, je crée un token, composé de :
-* 2 lettres du navigateur (ff, ie, ch..)
-* un nombre aléatoire.
-Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
-  <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
-  <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
-  <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
-<span class="no">End</span>
-</code></pre></div>
-<p>Ma classe Token :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
-<span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
-<span class="c1"># Author:: Fabrice</span>
-<span class="k">class</span> <span class="nc">Token</span>
-  <span class="c1"># Create a new token</span>
-  <span class="c1"># Author:: Fabrice</span>
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@value</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span><span class="si">}#{</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span><span class="o">+</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
-  <span class="k">end</span>
-  <span class="c1"># Get the value of the last token</span>
-  <span class="c1"># Author:: Fabrice</span>
-  <span class="k">def</span> <span class="nf">value</span>
-    <span class="vi">@value</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
-</code></pre></div>
-<p>Et côté vérification, on en tient compte également.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
-  <span class="k">else</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
+<h3>Ce que je retiens de ma nuit ?</h3>
 
-<p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
+<ul>
+<li>Faire une modification en urgence à 17h était une mauvaise idée. Suite à un problème, elle a provoqué un effet de bord désastreux durant une demie-heure.</li>
+<li>L&#39;équipe est restée mobilisée une grande partie de la nuit pour s&#39;assurer que tout se passait bien.</li>
+<li>Suivre l&#39;avancement du trafic sur cette version était une émotion forte : cela fait 5 ans que je travaille dans les bureaux d&#39;OverBlog, mais c&#39;est la première fois que j&#39;attends devant un graphique pour voir s&#39;il va monter.</li>
+<li>Un souci sur un détail technique particulier : une seule personne était capable de le résoudre, et il nous a fallu une heure pour le contacter, et 2 heures pour que le problème soit totalement corrigé.</li>
+<li>La nuit a été courte pour certains d&#39;entre nous. Mais ce matin, l&#39;envie de finir au plus tôt les correctifs nécessaires pour que ce soit parfait est toujours là.</li>
+</ul>
+
+<p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
+
+<p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
 </div>
   </div>
   

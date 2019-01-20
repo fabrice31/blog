@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -228,9 +180,10 @@ C&#39;est en les formant à nos méthodes, notre code, que j&#39;ai repéré des
 Et le tour est joué.</p>
 
 <p>Pour aller plus loin : mise en place sur tous les serveurs de tests d&#39;une routine vérifiant que la liste est à jour et conforme à ce qu&#39;on attend, avec un </p>
-<div class="highlight"><pre><code class="language-" data-lang="">bundle update
-gem cleanup
-</code></pre></div>
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">bundle update
+gem cleanup</code></pre></div>
+
 <h3>L&#39;information, le nerf de la guerre</h3>
 
 <p>Plongés dans les tests, nous disposions de plusieurs documentations, avec des buts plus ou moins précis. Localisées à plusieurs endroits.
@@ -256,31 +209,33 @@ Pour résumer, flog analyse le code source, compte combien de fois on effectue c
 <p>J&#39;ai profité d&#39;un &quot;temps calme&quot; au bureau pour bosser sur le sujet. </p>
 
 <p>Avant :</p>
-<div class="highlight"><pre><code class="language-" data-lang="">  7128.5: flog total
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">7128.5: flog total
     15.6: flog/method average
 
    793.5: main#none
    236.1: main#launch_browser
    197.0: main#get_job_results
-   138.0: Then#/^HTML (contain|don't contain) (.*)$/
-   136.7: Then#/^I don't see errors$/
+   138.0: Then#/^HTML <span class="o">(</span>contain|don<span class="s1">'t contain) (.*)$/
+   136.7: Then#/^I don'</span>t see errors<span class="nv">$/</span>
    134.8: FormatPage#format_is_present
    131.1: main#compare_stats
-    90.7: Then#/^I click on the insocial expand$/
-    81.4: main#stats_of_day
-</code></pre></div>
+    90.7: Then#/^I click on the insocial <span class="nb">expand</span><span class="nv">$/</span>
+    81.4: main#stats_of_day</code></pre></div>
+
 <p>Après : </p>
-<div class="highlight"><pre><code class="language-" data-lang=""> 6166.2: flog total
+
+<div class="highlight"><pre><code class="language-shell" data-lang="shell">6166.2: flog total
     13.8: flog/method average
 
    827.4: main#none
    197.0: main#get_job_results
    168.0: main#launch_browser
    134.8: FormatPage#format_is_present
-    90.7: Then#/^I click on the insocial expand$/
+    90.7: Then#/^I click on the insocial <span class="nb">expand</span><span class="nv">$/</span>
     90.3: main#compare_stats
-    77.0: main#stats_of_day
-</code></pre></div>
+    77.0: main#stats_of_day</code></pre></div>
+
 <p>On note plusieurs choses :</p>
 
 <ul>

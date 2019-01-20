@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -213,8 +165,9 @@
 	<div itemprop="ArticleBody"><p>Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&#39;avoir un moteur déjà bien robuste.</p>
 
 <p>Prenons par exemple l&#39;affichage d&#39;une date avec ce code :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Post</span><span class="o">.</span><span class="no">Date</span><span class="o">|</span><span class="n">datel</span><span class="p">(</span><span class="no">Lang</span><span class="o">.</span><span class="no">Get</span><span class="p">(</span><span class="s2">"Default date format"</span><span class="p">))</span>
-</code></pre></div>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Post</span><span class="o">.</span><span class="no">Date</span><span class="o">|</span><span class="n">datel</span><span class="p">(</span><span class="no">Lang</span><span class="o">.</span><span class="no">Get</span><span class="p">(</span><span class="s2">"Default date format"</span><span class="p">))</span></code></pre></div>
+
 <p>Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&#39;agit d&#39;une chaîne de caractères indiquant le format.</p>
 
 <p>On pourrait avoir HH:mm pour l&#39;heure par exemple.</p>
@@ -224,15 +177,17 @@
 <p>L&#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).</p>
 
 <p>Le collègue qui cherchait a trouvé le problème.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="no">Y</span>
-</code></pre></div>
+
+<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="err">Default</span> <span class="err">date</span> <span class="err">format</span> <span class="err">=</span> <span class="err">MMMM</span> <span class="err">d</span> <span class="err">Y</span></code></pre></div>
+
 <p>Dans la documentation de datel, Y = year of &quot;Week of Year&quot;. Il s&#39;agit de l&#39;année durant laquelle le week end du jour en question a eu lieu.</p>
 
 <p>Il s&#39;agit donc d&#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&#39;année d&#39;avant. Tordu non ?</p>
 
 <p>Pour la petite histoire, le code corrigé sans bug donne :</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Default</span> <span class="n">date</span> <span class="nb">format</span> <span class="o">=</span> <span class="no">MMMM</span> <span class="n">d</span> <span class="n">yyyy</span>
-</code></pre></div></div>
+
+<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="err">Default</span> <span class="err">date</span> <span class="err">format</span> <span class="err">=</span> <span class="err">MMMM</span> <span class="err">d</span> <span class="err">yyyy</span></code></pre></div>
+</div>
 
 	<!--div class="share">
 		<div class="twitter-share">

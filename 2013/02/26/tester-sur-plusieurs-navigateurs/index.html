@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -225,11 +177,12 @@
 <p>Cela permet de découper l&#39;exécution de nombreux scénarios en plusieurs jobs sur jenkins, ce qui est plus confortable : si un test passe dans le rouge, il faut analyser un rapport pour 10 scénario au lieu de 300. Si on veut re-tester ce point précis, on mettra également moins de temps.</p>
 
 <p>On exécute les scénarios avec la ligne &quot;cucumber --tag @montag&quot;. Si le tag n&#39;existe pas, le résultat affichera immédiatement 0 scenarios.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@admin</span> <span class="vi">@montag</span> <span class="vi">@ie</span>
-<span class="no">Scenario</span><span class="p">:</span> <span class="nb">test</span> <span class="n">un</span> <span class="n">tag</span>
-  <span class="no">When</span> <span class="no">I</span> <span class="nb">test</span>
-  <span class="no">Then</span> <span class="no">I</span> <span class="n">tested</span>
-</code></pre></div>
+
+<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="nt">@admin</span> <span class="nt">@montag</span> <span class="nt">@ie</span>
+<span class="kn">Scenario</span><span class="p">:</span> test un tag
+  <span class="nf">When </span>I test
+  <span class="nf">Then </span>I tested</code></pre></div>
+
 <h3>Cucumber.yml</h3>
 
 <p>Les profils de cucumber se gère dans un fichier au format yaml, qui peut gérer beaucoup de choses :</p>
@@ -240,6 +193,7 @@
 </ul>
 
 <p>Exemple avec une partie de mon fichier :</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="sx">% common </span><span class="o">=</span> <span class="s2">"-r support -r features --tags ~@wip --tags ~@danger 
 --color --format pretty --format html -o results.html --format junit -o junit"</span> <span class="o">%&gt;</span>
 <span class="c1"># default : staging and firefox</span>
@@ -248,8 +202,8 @@
 <span class="ss">ie: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">ie</span>
 <span class="ss">ff: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">firefox</span>
 <span class="ss">chrome: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">chrome</span>
-<span class="ss">mobile: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">mobile</span>
-</code></pre></div>
+<span class="ss">mobile: </span><span class="o">&lt;</span><span class="sx">%= common %&gt; ENV=</span><span class="n">staging</span> <span class="no">BROWSER</span><span class="o">=</span><span class="n">mobile</span></code></pre></div>
+
 <p>La première ligne définit des paramètres commun à la plupart des profils :</p>
 
 <ul>
@@ -276,6 +230,7 @@
 <p>Dans notre cas, nous lancons le navigaeur avant chaque scénario pour éviter qu&#39;un test ait un impact sur le suivant.</p>
 
 <p>Voici le code :</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
   <span class="k">case</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span>
   <span class="k">when</span> <span class="s1">'ie'</span>
@@ -309,8 +264,8 @@
   <span class="k">else</span>
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">960</span><span class="p">)</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>On exploite le nom du navigateur pour lancer le bon, avec des paramètres particuliers.</p>
 
 <ul>
@@ -336,6 +291,7 @@
 <p>On lance donc les tests pour Internet Explorer avec la commande <code>cucumber --tag @ie -p ie</code>. On peut changer le tag, mais certains ne fonctionnent pas encore sous IE à cause de codes vraiment spécifiques.</p>
 
 <p>Voici deux exemples de code modifé spécifiquement pour IE :</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
   <span class="c1"># internet explorer is slower : timeout increase</span>
   <span class="no">SHORT_TIMEOUT</span> <span class="o">=</span> <span class="mi">5</span>
@@ -345,9 +301,10 @@
   <span class="no">SHORT_TIMEOUT</span> <span class="o">=</span> <span class="mi">2</span>
   <span class="no">TIMEOUT</span> <span class="o">=</span> <span class="mi">9</span>
   <span class="no">LONG_TIMEOUT</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Ce code définit les constantes des timeout pour l&#39;ensemble des test.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'ie'</span>
   <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># need for IE purpose</span>
 <span class="k">end</span>
@@ -355,8 +312,8 @@
   <span class="nb">self</span><span class="p">.</span><span class="nf">login_element</span><span class="p">.</span><span class="nf">exists?</span> <span class="n">and</span> <span class="nb">self</span><span class="p">.</span><span class="nf">login_element</span><span class="p">.</span><span class="nf">visible?</span>
 <span class="p">}</span>
 <span class="nb">self</span><span class="p">.</span><span class="nf">username_element</span><span class="p">.</span><span class="nf">focus</span> <span class="c1"># need for IE purpose</span>
-<span class="nb">self</span><span class="p">.</span><span class="nf">username</span> <span class="o">=</span> <span class="vi">@account</span><span class="p">.</span><span class="nf">email</span>
-</code></pre></div>
+<span class="nb">self</span><span class="p">.</span><span class="nf">username</span> <span class="o">=</span> <span class="vi">@account</span><span class="p">.</span><span class="nf">email</span></code></pre></div>
+
 <p>Les commentaires dans le code parlent d&#39;eux mêmes. Documenter le code spécifique à IE est d&#39;ailleurs indispensable si on veut garder ses modifications qui semblent &quot;inutiles&quot;.</p>
 
 <p>Si les tests avec Firefox sont joués chaque jour sur un serveur, en 2h45 environ, ceux pour IE sont exécutés en local, en 3h, alors que certains tests ne sont pas exécutés sur IE.</p>

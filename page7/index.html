@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -198,227 +150,377 @@
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
-      <a href="/2013/01/22/il-faut-savoir-se-fier-a-ses-tests/" itemprop="url" rel="bookmark">
-        Il faut savoir se fier à ses tests
+      <a href="/2012/05/06/tests-automatiques-watir/" itemprop="url" rel="bookmark">
+        Tests automatiques : watir
       </a>
     </h2>
 
 	<span class="post-date">
-		<time class="date" datetime="2013-01-22" itemprop="datePublished">
+		<time class="date" datetime="2012-05-06" itemprop="datePublished">
 			
-			22
-			janvier
+			6
+			mai
 			  
-			2013
+			2012
 		</time>
 		- par Fabrice Bournisien
 		
-		- <a href="/tag/test">Test</a>
+		- <a href="/tag/watir">Watir</a>
 		
-		- <a href="/tag/bug">Bug</a>
+		- <a href="/tag/test">Test</a>
 		
 	</span>
 
-	<div itemprop="ArticleBody"><p>Vroici l&#39;histoire d&#39;un test fonctionnel &quot;basique&quot; mais techniquement compliqué à mettre en place.</p>
+	<div itemprop="ArticleBody"><p><a href="http://watirwebdriver.com/">Watir-webdriver</a> est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&#39;un utilisateur. Cela vous permet d&#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
+Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot <strong>qualité</strong> apparait sur la page.</p>
 
-<h3>Passé</h3>
+<iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
 
-<p>Depuis plusieurs mois, nous sommes 2 à developper les tests automatiques. Nous avons une longue liste de tests à ajouter que nous dépilons progressivement. Certains tests sont présents depuis longtemps dans cette liste, mais nous ne réussissons tout simplement pas à les créer, pour des raisons purement techniques. D&#39;autres sont en attente de la correction du bug sur le produit.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)</span>
+<span class="nb">require</span> <span class="s2">"rubygems"</span>
 
-<h3>Lundi</h3>
+<span class="c1"># chargement de la libraire watir</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
 
-<p>Pour l&#39;un d&#39;eux, je réussi finalement à trouver une solution tarabiscotée qui semble marcher. La solution ne me plait pas totalement, cela revient à exécuter du javascript dans un navigateur que je controle avec watir, lancé depuis un cucumber géré par un jenkins.</p>
+<span class="c1"># ouvrir un navigateur</span>
+<span class="no">B</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">window</span><span class="p">.</span><span class="nf">resize_to</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
 
-<p>L&#39;utilisation du javascript (langage que je ne maîtrise pas) pour ce détail me gêne : s&#39;il me permet de tester la fonctionnalité, je ne pourrais pas simplement tester certains points de la fonctionnalité.</p>
+<span class="c1"># Ouvrir le site</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://web-quality.over-blog.com"</span><span class="p">)</span>
 
-<p>En outre, cela m&#39;empêche d&#39;être sur de moi pour ce test : j&#39;ai peur qu&#39;il ne soit pas stable et pérenne.</p>
+<span class="c1"># Clignotement</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span><span class="p">,</span> <span class="s2">"Contact"</span><span class="p">).</span><span class="nf">flash</span>
 
-<h3>Mercredi</h3>
+<span class="c1"># Vérifier que le mot qualité est présent</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="no">B</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="s2">"Qualite"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite KO"</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s2">"Test Qualite OK"</span>
+<span class="k">end</span>
 
-<p>Mercredi dernier, j&#39;ai remonté un problème qui entrainait un problème en cascade sur l&#39;ensemble de mes tests fonctionnels (40 scenarios échoués sur 270).</p>
+<span class="c1"># Fermeture</span>
+<span class="no">B</span><span class="p">.</span><span class="nf">close</span></code></pre></div>
 
-<p>Il y avait deux importants chantiers effectués par mes collègues pour des mises à jours importantes, qui demandait des corrections.</p>
+<p>Pour résumer :</p>
 
-<p><img src="/public/pictures/2013/mug-qualite.jpg" alt="Il faut savoir se fier à ses tests"></p>
+<ul>
+<li>on charge les libraires adéquates</li>
+<li>on ouvre un navigateur</li>
+<li>on va sur le site web à tester</li>
+<li>on effectue des actions et/ou de tests</li>
+</ul>
 
-<h3>Jeudi</h3>
-
-<p>Jeudi, c&#39;est normalement la fin du codage des nouveautés pour le sprint en cours. Le jeudi c&#39;est donc débug, tests, préparation du changelog et de la mise en production...</p>
-
-<p>Lorsque j&#39;arrive un jeudi avec mes indicateurs qui clignotent en rouge, je n&#39;aime pas ça. Je survole rapidement, vois que c&#39;est un problème commun pour les 10 premiers rapports que j&#39;analyse en profondeur. Je demande donc une nouvelle correction, puis je relance des tests qui semblent être juste des faux positifs. Certains reviennent à la normale.</p>
-
-<p>Je désactive certains tests qui paraissent toujours instables. Parmi eux, les tests ajoutés le lundi : je ne les sentais pas en les codant, je n&#39;ai pas cru en eux lorsqu&#39;ils ont signalé un bug.</p>
-
-<h3>Lundi</h3>
-
-<p>Lundi, jour de la mise en production. Une fois finie, l&#39;équipe teste en production les changements pour vérifier que tout est normal.</p>
-
-<p>En faisant un test sur tout à fait autre chose, je me suis dit &quot;y&#39;a un truc qui cloche, (pas ce que je suis en train de tester), mais je vois pas quoi&quot;. Mon instinct me disait que j&#39;avais raté un truc. Je fais donc un tour du côté du support.</p>
-
-<p>Les premiers retours utilisateurs signalent un bug m&#39;a fait sourciller : on signale un bug sur la fonction testée depuis peu. Je vérifie le dernier rapport de tests : ils détectaient le bug, et étaient parfaitement stables.</p>
-
-<h3>Conclusion</h3>
-
-<p>En n&#39;ayant pas cru en la stabilité d&#39;un test que j&#39;ai codé moi-même, j&#39;ai laissé passer un bug en production.</p>
-
-<p>J&#39;ai vu un faux positif plutôt qu&#39;un bug réel, alors que j&#39;expliquais ce risque il y a longtemps.</p>
-
-<p>J&#39;ai l&#39;impression d&#39;avoir échoué à garantir la qualité de notre produit. J&#39;ai eu trop confiance dans mes collègues, et pas assez en moi.</p>
+<p>Et voilà, le tour est joué. Ce code basique ne sera jamais utilisé tel quel : afficher un message d&#39;erreur suffit pour quelques tests, qui prennent peu de temps. Mais pour des tests nombreux et longs, il faut pouvoir disposer d&#39;un rapport d&#39;erreur détaillé, etc.</p>
 </div>
   </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
-      <a href="/2012/12/06/tester-un-site-multilingue/" itemprop="url" rel="bookmark">
-        Tester un site multilingue
+      <a href="/2012/05/04/la-qualite-web-c-est-quoi/" itemprop="url" rel="bookmark">
+        La qualité web, c'est quoi ?
       </a>
     </h2>
 
 	<span class="post-date">
-		<time class="date" datetime="2012-12-06" itemprop="datePublished">
+		<time class="date" datetime="2012-05-04" itemprop="datePublished">
 			
-			6
-			décembre
-			
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
-
-<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
-
-<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
-
-<h3>Le test</h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
-  <span class="k">def</span> <span class="nf">setup</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">teardown</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_it</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
-<h3>L&#39;explication</h3>
-
-<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
-
-<ul>
-<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
-<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
-<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
-<li>Ligne 18 à 21 : second test, depuis google.fr</li>
-</ul>
-
-<h3>Pourquoi j&#39;ai perdu du temps</h3>
-
-<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
-
-<p>Quelques rappels :</p>
-
-<ul>
-<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
-<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
-</ul>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span>
-</code></pre></div></div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/10/30/une-petite-boulette-peut-couter-cher/" itemprop="url" rel="bookmark">
-        Une petite boulette peut coûter cher
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-10-30" itemprop="datePublished">
-			
-			30
-			octobre
+			4
+			mai
 			  
 			2012
 		</time>
 		- par Fabrice Bournisien
 		
-		- <a href="/tag/test">Test</a>
+		- <a href="/tag/qualite">Qualite</a>
 		
-		- <a href="/tag/watir">Watir</a>
+		- <a href="/tag/bug">Bug</a>
 		
 	</span>
 
-	<div itemprop="ArticleBody"><p>Comme je l&#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&#39;ai quelques centaines de scénarios, des milliers d&#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &quot;instable&quot;, il faut lire le rapport détaillé.
-Deux anecdotes récentes à ce sujet.</p>
-
-<h3>Le bug est détecté</h3>
-
-<p>L&#39;un des tests fonctionnels crée il y a une semaine pour détecter un bug existant permettait d&#39;éviter la non régression sur ce point. Ce matin, je peste à voix haute en parlant à un collègue, et un autre me dit &quot;mais je l&#39;ai corrigé vendredi&quot;. Après test manuel, je confirme, le bug n&#39;est plus présent. Pourtant, le test ne fonctionne pas.</p>
-
-<p>Commence alors une rapide enquête pour comprendre.</p>
-
-<p>Le bug : si un utilisateur remplit un champ particulier, tout semble marcher quand il sauve. Pourtant, si on rafraichit la page, on voit que cela ne marche pas.</p>
-
-<p>Le test a été mis en place au moment du bug, et une partie du test n&#39;avait donc jamais été vérifiée avant la mise en service du test.</p>
-
-<p>La correction a consisté à attendre que l&#39;élément testé soit bien affiché avant de le tester.</p>
-
-<h3>J&#39;ai cru voir un petit bug</h3>
-
-<p>Plus tôt cette semaine, un collègue me signale qu&#39;il faudrait ajouter un test sur une fonctionnalité particulière. On en discute, mais plus le temps passe, plus je suis sur que nous avons ajouté un test en ce sens récemment.</p>
-
-<p>Après vérification, nous avons bien un test, mais il ne voit pas le bug. Il me laisse un peu de temps pour corriger le test avant de publier sa correction, cela a facilité le travail.</p>
-
-<p>Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.</p>
-
-<p>Nous avons donc une suite de vérifications, en ruby+watir</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span>
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span>
-<span class="k">else</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="n">and</span> <span class="p">(</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>Pour traduire : On vérifie qu&#39;une image est présente, puis si l&#39;option alignement est &quot;droite&quot;, je vérifie que l&#39;image est aligné à droite. Sinon, je vérifie à gauche.</p>
-
-<p>Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.</p>
-
-<p>En ruby, le and est prioritaire sur le .exists. Je teste donc l&#39;existence d&#39;un booléen au lieu de tester deux booléens.</p>
-
-<p>Le code corrigé ajoute juste des parenthèses pour changer la priorité.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'align'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'right'</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-right'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">else</span>
-  <span class="n">find</span> <span class="o">=</span> <span class="n">find</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="vi">@browser</span><span class="p">.</span><span class="nf">div</span><span class="p">.</span><span class="nf">img</span><span class="p">(</span><span class="ss">:class</span> <span class="o">=&gt;</span> <span class="s1">'media-left'</span><span class="p">)).</span><span class="nf">exists?</span><span class="p">)</span>
-<span class="k">end</span>    
-</code></pre></div>
-<h3>Conclusion</h3>
-
-<p>Ce que je retiens de ces événements récents ?</p>
+	<div itemprop="ArticleBody"><p>Lorsqu&#39;un visiteur se promène sur internet, à la recherche d&#39;informations, de produits etc... il ne voit pas ce qui se passe derrière le site web :</p>
 
 <ul>
-<li>La communication dans l&#39;équipe est très importante.</li>
-<li>Tester qu&#39;un test détecte une panne est complexe.</li>
-<li>Il n&#39;y a pas de règle sur le bon moment pour créer un test : que ce soit pendant une panne ou en dehors, seul un contrôle régulier permet de s&#39;assurer que le test teste.</li>
+<li>Il ne connait pas le langage HTML</li>
+<li>Il ne connait pas les différences de navigateurs</li>
+<li>Il ne sait pas ce qu&#39;est un problème de charge</li>
+<li>Il ne sait pas ce qu&#39;est la norme du w3c</li>
+</ul>
+
+<p>Par contre, ce qu&#39;il sait, c&#39;est que le site s&#39;affiche mal sur son écran, que le bouton ne fonctionne pas, qu&#39;il ne peut pas créer son compte ou qu&#39;il ne peut pas passer sa commande. Pour lui, c&#39;est un défaut, un bug. C&#39;est une déception pour lui, et il pourrait ne jamais valider sa commande, ou venir à nouveau sur votre site.</p>
+
+<p><img src="/public/pictures/2012/erreur1.jpg" title="Certificat erroné" style="height: 150px; float: left;"/>
+<img src="/public/pictures/2012/erreur2.jpg" title="Serveur introuvable" style="height: 150px; float: left;"/>
+<img src="/public/pictures/2012/erreur3.jpg" title="Erreur 404" style="height: 150px; float: left;"/>
+<p style="clear: both;"></p></p>
+
+<p>Pour faire un site web de qualité, plusieurs choses à respecter : il faut être au courant de toutes les normes (HTML, CSS, JS), des dernières mises à jour des navigateurs, et de leurs limites.</p>
+
+<p>Et bien évidemment, il faut tester en permanence le site pour s&#39;assurer que les nouveautés fonctionnent, mais également pour vérifier que ce qui existait déjà n&#39;a pas été &quot;cassé&quot; par les nouveaux développements.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/02/09/l-environnement-et-les-tests/" itemprop="url" rel="bookmark">
+        L'environnement et les tests
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-02-09" itemprop="datePublished">
+			
+			9
+			février
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Cet article n&#39;a rien à voir avec l&#39;écologie, mais beaucoup avec l&#39;<a href="http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique">environnement</a>.</p>
+
+<p>Lorsque l&#39;on teste un projet web, il faut toujours savoir &quot;où&quot; nous testons : est-on sur un serveur de test ? de développement ? de pré-prod ? de production ?</p>
+
+<p>Lorsque vous êtes en pleine création d&#39;un projet, il est intéressant de définir clairement, le plus tôt possible, les différents environnements et leurs stratégies de tests respectives.</p>
+
+<p>L&#39;intégration continue sera d&#39;autant plus simple que vous aurez défini clairement les règles du jeu.</p>
+
+<h3>Environnements pour un projet web</h3>
+
+<ul>
+<li>Environnement de pré-prod : ce serveur doit être stable, mis à jour très régulièrement, comporter toutes les nouveautés.</li>
+<li>Environnement de développement : utilisé par tous les développeurs, il peut être soit centralisé, soit individuel (avec des machines virtuelles).</li>
+<li>Environnement de prod : c&#39;est le serveur qui sera utilisé par vos utilisateurs/clients. Il doit être choyé, aux petits oignons.</li>
+</ul>
+
+<h3>Comment organiser le travail (du point de vue de la qualité)</h3>
+
+<ul>
+<li>Les développeurs codent sur le serveur de dév.</li>
+<li>Les tests unitaires (côté php ou js) sont aussi jouer sur le serveur de développement.</li>
+<li>L&#39;environnement de préprod est posé en tant que référent : il est mis à jour régulièrement, avec des versions stables. Pour contrôler sa mise à jour, un outil d&#39;intégration continu (nous utilisons hudson) qui rejoue tous les tests unitaires de tous les sous projets.</li>
+</ul>
+
+<h3>Comment organiser les tests fonctionnels</h3>
+
+<ul>
+<li>Pour les tests manuels, en fonction du test, il faut le faire sur l&#39;un des environnements. Il est parfois utile de le faire sur chaque environnement, afin de pouvoir dire &quot;ce bug particulier n&#39;existe pas encore en prod, mais il est apparut sur la pré prod&quot;.</li>
+<li>L&#39;environnement de prod peut être utilisé pour vérifier la présence d&#39;un bug, mais ne devrait pas être utilisé pour des tests automatiques.</li>
+<li>Pour les tests automatiques, il y a 2 écoles: 
+Lancer sur la version de pré-prod. Défaut principal : il n&#39;est pas toujours évident de créer des tests fonctionnels avant de voir la fonction tourner réellement. Chaque nouvelle fonctionnalité aura donc ses tests ajoutés dans les jours qui suivront, et pas avant.
+Faire lancer les tests par les développeurs en environnement de développement. C&#39;est plus coûteux à mettre en place (il faut par exemple former tous les développeurs à l&#39;analyse du rapport de tests...), mais cela peut améliorer la détection des bugs.</li>
+</ul>
+
+<p>Pour moi, ces deux écoles ne s&#39;excluent pas. Je les vois plutôt comme des étapes. C&#39;est d&#39;ailleurs le cas dans ma société : lors de la refonte du projet, il a été décidé que les tests fonctionnels automatiques devront pouvoir s&#39;exécuter partout (y compris la prod). Pour l&#39;instant, ils peuvent être exécuter sur la pré prod, avec une configuration prévue théoriquement pour qu&#39;ils puissent être exécuter sur d&#39;autres environnements. (La gestion de profils de cucumber est parfaite pour ça)</p>
+
+<h3>Pourquoi est-il essentiel de connaître les environnements ?</h3>
+
+<p>Il m&#39;arrive régulièrement de tester un bug sur un onglet, de faire autre chose, et de revenir dans mon onglet pour avoir d&#39;autres informations au sujet des bugs. Et là, miracle, le bug est résolu. Pourtant, personne n&#39;a modifié le code. Un enquête de quelques minutes permet de comprendre que le bug n&#39;existe que dans un environnement particulier, et que j&#39;ai changé d&#39;onglet par inadvertance.</p>
+
+<p>Cela peut avoir des conséquences plus grave. Pour un projet personnel, j&#39;héberge un forum &quot;privé&quot;. J&#39;ai l&#39;habitude de &quot;stocker&quot; ce forum sur mes sites successifs, dans un sous-domaine, et de faire suivre aux utilisateurs la nouvelle adresse, voire de mettre en place une redirection.</p>
+
+<h3>Erreur d&#39;environnement</h3>
+
+<p>En novembre dernier, j&#39;ai lancé un déménagement. (La qualité de service de mon hébergeur devenait déplorable avec un uptime passant parfois sous les 90%)</p>
+
+<ul>
+<li>Je verrouille l&#39;accès en écriture sur l&#39;ancien</li>
+<li>Je déplace la totalité des fichiers d&#39;un serveur à un autre, tranquillement.</li>
+<li>Je copie la base de données.</li>
+<li>Je teste avec quelques utilisateurs le nouveau.</li>
+<li>Fin de l&#39;opération.</li>
+</ul>
+
+<p>Jusqu&#39;à ce matin, lorsque j&#39;ai vu un message d&#39;erreur &quot;Can&#39;t connect to MySQL server on anciendomaine.com&quot;. J&#39;ai mal lu le message, et n&#39;ai pas fait attention, et j&#39;ai attendu quelques minutes, pensant à une maintenance sur mon hébergeur. Puis j&#39;ai fini par réaliser que sur mon nouveau domaine, opérationnel depuis 4 mois, la base de données utilisée était toujours l&#39;ancienne. Du coup, nouvelle copie des bases de données, modification du fichier config.php qui contenait les données pour la base, et voilà, tout est rentré dans l&#39;ordre.</p>
+
+<p>Si mon ancien domaine (et sa base) avait expiré avant que je m&#39;en rende compte, j&#39;aurais perdu une partie de l&#39;historique. Pour un petit forum privé, cela n&#39;aurait pas été trop grave. Mais pour un projet plus important, cela aurait pu provoquer des catastrophes.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/01/04/l-esprit-d-equipe-autour-de-la-qualite/" itemprop="url" rel="bookmark">
+        L’esprit d’équipe autour de la qualité
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-01-04" itemprop="datePublished">
+			
+			4
+			janvier
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+	</span>
+
+	<div itemprop="ArticleBody"><h3>Contexte</h3>
+
+<p>La société pour laquelle je travaille est en train de refaire son principal projet depuis le début. Au programme : changement de technologies. Nous lancerons ce nouveau projet d’ici l’été, et nous travaillons déjà depuis quelques mois sur le sujet.</p>
+
+<p>Nous avons mis en avant la qualité, avec de l’intégration continue (<a href="http://hudson-ci.org/">Hudson</a>, allié à <a href="http://fr.wikipedia.org/wiki/Git">Git</a>), des TDD (Test driven development), des framework robustes : <a href="http://www.symfony-project.org/">Symfony</a> pour le php, <a href="http://developer.yahoo.com/yui/">YUI</a> pour le javascript, des tests fonctionnels avec cucumber et watir… Et pour organiser tout ça, on passe à <a href="http://fr.wikipedia.org/wiki/Scrum">Scrum</a>.</p>
+
+<p>Beaucoup de changements, et les premiers tests sur le serveur de staging nous ont tous donné envie d’aller encore plus loin.</p>
+
+<h3>Action</h3>
+
+<p>Mais tout n’est pas rose dans notre monde : le serveur de staging n’était pas assez stable à mon goût. J’ai donc envoyé un mail à tous mes collègues concernés afin de mettre au clair la façon de travailler :</p>
+
+<ul>
+<li>Pas de mise à jour en milieu de journée (le staging est mis à jour chaque nuit avec les dernières versions stables des sous projets).</li>
+<li>Tests en amont, côté serveur de développement.</li>
+<li>Incitation à me consulter pour la mise en place des tests fonctionnels que j’aurais pu oublier.</li>
+</ul>
+
+<p>Et bien évidemment, j’ai précisé dans le mail que j’étais ouvert à toutes les suggestions.</p>
+
+<p><img src="/public/pictures/2012/equipe.jpg" alt="Travail d&#39;équipe" title="Travail d&#39;équipe"></p>
+
+<h3>Réactions</h3>
+
+<p>Nous avions longuement rabâché qu’il fallait un produit de qualité, que nous devions tous tester le produit de façon à ne rien laisser passer.</p>
+
+<p>En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point &quot;techniques&quot; ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours &quot;qualité&quot;. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme. </p>
+
+<p>Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.</p>
+</div>
+  </div>
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2011/10/25/cucumber-tests-simples-pour-tous/" itemprop="url" rel="bookmark">
+        Cucumber : des tests plus simples pour tous
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2011-10-25" itemprop="datePublished">
+			
+			25
+			octobre
+			  
+			2011
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/cucumber">Cucumber</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/ruby">Ruby</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Mettre régulièrement à jour ses batteries de tests est indispensable.</p>
+
+<p>Cela permet de découvrir un test qui ne fonctionne plus, d&#39;optimiser le comportement des tests. Parfois, on intègre une nouvelle technologie qui change tout dans la façon de tester.</p>
+
+<h3>Mise à jour des tests</h3>
+
+<p>Pour mettre à jour mes tests, j&#39;ai décidé de repartir de zéro. De réflexions en réflexions, j&#39;en était arrivé à me poser des questions (existentielles) du genre :</p>
+
+<ul>
+<li>Est-ce que je peux envisager de créer des Tests Unitaires pour tester que mes tests testent bien ?</li>
+<li>Pour éviter de toujours refaire la même chose, il faudrait que je crée des &quot;primitives&quot; à réutiliser partout. Comment les gérer au mieux ?</li>
+<li>Avec ces primitives, je pourrais envisager de créer des tests dans toutes les langues du site de façon très rapide...</li>
+</ul>
+
+<p>Après quelques tests d&#39;outils, etc, j&#39;en suis arrivé aux conclusions suivantes:</p>
+
+<ul>
+<li>Le système de primitive existe. Il s&#39;appelle Cucumber. J&#39;avais parlé succintement de Cucumber lors d&#39;une présentation que j&#39;ai faite lors d&#39;un apéroweb Toulouse. Pour résumer, Cucumber permet de rédiger les scénarios en anglais, simplifiant ainsi la création et la mise à jour de test.</li>
+<li>Créer des tests unitaires de mes tests fonctionnels automatisés ne me garantirait pas qu&#39;ils détectent les bugs. Pour cela, il faut un oeil humain, qui lance les tests, vérifient, etc.</li>
+</ul>
+
+<h3>Nouvelle configuration</h3>
+
+<p>Je suis donc passé de Watir / Webdriver à Cucumber / Watir / Wedriver pour les tests. Nouvelle organisation, nouvelle façon de lancer les tests, etc. Après un mois d&#39;utilisation, je vois déjà des avancées :</p>
+
+<ul>
+<li>La réutilisation des primitives est un énorme gain de temps</li>
+<li>La lecture d&#39;un scénario de test est possible pour tout le monde. Il en va de même pour leur écriture (à faire relire / adapter par le responsable qualité tout de même)</li>
+</ul>
+
+<p>Voici un petit exemple fait maison, on en trouve une quantité sur le net.</p>
+
+<p><em>Fichier features/webQualiteBlog.feature</em></p>
+
+<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="kd">Feature</span><span class="p">:</span> WeQualite Blog
+Generic tests about my blog
+@portal
+<span class="kn">Scenario</span><span class="p">:</span> First page of blog
+    <span class="nf">When </span>I go to <span class="s">"web-quality.over-blog.com"</span>
+    <span class="nf">Then </span>I shouldn't see errors
+    <span class="nf">And </span>page should contain <span class="s">"Web qualité"</span>
+    <span class="nf">And </span>page should contain <span class="s">"Dieu du web"</span>
+
+<span class="nt">@portal</span> <span class="nt">@google</span>
+<span class="kn">Scenario</span><span class="p">:</span> Verify blog is in first page of google search
+    <span class="nf">When </span>I go to <span class="s">"www.google.fr"</span>
+    <span class="nf">And </span>I search <span class="s">"web-qalite"</span>
+    <span class="nf">Then </span>page should contain <span class="s">"Beaucoup d'outil de tests"</span> 
+    <span class="nf">And </span>page should contain <span class="s">"web-quality.over-blog.com"</span></code></pre></div>
+
+<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Sous Windows, la coloration syntaxique est possible grâce à AnsiColor"></p>
+
+<p>On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&#39;appel du fichier etc..</p>
+
+<p><em>Fichier features/step_definitions/common.rb</em></p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
+
+<span class="n">caps</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Remote</span><span class="o">::</span><span class="no">Capabilities</span><span class="p">.</span><span class="nf">htmlunit</span><span class="p">()</span>
+<span class="no">BROWSER</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">caps</span><span class="p">)</span>
+ 
+<span class="no">When</span> <span class="sr">/^I go to "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="o">|</span>
+  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+<span class="k">end</span>
+ 
+<span class="no">Then</span> <span class="sr">/^I shouldn't see errors$/</span> <span class="k">do</span>
+  <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Call Stack"</span><span class="p">,</span> <span class="s2">"Erreur 404"</span><span class="p">,</span> <span class="s2">"Erreur 50"</span><span class="p">,</span> <span class="s2">"Page Web introuvable"</span><span class="p">,</span>
+            <span class="s2">"Undefined "</span><span class="p">,</span> <span class="s2">"Trying to"</span><span class="p">,</span> <span class="s2">"cette page n'est pas accessible"</span><span class="p">,</span>
+            <span class="s2">"Warning "</span><span class="p">,</span> <span class="s2">"Fatal exception"</span><span class="p">,</span> <span class="s2">"Syntax error"</span><span class="p">]</span>
+  <span class="n">errors</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
+    <span class="no">BROWSER</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">error</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Then</span> <span class="sr">/^page should contain "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">txt</span><span class="o">|</span>
+  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">txt</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">true</span>
+<span class="k">end</span></code></pre></div>
+
+<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Ca marche (ou pas)"></p>
+
+<h3>Explication de l&#39;affichage</h3>
+
+<ul>
+<li>En rouge : les primitives ne s&#39;étant pas bien passés.</li>
+<li>En bleu : les primitives n&#39;ayant pas été exécutés (une étape précédente a échoué).</li>
+<li>En marron: les primitives n&#39;étant pas définies.</li>
+</ul>
+
+<h3>Optimisations</h3>
+
+<p>J&#39;ai déjà un peu d&#39;expérience, et j&#39;ai déjà intégré des optimisations directement dans l&#39;exemple:</p>
+
+<ul>
+<li>Les primitives doivent être le plus &quot;générique&quot; possible. Cela évite de devoir code deux primitives similaires deux fois.</li>
+<li>L&#39;utilisation de paramètres est un point très important pour optimiser ces primitives.</li>
+<li>Il est possible de rendre l&#39;affichage du résultat moins verbeux (ex: cucumber features --format progress permet d&#39;afficher une liste de point comme les tests unitaires classiques)</li>
+</ul>
+
+<p>Pour aller plus loin</p>
+
+<ul>
+<li><a href="http://watirmelon.com/2011/01/21/my-simple-cucumber-watir-page-object-pattern-framework">Le blog d&#39;Alister Scott [en]</a></li>
+<li><a href="http://rubygems.org/gems/cucumber">La gem ruby de cucumber</a></li>
 </ul>
 </div>
   </div>
@@ -427,7 +529,7 @@ Deux anecdotes récentes à ce sujet.</p>
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page8">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     

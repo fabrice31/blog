@@ -4,7 +4,7 @@
  <title>Je teste donc je suis</title>
  <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
  <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2016-06-04T13:34:54+02:00</updated>
+ <updated>2019-01-20T12:58:54+01:00</updated>
  <id>http://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
@@ -67,7 +67,7 @@ Dans la nouvelle, j&amp;#39;ai le même rôle : j&amp;#39;automatise des tests p
 
 &lt;p&gt;C&amp;#39;est surtout un changement de mentalité, comme quand on change de langue entre français et anglais : on ne traduit pas littéralement, il faut changer sa façon de penser.&lt;/p&gt;
 
-&lt;p&gt;Cela étant, garder quelques points figés, comme les scenarios en BDD (behaviour driven development) m&amp;#39;a permis de gagner beaucoup de temps, de savoir où je voulais aller, ce dont j&amp;#39;avais besoin, pour facilirer la transition.&lt;/p&gt;
+&lt;p&gt;Cela étant, garder quelques points figés, comme les scenarios en BDD (behaviour driven development) m&amp;#39;a permis de gagner beaucoup de temps, de savoir où je voulais aller, ce dont j&amp;#39;avais besoin, pour faciliter la transition.&lt;/p&gt;
 
 &lt;p&gt;Le paradigme reste le même : avoir des cas de tests simples, découpés, qui permettent de tester point par point que l&amp;#39;interface utilisateur réagit comme prévu.&lt;/p&gt;
 </content>
@@ -152,9 +152,10 @@ C&amp;#39;est là qu&amp;#39;entre en scène node.js, et et plus précisement so
 &lt;p&gt;Ensuite, la ligne de commande &lt;code&gt;http-server proxy/ --cors -a 127.0.0.1 &amp;gt;&amp;gt; proxy/log.txt&lt;/code&gt; permet de lancer le serveur localement, et d&amp;#39;avoir le log dans un fichier lui même accessible sur le serveur.&lt;/p&gt;
 
 &lt;p&gt;Pour l&amp;#39;analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d&amp;#39;ouvrir un navigateur comme avec le log de charles.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://127.0.0.1:8080/log.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;Bénéfices&lt;/h3&gt;
 
 &lt;p&gt;Quand j&amp;#39;ai commencé cette modification, j&amp;#39;espérais gagner un peu de temps. 
@@ -213,6 +214,7 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
 &lt;h3&gt;Complexe ou compliqué ?&lt;/h3&gt;
 
 &lt;p&gt;J&amp;#39;ai enquêté sur une fonction particulière, assez longue, qui vérifie la présence d&amp;#39;un élément particulier. Cet élément varie en fonction du type de page que l&amp;#39;on teste.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format_is_present&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;downcase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;bt&#39;&lt;/span&gt;
@@ -255,8 +257,8 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
         &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Format &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; Not yet implemented&quot;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pending&quot;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Score flog : 135.8. &lt;/p&gt;
 
 &lt;p&gt;Vraiment pas terrible, mais le nombre de cas différents ne simplifie pas la tâche.&lt;/p&gt;
@@ -266,6 +268,7 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
 &lt;p&gt;J&amp;#39;ai commencé par créer un fichier yaml contenant toutes les informations des tests, pour n&amp;#39;avoir ensuite qu&amp;#39;un algorithme commun à tous les cas.&lt;/p&gt;
 
 &lt;p&gt;Voici le code ruby de la fonction ainsi modifié:&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format_is_present_with_yaml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39; &#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;_&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;downcase&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;# Get checkers from the yaml&lt;/span&gt;
@@ -303,8 +306,8 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
         &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Format &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; Not yet implemented&quot;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pending&quot;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Score flog : 75.3. Score presque divisé par deux : impressionnant. &lt;/p&gt;
 
 &lt;p&gt;Par contre, contrairement à la première fonction :&lt;/p&gt;
@@ -318,6 +321,7 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
 &lt;h4&gt;Un compromis&lt;/h4&gt;
 
 &lt;p&gt;Autre solution, regrouper les différents cas par lots similaires. &lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format_is_present_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;s1&quot;&gt;&#39;ib&#39;&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ebib&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -361,8 +365,8 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
         &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Format &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; Not yet implemented&quot;&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pending&quot;&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Quelques détails :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -430,9 +434,10 @@ C&amp;#39;est en les formant à nos méthodes, notre code, que j&amp;#39;ai rep�
 Et le tour est joué.&lt;/p&gt;
 
 &lt;p&gt;Pour aller plus loin : mise en place sur tous les serveurs de tests d&amp;#39;une routine vérifiant que la liste est à jour et conforme à ce qu&amp;#39;on attend, avec un &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;bundle update
-gem cleanup
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;bundle update
+gem cleanup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;L&amp;#39;information, le nerf de la guerre&lt;/h3&gt;
 
 &lt;p&gt;Plongés dans les tests, nous disposions de plusieurs documentations, avec des buts plus ou moins précis. Localisées à plusieurs endroits.
@@ -458,31 +463,33 @@ Pour résumer, flog analyse le code source, compte combien de fois on effectue c
 &lt;p&gt;J&amp;#39;ai profité d&amp;#39;un &amp;quot;temps calme&amp;quot; au bureau pour bosser sur le sujet. &lt;/p&gt;
 
 &lt;p&gt;Avant :&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;  7128.5: flog total
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;7128.5: flog total
     15.6: flog/method average
 
    793.5: main#none
    236.1: main#launch_browser
    197.0: main#get_job_results
-   138.0: Then#/^HTML (contain|don&#39;t contain) (.*)$/
-   136.7: Then#/^I don&#39;t see errors$/
+   138.0: Then#/^HTML &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;contain|don&lt;span class=&quot;s1&quot;&gt;&#39;t contain) (.*)$/
+   136.7: Then#/^I don&#39;&lt;/span&gt;t see errors&lt;span class=&quot;nv&quot;&gt;$/&lt;/span&gt;
    134.8: FormatPage#format_is_present
    131.1: main#compare_stats
-    90.7: Then#/^I click on the insocial expand$/
-    81.4: main#stats_of_day
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    90.7: Then#/^I click on the insocial &lt;span class=&quot;nb&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$/&lt;/span&gt;
+    81.4: main#stats_of_day&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Après : &lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt; 6166.2: flog total
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;6166.2: flog total
     13.8: flog/method average
 
    827.4: main#none
    197.0: main#get_job_results
    168.0: main#launch_browser
    134.8: FormatPage#format_is_present
-    90.7: Then#/^I click on the insocial expand$/
+    90.7: Then#/^I click on the insocial &lt;span class=&quot;nb&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$/&lt;/span&gt;
     90.3: main#compare_stats
-    77.0: main#stats_of_day
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    77.0: main#stats_of_day&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;On note plusieurs choses :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -798,8 +805,9 @@ Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait p
    <content type="html">&lt;p&gt;Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&amp;#39;avoir un moteur déjà bien robuste.&lt;/p&gt;
 
 &lt;p&gt;Prenons par exemple l&amp;#39;affichage d&amp;#39;une date avec ce code :&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Default date format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Default date format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&amp;#39;agit d&amp;#39;une chaîne de caractères indiquant le format.&lt;/p&gt;
 
 &lt;p&gt;On pourrait avoir HH:mm pour l&amp;#39;heure par exemple.&lt;/p&gt;
@@ -809,15 +817,17 @@ Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait p
 &lt;p&gt;L&amp;#39;enquête se poursuit en vérifiant les dates des autres pages : la quasi totalité des pages affichent une date juste. On finit par regrouper les pages à problèmes suivant le critères : certaines pages de début janvier de certaines années (mais pas toutes).&lt;/p&gt;
 
 &lt;p&gt;Le collègue qui cherchait a trouvé le problème.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cucumber&quot; data-lang=&quot;cucumber&quot;&gt;&lt;span class=&quot;err&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Y&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Dans la documentation de datel, Y = year of &amp;quot;Week of Year&amp;quot;. Il s&amp;#39;agit de l&amp;#39;année durant laquelle le week end du jour en question a eu lieu.&lt;/p&gt;
 
 &lt;p&gt;Il s&amp;#39;agit donc d&amp;#39;un bug visible pour les premiers jours de janvier pour lesquels la semaine commençait l&amp;#39;année d&amp;#39;avant. Tordu non ?&lt;/p&gt;
 
 &lt;p&gt;Pour la petite histoire, le code corrigé sans bug donne :&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yyyy&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cucumber&quot; data-lang=&quot;cucumber&quot;&gt;&lt;span class=&quot;err&quot;&gt;Default&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;MMMM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;yyyy&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
  </entry>
  
  <entry>
@@ -999,20 +1009,23 @@ Plusieurs stratégies possibles, en fonction des technologies qu&amp;#39;on souh
 &lt;h4&gt;Utilisation de gems&lt;/h4&gt;
 
 &lt;p&gt;Elles facilitent la vie, autant en profiter.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;oauth&#39;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;watir-webdriver&#39;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;json&#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;json&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h4&gt;Définition de constantes de l&amp;#39;api&lt;/h4&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;OB_API_SERVER&lt;/span&gt;                 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;http://url_server_api&#39;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_SERVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/public/0.1&#39;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_REQUEST_TOKEN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/oauth/request_token&#39;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_ACCESS_TOKEN&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/oauth/access_token&#39;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;OB_API_ENDPOINT_AUTHORIZE&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/oauth/authorize&#39;&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_KEY&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;######&#39;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_SECRET&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;######&#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_SECRET&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;######&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Obtenir la connexion à l&amp;#39;API&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# create the OAuth consumer&lt;/span&gt;
 &lt;span class=&quot;vi&quot;&gt;@consumer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OAuth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Consumer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; 
     &lt;span class=&quot;no&quot;&gt;OB_API_MY_CONSUMER_KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -1046,8 +1059,8 @@ Plusieurs stratégies possibles, en fonction des technologies qu&amp;#39;on souh
 &lt;span class=&quot;c1&quot;&gt;# grant total access&lt;/span&gt;
 &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@request_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:oauth_verifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oauth_verifier_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# no more browser needed&lt;/span&gt;
-&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h4&gt;Exemples d&amp;#39;utilisation de l&amp;#39;API OAuth&lt;/h4&gt;
 
 &lt;p&gt;Une fois qu&amp;#39;on est connecté à l&amp;#39;API, on peut l&amp;#39;utiliser. Il faut lire sa documentation, en général assez touffue, pour savoir ce qu&amp;#39;on peut faire (lister / ajouter / modifier / supprimer).
@@ -1056,20 +1069,22 @@ Voici deux exemples &amp;quot;simplifiés&amp;quot; pour mon exemple.&lt;/p&gt;
 &lt;h5&gt;Classique&lt;/h5&gt;
 
 &lt;p&gt;Afficher les informations sur le blog courant.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;get_url_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/blog/info&#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;current_blog_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_url_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;n&quot;&gt;current_blog_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_url_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h5&gt;Avec une option&lt;/h5&gt;
 
 &lt;p&gt;Afficher la liste des titres des articles en brouillons.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;get_lists_content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;OB_API_BASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/blog/posts/draft?limit=20&#39;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;content_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_lists_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# read json results&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;response&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
     &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;title&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Conclusions&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1142,6 +1157,7 @@ On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serve
    <content type="html">&lt;p&gt;Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &amp;quot;bonne chose&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;Prenons un exemple de deux tests exécutés en même temps :&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@scenario1&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt;
    &lt;span class=&quot;no&quot;&gt;Given&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account&lt;/span&gt;
@@ -1153,8 +1169,8 @@ On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serve
    &lt;span class=&quot;no&quot;&gt;Given&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account&lt;/span&gt;
      &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;change&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
      &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test pseudo&quot;&lt;/span&gt;
-     &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;published&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+     &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;published&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pseudo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pseudo&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Si les 2 scénarios se terminent &amp;quot;au même moment&amp;quot;, nous aurons sur la page de contrôle 2 articles. L&amp;#39;un signé avec &amp;quot;pseudo-tmp&amp;quot;, et l&amp;#39;autre avec &amp;quot;pseudo&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.&lt;/p&gt;
@@ -1171,13 +1187,15 @@ Avant chaque scénario, je crée un token, composé de :
 * 2 lettres du navigateur (ff, ie, ch..)
 * un nombre aléatoire.
 Et je l&amp;#39;affiche en console (bien pratique pour débugguer)&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Before&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Token for this test : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
   &lt;span class=&quot;sr&quot;&gt;/* je vous fais grace du code pour lancer le navigateur, ... */&lt;/span&gt; 
-&lt;span class=&quot;no&quot;&gt;End&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;no&quot;&gt;End&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Ma classe Token :&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Use to got random value&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# Useful to post a data with random string but keep the value to check it later&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# Author:: Fabrice&lt;/span&gt;
@@ -1192,20 +1210,22 @@ Et je l&amp;#39;affiche en console (bien pratique pour débugguer)&lt;/p&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;
     &lt;span class=&quot;vi&quot;&gt;@value&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&amp;#39;on sauve une donnée, on ajoute le token &amp;quot;courant&amp;quot; dans le champ.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Et côté vérification, on en tient compte également.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open_article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vg&quot;&gt;$token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
     &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Parfois, on a besoin de pouvoir jouer &amp;quot;sans token&amp;quot; pour des points bien précis : on prévoit alors un paramètre pour s&amp;#39;en passer. (Exemple, pour la saisie d&amp;#39;un email)&lt;/p&gt;
 
 &lt;p&gt;Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&amp;#39;est un autre test à part entière)&lt;/p&gt;
@@ -1392,11 +1412,12 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;p&gt;Cela permet de découper l&amp;#39;exécution de nombreux scénarios en plusieurs jobs sur jenkins, ce qui est plus confortable : si un test passe dans le rouge, il faut analyser un rapport pour 10 scénario au lieu de 300. Si on veut re-tester ce point précis, on mettra également moins de temps.&lt;/p&gt;
 
 &lt;p&gt;On exécute les scénarios avec la ligne &amp;quot;cucumber --tag @montag&amp;quot;. Si le tag n&amp;#39;existe pas, le résultat affichera immédiatement 0 scenarios.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;vi&quot;&gt;@admin&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@montag&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@ie&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;un&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt;
-  &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
-  &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tested&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cucumber&quot; data-lang=&quot;cucumber&quot;&gt;&lt;span class=&quot;nt&quot;&gt;@admin&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;@montag&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;@ie&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; test un tag
+  &lt;span class=&quot;nf&quot;&gt;When &lt;/span&gt;I test
+  &lt;span class=&quot;nf&quot;&gt;Then &lt;/span&gt;I tested&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;Cucumber.yml&lt;/h3&gt;
 
 &lt;p&gt;Les profils de cucumber se gère dans un fichier au format yaml, qui peut gérer beaucoup de choses :&lt;/p&gt;
@@ -1407,6 +1428,7 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;/ul&gt;
 
 &lt;p&gt;Exemple avec une partie de mon fichier :&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;% common &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-r support -r features --tags ~@wip --tags ~@danger 
 --color --format pretty --format html -o results.html --format junit -o junit&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# default : staging and firefox&lt;/span&gt;
@@ -1415,8 +1437,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;span class=&quot;ss&quot;&gt;ie: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ie&lt;/span&gt;
 &lt;span class=&quot;ss&quot;&gt;ff: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;firefox&lt;/span&gt;
 &lt;span class=&quot;ss&quot;&gt;chrome: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chrome&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;mobile: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mobile&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;ss&quot;&gt;mobile: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%= common %&amp;gt; ENV=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;staging&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mobile&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;La première ligne définit des paramètres commun à la plupart des profils :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1443,6 +1465,7 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;p&gt;Dans notre cas, nous lancons le navigaeur avant chaque scénario pour éviter qu&amp;#39;un test ait un impact sur le suivant.&lt;/p&gt;
 
 &lt;p&gt;Voici le code :&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Before&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;BROWSER&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ie&#39;&lt;/span&gt;
@@ -1476,8 +1499,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
   &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
     &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;640&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;960&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;On exploite le nom du navigateur pour lancer le bon, avec des paramètres particuliers.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1503,6 +1526,7 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;p&gt;On lance donc les tests pour Internet Explorer avec la commande &lt;code&gt;cucumber --tag @ie -p ie&lt;/code&gt;. On peut changer le tag, mais certains ne fonctionnent pas encore sous IE à cause de codes vraiment spécifiques.&lt;/p&gt;
 
 &lt;p&gt;Voici deux exemples de code modifé spécifiquement pour IE :&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;BROWSER&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ie&#39;&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;# internet explorer is slower : timeout increase&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;SHORT_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
@@ -1512,9 +1536,10 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
   &lt;span class=&quot;no&quot;&gt;SHORT_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;LONG_TIMEOUT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Ce code définit les constantes des timeout pour l&amp;#39;ensemble des test.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;BROWSER&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ie&#39;&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# need for IE purpose&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
@@ -1522,8 +1547,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
   &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;login_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;login_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;visible?&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username_element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;focus&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# need for IE purpose&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Les commentaires dans le code parlent d&amp;#39;eux mêmes. Documenter le code spécifique à IE est d&amp;#39;ailleurs indispensable si on veut garder ses modifications qui semblent &amp;quot;inutiles&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;Si les tests avec Firefox sont joués chaque jour sur un serveur, en 2h45 environ, ceux pour IE sont exécutés en local, en 3h, alors que certains tests ne sont pas exécutés sur IE.&lt;/p&gt;
@@ -1597,6 +1622,7 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;p&gt;L&amp;#39;autre aspect important, c&amp;#39;est l&amp;#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&amp;#39;ai l&amp;#39;impression que cela m&amp;#39;a pris du temps, alors qu&amp;#39;au final, c&amp;#39;est tout simple. Mais j&amp;#39;ai exploré beaucoup de pistes sur le sujet.&lt;/p&gt;
 
 &lt;h3&gt;Le test&lt;/h3&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestProductionFrench&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TestCase&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;profile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Firefox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Profile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
@@ -1614,8 +1640,8 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
     &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.fr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;assert_equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://www.google.it&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;L&amp;#39;explication&lt;/h3&gt;
 
 &lt;p&gt;Pour ce test, je n&amp;#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.&lt;/p&gt;
@@ -1637,10 +1663,11 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
 &lt;li&gt;Changer la langue préférée pour l&amp;#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined&lt;/li&gt;
 &lt;li&gt;Il est facile d&amp;#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_SERVER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;HTTP_ACCEPT_LANGUAGE&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$lang&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
  </entry>
  
  <entry>
@@ -1672,13 +1699,14 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 &lt;p&gt;Durant le test, nous vérifions plusieurs éléments, en fonction des options passées.&lt;/p&gt;
 
 &lt;p&gt;Nous avons donc une suite de vérifications, en ruby+watir&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;align&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;right&#39;&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;media-right&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;media-left&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Pour traduire : On vérifie qu&amp;#39;une image est présente, puis si l&amp;#39;option alignement est &amp;quot;droite&amp;quot;, je vérifie que l&amp;#39;image est aligné à droite. Sinon, je vérifie à gauche.&lt;/p&gt;
 
 &lt;p&gt;Le problème ? Ce test ne teste rien. Tout simplement parce que le parenthésage est mauvais.&lt;/p&gt;
@@ -1686,13 +1714,14 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 &lt;p&gt;En ruby, le and est prioritaire sur le .exists. Je teste donc l&amp;#39;existence d&amp;#39;un booléen au lieu de tester deux booléens.&lt;/p&gt;
 
 &lt;p&gt;Le code corrigé ajoute juste des parenthèses pour changer la priorité.&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;align&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;right&#39;&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;media-right&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;media-left&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exists?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;h3&gt;Conclusion&lt;/h3&gt;
 
 &lt;p&gt;Ce que je retiens de ces événements récents ?&lt;/p&gt;
@@ -2241,6 +2270,7 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot &lt;strong&gt;qualité&lt;/strong&gt; apparait sur la page.&lt;/p&gt;
 
 &lt;iframe width=&quot;640&quot; height=&quot;480&quot; src=&quot;//www.youtube.com/embed/E6s4-m2U8b4?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# lutte contre : web.rb:3:in `require&#39;: no such file to load -- watir (LoadError)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rubygems&quot;&lt;/span&gt;
 
@@ -2265,8 +2295,8 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Fermeture&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;Pour résumer :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -2403,7 +2433,7 @@ Faire lancer les tests par les développeurs en environnement de développement.
 
 &lt;p&gt;Nous avions longuement rabâché qu’il fallait un produit de qualité, que nous devions tous tester le produit de façon à ne rien laisser passer.&lt;/p&gt;
 
-&lt;p&gt;En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point “techniques” ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours “qualité”. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme.&lt;/p&gt;
+&lt;p&gt;En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point &amp;quot;techniques&amp;quot; ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours &amp;quot;qualité&amp;quot;. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme. &lt;/p&gt;
 
 &lt;p&gt;Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.&lt;/p&gt;
 </content>
@@ -2447,37 +2477,39 @@ Faire lancer les tests par les développeurs en environnement de développement.
 &lt;p&gt;Voici un petit exemple fait maison, on en trouve une quantité sur le net.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Fichier features/webQualiteBlog.feature&lt;/em&gt;&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cucumber&quot; data-lang=&quot;cucumber&quot;&gt;&lt;span class=&quot;kd&quot;&gt;Feature&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; WeQualite Blog
 Generic tests about my blog
 @portal
 &lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; First page of blog
-    &lt;span class=&quot;nf&quot;&gt;When&lt;/span&gt; I go to &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;Then&lt;/span&gt; I shouldn&#39;t see errors
-    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Web qualité&quot;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Dieu du web&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;When &lt;/span&gt;I go to &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;Then &lt;/span&gt;I shouldn&#39;t see errors
+    &lt;span class=&quot;nf&quot;&gt;And &lt;/span&gt;page should contain &lt;span class=&quot;s&quot;&gt;&quot;Web qualité&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;And &lt;/span&gt;page should contain &lt;span class=&quot;s&quot;&gt;&quot;Dieu du web&quot;&lt;/span&gt;
 
 &lt;span class=&quot;nt&quot;&gt;@portal&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;@google&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; Verify blog is in first page of google search
-    &lt;span class=&quot;nf&quot;&gt;When&lt;/span&gt; I go to &lt;span class=&quot;s&quot;&gt;&quot;www.google.fr&quot;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; I search &lt;span class=&quot;s&quot;&gt;&quot;web-qalite&quot;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;Then&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;Beaucoup d&#39;outil de tests&quot;&lt;/span&gt; 
-    &lt;span class=&quot;nf&quot;&gt;And&lt;/span&gt; page should contain &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;span class=&quot;nf&quot;&gt;When &lt;/span&gt;I go to &lt;span class=&quot;s&quot;&gt;&quot;www.google.fr&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;And &lt;/span&gt;I search &lt;span class=&quot;s&quot;&gt;&quot;web-qalite&quot;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;Then &lt;/span&gt;page should contain &lt;span class=&quot;s&quot;&gt;&quot;Beaucoup d&#39;outil de tests&quot;&lt;/span&gt; 
+    &lt;span class=&quot;nf&quot;&gt;And &lt;/span&gt;page should contain &lt;span class=&quot;s&quot;&gt;&quot;web-quality.over-blog.com&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;img src=&quot;/public/pictures/2011/cucumber-first.jpg&quot; alt=&quot;Résultats de l&amp;#39;éxecution&quot; title=&quot;Sous Windows, la coloration syntaxique est possible grâce à AnsiColor&quot;&gt;&lt;/p&gt;
 
 &lt;p&gt;On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&amp;#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&amp;#39;appel du fichier etc..&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Fichier features/step_definitions/common.rb&lt;/em&gt;&lt;/p&gt;
+
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;rubygems&#39;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;watir-webdriver&quot;&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;caps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Selenium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;WebDriver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Remote&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;htmlunit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Watir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Browser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:remote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:desired_capabilities&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;caps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
+ 
 &lt;span class=&quot;no&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I go to &quot;([^&quot;]*)&quot;$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;goto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
+ 
 &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^I shouldn&#39;t see errors$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Call Stack&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Erreur 404&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Erreur 50&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Page Web introuvable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
             &lt;span class=&quot;s2&quot;&gt;&quot;Undefined &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Trying to&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cette page n&#39;est pas accessible&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -2489,9 +2521,8 @@ Generic tests about my blog
 
 &lt;span class=&quot;no&quot;&gt;Then&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/^page should contain &quot;([^&quot;]*)&quot;$/&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
   &lt;span class=&quot;no&quot;&gt;BROWSER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;include?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;should&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;/public/pictures/2011/cucumber-first.jpg&quot; alt=&quot;Résultats de l&amp;#39;éxecution&quot; title=&quot;Ca marche (ou pas)&quot;&gt;&lt;/p&gt;
 
 &lt;h3&gt;Explication de l&amp;#39;affichage&lt;/h3&gt;

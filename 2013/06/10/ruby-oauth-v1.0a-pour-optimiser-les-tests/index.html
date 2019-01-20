@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -301,20 +253,23 @@ Plusieurs stratégies possibles, en fonction des technologies qu&#39;on souhaite
 <h4>Utilisation de gems</h4>
 
 <p>Elles facilitent la vie, autant en profiter.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'oauth'</span>
 <span class="nb">require</span> <span class="s1">'watir-webdriver'</span>
-<span class="nb">require</span> <span class="s1">'json'</span>
-</code></pre></div>
+<span class="nb">require</span> <span class="s1">'json'</span></code></pre></div>
+
 <h4>Définition de constantes de l&#39;api</h4>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">OB_API_SERVER</span>                 <span class="o">=</span> <span class="s1">'http://url_server_api'</span>
 <span class="no">OB_API_BASE_URL</span>               <span class="o">=</span> <span class="no">OB_API_SERVER</span><span class="o">+</span><span class="s1">'/public/0.1'</span>
 <span class="no">OB_API_ENDPOINT_REQUEST_TOKEN</span> <span class="o">=</span> <span class="s1">'/oauth/request_token'</span>
 <span class="no">OB_API_ENDPOINT_ACCESS_TOKEN</span>  <span class="o">=</span> <span class="s1">'/oauth/access_token'</span>
 <span class="no">OB_API_ENDPOINT_AUTHORIZE</span>     <span class="o">=</span> <span class="s1">'/oauth/authorize'</span>
 <span class="no">OB_API_MY_CONSUMER_KEY</span>        <span class="o">=</span> <span class="s1">'######'</span>
-<span class="no">OB_API_MY_CONSUMER_SECRET</span>     <span class="o">=</span> <span class="s1">'######'</span>
-</code></pre></div>
+<span class="no">OB_API_MY_CONSUMER_SECRET</span>     <span class="o">=</span> <span class="s1">'######'</span></code></pre></div>
+
 <p>Obtenir la connexion à l&#39;API</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># create the OAuth consumer</span>
 <span class="vi">@consumer</span> <span class="o">=</span> <span class="no">OAuth</span><span class="o">::</span><span class="no">Consumer</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span> 
     <span class="no">OB_API_MY_CONSUMER_KEY</span><span class="p">,</span>
@@ -348,8 +303,8 @@ Plusieurs stratégies possibles, en fonction des technologies qu&#39;on souhaite
 <span class="c1"># grant total access</span>
 <span class="vi">@access_token</span> <span class="o">=</span> <span class="vi">@request_token</span><span class="p">.</span><span class="nf">get_access_token</span><span class="p">(</span><span class="ss">:oauth_verifier</span> <span class="o">=&gt;</span> <span class="n">oauth_verifier_token</span><span class="p">)</span>
 <span class="c1"># no more browser needed</span>
-<span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
-</code></pre></div>
+<span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span></code></pre></div>
+
 <h4>Exemples d&#39;utilisation de l&#39;API OAuth</h4>
 
 <p>Une fois qu&#39;on est connecté à l&#39;API, on peut l&#39;utiliser. Il faut lire sa documentation, en général assez touffue, pour savoir ce qu&#39;on peut faire (lister / ajouter / modifier / supprimer).
@@ -358,20 +313,22 @@ Voici deux exemples &quot;simplifiés&quot; pour mon exemple.</p>
 <h5>Classique</h5>
 
 <p>Afficher les informations sur le blog courant.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_url_info</span> <span class="o">=</span>  <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/info'</span>
-<span class="n">current_blog_info</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_url_info</span><span class="p">)</span>
-</code></pre></div>
+<span class="n">current_blog_info</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_url_info</span><span class="p">)</span></code></pre></div>
+
 <h5>Avec une option</h5>
 
 <p>Afficher la liste des titres des articles en brouillons.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get_lists_content</span> <span class="o">=</span> <span class="no">OB_API_BASE_URL</span><span class="o">+</span><span class="s1">'/blog/posts/draft?limit=20'</span>
 <span class="n">content_list</span> <span class="o">=</span> <span class="vi">@access_token</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">get_lists_content</span><span class="p">)</span>
 <span class="c1"># read json results</span>
 <span class="n">result</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">content_list</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 <span class="n">result</span><span class="p">[</span><span class="s1">'response'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">content</span> <span class="o">|</span>
     <span class="nb">puts</span> <span class="n">content</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Conclusions</p>
 
 <ul>

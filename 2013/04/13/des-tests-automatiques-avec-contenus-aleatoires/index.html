@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -217,6 +169,7 @@
 	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
 
 <p>Prenons un exemple de deux tests exécutés en même temps :</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
 <span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
    <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
@@ -228,8 +181,8 @@
    <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
      <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
      <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
-     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span>
-</code></pre></div>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span></code></pre></div>
+
 <p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
 
 <p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
@@ -246,13 +199,15 @@ Avant chaque scénario, je crée un token, composé de :
 * 2 lettres du navigateur (ff, ie, ch..)
 * un nombre aléatoire.
 Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
   <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
   <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
   <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
-<span class="no">End</span>
-</code></pre></div>
+<span class="no">End</span></code></pre></div>
+
 <p>Ma classe Token :</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
 <span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
 <span class="c1"># Author:: Fabrice</span>
@@ -267,20 +222,22 @@ Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
   <span class="k">def</span> <span class="nf">value</span>
     <span class="vi">@value</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
-</code></pre></div>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span></code></pre></div>
+
 <p>Et côté vérification, on en tient compte également.</p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
   <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
   <span class="k">else</span>
     <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></div>
+
 <p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
 
 <p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>

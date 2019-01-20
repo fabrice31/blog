@@ -77,79 +77,31 @@
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
+      
         
       
         
-          
-        
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
         
       
         
@@ -189,7 +141,7 @@
 	  <!-- SiteSearch Google -->
     </nav>
 
-    <p>&copy; 2016 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
+    <p>&copy; 2019 - <a href="https://plus.google.com/104493142924184161356" rel="author">Fabrice Bournisien</a></p>
   </div>
 </div>
 
@@ -247,37 +199,39 @@
 <p>Voici un petit exemple fait maison, on en trouve une quantité sur le net.</p>
 
 <p><em>Fichier features/webQualiteBlog.feature</em></p>
+
 <div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="kd">Feature</span><span class="p">:</span> WeQualite Blog
 Generic tests about my blog
 @portal
 <span class="kn">Scenario</span><span class="p">:</span> First page of blog
-    <span class="nf">When</span> I go to <span class="s">"web-quality.over-blog.com"</span>
-    <span class="nf">Then</span> I shouldn't see errors
-    <span class="nf">And</span> page should contain <span class="s">"Web qualité"</span>
-    <span class="nf">And</span> page should contain <span class="s">"Dieu du web"</span>
+    <span class="nf">When </span>I go to <span class="s">"web-quality.over-blog.com"</span>
+    <span class="nf">Then </span>I shouldn't see errors
+    <span class="nf">And </span>page should contain <span class="s">"Web qualité"</span>
+    <span class="nf">And </span>page should contain <span class="s">"Dieu du web"</span>
 
 <span class="nt">@portal</span> <span class="nt">@google</span>
 <span class="kn">Scenario</span><span class="p">:</span> Verify blog is in first page of google search
-    <span class="nf">When</span> I go to <span class="s">"www.google.fr"</span>
-    <span class="nf">And</span> I search <span class="s">"web-qalite"</span>
-    <span class="nf">Then</span> page should contain <span class="s">"Beaucoup d'outil de tests"</span> 
-    <span class="nf">And</span> page should contain <span class="s">"web-quality.over-blog.com"</span>
-</code></pre></div>
+    <span class="nf">When </span>I go to <span class="s">"www.google.fr"</span>
+    <span class="nf">And </span>I search <span class="s">"web-qalite"</span>
+    <span class="nf">Then </span>page should contain <span class="s">"Beaucoup d'outil de tests"</span> 
+    <span class="nf">And </span>page should contain <span class="s">"web-quality.over-blog.com"</span></code></pre></div>
+
 <p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Sous Windows, la coloration syntaxique est possible grâce à AnsiColor"></p>
 
 <p>On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&#39;appel du fichier etc..</p>
 
 <p><em>Fichier features/step_definitions/common.rb</em></p>
+
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>
 <span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
 
 <span class="n">caps</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Remote</span><span class="o">::</span><span class="no">Capabilities</span><span class="p">.</span><span class="nf">htmlunit</span><span class="p">()</span>
 <span class="no">BROWSER</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">caps</span><span class="p">)</span>
-
+ 
 <span class="no">When</span> <span class="sr">/^I go to "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="o">|</span>
   <span class="no">BROWSER</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
 <span class="k">end</span>
-
+ 
 <span class="no">Then</span> <span class="sr">/^I shouldn't see errors$/</span> <span class="k">do</span>
   <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Call Stack"</span><span class="p">,</span> <span class="s2">"Erreur 404"</span><span class="p">,</span> <span class="s2">"Erreur 50"</span><span class="p">,</span> <span class="s2">"Page Web introuvable"</span><span class="p">,</span>
             <span class="s2">"Undefined "</span><span class="p">,</span> <span class="s2">"Trying to"</span><span class="p">,</span> <span class="s2">"cette page n'est pas accessible"</span><span class="p">,</span>
@@ -289,9 +243,8 @@ Generic tests about my blog
 
 <span class="no">Then</span> <span class="sr">/^page should contain "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">txt</span><span class="o">|</span>
   <span class="no">BROWSER</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">txt</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">true</span>
-<span class="k">end</span>
+<span class="k">end</span></code></pre></div>
 
-</code></pre></div>
 <p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Ca marche (ou pas)"></p>
 
 <h3>Explication de l&#39;affichage</h3>
