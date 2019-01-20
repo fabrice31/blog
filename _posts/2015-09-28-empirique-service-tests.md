@@ -76,10 +76,10 @@ Ensuite, la ligne de commande ```http-server proxy/ --cors -a 127.0.0.1 >> proxy
 
 Pour l'analyse du log, il est disponible via une véritable url, donc on gagne du temps : pas besoin d'ouvrir un navigateur comme avec le log de charles.
 
-```ruby
+{% highlight ruby %}
 url = "http://127.0.0.1:8080/log.txt"
 content = Net::HTTP.get(URI.parse(url))
-```
+{% endhighlight %}
 
 ### Bénéfices
 

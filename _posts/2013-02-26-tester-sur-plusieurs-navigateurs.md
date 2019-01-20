@@ -20,12 +20,12 @@ Cela permet de découper l'exécution de nombreux scénarios en plusieurs jobs s
 
 On exécute les scénarios avec la ligne "cucumber --tag @montag". Si le tag n'existe pas, le résultat affichera immédiatement 0 scenarios.
 
-```ruby
+{% highlight cucumber %}
 @admin @montag @ie
 Scenario: test un tag
   When I test
   Then I tested
-```
+{% endhighlight %}
 
 ### Cucumber.yml
 
@@ -36,7 +36,7 @@ Les profils de cucumber se gère dans un fichier au format yaml, qui peut gérer
 
 Exemple avec une partie de mon fichier :
 
-```ruby
+{% highlight ruby %}
 <% common = "-r support -r features --tags ~@wip --tags ~@danger 
 --color --format pretty --format html -o results.html --format junit -o junit" %>
 # default : staging and firefox
@@ -46,7 +46,7 @@ ie: <%= common %> ENV=staging BROWSER=ie
 ff: <%= common %> ENV=staging BROWSER=firefox
 chrome: <%= common %> ENV=staging BROWSER=chrome
 mobile: <%= common %> ENV=staging BROWSER=mobile
-```
+{% endhighlight %}
 
 La première ligne définit des paramètres commun à la plupart des profils :
 
@@ -71,7 +71,7 @@ Dans notre cas, nous lancons le navigaeur avant chaque scénario pour éviter qu
 
 Voici le code :
 
-```ruby
+{% highlight ruby %}
 Before do
   case ENV['BROWSER']
   when 'ie'
@@ -106,7 +106,7 @@ Before do
     @browser.window.resize_to(640, 960)
   end
 end
-```
+{% endhighlight %}
 
 On exploite le nom du navigateur pour lancer le bon, avec des paramètres particuliers.
 
@@ -130,7 +130,7 @@ On lance donc les tests pour Internet Explorer avec la commande ```cucumber --ta
 
 Voici deux exemples de code modifé spécifiquement pour IE :
 
-```ruby
+{% highlight ruby %}
 if ENV['BROWSER'] == 'ie'
   # internet explorer is slower : timeout increase
   SHORT_TIMEOUT = 5
@@ -141,11 +141,11 @@ else
   TIMEOUT = 9
   LONG_TIMEOUT = 25
 end
-```
+{% endhighlight %}
 
 Ce code définit les constantes des timeout pour l'ensemble des test.
 
-```ruby
+{% highlight ruby %}
 if ENV['BROWSER'] == 'ie'
   sleep(1) # need for IE purpose
 end
@@ -154,7 +154,7 @@ self.wait_until(LONG_TIMEOUT){
 }
 self.username_element.focus # need for IE purpose
 self.username = @account.email
-```
+{% endhighlight %}
 
 Les commentaires dans le code parlent d'eux mêmes. Documenter le code spécifique à IE est d'ailleurs indispensable si on veut garder ses modifications qui semblent "inutiles".
 

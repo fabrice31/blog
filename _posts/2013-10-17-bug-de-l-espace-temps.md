@@ -9,9 +9,9 @@ Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibi
 
 Prenons par exemple l'affichage d'une date avec ce code :
 
-```ruby
+{% highlight ruby %}
 Post.Date|datel(Lang.Get("Default date format"))
-```
+{% endhighlight %}
 
 Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s'agit d'une chaîne de caractères indiquant le format.
 
@@ -23,9 +23,9 @@ L'enquête se poursuit en vérifiant les dates des autres pages : la quasi total
 
 Le collègue qui cherchait a trouvé le problème.
 
-```ruby
+{% highlight cucumber %}
 Default date format = MMMM d Y
-```
+{% endhighlight %}
 
 Dans la documentation de datel, Y = year of "Week of Year". Il s'agit de l'année durant laquelle le week end du jour en question a eu lieu.
 
@@ -33,6 +33,6 @@ Il s'agit donc d'un bug visible pour les premiers jours de janvier pour lesquels
 
 Pour la petite histoire, le code corrigé sans bug donne :
 
-```ruby
+{% highlight cucumber %}
 Default date format = MMMM d yyyy
-```
+{% endhighlight %}

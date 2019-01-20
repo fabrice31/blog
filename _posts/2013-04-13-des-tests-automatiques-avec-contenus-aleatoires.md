@@ -11,7 +11,7 @@ Si vous avez plusieurs tests qui s’exécutent en même temps sur le même envi
 
 Prenons un exemple de deux tests exécutés en même temps :
 
-```ruby
+{% highlight ruby %}
 @scenario1
 Scenario: Test modif pseudo
    Given I connect to my "pseudo" account
@@ -24,7 +24,7 @@ Scenario: Pseudo cannot be empty when you publish
      When I change my nickname for ""
      When I publish an article "test pseudo"
      Then my published pseudo is "pseudo"
-```
+{% endhighlight %}
 
 Si les 2 scénarios se terminent "au même moment", nous aurons sur la page de contrôle 2 articles. L'un signé avec "pseudo-tmp", et l'autre avec "pseudo".
 
@@ -41,17 +41,17 @@ Avant chaque scénario, je crée un token, composé de :
 * un nombre aléatoire.
 Et je l'affiche en console (bien pratique pour débugguer)
 
-```ruby
+{% highlight ruby %}
 Before do
   $token = Token.new
   puts "Token for this test : #{$token.value}"
   /* je vous fais grace du code pour lancer le navigateur, ... */ 
 End
-```
+{% endhighlight %}
 
 Ma classe Token :
 
-```ruby
+{% highlight ruby %}
 # Use to got random value
 # Useful to post a data with random string but keep the value to check it later
 # Author:: Fabrice
@@ -67,17 +67,17 @@ class Token
     @value
   end
 end
-```
+{% endhighlight %}
 
 Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu'on sauve une donnée, on ajoute le token "courant" dans le champ.
 
-```ruby
+{% highlight ruby %}
 title = "#{title} #{$token.value}"
-```
+{% endhighlight %}
 
 Et côté vérification, on en tient compte également.
 
-```ruby
+{% highlight ruby %}
 def open_article(title, token = false)
   if(token)
     @browser.link(:text => "#{title} #{$token.value}").click
@@ -85,7 +85,7 @@ def open_article(title, token = false)
     @browser.link(:text => "#{title}").click
   end
 end
-```
+{% endhighlight %}
 
 Parfois, on a besoin de pouvoir jouer "sans token" pour des points bien précis : on prévoit alors un paramètre pour s'en passer. (Exemple, pour la saisie d'un email)
 

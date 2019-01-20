@@ -11,7 +11,7 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
 
 <iframe width="640" height="480" src="//www.youtube.com/embed/E6s4-m2U8b4?rel=0" frameborder="0" allowfullscreen></iframe>
 
-```ruby
+{% highlight ruby %}
 # lutte contre : web.rb:3:in `require': no such file to load -- watir (LoadError)
 require "rubygems"
 
@@ -37,7 +37,7 @@ end
 
 # Fermeture
 B.close
-```
+{% endhighlight %}
 
 Pour résumer :
 

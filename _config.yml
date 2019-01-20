@@ -11,14 +11,17 @@ title:            Je teste donc je suis
 tagline:          Journal d'un testeur
 description:      Blog d'un automatiseur de tests web.
 url:              http://blog.fabricebournisien.eu/
-paginate:         3
+paginate:         5
 baseurl:          /
 author:
   name:           Fabrice Bournisien
   url:            https://twitter.com/fabrice31
   email:          fabrice.bournisien@gmail.com
+tag_page_layout:  tag_page
+tag_page_dir:     tag
+tag_permalink_style: pretty
 
-destination:      ../gh-pages/
+destination:      ../blogpage/
 
 # Custom vars
 version:          1.0.0

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-sitemap: 2014-07-01T12:00:00+02:00
+sitemap: 2018-04-17T12:00:00+02:00
 ---
 
 <p class="message">
@@ -10,7 +10,7 @@ sitemap: 2014-07-01T12:00:00+02:00
 
 <p>
 	<strong>Quelques mots sur l'auteur</strong><br />
-	Responsable tests et qualité web chez OverBlog durant 6 ans, puis chez Ebuzzing depuis 2013.
+	Responsable tests et qualité web depuis 2007 chez OverBlog, puis chez Ebuzzing, Teads, Gandi et Brocélia.
 	<br/>
 	<a href="http://www.fabricebournisien.eu/" title="CV Fabrice Bournisien - Automatiseur de tests web">Voir le CV détaillé</a>
 </p>

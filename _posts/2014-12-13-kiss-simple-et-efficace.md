@@ -26,10 +26,10 @@ Et le tour est joué.
 
 Pour aller plus loin : mise en place sur tous les serveurs de tests d'une routine vérifiant que la liste est à jour et conforme à ce qu'on attend, avec un 
 
-```
+{% highlight shell %}
 bundle update
 gem cleanup
-```
+{% endhighlight %}
 
 ### L'information, le nerf de la guerre
 
@@ -59,7 +59,7 @@ J'ai profité d'un "temps calme" au bureau pour bosser sur le sujet.
 
 Avant :
 
-```
+{% highlight shell %}
   7128.5: flog total
     15.6: flog/method average
 
@@ -72,12 +72,12 @@ Avant :
    131.1: main#compare_stats
     90.7: Then#/^I click on the insocial expand$/
     81.4: main#stats_of_day
-```
+{% endhighlight %}
 
 
 Après : 
 
-```
+{% highlight shell %}
  6166.2: flog total
     13.8: flog/method average
 
@@ -88,7 +88,7 @@ Après :
     90.7: Then#/^I click on the insocial expand$/
     90.3: main#compare_stats
     77.0: main#stats_of_day
-```
+{% endhighlight %}
 
 On note plusieurs choses :
 

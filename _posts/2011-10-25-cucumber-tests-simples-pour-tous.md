@@ -1,10 +1,7 @@
 ---
 layout: post
 title: "Cucumber : des tests plus simples pour tous"
-tags:
-  cucumber
-  watir
-  ruby
+tags: cucumber watir ruby
 ---
 
 Mettre régulièrement à jour ses batteries de tests est indispensable.
@@ -35,7 +32,7 @@ Voici un petit exemple fait maison, on en trouve une quantité sur le net.
 
 *Fichier features/webQualiteBlog.feature*
 
-```cucumber
+{% highlight cucumber %}
 Feature: WeQualite Blog
 Generic tests about my blog
 @portal
@@ -51,7 +48,7 @@ Scenario: Verify blog is in first page of google search
     And I search "web-qalite"
     Then page should contain "Beaucoup d'outil de tests" 
     And page should contain "web-quality.over-blog.com"
-```
+{% endhighlight %}
 
 ![Résultats de l'éxecution](/public/pictures/2011/cucumber-first.jpg "Sous Windows, la coloration syntaxique est possible grâce à AnsiColor")
 
@@ -59,7 +56,7 @@ On voit que cucumber nous donne directement les primitives (step definitions) à
 
 *Fichier features/step_definitions/common.rb*
 
-```ruby
+{% highlight ruby %}
 require 'rubygems'
 require "watir-webdriver"
 
@@ -83,7 +80,7 @@ Then /^page should contain "([^"]*)"$/ do |txt|
   BROWSER.text.include?(txt).should == true
 end
 
-```
+{% endhighlight %}
 
 ![Résultats de l'éxecution](/public/pictures/2011/cucumber-first.jpg "Ca marche (ou pas)")
 

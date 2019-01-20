@@ -77,15 +77,15 @@ Voilà quelques astuces pour utiliser "rapidement" une API OAuth en ruby
 
 Elles facilitent la vie, autant en profiter.
 
-```ruby
+{% highlight ruby %}
 require 'oauth'
 require 'watir-webdriver'
 require 'json'
-```
+{% endhighlight %}
 
 #### Définition de constantes de l'api
 
-```ruby
+{% highlight ruby %}
 OB_API_SERVER                 = 'http://url_server_api'
 OB_API_BASE_URL               = OB_API_SERVER+'/public/0.1'
 OB_API_ENDPOINT_REQUEST_TOKEN = '/oauth/request_token'
@@ -93,11 +93,12 @@ OB_API_ENDPOINT_ACCESS_TOKEN  = '/oauth/access_token'
 OB_API_ENDPOINT_AUTHORIZE     = '/oauth/authorize'
 OB_API_MY_CONSUMER_KEY        = '######'
 OB_API_MY_CONSUMER_SECRET     = '######'
-```
+{% endhighlight %}
+
 
 Obtenir la connexion à l'API
 
-```ruby
+{% highlight ruby %}
 # create the OAuth consumer
 @consumer = OAuth::Consumer.new( 
 	OB_API_MY_CONSUMER_KEY,
@@ -132,7 +133,7 @@ oauth_verifier_token = @browser.url.split("oauth_verifier=")[1]
 @access_token = @request_token.get_access_token(:oauth_verifier => oauth_verifier_token)
 # no more browser needed
 @browser.close
-```
+{% endhighlight %}
 
 #### Exemples d'utilisation de l'API OAuth
 
@@ -143,16 +144,16 @@ Voici deux exemples "simplifiés" pour mon exemple.
 
 Afficher les informations sur le blog courant.
 
-```ruby
+{% highlight ruby %}
 get_url_info =  OB_API_BASE_URL+'/blog/info'
 current_blog_info = @access_token.get(get_url_info)
-```
+{% endhighlight %}
 	
 ##### Avec une option
 
 Afficher la liste des titres des articles en brouillons.
 
-```ruby
+{% highlight ruby %}
 get_lists_content = OB_API_BASE_URL+'/blog/posts/draft?limit=20'
 content_list = @access_token.get(get_lists_content)
 # read json results
@@ -160,7 +161,7 @@ result = JSON.parse(content_list.body)
 result['response'].each do | content |
 	puts content['title']
 end
-```
+{% endhighlight %}
 
 Conclusions
 

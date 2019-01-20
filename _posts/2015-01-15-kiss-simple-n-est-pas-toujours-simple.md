@@ -33,7 +33,7 @@ Au dessus, il faut bien évidemment faire quelque chose. En dessous, c'est peu u
 
 J'ai enquêté sur une fonction particulière, assez longue, qui vérifie la présence d'un élément particulier. Cet élément varie en fonction du type de page que l'on teste.
 
-```ruby
+{% highlight ruby %}
 def format_is_present(format)
 	case (format.downcase)
 	when 'bt'
@@ -77,7 +77,7 @@ def format_is_present(format)
 		return "pending"
 	end
 end
-```
+{% endhighlight %}
 
 Score flog : 135.8. 
 
@@ -89,7 +89,7 @@ J'ai commencé par créer un fichier yaml contenant toutes les informations des 
 
 Voici le code ruby de la fonction ainsi modifié:
 
-```ruby
+{% highlight ruby %}
 def format_is_present_with_yaml(format)
 	which = format.gsub(' ', '_').downcase
 	# Get checkers from the yaml
@@ -128,7 +128,7 @@ def format_is_present_with_yaml(format)
 		return "pending"
 	end
 end
-```
+{% endhighlight %}
 
 Score flog : 75.3. Score presque divisé par deux : impressionnant. 
 
@@ -143,7 +143,7 @@ Par contre, contrairement à la première fonction :
 
 Autre solution, regrouper les différents cas par lots similaires. 
 
-```ruby
+{% highlight ruby %}
 def format_is_present_new(format)
 	ids = {
 		'ib' 	=> 'ebib',
@@ -188,7 +188,7 @@ def format_is_present_new(format)
 		return "pending"
 	end
 end	
-```
+{% endhighlight %}
 
 Quelques détails :
 

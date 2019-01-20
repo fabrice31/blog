@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'github-pages'
+gem 'github-pages', '40'
 gem 'redcarpet'
-gem 'rouge', '1.6.2'
-gem 'json', '1.8.2'
+gem 'rouge', '3.3.0'
+gem 'json'
+gem 'jekyll-tagging'
+gem 'ffi', '1.9.23'

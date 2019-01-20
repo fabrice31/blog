@@ -14,7 +14,7 @@ L'autre aspect important, c'est l'accès au site en fonction de la langue. Si vo
 
 ### Le test
 
-```ruby
+{% highlight ruby %}
 class TestProductionFrench < Test::Unit::TestCase
   def setup
     profile = Selenium::WebDriver::Firefox::Profile.new
@@ -33,7 +33,7 @@ class TestProductionFrench < Test::Unit::TestCase
     assert_equal("http://www.google.it", @browser.url)
   end
 end
-```
+{% endhighlight %}
 
 ### L'explication
 
@@ -53,8 +53,9 @@ Quelques rappels :
 * Changer la langue préférée pour l'affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined
 * Il est facile d'afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :
 
-```php
+{% highlight php %}
 <?php
     $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
     echo $lang;
-```
+{% endhighlight %}
+

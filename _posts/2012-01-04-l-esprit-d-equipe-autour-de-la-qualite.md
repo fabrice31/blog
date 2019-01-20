@@ -27,6 +27,6 @@ Et bien évidemment, j’ai précisé dans le mail que j’étais ouvert à tout
 
 Nous avions longuement rabâché qu’il fallait un produit de qualité, que nous devions tous tester le produit de façon à ne rien laisser passer.
 
-En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point “techniques” ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours “qualité”. L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme.
+En envoyant le mail, je ne m’attendais pas aux retours que j’ai eu. Je savais que certains point "techniques" ne feraient pas l’unanimité. Mais mes collègues ont été très intéressés, et m’ont montré qu’ils pensaient toujours "qualité". L’équipe a échangé pas mal de mail dans l’après-midi (cela faisait quelques semaines que je n’avais pas vu autant d’échange de mails sur un même sujet en aussi peu de temps). Des idées sont venus des développeurs, qui rejoignaient certaines idées d’améliorations que nous envisagions à moyen terme. 
 
 Tout cela pour dire qu’au final, la qualité d’un projet web, c’est aussi une histoire d’équipe : une équipe soudée, motivée peut faire de grandes choses dans le bon sens si on lui en donne l’opportunité.

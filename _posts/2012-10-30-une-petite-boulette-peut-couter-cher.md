@@ -32,14 +32,14 @@ Durant le test, nous vérifions plusieurs éléments, en fonction des options pa
 
 Nous avons donc une suite de vérifications, en ruby+watir
 
-```ruby
+{% highlight ruby %}
 find = find and (@browser.div.img).exists?
 if data['align'] == 'right'
   find = find and (@browser.div.img(:class => 'media-right')).exists?
 else
   find = find and (@browser.div.img(:class => 'media-left')).exists?
 end
-```
+{% endhighlight %}
 
 Pour traduire : On vérifie qu'une image est présente, puis si l'option alignement est "droite", je vérifie que l'image est aligné à droite. Sinon, je vérifie à gauche.
 
@@ -49,14 +49,14 @@ En ruby, le and est prioritaire sur le .exists. Je teste donc l'existence d'un b
 
 Le code corrigé ajoute juste des parenthèses pour changer la priorité.
 
-```ruby
+{% highlight ruby %}
 find = find && ((@browser.div.img).exists?)
 if data['align'] == 'right'
   find = find && ((@browser.div.img(:class => 'media-right')).exists?)
 else
   find = find && ((@browser.div.img(:class => 'media-left')).exists?)
 end    
-```
+{% endhighlight %}
 
 ### Conclusion
 
