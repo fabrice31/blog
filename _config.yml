@@ -10,7 +10,7 @@ permalink:        pretty
 title:            Je teste donc je suis
 tagline:          Journal d'un testeur
 description:      Blog d'un automatiseur de tests web.
-url:              http://blog.fabricebournisien.eu/
+url:              https://blog.fabricebournisien.eu/
 paginate:         5
 baseurl:          /
 author:

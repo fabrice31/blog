@@ -13,7 +13,7 @@ Prenons par exemple l'affichage d'une date avec ce code :
 Post.Date|datel(Lang.Get("Default date format"))
 {% endhighlight %}
 
-Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s'agit d'une chaîne de caractères indiquant le format.
+Notre outil étant multi langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s'agit d'une chaîne de caractères indiquant le format.
 
 On pourrait avoir HH:mm pour l'heure par exemple.
 
