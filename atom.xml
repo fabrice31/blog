@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Je teste donc je suis</title>
- <link href="http://blog.fabricebournisien.eu//atom.xml" rel="self"/>
- <link href="http://blog.fabricebournisien.eu//"/>
- <updated>2019-01-20T12:58:54+01:00</updated>
- <id>http://blog.fabricebournisien.eu/</id>
+ <link href="https://blog.fabricebournisien.eu//atom.xml" rel="self"/>
+ <link href="https://blog.fabricebournisien.eu//"/>
+ <updated>2019-05-31T23:10:15+02:00</updated>
+ <id>https://blog.fabricebournisien.eu/</id>
  <author>
    <name>Fabrice Bournisien</name>
    <email>fabrice.bournisien@gmail.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>L'important, c'est le paradigme</title>
-   <link href="http://blog.fabricebournisien.eu///2016/06/04/important-est-le-paradigme/"/>
+   <link href="https://blog.fabricebournisien.eu///2016/06/04/important-est-le-paradigme/"/>
    <updated>2016-06-04T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme</id>
+   <id>https://blog.fabricebournisien.eu//2016/06/04/important-est-le-paradigme</id>
    <content type="html">&lt;h3&gt;Technologie de tests&lt;/h3&gt;
 
 &lt;p&gt;Dans le passé, j&amp;#39;ai travaillé avec webtest, selenium en 2007/2008, mais ils ne me suffisaient pas. J&amp;#39;avais donc une stack classique depuis 5 ans déjà, améliorée de temps en temps par l&amp;#39;ajout d&amp;#39;une librairie ou une organisation de code différente.&lt;/p&gt;
@@ -75,9 +75,9 @@ Dans la nouvelle, j&amp;#39;ai le même rôle : j&amp;#39;automatise des tests p
  
  <entry>
    <title>L'empirique au service des tests</title>
-   <link href="http://blog.fabricebournisien.eu///2015/09/28/empirique-service-tests/"/>
+   <link href="https://blog.fabricebournisien.eu///2015/09/28/empirique-service-tests/"/>
    <updated>2015-09-28T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests</id>
+   <id>https://blog.fabricebournisien.eu//2015/09/28/empirique-service-tests</id>
    <content type="html">&lt;h3&gt;Contexte&lt;/h3&gt;
 
 &lt;p&gt;Je travaille souvent à tester des comportements liés à la vidéo. Vérifier qu&amp;#39;elle se déroule bien, qu&amp;#39;elle se finit au moment voulu, que les interactions sont possibles.
@@ -184,9 +184,9 @@ Nous avions à ce moment là environ 100h de tests, et pour certains projets, je
  
  <entry>
    <title>La simplicité n'est pas toujours simple</title>
-   <link href="http://blog.fabricebournisien.eu///2015/01/15/kiss-simple-n-est-pas-toujours-simple/"/>
+   <link href="https://blog.fabricebournisien.eu///2015/01/15/kiss-simple-n-est-pas-toujours-simple/"/>
    <updated>2015-01-15T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple</id>
+   <id>https://blog.fabricebournisien.eu//2015/01/15/kiss-simple-n-est-pas-toujours-simple</id>
    <content type="html">&lt;p&gt;Comme je le disais il y a peu, sur les gros projets, il est intéressant de &lt;a href=&quot;/2014/12/13/kiss-simple-et-efficace/&quot;&gt;surveiller la simplicité&lt;/a&gt; du code.
 J&amp;#39;utilise pour cela &lt;a href=&quot;https://rubygems.org/gems/flog&quot;&gt;flog&lt;/a&gt; qui calcule la complexité des méthodes.&lt;/p&gt;
 
@@ -382,9 +382,9 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
  
  <entry>
    <title>Petits plaisirs de la vie</title>
-   <link href="http://blog.fabricebournisien.eu///2015/01/07/petits-plaisirs-de-la-vie/"/>
+   <link href="https://blog.fabricebournisien.eu///2015/01/07/petits-plaisirs-de-la-vie/"/>
    <updated>2015-01-07T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie</id>
+   <id>https://blog.fabricebournisien.eu//2015/01/07/petits-plaisirs-de-la-vie</id>
    <content type="html">&lt;p&gt;L&amp;#39;année 2014 a été &lt;a href=&quot;/2014/09/09/bonne-annee-2014/&quot;&gt;longue et difficile&lt;/a&gt;. Les vacances de Noël ont failli être du même ordre :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -415,9 +415,9 @@ On définit par conséquent une zone grise, contenant les fonctions &amp;quot;à
  
  <entry>
    <title>KISS : Keep it simple and stupid</title>
-   <link href="http://blog.fabricebournisien.eu///2014/12/13/kiss-simple-et-efficace/"/>
+   <link href="https://blog.fabricebournisien.eu///2014/12/13/kiss-simple-et-efficace/"/>
    <updated>2014-12-13T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2014/12/13/kiss-simple-et-efficace</id>
+   <id>https://blog.fabricebournisien.eu//2014/12/13/kiss-simple-et-efficace</id>
    <content type="html">&lt;p&gt;Quand on travaille sur des gros projets, on a tendance à rajouter beaucoup de fonctions, de code, partout, à tout bout de champ.
 Il faut savoir prendre du recul, pour simplifier le code, et faire des choses simples et efficaces.&lt;/p&gt;
 
@@ -544,9 +544,9 @@ Certains points cités plus hauts ne sont pas triviaux à mettre en place, mais 
  
  <entry>
    <title>Bonne année 2014</title>
-   <link href="http://blog.fabricebournisien.eu///2014/09/09/bonne-annee-2014/"/>
+   <link href="https://blog.fabricebournisien.eu///2014/09/09/bonne-annee-2014/"/>
    <updated>2014-09-09T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2014/09/09/bonne-annee-2014</id>
+   <id>https://blog.fabricebournisien.eu//2014/09/09/bonne-annee-2014</id>
    <content type="html">&lt;p&gt;Il y a des années qui sont très bonnes, pleines de bonnes choses.
 Pour moi, la référence, c&amp;#39;était 2009 : je me suis marié, nous avons acheté notre appartement, changé de voiture, ma femme a trouvé un travail.&lt;/p&gt;
 
@@ -601,9 +601,9 @@ A tout ceci s&amp;#39;ajoute le fait que j&amp;#39;habite loin de mes familles, 
  
  <entry>
    <title>Changement de blog</title>
-   <link href="http://blog.fabricebournisien.eu///2014/07/05/changement-de-blog/"/>
+   <link href="https://blog.fabricebournisien.eu///2014/07/05/changement-de-blog/"/>
    <updated>2014-07-05T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2014/07/05/changement-de-blog</id>
+   <id>https://blog.fabricebournisien.eu//2014/07/05/changement-de-blog</id>
    <content type="html">&lt;p&gt;Depuis quelques semaines, j&amp;#39;avais envie de changer d&amp;#39;air pour mon blog : voir de nouvelles technologies, d&amp;#39;avoir un blog plus professionnel.&lt;/p&gt;
 
 &lt;p&gt;J&amp;#39;ai pas mal fouillé, et je suis très tenté par &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; et &lt;a href=&quot;https://github.com/poole/poole&quot;&gt;Poole&lt;/a&gt;, qui permettent d&amp;#39;avoir facilement un site statique écrit en markdown. Le tout hébérgé par github.&lt;/p&gt;
@@ -621,9 +621,9 @@ A tout ceci s&amp;#39;ajoute le fait que j&amp;#39;habite loin de mes familles, 
  
  <entry>
    <title>Sudweb 2014 - Un grand bol d'air frais</title>
-   <link href="http://blog.fabricebournisien.eu///2014/05/20/sudweb-2014-grand-bol-d-air-frais/"/>
+   <link href="https://blog.fabricebournisien.eu///2014/05/20/sudweb-2014-grand-bol-d-air-frais/"/>
    <updated>2014-05-20T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2014/05/20/sudweb-2014-grand-bol-d-air-frais</id>
+   <id>https://blog.fabricebournisien.eu//2014/05/20/sudweb-2014-grand-bol-d-air-frais</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://sudweb.fr/&quot;&gt;Sudweb&lt;/a&gt;, j&amp;#39;en avais parlé il y a 2 ans, en 2012. Cette année, ça se passait à Toulouse, j&amp;#39;y suis donc retourné. Le changement, c&amp;#39;est que j&amp;#39;y étais uniquement en tant que &amp;quot;spectateur&amp;quot;.&lt;/p&gt;
 
 &lt;h3&gt;Vendredi : des conférences et des papotages&lt;/h3&gt;
@@ -675,9 +675,9 @@ Cette année, j&amp;#39;avais un coup de coeur pour un atelier prévu de longue 
  
  <entry>
    <title>L'allié du testeur &#58; l'affichage synthétique</title>
-   <link href="http://blog.fabricebournisien.eu///2014/02/10/l-allie-du-testeur-l-affichage-synthetique/"/>
+   <link href="https://blog.fabricebournisien.eu///2014/02/10/l-allie-du-testeur-l-affichage-synthetique/"/>
    <updated>2014-02-10T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2014/02/10/l-allie-du-testeur-l-affichage-synthetique</id>
+   <id>https://blog.fabricebournisien.eu//2014/02/10/l-allie-du-testeur-l-affichage-synthetique</id>
    <content type="html">&lt;p&gt;Comme beaucoup de gens, je travaille toujours sur plusieurs projets à la fois. Mon rôle principal est de créer et maintenir des tests fonctionnels automatiques.&lt;/p&gt;
 
 &lt;p&gt;Pour gérer tout cela, nous sommes 2 personnes. Mais nous avons aussi des tests manuels à faire avant chaque mise en production de chaque projet.&lt;/p&gt;
@@ -725,9 +725,9 @@ Et voilà ce que ça donne :&lt;/p&gt;
  
  <entry>
    <title>Comment j'ai changé de travail sans bouger de ma chaise</title>
-   <link href="http://blog.fabricebournisien.eu///2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise/"/>
    <updated>2013-11-05T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise</id>
+   <id>https://blog.fabricebournisien.eu//2013/11/05/comment-j-ai-change-de-travail-sans-bouger-de-ma-chaise</id>
    <content type="html">&lt;p&gt;Cela fait plusieurs années que j&amp;#39;assure la qualité d&amp;#39;overblog.com :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -799,16 +799,16 @@ Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait p
  
  <entry>
    <title>Bug de l'espace temps</title>
-   <link href="http://blog.fabricebournisien.eu///2013/10/17/bug-de-l-espace-temps/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/10/17/bug-de-l-espace-temps/"/>
    <updated>2013-10-17T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps</id>
+   <id>https://blog.fabricebournisien.eu//2013/10/17/bug-de-l-espace-temps</id>
    <content type="html">&lt;p&gt;Dans notre outil, nous utilisons le langage twig. Cela permet une grande flexibilité, et d&amp;#39;avoir un moteur déjà bien robuste.&lt;/p&gt;
 
 &lt;p&gt;Prenons par exemple l&amp;#39;affichage d&amp;#39;une date avec ce code :&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;datel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Default date format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Notre outil étant mutli langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&amp;#39;agit d&amp;#39;une chaîne de caractères indiquant le format.&lt;/p&gt;
+&lt;p&gt;Notre outil étant multi langue, et les formats de date changeant avec la langue, nous utilisons une locale. En pratique, il s&amp;#39;agit d&amp;#39;une chaîne de caractères indiquant le format.&lt;/p&gt;
 
 &lt;p&gt;On pourrait avoir HH:mm pour l&amp;#39;heure par exemple.&lt;/p&gt;
 
@@ -832,9 +832,9 @@ Ce poste paraissait trop beau pour être vrai, mais il était pourtant parfait p
  
  <entry>
    <title>Affichage des résultats de tests</title>
-   <link href="http://blog.fabricebournisien.eu///2013/06/17/affichage-des-resultats-de-tests/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/06/17/affichage-des-resultats-de-tests/"/>
    <updated>2013-06-17T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/06/17/affichage-des-resultats-de-tests</id>
+   <id>https://blog.fabricebournisien.eu//2013/06/17/affichage-des-resultats-de-tests</id>
    <content type="html">&lt;p&gt;Lorsqu&amp;#39;on teste avec jenkins, cucumber et watir, on obtient des rapports détaillés, qu&amp;#39;il faut lire et analyser en permanence.&lt;/p&gt;
 
 &lt;p&gt;Depuis plusieurs mois, nous avons dans nos locaux une télé dédiée à l&amp;#39;affichage de l&amp;#39;état général de l&amp;#39;ensemble de nos tests. Pour cela, le plugin Jenkins Wall Display nous a suffit dans un premier temps. Nous affichons sur la télé une page web qui fait défiler&lt;/p&gt;
@@ -921,9 +921,9 @@ On a beau regrouper toutes ces informations, il arrive un moment où l&amp;#39;a
  
  <entry>
    <title>Ruby - OAuth v1.0a pour optimiser les tests</title>
-   <link href="http://blog.fabricebournisien.eu///2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests/"/>
    <updated>2013-06-10T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests</id>
+   <id>https://blog.fabricebournisien.eu//2013/06/10/ruby-oauth-v1.0a-pour-optimiser-les-tests</id>
    <content type="html">&lt;p&gt;Lors de tests, il arrive souvent qu&amp;#39;on ait besoin de &amp;quot;faire le ménage&amp;quot; pour retrouver un état comme à l&amp;#39;origine.
 Plusieurs stratégies possibles, en fonction des technologies qu&amp;#39;on souhaite utiliser.&lt;/p&gt;
 
@@ -1097,9 +1097,9 @@ Voici deux exemples &amp;quot;simplifiés&amp;quot; pour mon exemple.&lt;/p&gt;
  
  <entry>
    <title>Comment organiser les tests sur le long terme</title>
-   <link href="http://blog.fabricebournisien.eu///2013/04/22/comment-organiser-les-tests-sur-le-long-terme/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/04/22/comment-organiser-les-tests-sur-le-long-terme/"/>
    <updated>2013-04-22T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme</id>
+   <id>https://blog.fabricebournisien.eu//2013/04/22/comment-organiser-les-tests-sur-le-long-terme</id>
    <content type="html">&lt;h3&gt;Exécuter une partie des tests&lt;/h3&gt;
 
 &lt;p&gt;Les scénarios sont taggués pour être lancé par jenkins par la commande : &lt;code&gt;cucumber --tag @montag&lt;/code&gt;
@@ -1151,9 +1151,9 @@ On ne peut donc pas exécuter les tests pour IE en parallèle sur le même serve
  
  <entry>
    <title>Des tests automatiques avec contenus aléatoires</title>
-   <link href="http://blog.fabricebournisien.eu///2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/"/>
    <updated>2013-04-13T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires</id>
+   <id>https://blog.fabricebournisien.eu//2013/04/13/des-tests-automatiques-avec-contenus-aleatoires</id>
    <content type="html">&lt;p&gt;Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &amp;quot;bonne chose&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;Prenons un exemple de deux tests exécutés en même temps :&lt;/p&gt;
@@ -1234,9 +1234,9 @@ Et je l&amp;#39;affiche en console (bien pratique pour débugguer)&lt;/p&gt;
  
  <entry>
    <title>L'armée ne paie pas toujours ses militaires</title>
-   <link href="http://blog.fabricebournisien.eu///2013/04/02/l-armee-paie-ses-militaires-ou-pas/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/04/02/l-armee-paie-ses-militaires-ou-pas/"/>
    <updated>2013-04-02T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas</id>
+   <id>https://blog.fabricebournisien.eu//2013/04/02/l-armee-paie-ses-militaires-ou-pas</id>
    <content type="html">&lt;p&gt;Il y a plusieurs mois, j&amp;#39;avais tweeté &amp;quot;Les bugs, ça coûte cher : Noël sans solde pour des milliers de soldats français&amp;quot;&lt;/p&gt;
 
 &lt;p&gt;Source : &lt;a href=&quot;http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique_1809606_3210.html&quot;&gt;http://www.lemonde.fr/international/article/2012/12/21/des-milliers-de-soldats-francais-non-payes-a-cause-d-un-bug-informatique&lt;em&gt;1809606&lt;/em&gt;3210.html&lt;/a&gt;&lt;/p&gt;
@@ -1293,9 +1293,9 @@ Et je l&amp;#39;affiche en console (bien pratique pour débugguer)&lt;/p&gt;
  
  <entry>
    <title>Quand un commerçant en ligne a des bugs</title>
-   <link href="http://blog.fabricebournisien.eu///2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/03/18/quand-un-commercant-en-ligne-a-des-bugs/"/>
    <updated>2013-03-18T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs</id>
+   <id>https://blog.fabricebournisien.eu//2013/03/18/quand-un-commercant-en-ligne-a-des-bugs</id>
    <content type="html">&lt;p&gt;On peut être un grand nom de la vente en ligne, mais avoir malgré cela des problèmes sur son site web.&lt;/p&gt;
 
 &lt;p&gt;Parfois, cela se passe &amp;quot;presque bien&amp;quot; : tout le monde se souvient encore de l&amp;#39;homme nu de La Redoute (une photo présentant un produit avec en fond un homme nu). Tout le monde a rigolé, s&amp;#39;est moqué d&amp;#39;eux. Ils ont corrigé le tir, puis ont lancé un jeu pour trouver certains objets dans d&amp;#39;autres images pour les gagner.&lt;/p&gt;
@@ -1396,9 +1396,9 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
  
  <entry>
    <title>Tester sur plusieurs navigateurs</title>
-   <link href="http://blog.fabricebournisien.eu///2013/02/26/tester-sur-plusieurs-navigateurs/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/02/26/tester-sur-plusieurs-navigateurs/"/>
    <updated>2013-02-26T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/02/26/tester-sur-plusieurs-navigateurs</id>
+   <id>https://blog.fabricebournisien.eu//2013/02/26/tester-sur-plusieurs-navigateurs</id>
    <content type="html">&lt;p&gt;Tester de façon automatique, c&amp;#39;est bien. Le faire sur plusieurs environnements, c&amp;#39;est mieux.&lt;/p&gt;
 
 &lt;p&gt;Dans mon cas, par défaut, mes tests sont lancés sur Firefox. Sur un serveur jenkins-ci (sur debian), c&amp;#39;est en effet le navigateur le plus facile à gérer. Ils sont exécutés une fois par jour, et aussi à la demande.&lt;/p&gt;
@@ -1559,9 +1559,9 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
  
  <entry>
    <title>Il faut savoir se fier à ses tests</title>
-   <link href="http://blog.fabricebournisien.eu///2013/01/22/il-faut-savoir-se-fier-a-ses-tests/"/>
+   <link href="https://blog.fabricebournisien.eu///2013/01/22/il-faut-savoir-se-fier-a-ses-tests/"/>
    <updated>2013-01-22T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests</id>
+   <id>https://blog.fabricebournisien.eu//2013/01/22/il-faut-savoir-se-fier-a-ses-tests</id>
    <content type="html">&lt;p&gt;Vroici l&amp;#39;histoire d&amp;#39;un test fonctionnel &amp;quot;basique&amp;quot; mais techniquement compliqué à mettre en place.&lt;/p&gt;
 
 &lt;h3&gt;Passé&lt;/h3&gt;
@@ -1612,9 +1612,9 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
  
  <entry>
    <title>Tester un site multilingue</title>
-   <link href="http://blog.fabricebournisien.eu///2012/12/06/tester-un-site-multilingue/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/12/06/tester-un-site-multilingue/"/>
    <updated>2012-12-06T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue</id>
+   <id>https://blog.fabricebournisien.eu//2012/12/06/tester-un-site-multilingue</id>
    <content type="html">&lt;p&gt;Travailler sur un site international demande de multiplier les tests.&lt;/p&gt;
 
 &lt;p&gt;D&amp;#39;abord, si l&amp;#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&amp;#39;est pas fait. Le principal risque des &amp;quot;langues&amp;quot; est l&amp;#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.&lt;/p&gt;
@@ -1672,9 +1672,9 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.&lt;/
  
  <entry>
    <title>Une petite boulette peut coûter cher</title>
-   <link href="http://blog.fabricebournisien.eu///2012/10/30/une-petite-boulette-peut-couter-cher/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/10/30/une-petite-boulette-peut-couter-cher/"/>
    <updated>2012-10-30T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher</id>
+   <id>https://blog.fabricebournisien.eu//2012/10/30/une-petite-boulette-peut-couter-cher</id>
    <content type="html">&lt;p&gt;Comme je l&amp;#39;ai déjà dit, je développe des tests sous cucumber / watir pour un gros projet. J&amp;#39;ai quelques centaines de scénarios, des milliers d&amp;#39;étapes, le tout regroupé par fonctionnalité. Cela nous permet de voir rapidement si on peut mettre en prod ou non : si une fonctionnalité est testée &amp;quot;instable&amp;quot;, il faut lire le rapport détaillé.
 Deux anecdotes récentes à ce sujet.&lt;/p&gt;
 
@@ -1736,9 +1736,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>L'art de signaler un bug</title>
-   <link href="http://blog.fabricebournisien.eu///2012/09/17/l-art-de-signaler-un-bug/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/09/17/l-art-de-signaler-un-bug/"/>
    <updated>2012-09-17T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug</id>
+   <id>https://blog.fabricebournisien.eu//2012/09/17/l-art-de-signaler-un-bug</id>
    <content type="html">&lt;p&gt;Lorsqu&amp;#39;un utilisateur lambda signale un bug, il a tendance à penser qu&amp;#39;il est évident, et qu&amp;#39;il n&amp;#39;a pas besoin de donner des informations. On se retrouve alors à devoir analyser des mails ne contenant peu ou pas d&amp;#39;informations, à leur demander des détails, ou à tester plusieurs cas possibles, en espérent &amp;quot;tomber dessus par hasard&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;Dans tous les cas, il y a beaucoup de temps &amp;quot;perdu&amp;quot; pour trouver un bug, qui parfois n&amp;#39;est pas lié à votre site web, mais à tout autre chose : mauvaise manipulation, antivirus, etc.&lt;/p&gt;
@@ -1769,9 +1769,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Les logiciels tiers, une calamité</title>
-   <link href="http://blog.fabricebournisien.eu///2012/07/19/les-logiciels-tiers-une-calamite/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/07/19/les-logiciels-tiers-une-calamite/"/>
    <updated>2012-07-19T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/07/19/les-logiciels-tiers-une-calamite</id>
+   <id>https://blog.fabricebournisien.eu//2012/07/19/les-logiciels-tiers-une-calamite</id>
    <content type="html">&lt;p&gt;Lorsqu&amp;#39;on rencontre des problèmes vraiment étranges sur une fonction particulière, on pense d&amp;#39;abord que cela n&amp;#39;a jamais pu marcher, on ne comprend plus.&lt;/p&gt;
 
 &lt;p&gt;Puis on enquête. Et parfois, la cause du problème est une surprise, autant pour nous que pour les personnes touchées. Quelques exemples plus ou moins vieux.&lt;/p&gt;
@@ -1828,9 +1828,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Les tests doivent-ils tester ?</title>
-   <link href="http://blog.fabricebournisien.eu///2012/06/18/les-tests-doivent-ils-tester/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/06/18/les-tests-doivent-ils-tester/"/>
    <updated>2012-06-18T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester</id>
+   <id>https://blog.fabricebournisien.eu//2012/06/18/les-tests-doivent-ils-tester</id>
    <content type="html">&lt;h3&gt;Le juste équilibre dans les tests&lt;/h3&gt;
 
 &lt;p&gt;Mettre en place des &lt;strong&gt;tests fonctionnels automatiques&lt;/strong&gt; revient à jouer à l&amp;#39;équilibriste entre l&amp;#39;existant (déjà testé et &amp;quot;stable&amp;quot;), les nouvelles fonctionnalités (et leurs effets de bords sur l&amp;#39;existant), et des eléments externes : navigateurs (et mises à jours), plugins, utilisateurs...&lt;/p&gt;
@@ -1879,9 +1879,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Lancement d'une beta publique</title>
-   <link href="http://blog.fabricebournisien.eu///2012/06/07/lancement-d-une-beta-publique/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/06/07/lancement-d-une-beta-publique/"/>
    <updated>2012-06-07T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique</id>
+   <id>https://blog.fabricebournisien.eu//2012/06/07/lancement-d-une-beta-publique</id>
    <content type="html">&lt;p&gt;Cette semaine, nous lançons officiellement la beta publique de notre produit phare, &lt;a href=&quot;http://www.overblog.com&quot;&gt;OverBlog&lt;/a&gt;. Cela fait près d&amp;#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&amp;#39;organisation de travail (passage à &lt;a href=&quot;http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)&quot;&gt;scrum&lt;/a&gt;), nous avons accentué le TDD (&lt;a href=&quot;http://fr.wikipedia.org/wiki/TDD&quot;&gt;test driven development&lt;/a&gt;), nous avons changé de technologie (&lt;a href=&quot;http://symfony.com/&quot;&gt;Symfony&lt;/a&gt;)&lt;/p&gt;
 
 &lt;p&gt;Nous avons mis en place de nombreux contrôles afin de mieux tester et s&amp;#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.&lt;/p&gt;
@@ -1912,9 +1912,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Quand le texte rencontre les tests automatiques</title>
-   <link href="http://blog.fabricebournisien.eu///2012/06/04/tests-automatiques/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/06/04/tests-automatiques/"/>
    <updated>2012-06-04T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/06/04/tests-automatiques</id>
+   <id>https://blog.fabricebournisien.eu//2012/06/04/tests-automatiques</id>
    <content type="html">&lt;p&gt;Lors de SudWeb en mai, j&amp;#39;ai discuté avec le créateur de &lt;a href=&quot;http://casperjs.org/&quot;&gt;CasperJS&lt;/a&gt; pour lui expliquer pourquoi je préférais Watir à son outil.&lt;/p&gt;
 
 &lt;h3&gt;Petit tour rapide des défauts de CasperJS&lt;/h3&gt;
@@ -1975,9 +1975,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Les bugs sont partout, mêmes dans les jeux</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux/"/>
    <updated>2012-05-31T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/31/les-bugs-sont-partout-memes-dans-les-jeux</id>
    <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Witch Doctors should no longer receive an error if they kill a Shadow Clone with a Damage-Over-Time (DoT) skill after it&amp;#39;s launched a Firebomb but before it&amp;#39;s reached its target
 &lt;br/&gt;Blizzard&lt;/p&gt;
@@ -2003,9 +2003,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>SudWeb 2012 : j'y étais, et vous ?</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/29/sudweb-2012-j-y-etais-et-vous/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/29/sudweb-2012-j-y-etais-et-vous/"/>
    <updated>2012-05-29T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/29/sudweb-2012-j-y-etais-et-vous</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/29/sudweb-2012-j-y-etais-et-vous</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://www.sudweb.fr/&quot;&gt;SudWeb&lt;/a&gt;, conférence sur le faire-savoir dans le domaine du web au sens large, se tenait vendredi et samedi dernier.&lt;/p&gt;
 
 &lt;p&gt;Depuis, les tweets et les articles sur le sujet racontant ce grand moment se suivent, et se ressemblent tous, tellement tout le monde a trouvé l&amp;#39;événement bien organisé et intéressant. Voici ma vision des choses :)&lt;/p&gt;
@@ -2076,9 +2076,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Les tests sont comme une boite de chocolats</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/23/les-tests-sont-comme-une-boite-de-chocolat/"/>
    <updated>2012-05-23T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/23/les-tests-sont-comme-une-boite-de-chocolat</id>
    <content type="html">&lt;blockquote&gt;
 &lt;p&gt;Testing is like a box of chocolates. You never know what you’re gonna get.
 &lt;br/&gt; Peter Shih&lt;/p&gt;
@@ -2104,9 +2104,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Valider un thème</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/07/valider-un-theme/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/07/valider-un-theme/"/>
    <updated>2012-05-07T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/07/valider-un-theme</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/07/valider-un-theme</id>
    <content type="html">&lt;h3&gt;Choisir un thème&lt;/h3&gt;
 
 &lt;p&gt;Lorsqu&amp;#39;on crée son blog, on regarde souvent les fonctionnalités de l&amp;#39;outil, mais on est surtout intéressé par le thème.&lt;/p&gt;
@@ -2263,9 +2263,9 @@ Deux anecdotes récentes à ce sujet.&lt;/p&gt;
  
  <entry>
    <title>Tests automatiques : watir</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/06/tests-automatiques-watir/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/06/tests-automatiques-watir/"/>
    <updated>2012-05-06T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/06/tests-automatiques-watir</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://watirwebdriver.com/&quot;&gt;Watir-webdriver&lt;/a&gt; est une librairie qui permet de contrôler le navigateur : vous écrivez un code qui vous permet de simuler le comportement d&amp;#39;un utilisateur. Cela vous permet d&amp;#39;automatiser des tests, afin de pouvoir les effectuer systématiquement, sans intervention humaine.
 Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniquement que le lien contact est bien présent, et que le mot &lt;strong&gt;qualité&lt;/strong&gt; apparait sur la page.&lt;/p&gt;
 
@@ -2312,9 +2312,9 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
  
  <entry>
    <title>La qualité web, c'est quoi ?</title>
-   <link href="http://blog.fabricebournisien.eu///2012/05/04/la-qualite-web-c-est-quoi/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/05/04/la-qualite-web-c-est-quoi/"/>
    <updated>2012-05-04T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/05/04/la-qualite-web-c-est-quoi</id>
+   <id>https://blog.fabricebournisien.eu//2012/05/04/la-qualite-web-c-est-quoi</id>
    <content type="html">&lt;p&gt;Lorsqu&amp;#39;un visiteur se promène sur internet, à la recherche d&amp;#39;informations, de produits etc... il ne voit pas ce qui se passe derrière le site web :&lt;/p&gt;
 
 &lt;ul&gt;
@@ -2339,9 +2339,9 @@ Voici une petite demonstration de watir-webdriver. Basique, il vérifie uniqueme
  
  <entry>
    <title>L'environnement et les tests</title>
-   <link href="http://blog.fabricebournisien.eu///2012/02/09/l-environnement-et-les-tests/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/02/09/l-environnement-et-les-tests/"/>
    <updated>2012-02-09T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests</id>
+   <id>https://blog.fabricebournisien.eu//2012/02/09/l-environnement-et-les-tests</id>
    <content type="html">&lt;p&gt;Cet article n&amp;#39;a rien à voir avec l&amp;#39;écologie, mais beaucoup avec l&amp;#39;&lt;a href=&quot;http://fr.wikipedia.org/wiki/Environnement_%28homonymie%29#Informatique&quot;&gt;environnement&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Lorsque l&amp;#39;on teste un projet web, il faut toujours savoir &amp;quot;où&amp;quot; nous testons : est-on sur un serveur de test ? de développement ? de pré-prod ? de production ?&lt;/p&gt;
@@ -2404,9 +2404,9 @@ Faire lancer les tests par les développeurs en environnement de développement.
  
  <entry>
    <title>L’esprit d’équipe autour de la qualité</title>
-   <link href="http://blog.fabricebournisien.eu///2012/01/04/l-esprit-d-equipe-autour-de-la-qualite/"/>
+   <link href="https://blog.fabricebournisien.eu///2012/01/04/l-esprit-d-equipe-autour-de-la-qualite/"/>
    <updated>2012-01-04T00:00:00+01:00</updated>
-   <id>http://blog.fabricebournisien.eu//2012/01/04/l-esprit-d-equipe-autour-de-la-qualite</id>
+   <id>https://blog.fabricebournisien.eu//2012/01/04/l-esprit-d-equipe-autour-de-la-qualite</id>
    <content type="html">&lt;h3&gt;Contexte&lt;/h3&gt;
 
 &lt;p&gt;La société pour laquelle je travaille est en train de refaire son principal projet depuis le début. Au programme : changement de technologies. Nous lancerons ce nouveau projet d’ici l’été, et nous travaillons déjà depuis quelques mois sur le sujet.&lt;/p&gt;
@@ -2441,9 +2441,9 @@ Faire lancer les tests par les développeurs en environnement de développement.
  
  <entry>
    <title>Cucumber : des tests plus simples pour tous</title>
-   <link href="http://blog.fabricebournisien.eu///2011/10/25/cucumber-tests-simples-pour-tous/"/>
+   <link href="https://blog.fabricebournisien.eu///2011/10/25/cucumber-tests-simples-pour-tous/"/>
    <updated>2011-10-25T00:00:00+02:00</updated>
-   <id>http://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous</id>
+   <id>https://blog.fabricebournisien.eu//2011/10/25/cucumber-tests-simples-pour-tous</id>
    <content type="html">&lt;p&gt;Mettre régulièrement à jour ses batteries de tests est indispensable.&lt;/p&gt;
 
 &lt;p&gt;Cela permet de découvrir un test qui ne fonctionne plus, d&amp;#39;optimiser le comportement des tests. Parfois, on intègre une nouvelle technologie qui change tout dans la façon de tester.&lt;/p&gt;
