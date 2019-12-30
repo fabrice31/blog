@@ -128,6 +128,10 @@
           
         
       
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -147,6 +151,109 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2013/04/13/des-tests-automatiques-avec-contenus-aleatoires/" itemprop="url" rel="bookmark">
+        Des tests automatiques avec contenus aléatoires
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2013-04-13" itemprop="datePublished">
+			
+			13
+			avril
+			  
+			2013
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/cucumber">Cucumber</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Si vous avez plusieurs tests qui s’exécutent en même temps sur le même environnement (le serveur de test), il faut veiller à bien tester la &quot;bonne chose&quot;.</p>
+
+<p>Prenons un exemple de deux tests exécutés en même temps :</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@scenario1</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Test</span> <span class="n">modif</span> <span class="n">pseudo</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">"pseudo-tmp"</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo-tmp"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo-tmp"</span>
+<span class="vi">@scenario2</span>
+<span class="no">Scenario</span><span class="p">:</span> <span class="no">Pseudo</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span> <span class="k">when</span> <span class="n">you</span> <span class="n">publish</span>
+   <span class="no">Given</span> <span class="no">I</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">my</span> <span class="s2">"pseudo"</span> <span class="n">account</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">change</span> <span class="n">my</span> <span class="n">nickname</span> <span class="k">for</span> <span class="s2">""</span>
+     <span class="no">When</span> <span class="no">I</span> <span class="n">publish</span> <span class="n">an</span> <span class="n">article</span> <span class="s2">"test pseudo"</span>
+     <span class="no">Then</span> <span class="n">my</span> <span class="n">published</span> <span class="n">pseudo</span> <span class="n">is</span> <span class="s2">"pseudo"</span></code></pre></div>
+
+<p>Si les 2 scénarios se terminent &quot;au même moment&quot;, nous aurons sur la page de contrôle 2 articles. L&#39;un signé avec &quot;pseudo-tmp&quot;, et l&#39;autre avec &quot;pseudo&quot;.</p>
+
+<p>Si la vérification vérifie dans tout le contenu de la page des publications et pas seulement le dernier élément, cela pourrait bien se passer.</p>
+
+<p>A un détail près :</p>
+
+<ul>
+<li>A 10h, le test s’exécute, il fonctionne.</li>
+<li>A 15h, le test s’exécute mais les articles parus à 10h sont peut-être toujours affichés. On aura donc bien un article &quot;test pseudo&quot; sur la page alors qu&#39;un bug sera présent.</li>
+</ul>
+
+<p>Ma solution : <strong>ajouter de l&#39;aléatoire dans les tests</strong>.
+Avant chaque scénario, je crée un token, composé de :
+* 2 lettres du navigateur (ff, ie, ch..)
+* un nombre aléatoire.
+Et je l&#39;affiche en console (bien pratique pour débugguer)</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Before</span> <span class="k">do</span>
+  <span class="vg">$token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
+  <span class="nb">puts</span> <span class="s2">"Token for this test : </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span>
+  <span class="sr">/* je vous fais grace du code pour lancer le navigateur, ... */</span> 
+<span class="no">End</span></code></pre></div>
+
+<p>Ma classe Token :</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Use to got random value</span>
+<span class="c1"># Useful to post a data with random string but keep the value to check it later</span>
+<span class="c1"># Author:: Fabrice</span>
+<span class="k">class</span> <span class="nc">Token</span>
+  <span class="c1"># Create a new token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@value</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">ENV</span><span class="p">[</span><span class="s1">'BROWSER'</span><span class="p">]</span><span class="si">}#{</span><span class="mi">256</span><span class="o">*</span><span class="mi">256</span><span class="o">+</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+  <span class="c1"># Get the value of the last token</span>
+  <span class="c1"># Author:: Fabrice</span>
+  <span class="k">def</span> <span class="nf">value</span>
+    <span class="vi">@value</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Ensuite, sans modifier le scénario, on modifie le code des étapes. Lorsqu&#39;on sauve une donnée, on ajoute le token &quot;courant&quot; dans le champ.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">title</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span></code></pre></div>
+
+<p>Et côté vérification, on en tient compte également.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">open_article</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="kp">false</span><span class="p">)</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vg">$token</span><span class="p">.</span><span class="nf">value</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">else</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">link</span><span class="p">(</span><span class="ss">:text</span> <span class="o">=&gt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="s2">"</span><span class="p">).</span><span class="nf">click</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>Parfois, on a besoin de pouvoir jouer &quot;sans token&quot; pour des points bien précis : on prévoit alors un paramètre pour s&#39;en passer. (Exemple, pour la saisie d&#39;un email)</p>
+
+<p>Ce genre de solution peut aussi vous éviter des effets de bords si vous publiez sur le même compte des articles avec le même titre. (Ceci, c&#39;est un autre test à part entière)</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -591,84 +698,6 @@ Attention, pas de format indiqué : 25,10 / 25.10 / 25€10 : bonne chance.</li>
 <p>J&#39;ai vu un faux positif plutôt qu&#39;un bug réel, alors que j&#39;expliquais ce risque il y a longtemps.</p>
 
 <p>J&#39;ai l&#39;impression d&#39;avoir échoué à garantir la qualité de notre produit. J&#39;ai eu trop confiance dans mes collègues, et pas assez en moi.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/12/06/tester-un-site-multilingue/" itemprop="url" rel="bookmark">
-        Tester un site multilingue
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-12-06" itemprop="datePublished">
-			
-			6
-			décembre
-			
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/test">Test</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
-
-<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
-
-<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
-
-<h3>Le test</h3>
-
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
-  <span class="k">def</span> <span class="nf">setup</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
-    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
-    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">teardown</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_it</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
-    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
-    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
-
-<h3>L&#39;explication</h3>
-
-<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
-
-<ul>
-<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
-<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
-<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
-<li>Ligne 18 à 21 : second test, depuis google.fr</li>
-</ul>
-
-<h3>Pourquoi j&#39;ai perdu du temps</h3>
-
-<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
-
-<p>Quelques rappels :</p>
-
-<ul>
-<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
-<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
-</ul>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span></code></pre></div>
 </div>
   </div>
   

@@ -128,6 +128,10 @@
           
         
       
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -147,6 +151,47 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2019/12/30/blog-page-statique-simple-et-complique/" itemprop="url" rel="bookmark">
+        Blog, page statique : simple et compliqué à la fois
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2019-12-30" itemprop="datePublished">
+			
+			30
+			décembre
+			
+			2019
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Il y a quelques années, j&#39;ai déménagé mon blog d&#39;une plateforme de blog jusqu&#39;à github pages. C&#39;était à la mode, ça me permettait d&#39;être autonome, de me faire la main sur des technos que je ne maitrisais pas à l&#39;époque.</p>
+
+<p>Les pages statiques, pour un site qui ne bouge pas trop, c&#39;est l&#39;idéal : rapide, léger, et efficace. L&#39;interet est surtout qu&#39;on n&#39;a pas de langage de script qui calcule encore et encore les mêmes pages. C&#39;est facile, une commande jekyll, et on génère son blog, tout marche comme sur des roulettes. Il suffit d&#39;un repo github, de pusher, et github se charge de générer les pages en fonction du code envoyé.</p>
+
+<p>Enfin, ça, c&#39;est la théorie. En pratique, je voulais quelques fonctions qui n&#39;existaient pas sur github pages, je devais donc avoir la stack installée en local, générer le site, puis envoyer le résultat fini. Pas de problème en soi. En particulier, j&#39;utilisais les tags de façon non standard : j&#39;avais donc du code ruby spécifique, pour gérer mes meta données supplémentaires.</p>
+
+<p>Je publie rarement. Il y a même des années où je ne publie pas. Et puis un jour, été 2018, j&#39;ai voulu reprendre la main dessus, corriger une faute d&#39;orthographe. Depuis la dernière fois que je l&#39;avais tenu à jour, il s&#39;était écoulé plusieurs mois. Et j&#39;avais surtout changé d&#39;ordinateur, passant d&#39;un ancien mac à un pc sous windows. Et sous ce pc, pas moyen de faire fonctionner la stack.</p>
+
+<p>Lorsque j&#39;ai installé la gem jekyll, je n&#39;avais plus l&#39;info de la version que j&#39;avais utilisé. Et évidemment, celle prise par défaut n&#39;était pas compatible avec certaines extensions que j&#39;utilisais. Je mets donc à jour les gems, les unes après les autres. En tenant à jour la configuration du projet, ce qui n&#39;est pas une mince affaire. </p>
+
+<p>Entre les documentations incomplètes, les erreurs de compilations pointant vers des bugs vieux de deux ans, j&#39;ai cru devenir chèvre. Dans la majorité des cas, il s&#39;agissait de bug spécifiques à Windows, évidemment. Et donc, aucun moyen de s&#39;assurer que ce n&#39;était pas le cas sur mac avec mon ancienne configuration. A plusieurs reprises, j&#39;ai passé la soirée à installer ruby, les gems, vérifier que cela marchait ou pas.</p>
+
+<p>Puis, de guerre las, j&#39;ai abandonné cette idée : j&#39;ai regardé les autres générateurs de sites statiques. J&#39;ai testé des scripts de migration de contenu entre jekyll et hugo, et je rencontrais systématiquement des problèmes. Evidemment, la doc ne le mentionne pas, mais la migration n&#39;était possible qu&#39;avec une version de jekyll plus ancienne que la mienne. J&#39;ai testé d&#39;autres outils, en quelques instants, et parfois de façon très décevante : quand rien dans la doc n&#39;indique qu&#39;il faut un serveur php local pour générer les pages, je n&#39;appelle pas ça un générateur de site statique. Quand je vois une méthode soit disant &quot;full javascript, sans installation&quot; mais qu&#39;en tentant de l&#39;utiliser, je dois installer node.js et une multitude de dépendances, j&#39;ai tendance à trouver ça pénible.</p>
+
+<p>Finalement, j&#39;ai fini par trouver une solution récemment : j&#39;ai installée une VM Ubuntu sur mon pc, dans laquelle j&#39;ai pu installer ruby, mes gems à jour, importer mon blog, et générer sans aucun souci la mise à jour du blog. Le plus drôle, c&#39;est que le code que j&#39;utilisais pour gérer les tags a pu être totalemnt supprimé : un plugin récent fait parfaitement l&#39;affaire. Et j&#39;ai pu mettre en place toutes les astuces que j&#39;ai vu durant ma quête, pour optimiser la génération de mon blog, etc.</p>
+
+<p>Au final, j&#39;ai appris beaucoup de choses, dans des domaines assez variés. Mais j&#39;ai l&#39;impression d&#39;avoir perdu surtout beaucoup de temps, et cela a mis ma motivation à rude épreuve de ne pas pouvoir bloguer comme je le souhaitais.</p>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -618,153 +663,6 @@ On définit par conséquent une zone grise, contenant les fonctions &quot;à vé
 </ul>
 
 <p>Les petits plaisirs de la vie font mon bonheur. N&#39;oubliez jamais vos petits plaisirs.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2014/12/13/kiss-simple-et-efficace/" itemprop="url" rel="bookmark">
-        KISS : Keep it simple and stupid
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2014-12-13" itemprop="datePublished">
-			
-			13
-			décembre
-			
-			2014
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-		- <a href="/tag/ruby">Ruby</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Quand on travaille sur des gros projets, on a tendance à rajouter beaucoup de fonctions, de code, partout, à tout bout de champ.
-Il faut savoir prendre du recul, pour simplifier le code, et faire des choses simples et efficaces.</p>
-
-<p>Dans le cadre de mon travail, l&#39;équipe test a pas mal changé cet été, avec 2 nouveaux arrivants. Ca tombe bien, on a aussi récupéré des nouveaux projets à tester.
-C&#39;est en les formant à nos méthodes, notre code, que j&#39;ai repéré des améliorations à faire, et qu&#39;ils ont fait des suggestions intéressantes.</p>
-
-<p>Avec leur arrivée, une partie de ma charge de travail a pu diminuer un peu, me permettant de réflechir, de me poser des questions, de chercher des idées &quot;innovantes&quot; pour résoudre des problèmes mis de côté par manque de temps depuis des semaines (voire plus).</p>
-
-<h3>Mise en place en 3 clics</h3>
-
-<p>Bon, j&#39;éxagère, il faut plus que 3 clics. L&#39;utilisation d&#39;un Gemfile et de la gem <a href="https://rubygems.org/gems/bundler">bundler</a> permet de simplifier l&#39;ensemble de la procédure.</p>
-
-<p>Pour préparer un nouveau poste (suite à une embauche, une réinstallation, ou un nouveau serveur, il faut alors installer ruby, la gem bundler, récupérer le dépôt du code, puis lancer juste la commande <code>bundle install</code>. 
-Et le tour est joué.</p>
-
-<p>Pour aller plus loin : mise en place sur tous les serveurs de tests d&#39;une routine vérifiant que la liste est à jour et conforme à ce qu&#39;on attend, avec un </p>
-
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">bundle update
-gem cleanup</code></pre></div>
-
-<h3>L&#39;information, le nerf de la guerre</h3>
-
-<p>Plongés dans les tests, nous disposions de plusieurs documentations, avec des buts plus ou moins précis. Localisées à plusieurs endroits.
-Du coup, petit ménage d&#39;été, pour les regrouper, classer, mettre à jour. Au final, on a gardé plusieurs documents, pour plusieurs rôles différents :</p>
-
-<ul>
-<li><strong>Documentation du code</strong> : présente depuis le début, avec génération automatique par la gem ruby <a href="https://rubygems.org/gems/rdoc">rdoc</a> et un petit script ruby (basé sur des expressions régulières) pour lister les step_definitons. Basée évidemment sur les commentaires dans le code, qui sont eux mêmes le premier niveau d&#39;explication.</li>
-<li><strong>Documentation sur comment coder</strong> : quelques documents précis sur comment installer l&#39;environnement, les conventions de codage, ou des points précis et complexe des tests.</li>
-<li><strong>Documentation sur les produits</strong> : nous testons une demie douzaine de projets, plus ou moins liés les uns avec les autres. Pour pouvoir teter efficacement, il vaut mieux savoir comment le projet fonctionne, et dans l&#39;idéal, connaître également les bugs les plus courants sur le projet.</li>
-</ul>
-
-<h3>Codes complexes et compliqués</h3>
-
-<p>Aujourd&#39;hui, l&#39;ensemble de nos codes testant les projets de la société représenter environ 11 000 lignes de codes (essentiellement en ruby, cucumber, shell)</p>
-
-<p>Il y a 10 jours, j&#39;ai regardé pour la première fois depuis des mois les résultats de <a href="https://rubygems.org/gems/flog">flog</a> sur le projet. 
-Pour résumer, flog analyse le code source, compte combien de fois on effectue chaque &quot;action&quot;, et s&#39;ensuit une note de complexité pour chaque méthode, et pour l&#39;ensemble.</p>
-
-<p>Comme on peut classer, on voit immédiatement les fonctions les plus compliquées. Reste à savoir si la complexité est normale ou non. Après avoir lu pas mal d&#39;articles sur le sujet, et testé moi même sur notre code, j&#39;estime qu&#39;une fonction avec un score supérieur à 50 doit être analysée, et éventuellement, modifiée.</p>
-
-<h4>Quelques chiffres</h4>
-
-<p>J&#39;ai profité d&#39;un &quot;temps calme&quot; au bureau pour bosser sur le sujet. </p>
-
-<p>Avant :</p>
-
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">7128.5: flog total
-    15.6: flog/method average
-
-   793.5: main#none
-   236.1: main#launch_browser
-   197.0: main#get_job_results
-   138.0: Then#/^HTML <span class="o">(</span>contain|don<span class="s1">'t contain) (.*)$/
-   136.7: Then#/^I don'</span>t see errors<span class="nv">$/</span>
-   134.8: FormatPage#format_is_present
-   131.1: main#compare_stats
-    90.7: Then#/^I click on the insocial <span class="nb">expand</span><span class="nv">$/</span>
-    81.4: main#stats_of_day</code></pre></div>
-
-<p>Après : </p>
-
-<div class="highlight"><pre><code class="language-shell" data-lang="shell">6166.2: flog total
-    13.8: flog/method average
-
-   827.4: main#none
-   197.0: main#get_job_results
-   168.0: main#launch_browser
-   134.8: FormatPage#format_is_present
-    90.7: Then#/^I click on the insocial <span class="nb">expand</span><span class="nv">$/</span>
-    90.3: main#compare_stats
-    77.0: main#stats_of_day</code></pre></div>
-
-<p>On note plusieurs choses :</p>
-
-<ul>
-<li>La note globale a chuté (-14%). </li>
-<li>Cela fait mathématiquement baissé la moyenne par méthode.</li>
-<li>Certaines méthodes &quot;complexes&quot; ont bien baissé.</li>
-<li>D&#39;autres ont augmenté : avec les pull request de mes collègues, rien d&#39;aberrant. La note a donc baissé alors que dans le même temps, plus de 1 500 lignes de code ont été ajoutées / modifiées.</li>
-<li>Certaines méthodes, complexes, ont une note qui correspond à leur difficulté de compréhension. </li>
-</ul>
-
-<h4>Qu&#39;est ce que j&#39;ai changé ?</h4>
-
-<p>Rien de transcendant :</p>
-
-<ul>
-<li>Du code dupliqué a été &quot;mis en commun&quot; pour faciliter la maintenance.</li>
-<li>Des optimisations faciles : par exemple, dans une méthode utilisant beaucoup de données, j&#39;ai remplacé l&#39;utilisation d&#39;un tableau par une copie du contenu d&#39;une données. Passer de <code>my_array[&#39;result&#39;][&#39;report&#39;][&#39;url&#39;]</code> à <code>my_url</code> quand c&#39;est utilisé 7-8 fois, ça améliore la complexité et aussi la lisibilité et la maintenabilité.</li>
-<li>Des méthodes ont été découpées pour clarifier ce que le code faisait.</li>
-</ul>
-
-<h3>Et c&#39;est conventionnel tout ça ?</h3>
-
-<p>En parralèle, j&#39;ai mis à jour la gem <a href="https://rubygems.org/gems/rubocop">rubocop</a>. Cette gem permet de vérifier que toutes les conventions sont respectées. La liste des choses vérifiées s&#39;est beaucoup étoffée depuis la dernière fois que j&#39;avais mis à jour la gemme (de 0.18.1 à 0.27.1), et j&#39;ai passé quelques heures à modifier notre code pour qu&#39;il passe les nouvelles règles.</p>
-
-<p>Sur le projet, nous avons désactivé 27 règles parmi les centaines présentes. Par exemple, nous désactivons la limite sur le calcul de <a href="http://fr.wikipedia.org/wiki/Nombre_cyclomatique">complexité cyclomatique</a> puisque nous utilisons flog.</p>
-
-<p>Rubocop nous a aussi aidé sur la complexité : une nouvelle règle a fait remonté quelques variables non utilisés. Les supprimer à fait baisser les notes de flog.</p>
-
-<p>Pour l&#39;automatisation, un git-hooks lance un script shell :</p>
-
-<ul>
-<li>vérifiant le résultat de rubocop, </li>
-<li>vérifiant qu&#39;il ne reste pas de trace d&#39;un conflit dans les fichiers,</li>
-<li>vérifiant que tous les fichiers yaml sont syntaxiement juste (<code>find . -name *.yml -exec yaml-lint {} \;</code> pour les analyser, avec la gem <a href="https://rubygems.org/gems/yaml-lint">yaml-lint</a>)</li>
-</ul>
-
-<h3>KISS, et après</h3>
-
-<p>Le <a href="http://fr.wikipedia.org/wiki/Principe_KISS">principe KISS</a> (pour Keep it simple and stupid) est une façon de travailler qui incite à rester simple pour être efficace.
-Certains points cités plus hauts ne sont pas triviaux à mettre en place, mais permettent sur le long terme à limiter les risques, à garder facilement du code propre, compréhensible, et simple.</p>
-
-<p>Ma todolist pour la suite ? </p>
-
-<ul>
-<li>Traquer le code dupliqué (j&#39;en ai déjà repéré quelques morceaux, dont le nettoyage n&#39;était pas possible dans le temps que j&#39;avais), </li>
-<li>Supprimer le code mort et non utilisé.</li>
-<li>Continuer à documenter, ranger, classer.</li>
-<li>Refactoriser ce qui peut l&#39;être et dont le code n&#39;est pas amené à disparaître dans les prochains mois.</li>
-</ul>
 </div>
   </div>
   

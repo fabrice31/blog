@@ -128,6 +128,10 @@
           
         
       
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -147,6 +151,84 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/12/06/tester-un-site-multilingue/" itemprop="url" rel="bookmark">
+        Tester un site multilingue
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-12-06" itemprop="datePublished">
+			
+			6
+			décembre
+			
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/test">Test</a>
+		
+		- <a href="/tag/watir">Watir</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><p>Travailler sur un site international demande de multiplier les tests.</p>
+
+<p>D&#39;abord, si l&#39;interface change, il est parfois intéressant de la tester dans chaque langue. Dans mon cas, ce n&#39;est pas fait. Le principal risque des &quot;langues&quot; est l&#39;affichage des textes (du point de vue design), ce qui ne peut pas être testé de façon automatique. Pour cela, une équipe multilangue qui vérifie les modifications et leurs impacts est plus réaliste.</p>
+
+<p>L&#39;autre aspect important, c&#39;est l&#39;accès au site en fonction de la langue. Si vous avez une stratégie de redirection en fonction de la langue, il faut pouvoir le tester. J&#39;ai l&#39;impression que cela m&#39;a pris du temps, alors qu&#39;au final, c&#39;est tout simple. Mais j&#39;ai exploré beaucoup de pistes sur le sujet.</p>
+
+<h3>Le test</h3>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">TestProductionFrench</span> <span class="o">&lt;</span> <span class="no">Test</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+  <span class="k">def</span> <span class="nf">setup</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Firefox</span><span class="o">::</span><span class="no">Profile</span><span class="p">.</span><span class="nf">new</span>
+    <span class="n">profile</span><span class="p">[</span><span class="s1">'intl.accept_languages'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"it"</span>
+    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:firefox</span><span class="p">,</span> <span class="ss">:profile</span> <span class="o">=&gt;</span> <span class="n">profile</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">teardown</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">close</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_it</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.com"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="nf">test_redirection_fr</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="s2">"http://www.google.fr"</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">"http://www.google.it"</span><span class="p">,</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">url</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<h3>L&#39;explication</h3>
+
+<p>Pour ce test, je n&#39;ai pas utilisé cucumber, ou autre, mais juste la librairie unitest de ruby, et watir.</p>
+
+<ul>
+<li>Ligne 3 à 7 : le setup, joué avant chaque test. On crée un nouveau profil pour Firefox, contenant l&#39;attribut de langue voulu. Puis on charge Firefox.</li>
+<li>Ligne 9 à 11 : le teardown, qui ferme le navigateur après chaque test.</li>
+<li>Ligne 13 à 16 : premier test : on charge google.com, et on vérifie ensuite qu&#39;on a bien été redirigé vers google.it (puisque le navigateur signale une préférence pour cette langue)</li>
+<li>Ligne 18 à 21 : second test, depuis google.fr</li>
+</ul>
+
+<h3>Pourquoi j&#39;ai perdu du temps</h3>
+
+<p>J&#39;ai perdu du temps à faire fonctionner cela, pour la simple et bonne raison que cela ne marchait pas, et que mes tests testaient donc &quot;mal&quot;. La tête dans le guidon, je n&#39;ai pas testé que le fonctionnement du changement de langue soit juste. Je cherchais à corriger le problème là où il n&#39;était pas.</p>
+
+<p>Quelques rappels :</p>
+
+<ul>
+<li>Changer la langue préférée pour l&#39;affichage des pages de Firefox ne change pas la langue du navigateur.undefinedundefined</li>
+<li>Il est facile d&#39;afficher une page qui vous donne la langue préférée de votre navigateur. Voici un exemple de code en PHP :</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+    <span class="nv">$lang</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">'HTTP_ACCEPT_LANGUAGE'</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$lang</span><span class="p">;</span></code></pre></div>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -420,55 +502,6 @@ Deux anecdotes récentes à ce sujet.</p>
 <h4>Stratégie générale</h4>
 
 <p>De la même façon, la remise en cause des stratégies de tests doit être régulière. Il est nécessaire de vérifier régulièrement que les tests testent bien, sont stables, détectent bien les vrais bugs.</p>
-</div>
-  </div>
-  
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2012/06/07/lancement-d-une-beta-publique/" itemprop="url" rel="bookmark">
-        Lancement d'une beta publique
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2012-06-07" itemprop="datePublished">
-			
-			7
-			juin
-			  
-			2012
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/qualite">Qualite</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Cette semaine, nous lançons officiellement la beta publique de notre produit phare, <a href="http://www.overblog.com">OverBlog</a>. Cela fait près d&#39;un an que les premières reflexions ont commencé, que le développement a commencé. Nous avons changé d&#39;organisation de travail (passage à <a href="http://fr.wikipedia.org/wiki/Scrum_(m%C3%A9thode)">scrum</a>), nous avons accentué le TDD (<a href="http://fr.wikipedia.org/wiki/TDD">test driven development</a>), nous avons changé de technologie (<a href="http://symfony.com/">Symfony</a>)</p>
-
-<p>Nous avons mis en place de nombreux contrôles afin de mieux tester et s&#39;assurer que tout se passe bien. Pourtant, malgré tout cela, le stress me gagne depuis quelques jours : je serais en première ligne après le lancement. Je gérerais les retours internes de dernière minute, le support des utilisateurs... je centraliserais tout, pour donner ensuite les priorités à mes collègues développeurs.</p>
-
-<h3>Pour ajouter au stress :</h3>
-
-<ul>
-<li>Certains collègues sont absents (pour assister à des conférences)</li>
-<li>Le lancement se fait à New-York, pendant le BlogWorld. (Donc, avec du décalage horaire)</li>
-<li>Il faut continuer de gérer la version actuelle : cela complique un peu la tâche, surtout lorsque l&#39;utilisateur vous parle sans vous préciser quelle plateforme il utilise...</li>
-</ul>
-
-<h3>Ce que je retiens de ma nuit ?</h3>
-
-<ul>
-<li>Faire une modification en urgence à 17h était une mauvaise idée. Suite à un problème, elle a provoqué un effet de bord désastreux durant une demie-heure.</li>
-<li>L&#39;équipe est restée mobilisée une grande partie de la nuit pour s&#39;assurer que tout se passait bien.</li>
-<li>Suivre l&#39;avancement du trafic sur cette version était une émotion forte : cela fait 5 ans que je travaille dans les bureaux d&#39;OverBlog, mais c&#39;est la première fois que j&#39;attends devant un graphique pour voir s&#39;il va monter.</li>
-<li>Un souci sur un détail technique particulier : une seule personne était capable de le résoudre, et il nous a fallu une heure pour le contacter, et 2 heures pour que le problème soit totalement corrigé.</li>
-<li>La nuit a été courte pour certains d&#39;entre nous. Mais ce matin, l&#39;envie de finir au plus tôt les correctifs nécessaires pour que ce soit parfait est toujours là.</li>
-</ul>
-
-<p>Mais ce que je retiens avant tout : les premiers utilisateurs sont ravis, et accrochent bien à cette nouvelle version.</p>
-
-<p>Notre travail des derniers mois, particulièrement stressant durant les dernières semaines à peaufiner les détails, à régler les derniers problèmes, est vu à sa juste valeur (par des blogueurs célèbres, des développeurs...)</p>
 </div>
   </div>
   

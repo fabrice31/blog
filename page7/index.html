@@ -128,6 +128,10 @@
           
         
       
+        
+          
+        
+      
 	  <a class="sidebar-nav-item" href="http://www.fabricebournisien.eu">CV</a>
 	  <!-- SiteSearch Google --> 
 	  <form method="get" action="http://www.google.com/search"> 
@@ -147,6 +151,183 @@
 
     <div class="content container">
       <div class="posts">
+  
+  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <h2 class="post-title" itemprop="name">
+      <a href="/2012/05/07/valider-un-theme/" itemprop="url" rel="bookmark">
+        Valider un thème
+      </a>
+    </h2>
+
+	<span class="post-date">
+		<time class="date" datetime="2012-05-07" itemprop="datePublished">
+			
+			7
+			mai
+			  
+			2012
+		</time>
+		- par Fabrice Bournisien
+		
+		- <a href="/tag/qualite">Qualite</a>
+		
+		- <a href="/tag/test">Test</a>
+		
+	</span>
+
+	<div itemprop="ArticleBody"><h3>Choisir un thème</h3>
+
+<p>Lorsqu&#39;on crée son blog, on regarde souvent les fonctionnalités de l&#39;outil, mais on est surtout intéressé par le thème.</p>
+
+<p>Chacun a une attente particulière d&#39;un thème : on a tous une couleur préférée, un sujet de prédilection (cuisine, technologie, voiture...). Certains aiment également ajouter un tas de widgets facilement, ou pouvoir le personnaliser en changeant une couleur ou une image. Cela permet de se sentir chez soi.</p>
+
+<p>Dans la nouvelle version d&#39;OverBlog, l&#39;utilisateur peut choisir son design, changer les options prévues dans le thème, mais également modifier le html, le css, afin d&#39;avoir un thème qui correspond exactement à ce que l&#39;on veut.</p>
+
+<h3>Et la qualité ?</h3>
+
+<p>Lorsqu&#39;un nouveau thème est créé pour être proposé aux blogueurs, en tant que responsable qualité, je dois vérifier qu&#39;il s&#39;affiche correctement sur tous les navigateurs, avec toute sorte de contenus. Sans parler d&#39;avoir les options qui permettent de plaire au plus grand nombre.</p>
+
+<p>Lorsque nous avons ajouté les premiers thèmes, j&#39;ai testé manuellement beaucoup de choses, refait les mêmes tests plusieurs fois. Avec le recul, je pense même n&#39;avoir pas fait les mêmes tests sur chaque thème.</p>
+
+<p>L&#39;équipe ayant augmenté la cadence de livraison de thèmes, il y a de plus en plus de thèmes à tester.</p>
+
+<p>Au delà de ça, l&#39;équipe ajoute régulièrement de nouvelles fonctions utilisables dans les thèmes (ex : une fonction article suivant / précédent). Il faut alors faire modifer les anciens thèmes, les tester à nouveau...</p>
+
+<p><img src="/public/pictures/2012/checklist.jpg" alt="Checklist" title="Checklist point par point"></p>
+
+<h3>Tests en équipe</h3>
+
+<p>Du retard s&#39;étant accumulé dans les tests, j&#39;ai décidé de faire participer l&#39;équipe aux tests. Pour cela, j&#39;ai préparé un document comportant une centaine de points à vérifier pour chaque thème, plus ou moins précis.</p>
+
+<p>Certains points sont issus de tests précédents, de bugs s&#39;étant déjà produits. D&#39;autres sont issus de connaissances accumulées dans le domaine depuis de longues années.</p>
+
+<p>Chaque membre de l&#39;équipe a choisi un thème (en veillant à ne jamais tester un thème que l&#39;on a soi-même créé: le test ne saurait être fiable dans ces conditions). Ne restait alors plus qu&#39;à vérifier la checklist.</p>
+
+<p><img src="/public/pictures/2012/checklist_equipe.jpg" alt="Checklist en équipe" title="Checklist en parrallèle"></p>
+
+<h3>Checklist : SEO</h3>
+
+<ul>
+<li>Titre du blog sur la home, de préférence en h1</li>
+<li>Description du blog affichée sur la home</li>
+<li>Pas de répétition abusive du titre et de la description du blog</li>
+<li>Sur une page d&#39;article, le titre et le lien vers l&#39;article ne sont pas répétés</li>
+<li>Le title de la page d&#39;accueil inclut le titre du blog</li>
+<li>Le title d&#39;une page d&#39;article contient le titre de l&#39;article</li>
+<li>Le title d&#39;une recherche contient le keyword</li>
+<li>Le title d&#39;une catégorie contient la catégorie</li>
+<li>La meta description contient la description du blog sur la home</li>
+<li>La meta description contient l&#39;extrait de l&#39;article sur les pages &quot;article seul&quot;</li>
+<li>Les widgets et les articles ont des titres de forme h* (h2, h3...)</li>
+<li>Le flux RSS est renseigné et l&#39;url est juste</li>
+</ul>
+
+<h3>Checklist : ergonomie</h3>
+
+<ul>
+<li>Le titre est cliquable et renvoie sur l&#39;accueil</li>
+<li>L&#39;attribut title du titre du blog contient la description du blog</li>
+<li>L&#39;attribut title du titre des articles contient un extrait de l&#39;article</li>
+<li>Il y a un lien vers la page contact</li>
+<li>Le champ de recherche a un placeholder</li>
+<li>Un message apparait quand il n&#39;y a pas de résultat</li>
+<li>Lors d&#39;une recherche, les articles sans titre peuvent être ouverts</li>
+<li>Les tags sont affichés par leurs noms, pas par leur url</li>
+<li>Les suites de tags sont séparées par un élément visuel : # , /</li>
+</ul>
+
+<h3>Checklist : webperf</h3>
+
+<ul>
+<li>Vérifier que les js chargés sont en nombre limité</li>
+<li>Si une option permet de désactiver une fonction, le JS associé est désactivé</li>
+<li>Les js qui le peuvent sont placés en pied de page</li>
+<li>Poids total de la page inférieur à 3 Mo</li>
+<li>Pas d&#39;erreur 404 dans les fichiers / images</li>
+</ul>
+
+<h3>Checklist : options du thème</h3>
+
+<ul>
+<li>Prévoir une option article complet / extrait</li>
+<li>Pas de lien &quot;en dur&quot; vers une url interne à créer par le blogueur</li>
+<li>Pas de saisie inutile de valeur</li>
+<li>Ne pas hésiter à faire changer les couleurs principales du thème</li>
+<li>Si une image est utilisée &quot;par défaut&quot;, permettre de la changer</li>
+<li>Permettre de choisir les modules à afficher / masquer</li>
+<li>Penser à l&#39;ajout des comptes de réseaux sociaux</li>
+<li>Les options ont des valeurs par défaut</li>
+<li>Le type des options est adapté</li>
+<li>Prévoir l&#39;ajout de Google analytics / webmaster tools / msn tools</li>
+</ul>
+
+<h3>Checklist : widgets</h3>
+
+<ul>
+<li>Prévoir un module listant les pages</li>
+<li>Prévoir un module affichant la biographie de l&#39;auteur, sa ville, son pseudo</li>
+<li>Dans le module &quot;bprofil&quot;io&quot;, afficher lien + logo vers les réseaux sociaux</li>
+<li>Prévoir un module archive, affichant les années, interactivité pour afficher les mois</li>
+<li>Prévoir un module tags, qui affiche les tags.d&#39;utilisation</li>
+</ul>
+
+<h3>Checklist : article</h3>
+
+<ul>
+<li>Informations de base affichées : titre, date, auteur, tags</li>
+<li>Les images des sections texte sont alignées correctement</li>
+<li>Mise en page correcte : listes (puce + numérotées)</li>
+<li>Mise en page correcte : gras, italique, del, liens</li>
+<li>Mise en page correcte : titres, preformatted</li>
+<li>La section image prend la largeur maximale disponible</li>
+<li>Ajouter une &quot;fancybox&quot; ou script assimilé pour zoomer sur les images</li>
+<li>Le slideshow fonctionne dans la section image</li>
+<li>Les vidéos ne sont pas coupées en largeur</li>
+<li>Le player de musique s&#39;affiche et fonctionne</li>
+<li>Pour une section lien, le lien, la vignette, l&#39;extrait sont placés correctement</li>
+<li>Les citations apparaissent de façon à ressortir</li>
+<li>L&#39;auteur d&#39;une citation est affiché clairement</li>
+<li>Les cartes s&#39;affichent entièrement</li>
+<li>Le curseur indique qu&#39;on peut cliquer sur la carte</li>
+<li>Pour les sections image, vidéos, musique, carte... la description est alignée avec le contenu</li>
+<li>Une suite de sections s&#39;affiche correctement</li>
+<li>Les articles sans titre peuvent être visités (ajout d&#39;un lien &quot;Read more&quot;...)</li>
+<li>Les articles venant de Twitter s&#39;affichent correctement</li>
+<li>Les articles venant de FB s&#39;affichent correctement (image, texte..)</li>
+<li>L&#39;article dispose d&#39;options de partage (Twitter, FB, G+, Pinterest...)</li>
+</ul>
+
+<h3>Checklist : autres contenus</h3>
+
+<ul>
+<li>Sur une page d&#39;article seul, on affiche les commentaires</li>
+<li>Sur une page d&#39;accueil, on affiche une information pour indiquer les commentaires</li>
+<li>La zone de commentaire apparait dans toute sa largeur</li>
+<li>Si les commentaires sont désactivés, pas de lien / d&#39;affichage des commentaires</li>
+<li>Sur les pages listant les articles (accueil, recherche, tags...), afficher la pagination</li>
+<li>Quand on passe sur la page 2, ce sont les articles suivants qui apparaissent</li>
+<li>Sur une page d&#39;article, afficher un lien vers l&#39;article suivant / précédent</li>
+<li>La page de contact s&#39;affiche correctement</li>
+</ul>
+
+<h3>Checklist : divers</h3>
+
+<ul>
+<li>Si le design est responsive, cela fonctionne</li>
+<li>Les textes affichés passent par la fonction de langue (permet la traduction du thème)</li>
+<li>Pas de textes localisés dans les images (pour faciliter le changement de langue)</li>
+<li>Affichage parfait sur IE9</li>
+<li>Affichage correct sur IE8</li>
+<li>Affichage parfait sur Chrome</li>
+<li>Affichage parfait sur Firefox</li>
+<li>Affichage correct sur Safari</li>
+<li>Les options de commentaires (Disqus, Facebook..) fonctionnent</li>
+<li>Les options des widgets sociaux fonctionnent</li>
+<li>Les options de thèmes fonctionnent pour changer l&#39;apparence : couleurs, police...</li>
+<li>Les autres options sont opérationnelles.</li>
+</ul>
+</div>
+  </div>
   
   <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
     <h2 class="post-title" itemprop="name">
@@ -392,144 +573,11 @@ Faire lancer les tests par les développeurs en environnement de développement.
 </div>
   </div>
   
-  <div class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <h2 class="post-title" itemprop="name">
-      <a href="/2011/10/25/cucumber-tests-simples-pour-tous/" itemprop="url" rel="bookmark">
-        Cucumber : des tests plus simples pour tous
-      </a>
-    </h2>
-
-	<span class="post-date">
-		<time class="date" datetime="2011-10-25" itemprop="datePublished">
-			
-			25
-			octobre
-			  
-			2011
-		</time>
-		- par Fabrice Bournisien
-		
-		- <a href="/tag/cucumber">Cucumber</a>
-		
-		- <a href="/tag/watir">Watir</a>
-		
-		- <a href="/tag/ruby">Ruby</a>
-		
-	</span>
-
-	<div itemprop="ArticleBody"><p>Mettre régulièrement à jour ses batteries de tests est indispensable.</p>
-
-<p>Cela permet de découvrir un test qui ne fonctionne plus, d&#39;optimiser le comportement des tests. Parfois, on intègre une nouvelle technologie qui change tout dans la façon de tester.</p>
-
-<h3>Mise à jour des tests</h3>
-
-<p>Pour mettre à jour mes tests, j&#39;ai décidé de repartir de zéro. De réflexions en réflexions, j&#39;en était arrivé à me poser des questions (existentielles) du genre :</p>
-
-<ul>
-<li>Est-ce que je peux envisager de créer des Tests Unitaires pour tester que mes tests testent bien ?</li>
-<li>Pour éviter de toujours refaire la même chose, il faudrait que je crée des &quot;primitives&quot; à réutiliser partout. Comment les gérer au mieux ?</li>
-<li>Avec ces primitives, je pourrais envisager de créer des tests dans toutes les langues du site de façon très rapide...</li>
-</ul>
-
-<p>Après quelques tests d&#39;outils, etc, j&#39;en suis arrivé aux conclusions suivantes:</p>
-
-<ul>
-<li>Le système de primitive existe. Il s&#39;appelle Cucumber. J&#39;avais parlé succintement de Cucumber lors d&#39;une présentation que j&#39;ai faite lors d&#39;un apéroweb Toulouse. Pour résumer, Cucumber permet de rédiger les scénarios en anglais, simplifiant ainsi la création et la mise à jour de test.</li>
-<li>Créer des tests unitaires de mes tests fonctionnels automatisés ne me garantirait pas qu&#39;ils détectent les bugs. Pour cela, il faut un oeil humain, qui lance les tests, vérifient, etc.</li>
-</ul>
-
-<h3>Nouvelle configuration</h3>
-
-<p>Je suis donc passé de Watir / Webdriver à Cucumber / Watir / Wedriver pour les tests. Nouvelle organisation, nouvelle façon de lancer les tests, etc. Après un mois d&#39;utilisation, je vois déjà des avancées :</p>
-
-<ul>
-<li>La réutilisation des primitives est un énorme gain de temps</li>
-<li>La lecture d&#39;un scénario de test est possible pour tout le monde. Il en va de même pour leur écriture (à faire relire / adapter par le responsable qualité tout de même)</li>
-</ul>
-
-<p>Voici un petit exemple fait maison, on en trouve une quantité sur le net.</p>
-
-<p><em>Fichier features/webQualiteBlog.feature</em></p>
-
-<div class="highlight"><pre><code class="language-cucumber" data-lang="cucumber"><span class="kd">Feature</span><span class="p">:</span> WeQualite Blog
-Generic tests about my blog
-@portal
-<span class="kn">Scenario</span><span class="p">:</span> First page of blog
-    <span class="nf">When </span>I go to <span class="s">"web-quality.over-blog.com"</span>
-    <span class="nf">Then </span>I shouldn't see errors
-    <span class="nf">And </span>page should contain <span class="s">"Web qualité"</span>
-    <span class="nf">And </span>page should contain <span class="s">"Dieu du web"</span>
-
-<span class="nt">@portal</span> <span class="nt">@google</span>
-<span class="kn">Scenario</span><span class="p">:</span> Verify blog is in first page of google search
-    <span class="nf">When </span>I go to <span class="s">"www.google.fr"</span>
-    <span class="nf">And </span>I search <span class="s">"web-qalite"</span>
-    <span class="nf">Then </span>page should contain <span class="s">"Beaucoup d'outil de tests"</span> 
-    <span class="nf">And </span>page should contain <span class="s">"web-quality.over-blog.com"</span></code></pre></div>
-
-<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Sous Windows, la coloration syntaxique est possible grâce à AnsiColor"></p>
-
-<p>On voit que cucumber nous donne directement les primitives (step definitions) à gérer pour compléter les tests. C&#39;est à la fois pratique, mais peut devenir source de problèmes. Si une primitive est sensé être déjà codée, il faut vérifier la syntaxe, l&#39;appel du fichier etc..</p>
-
-<p><em>Fichier features/step_definitions/common.rb</em></p>
-
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>
-<span class="nb">require</span> <span class="s2">"watir-webdriver"</span>
-
-<span class="n">caps</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Remote</span><span class="o">::</span><span class="no">Capabilities</span><span class="p">.</span><span class="nf">htmlunit</span><span class="p">()</span>
-<span class="no">BROWSER</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">caps</span><span class="p">)</span>
- 
-<span class="no">When</span> <span class="sr">/^I go to "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">uri</span><span class="o">|</span>
-  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-<span class="k">end</span>
- 
-<span class="no">Then</span> <span class="sr">/^I shouldn't see errors$/</span> <span class="k">do</span>
-  <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Call Stack"</span><span class="p">,</span> <span class="s2">"Erreur 404"</span><span class="p">,</span> <span class="s2">"Erreur 50"</span><span class="p">,</span> <span class="s2">"Page Web introuvable"</span><span class="p">,</span>
-            <span class="s2">"Undefined "</span><span class="p">,</span> <span class="s2">"Trying to"</span><span class="p">,</span> <span class="s2">"cette page n'est pas accessible"</span><span class="p">,</span>
-            <span class="s2">"Warning "</span><span class="p">,</span> <span class="s2">"Fatal exception"</span><span class="p">,</span> <span class="s2">"Syntax error"</span><span class="p">]</span>
-  <span class="n">errors</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">error</span><span class="o">|</span>
-    <span class="no">BROWSER</span><span class="p">.</span><span class="nf">html</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">error</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">false</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="no">Then</span> <span class="sr">/^page should contain "([^"]*)"$/</span> <span class="k">do</span> <span class="o">|</span><span class="n">txt</span><span class="o">|</span>
-  <span class="no">BROWSER</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">txt</span><span class="p">).</span><span class="nf">should</span> <span class="o">==</span> <span class="kp">true</span>
-<span class="k">end</span></code></pre></div>
-
-<p><img src="/public/pictures/2011/cucumber-first.jpg" alt="Résultats de l&#39;éxecution" title="Ca marche (ou pas)"></p>
-
-<h3>Explication de l&#39;affichage</h3>
-
-<ul>
-<li>En rouge : les primitives ne s&#39;étant pas bien passés.</li>
-<li>En bleu : les primitives n&#39;ayant pas été exécutés (une étape précédente a échoué).</li>
-<li>En marron: les primitives n&#39;étant pas définies.</li>
-</ul>
-
-<h3>Optimisations</h3>
-
-<p>J&#39;ai déjà un peu d&#39;expérience, et j&#39;ai déjà intégré des optimisations directement dans l&#39;exemple:</p>
-
-<ul>
-<li>Les primitives doivent être le plus &quot;générique&quot; possible. Cela évite de devoir code deux primitives similaires deux fois.</li>
-<li>L&#39;utilisation de paramètres est un point très important pour optimiser ces primitives.</li>
-<li>Il est possible de rendre l&#39;affichage du résultat moins verbeux (ex: cucumber features --format progress permet d&#39;afficher une liste de point comme les tests unitaires classiques)</li>
-</ul>
-
-<p>Pour aller plus loin</p>
-
-<ul>
-<li><a href="http://watirmelon.com/2011/01/21/my-simple-cucumber-watir-page-object-pattern-framework">Le blog d&#39;Alister Scott [en]</a></li>
-<li><a href="http://rubygems.org/gems/cucumber">La gem ruby de cucumber</a></li>
-</ul>
-</div>
-  </div>
-  
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page8">Older</a>
   
   
     
